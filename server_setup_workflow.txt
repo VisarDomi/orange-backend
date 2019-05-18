@@ -65,13 +65,14 @@ go to orange-backend in bitbucket and select clone and select https and copy it
 git clone https://VisarDomi@bitbucket.org/verweb/orange-backend.git
 cd orange-backend
 
+12. sudo apt install pipenv
 
-12. pipenv install
-and copy paste the install recommendation
+13. delete Pipfile.lock
+rm -rf Pipfile.lock
 
-13. pipenv shell
+14. pipenv shell
 
-14-21. pipenv install
+15-21. pipenv install
 
 22. copy paste env_local to .env:
 cp env_local .env
@@ -97,7 +98,8 @@ local   all             postgres                                peer
 to:
 local   all             postgres                                trust
 
-26.1.b sudo service postgresql restart
+26.1.b
+sudo service postgresql restart
 
 26.2 changing password:
 psql -U postgres
@@ -108,7 +110,8 @@ local   all             postgres                                trust
 to:
 local   all             postgres                                md5
 
-26.3.b sudo service postgresql restart
+26.3.b
+sudo service postgresql restart
 
 
 27. Login and logout from server:
@@ -122,8 +125,12 @@ psql -U postgres
 create database orange;
 \q
 
-29. upgrade database:
+29.1 upgrade database:
 alembic upgrade head
+
+29.2 create admin:
+flask shell
+copy paste from after_resetting_database.py
 
 Setup supervisorctl:
 30.1 open file:
@@ -131,7 +138,7 @@ sudo nano /etc/supervisor/conf.d/orange.conf
 
 30.2 paste the following:
 [program:orange]
-command=/home/ubuntu/.virtualenvs/orange-backend-mZpNmuUC/bin/gunicorn -b localhost:5000 -w 4 orange:app
+command=/home/ubuntu/.virtualenvs/orange-backend-XuJsFZXp/bin/gunicorn -b localhost:5000 -w 4 orange:app
 directory=/home/ubuntu/orange-backend
 user=ubuntu
 autostart=true

@@ -53,7 +53,7 @@
 							"basic": [
 								{
 									"key": "username",
-									"value": "admin@makina.cf",
+									"value": "admin@orange-backend.ml",
 									"type": "string"
 								},
 								{
@@ -114,7 +114,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"email\": \"test1@makina.cf\",\r\n    \"password\": \"password\"\r\n}"
+							"raw": "{\r\n    \"email\": \"test1@orange-backend.ml\",\r\n    \"password\": \"password\"\r\n}"
 						},
 						"url": {
 							"raw": "{{url}}/api/user",
