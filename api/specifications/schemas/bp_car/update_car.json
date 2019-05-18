@@ -1,0 +1,21 @@
+{
+  "title": "Update car",
+  "description": "Update a car object",
+  "type": "object",
+  "$schema": "http://json-schema.org/draft-04/schema",
+  "properties": {
+    "make": {
+      "type": "string"
+    },
+    "model": {
+      "type": "string"
+    },
+    "color": {
+      "type": "string"
+    },
+    "capacity": {
+      "type": "string"
+    }
+  },
+  "additionalProperties": false
+}

@@ -1,0 +1,21 @@
+{
+  "title": "Update user",
+  "description": "Update a user object",
+  "type": "object",
+  "$schema": "http://json-schema.org/draft-04/schema",
+  "properties": {
+    "full_name": {
+      "type": "string"
+    },
+    "phone": {
+      "type": "string"
+    },
+    "birthdate": {
+      "type": "string"
+    },
+    "bio": {
+      "type": "string"
+    }
+  },
+  "additionalProperties": false
+}
