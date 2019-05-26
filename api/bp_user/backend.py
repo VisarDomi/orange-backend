@@ -4,28 +4,25 @@ from ..common.exceptions import (
     MissingArguments,
     CannotChangeOthersData,
     CannotDeleteOthersData,
-    CannotDeleteFirstAdmin,
 )
 from ..common.models import User
 from ..helper_functions.get_by_id import get_user_by_id
+from ..helper_functions.constants import EXPIRES_IN
 
 
 def create_user(user_data):
-    if user_data["email"] is None or user_data["password"] is None:
-        msg = "Please provide an email and a password."
+    if user_data["login"] is None or user_data["password"] is None:
+        msg = "Please provide a login and a password."
         raise MissingArguments(message=msg)
-    if not User.query.filter(User.email == user_data["email"]).one_or_none():
-        user_data["email"] = user_data["email"].lower()
+    if not User.query.filter(User.login == user_data["login"]).one_or_none():
+        user_data["login"] = user_data["login"].lower()
         user = User(**user_data)
         user.set_password(user_data["password"])
         user.save()
     else:
-        msg = "Email `%s` is already in use for another account." % user_data["email"]
+        msg = "Login `%s` is already in use for another account." % user_data["login"]
         raise RecordAlreadyExists(message=msg)
-    if user.id == 1:
-        user.role = "admin"
-        user.save()
-    user.get_token(expires_in=36_000_000)
+    user.get_token(expires_in=EXPIRES_IN)
 
     return user
 
@@ -50,13 +47,9 @@ def update_user(user_data, user_id):
 
 
 def delete_user(user_id):
-    if int(user_id) != 1:
-        if int(user_id) == g.current_user.id:
-            user = get_user_by_id(user_id)
-            user.delete()
-        else:
-            msg = "You can't delete other people's data."
-            raise CannotDeleteOthersData(message=msg)
+    if int(user_id) == g.current_user.id:
+        user = get_user_by_id(user_id)
+        user.delete()
     else:
-        msg = "Cannot delete admin with `id: %s`" % user_id
-        raise CannotDeleteFirstAdmin(message=msg)
+        msg = "You can't delete other people's data."
+        raise CannotDeleteOthersData(message=msg)

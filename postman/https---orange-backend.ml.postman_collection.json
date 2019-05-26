@@ -6,43 +6,6 @@
 	},
 	"item": [
 		{
-			"name": "search",
-			"item": [
-				{
-					"name": "{{url}}/api/user/search",
-					"request": {
-						"method": "POST",
-						"header": [
-							{
-								"key": "Secure-Api-Key",
-								"value": "{{Secure-Api-Key}}"
-							},
-							{
-								"key": "Content-Type",
-								"value": "application/json"
-							}
-						],
-						"body": {
-							"mode": "raw",
-							"raw": "{\n\t\"name\": \"v\"\n}"
-						},
-						"url": {
-							"raw": "{{url}}/api/user/search",
-							"host": [
-								"{{url}}"
-							],
-							"path": [
-								"api",
-								"user",
-								"search"
-							]
-						}
-					},
-					"response": []
-				}
-			]
-		},
-		{
 			"name": "auth",
 			"item": [
 				{
@@ -53,7 +16,7 @@
 							"basic": [
 								{
 									"key": "username",
-									"value": "admin@orange-backend.ml",
+									"value": "test2",
 									"type": "string"
 								},
 								{
@@ -114,7 +77,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"email\": \"test1@orange-backend.ml\",\r\n    \"password\": \"password\"\r\n}"
+							"raw": "{\r\n    \"login\": \"test2\",\r\n    \"password\": \"password\"\r\n}"
 						},
 						"url": {
 							"raw": "{{url}}/api/user",
@@ -212,7 +175,7 @@
 							"bearer": [
 								{
 									"key": "token",
-									"value": "HRlauByLxD/zW0/CK+eQFufV3rge2DQp",
+									"value": "sxt51VNvKvpTlAIFah0zJpMEJBZICtj8",
 									"type": "string"
 								}
 							]
@@ -230,17 +193,17 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"full_name\": \"Test Dy\",\n    \"phone\": \"+35568383838\",\n    \"birthdate\": \"1999-12-31\",\n    \"bio\": \"hallo\"\n}"
+							"raw": "{\n    \"login\": \"test3\"\n}"
 						},
 						"url": {
-							"raw": "{{url}}/api/user/2",
+							"raw": "{{url}}/api/user/7",
 							"host": [
 								"{{url}}"
 							],
 							"path": [
 								"api",
 								"user",
-								"2"
+								"7"
 							]
 						},
 						"description": "Put"
@@ -292,438 +255,6 @@
 			]
 		},
 		{
-			"name": "trip",
-			"item": [
-				{
-					"name": "{{url}}/api/user/2/trip",
-					"request": {
-						"auth": {
-							"type": "bearer",
-							"bearer": [
-								{
-									"key": "token",
-									"value": "HRlauByLxD/zW0/CK+eQFufV3rge2DQp",
-									"type": "string"
-								}
-							]
-						},
-						"method": "POST",
-						"header": [
-							{
-								"key": "Secure-Api-Key",
-								"value": "{{Secure-Api-Key}}"
-							},
-							{
-								"key": "Content-Type",
-								"value": "application/json"
-							}
-						],
-						"body": {
-							"mode": "raw",
-							"raw": "{\r\n    \"start_place\": \"here\",\r\n    \"end_place\": \"there\",\r\n    \"start_datetime\": \"1999-12-31\",\r\n    \"return_datetime\": \"2000-01-01\",\r\n    \"price\": 3.99,\r\n    \"seats_available\": 4,\r\n    \"description\": \"hello there\",\r\n    \"is_done\": false\r\n}"
-						},
-						"url": {
-							"raw": "{{url}}/api/user/2/trip",
-							"host": [
-								"{{url}}"
-							],
-							"path": [
-								"api",
-								"user",
-								"2",
-								"trip"
-							]
-						},
-						"description": "user1"
-					},
-					"response": []
-				},
-				{
-					"name": "{{url}}/api/user/2/trip/all",
-					"protocolProfileBehavior": {
-						"disableBodyPruning": true
-					},
-					"request": {
-						"auth": {
-							"type": "noauth"
-						},
-						"method": "GET",
-						"header": [
-							{
-								"key": "Secure-Api-Key",
-								"value": "{{Secure-Api-Key}}"
-							},
-							{
-								"key": "Content-Type",
-								"value": "application/json"
-							}
-						],
-						"body": {
-							"mode": "raw",
-							"raw": ""
-						},
-						"url": {
-							"raw": "{{url}}/api/user/2/trip/all",
-							"host": [
-								"{{url}}"
-							],
-							"path": [
-								"api",
-								"user",
-								"2",
-								"trip",
-								"all"
-							]
-						},
-						"description": "get users with token"
-					},
-					"response": []
-				},
-				{
-					"name": "{{url}}/api/user/2/trip/1",
-					"protocolProfileBehavior": {
-						"disableBodyPruning": true
-					},
-					"request": {
-						"method": "GET",
-						"header": [
-							{
-								"key": "Secure-Api-Key",
-								"value": "{{Secure-Api-Key}}"
-							},
-							{
-								"key": "Content-Type",
-								"value": "application/json"
-							}
-						],
-						"body": {
-							"mode": "raw",
-							"raw": ""
-						},
-						"url": {
-							"raw": "{{url}}/api/user/2/trip/1",
-							"host": [
-								"{{url}}"
-							],
-							"path": [
-								"api",
-								"user",
-								"2",
-								"trip",
-								"1"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "{{url}}/api/user/2/trip/1",
-					"request": {
-						"auth": {
-							"type": "bearer",
-							"bearer": [
-								{
-									"key": "token",
-									"value": "HRlauByLxD/zW0/CK+eQFufV3rge2DQp",
-									"type": "string"
-								}
-							]
-						},
-						"method": "PUT",
-						"header": [
-							{
-								"key": "Secure-Api-Key",
-								"value": "{{Secure-Api-Key}}"
-							},
-							{
-								"key": "Content-Type",
-								"value": "application/json"
-							}
-						],
-						"body": {
-							"mode": "raw",
-							"raw": "{\r\n    \"start_place\": \"here\",\r\n    \"end_place\": \"there\",\r\n    \"start_datetime\": \"1999-12-31\",\r\n    \"return_datetime\": \"2000-01-01\",\r\n    \"price\": 3.99,\r\n    \"seats_available\": 4,\r\n    \"description\": \"hello there\",\r\n    \"is_done\": true\r\n}"
-						},
-						"url": {
-							"raw": "{{url}}/api/user/2/trip/1",
-							"host": [
-								"{{url}}"
-							],
-							"path": [
-								"api",
-								"user",
-								"2",
-								"trip",
-								"1"
-							]
-						},
-						"description": "Put"
-					},
-					"response": []
-				},
-				{
-					"name": "{{url}}/api/user/2/trip/2",
-					"request": {
-						"auth": {
-							"type": "bearer",
-							"bearer": [
-								{
-									"key": "token",
-									"value": "HRlauByLxD/zW0/CK+eQFufV3rge2DQp",
-									"type": "string"
-								}
-							]
-						},
-						"method": "DELETE",
-						"header": [
-							{
-								"key": "Secure-Api-Key",
-								"value": "{{Secure-Api-Key}}"
-							},
-							{
-								"key": "Content-Type",
-								"value": "application/json"
-							}
-						],
-						"body": {
-							"mode": "raw",
-							"raw": ""
-						},
-						"url": {
-							"raw": "{{url}}/api/user/2/trip/1",
-							"host": [
-								"{{url}}"
-							],
-							"path": [
-								"api",
-								"user",
-								"2",
-								"trip",
-								"1"
-							]
-						}
-					},
-					"response": []
-				}
-			]
-		},
-		{
-			"name": "car",
-			"item": [
-				{
-					"name": "{{url}}/api/user/2/car",
-					"request": {
-						"auth": {
-							"type": "bearer",
-							"bearer": [
-								{
-									"key": "token",
-									"value": "HRlauByLxD/zW0/CK+eQFufV3rge2DQp",
-									"type": "string"
-								}
-							]
-						},
-						"method": "POST",
-						"header": [
-							{
-								"key": "Secure-Api-Key",
-								"value": "{{Secure-Api-Key}}"
-							},
-							{
-								"key": "Content-Type",
-								"value": "application/json"
-							}
-						],
-						"body": {
-							"mode": "raw",
-							"raw": "{\r\n    \"make\": \"mercedes\",\r\n    \"model\": \"e200\",\r\n    \"color\": \"red\",\r\n    \"capacity\": \"3\"\r\n}"
-						},
-						"url": {
-							"raw": "{{url}}/api/user/2/car",
-							"host": [
-								"{{url}}"
-							],
-							"path": [
-								"api",
-								"user",
-								"2",
-								"car"
-							]
-						},
-						"description": "user1"
-					},
-					"response": []
-				},
-				{
-					"name": "{{url}}/api/user/2/car/all",
-					"protocolProfileBehavior": {
-						"disableBodyPruning": true
-					},
-					"request": {
-						"auth": {
-							"type": "noauth"
-						},
-						"method": "GET",
-						"header": [
-							{
-								"key": "Secure-Api-Key",
-								"value": "{{Secure-Api-Key}}"
-							},
-							{
-								"key": "Content-Type",
-								"value": "application/json"
-							}
-						],
-						"body": {
-							"mode": "raw",
-							"raw": ""
-						},
-						"url": {
-							"raw": "{{url}}/api/user/2/car/all",
-							"host": [
-								"{{url}}"
-							],
-							"path": [
-								"api",
-								"user",
-								"2",
-								"car",
-								"all"
-							]
-						},
-						"description": "get users with token"
-					},
-					"response": []
-				},
-				{
-					"name": "{{url}}/api/user/2/car/1",
-					"protocolProfileBehavior": {
-						"disableBodyPruning": true
-					},
-					"request": {
-						"method": "GET",
-						"header": [
-							{
-								"key": "Secure-Api-Key",
-								"value": "{{Secure-Api-Key}}"
-							},
-							{
-								"key": "Content-Type",
-								"value": "application/json"
-							}
-						],
-						"body": {
-							"mode": "raw",
-							"raw": ""
-						},
-						"url": {
-							"raw": "{{url}}/api/user/2/car/2",
-							"host": [
-								"{{url}}"
-							],
-							"path": [
-								"api",
-								"user",
-								"2",
-								"car",
-								"2"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "{{url}}/api/user/2/car/1",
-					"request": {
-						"auth": {
-							"type": "bearer",
-							"bearer": [
-								{
-									"key": "token",
-									"value": "HRlauByLxD/zW0/CK+eQFufV3rge2DQp",
-									"type": "string"
-								}
-							]
-						},
-						"method": "PUT",
-						"header": [
-							{
-								"key": "Secure-Api-Key",
-								"value": "{{Secure-Api-Key}}"
-							},
-							{
-								"key": "Content-Type",
-								"value": "application/json"
-							}
-						],
-						"body": {
-							"mode": "raw",
-							"raw": "{\r\n    \"make\": \"mercedes\",\r\n    \"model\": \"e200\",\r\n    \"color\": \"blue\",\r\n    \"capacity\": \"3\"\r\n}"
-						},
-						"url": {
-							"raw": "{{url}}/api/user/2/car/2",
-							"host": [
-								"{{url}}"
-							],
-							"path": [
-								"api",
-								"user",
-								"2",
-								"car",
-								"2"
-							]
-						},
-						"description": "Put"
-					},
-					"response": []
-				},
-				{
-					"name": "{{url}}/api/user/2/car/2",
-					"request": {
-						"auth": {
-							"type": "bearer",
-							"bearer": [
-								{
-									"key": "token",
-									"value": "HRlauByLxD/zW0/CK+eQFufV3rge2DQp",
-									"type": "string"
-								}
-							]
-						},
-						"method": "DELETE",
-						"header": [
-							{
-								"key": "Secure-Api-Key",
-								"value": "{{Secure-Api-Key}}"
-							},
-							{
-								"key": "Content-Type",
-								"value": "application/json"
-							}
-						],
-						"body": {
-							"mode": "raw",
-							"raw": ""
-						},
-						"url": {
-							"raw": "{{url}}/api/user/2/car/2",
-							"host": [
-								"{{url}}"
-							],
-							"path": [
-								"api",
-								"user",
-								"2",
-								"car",
-								"2"
-							]
-						}
-					},
-					"response": []
-				}
-			]
-		},
-		{
 			"name": "admin",
 			"item": [
 				{
@@ -750,10 +281,6 @@
 								"value": "application/json"
 							}
 						],
-						"body": {
-							"mode": "raw",
-							"raw": ""
-						},
 						"url": {
 							"raw": "{{url}}/api/admin/user/2",
 							"host": [
@@ -764,49 +291,6 @@
 								"admin",
 								"user",
 								"2"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "{{url}}/api/admin/user/5",
-					"request": {
-						"auth": {
-							"type": "bearer",
-							"bearer": [
-								{
-									"key": "token",
-									"value": "ccoMo7UjO3iODBMthcHC0Xt8HenbZCC2",
-									"type": "string"
-								}
-							]
-						},
-						"method": "PUT",
-						"header": [
-							{
-								"key": "Secure-Api-Key",
-								"value": "{{Secure-Api-Key}}"
-							},
-							{
-								"key": "Content-Type",
-								"value": "application/json"
-							}
-						],
-						"body": {
-							"mode": "raw",
-							"raw": "{\n    \"first_name\": \"Test\",\n    \"last_name\": \"Four\",\n    \"role\": \"normal_user\"\n}"
-						},
-						"url": {
-							"raw": "{{url}}/api/admin/user/3",
-							"host": [
-								"{{url}}"
-							],
-							"path": [
-								"api",
-								"admin",
-								"user",
-								"3"
 							]
 						}
 					},

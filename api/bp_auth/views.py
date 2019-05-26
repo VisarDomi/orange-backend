@@ -2,6 +2,7 @@ from flask import g
 from flask_httpauth import HTTPBasicAuth
 from flask_httpauth import HTTPTokenAuth
 from ..common.models import User
+from ..helper_functions.constants import EXCLUDE, EXPIRES_IN
 from . import bp
 
 
@@ -10,8 +11,8 @@ token_auth = HTTPTokenAuth()
 
 
 @basic_auth.verify_password
-def verify_password(email, password):
-    user = User.query.filter_by(email=email.lower()).first()
+def verify_password(login, password):
+    user = User.query.filter_by(login=login.lower()).first()
     if user is None:
         return False
     g.current_user = user
@@ -26,9 +27,9 @@ def basic_auth_error():
 @bp.route("/login", methods=["POST"])
 @basic_auth.login_required
 def login():
-    g.current_user.get_token(expires_in=36_000_000)
+    g.current_user.get_token(expires_in=EXPIRES_IN)
     user = g.current_user
-    user_dict = user.to_dict(exclude=["password_hash"])
+    user_dict = user.to_dict(exclude=EXCLUDE)
     return user_dict
 
 

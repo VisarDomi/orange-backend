@@ -6,7 +6,14 @@ from api import create_app
 
 from api.common.database import db_session, drop_db, init_db
 from api.common.models import (
-    User
+    User,
+    Admin,
+    Driver,
+    Employee,
+    Company,
+    Reservation,
+    Invoice,
+    Item
 )
 
 app = create_app()
@@ -19,6 +26,13 @@ def make_shell_context():
         "drop_db": drop_db,
         "init_db": init_db,
         "User": User,
+        "Admin": Admin,
+        "Driver": Driver,
+        "Employee": Employee,
+        "Company": Company,
+        "Reservation": Reservation,
+        "Invoice": Invoice,
+        "Item": Item
     }
 
 

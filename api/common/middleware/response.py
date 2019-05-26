@@ -43,7 +43,7 @@ class JSONResponse(Response):
     Custom `Response` class that will be
     used as the default one for the application.
     All responses will be of type
-    `application-json`.
+    `application/json`.
     """
 
     @classmethod
@@ -52,7 +52,7 @@ class JSONResponse(Response):
         try:
             return_value = super(JSONResponse, cls).force_type(rv, environ)
         except TypeError:
-            msg = f"There is a type error in your request."
+            msg = f"Failed sending the response from the server. There is a type error in your request."
             return jsonify(TypeErrorFlusk(message=msg).to_dict())
         return return_value
 

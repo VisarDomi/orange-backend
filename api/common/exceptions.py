@@ -75,11 +75,3 @@ class CannotChangeOthersData(InvalidPermissions):
 
 class CannotDeleteOthersData(InvalidPermissions):
     pass
-
-
-class CannotChangeFirstAdminProperties(InvalidPermissions):
-    pass
-
-
-class CannotDeleteFirstAdmin(InvalidPermissions):
-    pass

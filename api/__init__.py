@@ -7,10 +7,7 @@ from .common.middleware import (
 from .common.middleware import response
 from .bp_admin import bp as admin_bp
 from .bp_auth import bp as auth_bp
-from .bp_search import bp as search_bp
 from .bp_user import bp as user_bp
-from .bp_trip import bp as trip_bp
-from .bp_car import bp as car_bp
 import os
 from config import Config
 import logging
@@ -28,10 +25,7 @@ def create_app(config_class=Config):
     # register all blueprints
     app.register_blueprint(admin_bp, url_prefix="/api/admin/user")
     app.register_blueprint(auth_bp, url_prefix="/api/auth")
-    app.register_blueprint(search_bp, url_prefix="/api/user/search")
     app.register_blueprint(user_bp, url_prefix="/api/user")
-    app.register_blueprint(trip_bp, url_prefix="/api/user/<user_id>/trip")
-    app.register_blueprint(car_bp, url_prefix="/api/user/<user_id>/car")
 
     # register custom response class
     app.response_class = response.JSONResponse

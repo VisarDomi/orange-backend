@@ -6,7 +6,7 @@ from ..common.exceptions import YouAreNotAdmin
 def admin_required(a_function):
     @wraps(a_function)
     def decorated_function(*args, **kwargs):
-        if g.current_user.role == "admin":
+        if g.current_user.admin:
             return a_function(*args, **kwargs)  # here goes the function
         else:
             msg = "You are not an admin."
