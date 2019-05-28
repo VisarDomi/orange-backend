@@ -258,17 +258,45 @@
 			"name": "admin",
 			"item": [
 				{
-					"name": "{{url}}/api/admin/user/5",
+					"name": "{{url}}/api/admin",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Secure-Api-Key",
+								"value": "{{Secure-Api-Key}}"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"full_name\": \"admintest2\"\r\n}"
+						},
+						"url": {
+							"raw": "{{url}}/api/admin",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"admin"
+							]
+						},
+						"description": "user1"
+					},
+					"response": []
+				},
+				{
+					"name": "{{url}}/api/admin/all",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
 					"request": {
 						"auth": {
-							"type": "bearer",
-							"bearer": [
-								{
-									"key": "token",
-									"value": "cmI1u/xeFekN4Jo6sgZBNI9Y2xKZZ9sv",
-									"type": "string"
-								}
-							]
+							"type": "noauth"
 						},
 						"method": "GET",
 						"header": [
@@ -281,15 +309,536 @@
 								"value": "application/json"
 							}
 						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
 						"url": {
-							"raw": "{{url}}/api/admin/user/2",
+							"raw": "{{url}}/api/admin/all",
 							"host": [
 								"{{url}}"
 							],
 							"path": [
 								"api",
 								"admin",
-								"user",
+								"all"
+							]
+						},
+						"description": "get users with token"
+					},
+					"response": []
+				},
+				{
+					"name": "{{url}}/api/admin/1",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Secure-Api-Key",
+								"value": "{{Secure-Api-Key}}"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{url}}/api/admin/3",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"admin",
+								"3"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "{{url}}/api/admin/1",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "sxt51VNvKvpTlAIFah0zJpMEJBZICtj8",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Secure-Api-Key",
+								"value": "{{Secure-Api-Key}}"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"full_name\": \"test3admin\"\n}"
+						},
+						"url": {
+							"raw": "{{url}}/api/admin/3",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"admin",
+								"3"
+							]
+						},
+						"description": "Put"
+					},
+					"response": []
+				},
+				{
+					"name": "{{url}}/api/admin/2",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "TytksUT4TKn/ybSKVrEbGS7Wlv01JtrM",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Secure-Api-Key",
+								"value": "{{Secure-Api-Key}}"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{url}}/api/admin/2",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"admin",
+								"2"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "company",
+			"item": [
+				{
+					"name": "{{url}}/api/company",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Secure-Api-Key",
+								"value": "{{Secure-Api-Key}}"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"full_name\": \"companytest2\"\r\n}"
+						},
+						"url": {
+							"raw": "{{url}}/api/company",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"company"
+							]
+						},
+						"description": "user1"
+					},
+					"response": []
+				},
+				{
+					"name": "{{url}}/api/company/all",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Secure-Api-Key",
+								"value": "{{Secure-Api-Key}}"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{url}}/api/company/all",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"company",
+								"all"
+							]
+						},
+						"description": "get users with token"
+					},
+					"response": []
+				},
+				{
+					"name": "{{url}}/api/company/1",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Secure-Api-Key",
+								"value": "{{Secure-Api-Key}}"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{url}}/api/company/3",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"company",
+								"3"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "{{url}}/api/company/1",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "sxt51VNvKvpTlAIFah0zJpMEJBZICtj8",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Secure-Api-Key",
+								"value": "{{Secure-Api-Key}}"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"full_name\": \"test3admin\"\n}"
+						},
+						"url": {
+							"raw": "{{url}}/api/company/3",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"company",
+								"3"
+							]
+						},
+						"description": "Put"
+					},
+					"response": []
+				},
+				{
+					"name": "{{url}}/api/company/2",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "TytksUT4TKn/ybSKVrEbGS7Wlv01JtrM",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Secure-Api-Key",
+								"value": "{{Secure-Api-Key}}"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{url}}/api/company/2",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"company",
+								"2"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "driver",
+			"item": [
+				{
+					"name": "{{url}}/api/admin/driver",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Secure-Api-Key",
+								"value": "{{Secure-Api-Key}}"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"full_name\": \"drivertest2\",\r\n    \"status\": \"occupied\"\r\n}"
+						},
+						"url": {
+							"raw": "{{url}}/api/admin/driver",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"admin",
+								"driver"
+							]
+						},
+						"description": "user1"
+					},
+					"response": []
+				},
+				{
+					"name": "{{url}}/api/admin/driver/all",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Secure-Api-Key",
+								"value": "{{Secure-Api-Key}}"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{url}}/api/admin/driver/all",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"admin",
+								"driver",
+								"all"
+							]
+						},
+						"description": "get users with token"
+					},
+					"response": []
+				},
+				{
+					"name": "{{url}}/api/admin/driver/1",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Secure-Api-Key",
+								"value": "{{Secure-Api-Key}}"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{url}}/api/admin/driver/3",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"admin",
+								"driver",
+								"3"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "{{url}}/api/admin/driver/1",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "sxt51VNvKvpTlAIFah0zJpMEJBZICtj8",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Secure-Api-Key",
+								"value": "{{Secure-Api-Key}}"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"full_name\": \"drivertest2344\",\r\n    \"status\": \"occupied\"\r\n}"
+						},
+						"url": {
+							"raw": "{{url}}/api/admin/driver/3",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"admin",
+								"driver",
+								"3"
+							]
+						},
+						"description": "Put"
+					},
+					"response": []
+				},
+				{
+					"name": "{{url}}/api/admin/driver/2",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "TytksUT4TKn/ybSKVrEbGS7Wlv01JtrM",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Secure-Api-Key",
+								"value": "{{Secure-Api-Key}}"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{url}}/api/admin/driver/2",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"admin",
+								"driver",
 								"2"
 							]
 						}

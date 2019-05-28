@@ -33,11 +33,11 @@ def create_app(config_class=Config):
     app.register_blueprint(auth_bp, url_prefix="/api/auth")
     app.register_blueprint(admin_bp, url_prefix="/api/admin")
     app.register_blueprint(driver_bp, url_prefix="/api/admin/driver")
-    app.register_blueprint(invoice_bp, url_prefix="/api/admin/invoice")
-    app.register_blueprint(item_bp, url_prefix="/api/admin/invoice/<invoice_id>/item")
+    app.register_blueprint(invoice_bp, url_prefix="/api/admin/reservation/<reservation_id>/invoice")
+    app.register_blueprint(item_bp, url_prefix="/api/admin/reservation/<reservation_id>/invoice/<invoice_id>/item")
     app.register_blueprint(company_bp, url_prefix="/api/company")
-    app.register_blueprint(employee_bp, url_prefix="/api/company/employee")
-    app.register_blueprint(reservation_bp, url_prefix="/api/company/reservation")
+    app.register_blueprint(employee_bp, url_prefix="/api/company/<company_id>/employee")
+    app.register_blueprint(reservation_bp, url_prefix="/api/company/<company_id>/reservation")
 
     # register custom response class
     app.response_class = response.JSONResponse
