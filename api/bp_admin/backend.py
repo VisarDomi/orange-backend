@@ -10,8 +10,10 @@ from ..helper_functions.get_by_id import (
     get_user_by_id,
     get_driver_by_id,
 )
+from ..helper_functions.decorators import admin_required
 
 
+@admin_required
 def create_admin(admin_data):
     admin = Admin(**admin_data)
     admin.save()
@@ -19,12 +21,14 @@ def create_admin(admin_data):
     return admin
 
 
+@admin_required
 def get_all_admins():
     admins = Admin.query.all()
 
     return admins
 
 
+@admin_required
 def update_admin(admin_data, admin_id):
     if int(admin_id) == g.current_user.id:
         admin = get_admin_by_id(admin_id)
@@ -37,6 +41,7 @@ def update_admin(admin_data, admin_id):
     return admin
 
 
+@admin_required
 def delete_admin(admin_id):
     if int(admin_id) == g.current_user.id:
         admin = get_admin_by_id(admin_id)
@@ -46,6 +51,7 @@ def delete_admin(admin_id):
         raise CannotDeleteOthersData(message=msg)
 
 
+@admin_required
 def change_role(role_data):
     user_id = role_data["user_id"]
     driver_id = role_data["driver_id"]
