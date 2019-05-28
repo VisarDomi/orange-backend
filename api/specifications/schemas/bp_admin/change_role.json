@@ -13,6 +13,12 @@
     },
     "driver_id": {
       "type": "string"
+    },
+    "company_id": {
+      "type": "string"
+    },
+    "employee_id": {
+      "type": "string"
     }
   },
   "additionalProperties": false

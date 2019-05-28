@@ -9,6 +9,8 @@ from ..helper_functions.get_by_id import (
     get_admin_by_id,
     get_user_by_id,
     get_driver_by_id,
+    get_company_by_id,
+    get_employee_by_id,
 )
 from ..helper_functions.decorators import admin_required
 
@@ -57,27 +59,50 @@ def change_role(role_data):
         msg = "Please provide a user_id you want to change it's role."
         raise MissingArguments(message=msg)
     user = get_user_by_id(user_id)
-    counter = 0
+    counter_error = 0
+    max_role = 0
     try:
         admin_id = role_data["admin_id"]
         if admin_id:
             admin = get_admin_by_id(admin_id)
             user.admin = admin
+            max_role += 1
         else:
-            counter += 1
+            counter_error += 1
     except IndexError:
-        counter += 1
+        counter_error += 1
     try:
         driver_id = role_data["driver_id"]
         if driver_id:
             driver = get_driver_by_id(driver_id)
             user.driver = driver
+            max_role += 1
         else:
-            counter += 1
+            counter_error += 1
     except IndexError:
-        counter += 1
-    if counter == 2:
-        msg = "Please provide a admin_id or driver_id that you want to change the user's role."
+        counter_error += 1
+    try:
+        company_id = role_data["company_id"]
+        if company_id:
+            company = get_company_by_id(company_id)
+            user.company = company
+            max_role += 1
+        else:
+            counter_error += 1
+    except IndexError:
+        counter_error += 1
+    try:
+        employee_id = role_data["employee_id"]
+        if employee_id:
+            employee = get_employee_by_id(employee_id)
+            user.employee = employee
+            max_role += 1
+        else:
+            counter_error += 1
+    except IndexError:
+        counter_error += 1
+    if counter_error > 3 and max_role > 1:
+        msg = "Please provide exactly one role id."
         raise MissingArguments(message=msg)
 
     return user

@@ -13,6 +13,15 @@ def create_user(user_data):
 def get_user_by_id(user_id):
     user = backend_get_user_by_id(user_id)
     user_dict = user.to_dict(only=ONLY)
+    if user.admin:
+        role = "admin"
+    if user.driver:
+        role = "driver"
+    if user.company:
+        role = "company"
+    if user.employee:
+        role = "employee"
+    user_dict["role"] = role
 
     return user_dict
 
@@ -22,6 +31,15 @@ def get_all_users():
     users_list = []
     for user in users:
         user_dict = user.to_dict(only=ONLY)
+        if user.admin:
+            role = "admin"
+        if user.driver:
+            role = "driver"
+        if user.company:
+            role = "company"
+        if user.employee:
+            role = "employee"
+        user_dict["role"] = role
         users_list.append(user_dict)
 
     return users_list
