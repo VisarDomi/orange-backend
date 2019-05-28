@@ -1,0 +1,24 @@
+{
+  "title": "Create reservation",
+  "description": "Create a reservation object",
+  "type": "object",
+  "$schema": "http://json-schema.org/draft-04/schema",
+  "properties": {
+    "code": {
+      "type": "string"
+    },
+    "pickup": {
+      "type": "string"
+    },
+    "destination": {
+      "type": "string"
+    },
+    "datetime": {
+      "type": "string"
+    },
+    "status": {
+      "type": "string"
+    }
+  },
+  "additionalProperties": false
+}

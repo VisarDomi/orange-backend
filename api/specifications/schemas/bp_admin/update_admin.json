@@ -1,0 +1,12 @@
+{
+  "title": "Update admin",
+  "description": "Update a admin object",
+  "type": "object",
+  "$schema": "http://json-schema.org/draft-04/schema",
+  "properties": {
+    "full_name": {
+      "type": "string"
+    }
+  },
+  "additionalProperties": false
+}

@@ -1,0 +1,30 @@
+{
+  "title": "Create item",
+  "description": "Create a item object",
+  "type": "object",
+  "$schema": "http://json-schema.org/draft-04/schema",
+  "properties": {
+    "name": {
+      "type": "string"
+    },
+    "description": {
+      "type": "string"
+    },
+    "quantity": {
+      "type": "string"
+    },
+    "price": {
+      "type": "string"
+    },
+    "discount": {
+      "type": "string"
+    },
+    "tax": {
+      "type": "string"
+    },
+    "total": {
+      "type": "string"
+    }
+  },
+  "additionalProperties": false
+}

@@ -5,9 +5,15 @@ from .common.middleware import (
     teardown_appcontext_middleware,
 )
 from .common.middleware import response
-from .bp_admin import bp as admin_bp
-from .bp_auth import bp as auth_bp
 from .bp_user import bp as user_bp
+from .bp_auth import bp as auth_bp
+from .bp_admin import bp as admin_bp
+from .bp_driver import bp as driver_bp
+from .bp_invoice import bp as invoice_bp
+from .bp_item import bp as item_bp
+from .bp_company import bp as company_bp
+from .bp_employee import bp as employee_bp
+from .bp_reservation import bp as reservation_bp
 import os
 from config import Config
 import logging
@@ -23,9 +29,15 @@ def create_app(config_class=Config):
     app.config.from_object(config_class)
 
     # register all blueprints
-    app.register_blueprint(admin_bp, url_prefix="/api/admin/user")
-    app.register_blueprint(auth_bp, url_prefix="/api/auth")
     app.register_blueprint(user_bp, url_prefix="/api/user")
+    app.register_blueprint(auth_bp, url_prefix="/api/auth")
+    app.register_blueprint(admin_bp, url_prefix="/api/admin")
+    app.register_blueprint(driver_bp, url_prefix="/api/admin/driver")
+    app.register_blueprint(invoice_bp, url_prefix="/api/admin/invoice")
+    app.register_blueprint(item_bp, url_prefix="/api/admin/invoice/<invoice_id>/item")
+    app.register_blueprint(company_bp, url_prefix="/api/company")
+    app.register_blueprint(employee_bp, url_prefix="/api/company/employee")
+    app.register_blueprint(reservation_bp, url_prefix="/api/company/reservation")
 
     # register custom response class
     app.response_class = response.JSONResponse

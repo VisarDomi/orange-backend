@@ -1,0 +1,60 @@
+{
+  "title": "Update invoice",
+  "description": "Update a invoice object",
+  "type": "object",
+  "$schema": "http://json-schema.org/draft-04/schema",
+  "properties": {
+    "ref": {
+      "type": "string"
+    },
+    "date": {
+      "type": "string"
+    },
+    "due": {
+      "type": "string"
+    },
+    "from_business_name": {
+      "type": "string"
+    },
+    "from_addressline_1": {
+      "type": "string"
+    },
+    "from_addressline_2": {
+      "type": "string"
+    },
+    "from_city": {
+      "type": "string"
+    },
+    "from_postcode": {
+      "type": "string"
+    },
+    "to_client_name": {
+      "type": "string"
+    },
+    "to_addressline_1": {
+      "type": "string"
+    },
+    "to_addressline_2": {
+      "type": "string"
+    },
+    "to_city": {
+      "type": "string"
+    },
+    "to_postcode": {
+      "type": "string"
+    },
+    "payment_account_name": {
+      "type": "string"
+    },
+    "payment_account_sortcode": {
+      "type": "string"
+    },
+    "payment_account_number": {
+      "type": "string"
+    },
+    "invoice_notes": {
+      "type": "string"
+    }
+  },
+  "additionalProperties": false
+}
