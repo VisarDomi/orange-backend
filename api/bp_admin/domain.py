@@ -1,5 +1,6 @@
 from ..helper_functions.get_by_id import get_admin_by_id as backend_get_admin_by_id
 from ..helper_functions.constants import ONLY
+from ..helper_functions.common_function import apply_role
 from . import backend
 
 
@@ -41,5 +42,7 @@ def delete_admin(admin_id):
 def change_role(role_data):
     user = backend.change_role(role_data)
     user_dict = user.to_dict(only=ONLY)
+    role = apply_role(user)
+    user_dict["role"] = role
 
     return user_dict

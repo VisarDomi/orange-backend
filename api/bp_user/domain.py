@@ -1,5 +1,6 @@
 from ..helper_functions.get_by_id import get_user_by_id as backend_get_user_by_id
 from ..helper_functions.constants import ONLY, EXCLUDE
+from ..helper_functions.common_function import apply_role
 from . import backend
 
 
@@ -13,14 +14,7 @@ def create_user(user_data):
 def get_user_by_id(user_id):
     user = backend_get_user_by_id(user_id)
     user_dict = user.to_dict(only=ONLY)
-    if user.admin:
-        role = "admin"
-    if user.driver:
-        role = "driver"
-    if user.company:
-        role = "company"
-    if user.employee:
-        role = "employee"
+    role = apply_role(user)
     user_dict["role"] = role
 
     return user_dict
@@ -31,14 +25,7 @@ def get_all_users():
     users_list = []
     for user in users:
         user_dict = user.to_dict(only=ONLY)
-        if user.admin:
-            role = "admin"
-        if user.driver:
-            role = "driver"
-        if user.company:
-            role = "company"
-        if user.employee:
-            role = "employee"
+        role = apply_role(user)
         user_dict["role"] = role
         users_list.append(user_dict)
 
