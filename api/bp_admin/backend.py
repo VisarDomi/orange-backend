@@ -53,7 +53,6 @@ def delete_admin(admin_id):
 @admin_required
 def change_role(role_data):
     user_id = role_data["user_id"]
-    driver_id = role_data["driver_id"]
     if not user_id:
         msg = "Please provide a user_id you want to change it's role."
         raise MissingArguments(message=msg)
