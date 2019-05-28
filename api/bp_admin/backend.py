@@ -21,7 +21,6 @@ def create_admin(admin_data):
     return admin
 
 
-@admin_required
 def get_all_admins():
     admins = Admin.query.all()
 
@@ -30,7 +29,7 @@ def get_all_admins():
 
 @admin_required
 def update_admin(admin_data, admin_id):
-    if int(admin_id) == g.current_user.id:
+    if int(admin_id) == g.user.current_user.id:
         admin = get_admin_by_id(admin_id)
         admin.update(**admin_data)
         admin.save()
@@ -43,7 +42,7 @@ def update_admin(admin_data, admin_id):
 
 @admin_required
 def delete_admin(admin_id):
-    if int(admin_id) == g.current_user.id:
+    if int(admin_id) == g.user.current_user.id:
         admin = get_admin_by_id(admin_id)
         admin.delete()
     else:

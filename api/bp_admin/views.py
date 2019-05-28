@@ -7,6 +7,7 @@ from . import domain
 
 @bp.route("", methods=["POST"])
 @schema("create_admin.json")
+@token_auth.login_required
 def create_admin():
     return domain.create_admin(request.json)
 
@@ -18,6 +19,7 @@ def get_admin(admin_id):
 
 
 @bp.route("/all", methods=["GET"])
+@token_auth.login_required
 def get_admins():
 
     return domain.get_all_admins()
@@ -42,5 +44,6 @@ def delete_admin(admin_id):
 
 @bp.route("/role", methods=["POST"])
 @schema("change_role.json")
+@token_auth.login_required
 def change_role():
     return domain.change_role(request.json)
