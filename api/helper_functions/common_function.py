@@ -1,4 +1,4 @@
-def apply_role(user):
+def apply_role_to_dict(user, user_dict):
     role = "unassigned"
     if user.admin:
         role = "admin"
@@ -8,5 +8,6 @@ def apply_role(user):
         role = "company"
     if user.employee:
         role = "employee"
+    user_dict["role"] = role
 
-    return role
+    return user_dict
