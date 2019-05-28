@@ -1,4 +1,5 @@
 from ..helper_functions.get_by_id import get_admin_by_id as backend_get_admin_by_id
+from ..helper_functions.constants import ONLY
 from . import backend
 
 
@@ -35,3 +36,10 @@ def update_admin(admin_data, admin_id):
 
 def delete_admin(admin_id):
     backend.delete_admin(admin_id)
+
+
+def change_role(role_data):
+    user = backend.change_role(role_data)
+    user_dict = user.to_dict(only=ONLY)
+
+    return user_dict

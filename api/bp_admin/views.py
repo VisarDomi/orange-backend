@@ -38,3 +38,9 @@ def delete_admin(admin_id):
     domain.delete_admin(admin_id)
 
     return {"message": "Admin with `id: %s` has been deleted." % admin_id}
+
+
+@bp.route("/role", methods=["POST"])
+@schema("change_role.json")
+def change_role():
+    return domain.change_role(request.json)

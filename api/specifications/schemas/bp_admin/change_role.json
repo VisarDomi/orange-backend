@@ -1,0 +1,19 @@
+{
+  "title": "Change role",
+  "description": "Change role of the user to admin/driver/company/employee",
+  "type": "object",
+  "$schema": "http://json-schema.org/draft-04/schema",
+  "required": ["user_id"],
+  "properties": {
+    "user_id": {
+      "type": "string"
+    },
+    "admin_id": {
+      "type": "string"
+    },
+    "driver_id": {
+      "type": "string"
+    }
+  },
+  "additionalProperties": false
+}
