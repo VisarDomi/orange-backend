@@ -16,7 +16,7 @@
 							"basic": [
 								{
 									"key": "username",
-									"value": "test2",
+									"value": "usertest8",
 									"type": "string"
 								},
 								{
@@ -265,7 +265,7 @@
 							"bearer": [
 								{
 									"key": "token",
-									"value": "sxt51VNvKvpTlAIFah0zJpMEJBZICtj8",
+									"value": "SmBILJyGuhxjT34PbKqgtaBIgA93E6VT",
 									"type": "string"
 								}
 							]
@@ -283,7 +283,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"full_name\": \"admintest5\"\r\n}"
+							"raw": "{\r\n    \"full_name\": \"admintest2\"\r\n}"
 						},
 						"url": {
 							"raw": "{{url}}/api/admin",
@@ -302,6 +302,16 @@
 				{
 					"name": "{{url}}/api/admin/role",
 					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "sxt51VNvKvpTlAIFah0zJpMEJBZICtj8",
+									"type": "string"
+								}
+							]
+						},
 						"method": "POST",
 						"header": [
 							{
@@ -315,7 +325,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"user_id\": \"7\",\r\n    \"admin_id\": \"3\",\r\n    \"driver_id\": \"\"\r\n}"
+							"raw": "{\r\n    \"user_id\": \"10\",\r\n    \"admin_id\": \"\",\r\n    \"driver_id\": \"\",\r\n    \"company_id\": \"2\",\r\n    \"employee_id\": \"\"\r\n}"
 						},
 						"url": {
 							"raw": "{{url}}/api/admin/role",
@@ -338,16 +348,6 @@
 						"disableBodyPruning": true
 					},
 					"request": {
-						"auth": {
-							"type": "bearer",
-							"bearer": [
-								{
-									"key": "token",
-									"value": "sxt51VNvKvpTlAIFah0zJpMEJBZICtj8",
-									"type": "string"
-								}
-							]
-						},
 						"method": "GET",
 						"header": [
 							{

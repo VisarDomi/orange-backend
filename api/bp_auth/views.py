@@ -3,6 +3,7 @@ from flask_httpauth import HTTPBasicAuth
 from flask_httpauth import HTTPTokenAuth
 from ..common.models import User
 from ..helper_functions.constants import EXCLUDE, EXPIRES_IN
+from ..helper_functions.common_function import apply_role_to_dict
 from . import bp
 
 
@@ -30,6 +31,8 @@ def login():
     g.current_user.get_token(expires_in=EXPIRES_IN)
     user = g.current_user
     user_dict = user.to_dict(exclude=EXCLUDE)
+    user_dict = apply_role_to_dict(user, user_dict)
+
     return user_dict
 
 
