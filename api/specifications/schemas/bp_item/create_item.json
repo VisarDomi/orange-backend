@@ -3,8 +3,12 @@
   "description": "Create a item object",
   "type": "object",
   "$schema": "http://json-schema.org/draft-04/schema",
+  "required": ["date"],
   "properties": {
     "name": {
+      "type": "string"
+    },
+    "date": {
       "type": "string"
     },
     "description": {
