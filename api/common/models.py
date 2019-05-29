@@ -169,12 +169,16 @@ class Invoice(BaseModel, ModelSerializerMixin):
     from_addressline_2 = Column(String)
     from_city = Column(String)
     from_postcode = Column(String)
+    from_vat = Column(String)
+    from_phone = Column(String)
 
     to_client_name = Column(String)
     to_addressline_1 = Column(String)
     to_addressline_2 = Column(String)
     to_city = Column(String)
     to_postcode = Column(String)
+    to_vat = Column(String)
+    to_phone = Column(String)
 
     payment_account_name = Column(String)
     payment_account_sortcode = Column(String)
@@ -197,6 +201,7 @@ class Item(BaseModel, ModelSerializerMixin):
     id = Column(Integer, primary_key=True, autoincrement=True)
 
     name = Column(String, default="no_name")
+    date = Column(Date)
     description = Column(String)
     quantity = Column(String)
     price = Column(String)

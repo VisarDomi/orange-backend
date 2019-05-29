@@ -13,12 +13,14 @@ def create_item(company_id, reservation_id, invoice_id):
 
 
 @bp.route("/<item_id>", methods=["GET"])
+@token_auth.login_required
 def get_item(item_id, company_id, reservation_id, invoice_id):
 
     return domain.get_item_by_id(item_id, company_id, reservation_id, invoice_id)
 
 
 @bp.route("/all", methods=["GET"])
+@token_auth.login_required
 def get_items(company_id, reservation_id, invoice_id):
 
     return domain.get_all_items(company_id, reservation_id, invoice_id)

@@ -14,12 +14,14 @@ def create_invoice(company_id, reservation_id):
 
 
 @bp.route("/<invoice_id>", methods=["GET"])
+@token_auth.login_required
 def get_invoice(invoice_id, company_id, reservation_id):
 
     return domain.get_invoice_by_id(invoice_id, company_id, reservation_id)
 
 
 @bp.route("/all", methods=["GET"])
+@token_auth.login_required
 def get_invoices(company_id, reservation_id):
 
     return domain.get_all_invoices(company_id, reservation_id)
