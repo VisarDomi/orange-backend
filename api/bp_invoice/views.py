@@ -7,34 +7,36 @@ from . import domain
 
 @bp.route("", methods=["POST"])
 @schema("create_invoice.json")
-def create_invoice():
-    return domain.create_invoice(request.json)
+@token_auth.login_required
+def create_invoice(company_id, reservation_id):
+
+    return domain.create_invoice(request.json, company_id, reservation_id)
 
 
 @bp.route("/<invoice_id>", methods=["GET"])
-def get_invoice(invoice_id):
+def get_invoice(invoice_id, company_id, reservation_id):
 
-    return domain.get_invoice_by_id(invoice_id)
+    return domain.get_invoice_by_id(invoice_id, company_id, reservation_id)
 
 
 @bp.route("/all", methods=["GET"])
-def get_invoices():
+def get_invoices(company_id, reservation_id):
 
-    return domain.get_all_invoices()
+    return domain.get_all_invoices(company_id, reservation_id)
 
 
 # order is route, schema, auth
 @bp.route("/<invoice_id>", methods=["PUT"])
 @schema("/update_invoice.json")
 @token_auth.login_required
-def update_invoice(invoice_id):
+def update_invoice(invoice_id, company_id, reservation_id):
 
-    return domain.update_invoice(request.json, invoice_id)
+    return domain.update_invoice(request.json, invoice_id, company_id, reservation_id)
 
 
 @bp.route("/<invoice_id>", methods=["DELETE"])
 @token_auth.login_required
-def delete_invoice(invoice_id):
-    domain.delete_invoice(invoice_id)
+def delete_invoice(invoice_id, company_id, reservation_id):
+    domain.delete_invoice(invoice_id, company_id, reservation_id)
 
     return {"message": "Invoice with `id: %s` has been deleted." % invoice_id}

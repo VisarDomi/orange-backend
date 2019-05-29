@@ -3,7 +3,7 @@ from ..common.exceptions import (
     CannotChangeOthersData,
     CannotDeleteOthersData,
 )
-from ..common.models import Admin
+from ..common.models import Admin, Invoice
 from ..helper_functions.create import create_entity
 from ..helper_functions.get_by_id import (
     get_admin_by_id,
@@ -19,6 +19,12 @@ from ..helper_functions.common_function import can_it_update
 @admin_required
 def create_admin(admin_data):
     admin = create_entity(admin_data, Admin)
+
+    return admin
+
+
+def get_admin(admin_id):
+    admin = get_admin_by_id(admin_id)
 
     return admin
 
@@ -52,6 +58,13 @@ def delete_admin(admin_id):
     else:
         msg = "You can't delete other people's data."
         raise CannotDeleteOthersData(message=msg)
+
+
+@admin_required
+def get_all_invoices():
+    invoices = Invoice.query.all()
+
+    return invoices
 
 
 # dev only

@@ -1,4 +1,3 @@
-from ..helper_functions.get_by_id import get_admin_by_id as backend_get_admin_by_id
 from ..helper_functions.constants import ONLY
 from ..helper_functions.common_function import apply_role_to_dict
 from . import backend
@@ -12,7 +11,7 @@ def create_admin(admin_data):
 
 
 def get_admin_by_id(admin_id):
-    admin = backend_get_admin_by_id(admin_id)
+    admin = backend.get_admin(admin_id)
     admin_dict = admin.to_dict()
 
     return admin_dict
@@ -45,3 +44,13 @@ def change_role(role_data):
     user_dict = apply_role_to_dict(user, user_dict)
 
     return user_dict
+
+
+def get_all_invoices():
+    invoices = backend.get_all_invoices()
+    invoices_list = []
+    for invoice in invoices:
+        invoice_dict = invoice.to_dict()
+        invoices_list.append(invoice_dict)
+
+    return invoices_list

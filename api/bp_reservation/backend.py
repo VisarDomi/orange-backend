@@ -1,27 +1,49 @@
-from flask import g
-from ..common.exceptions import (
-    CannotChangeOthersData,
-    CannotDeleteOthersData,
-)
+from ..common.exceptions import CannotChangeOthersData, CannotDeleteOthersData
 from ..common.models import Reservation
-from ..helper_functions.get_by_id import get_reservation_by_id
+from ..helper_functions.get_by_id import get_reservation_by_id, get_company_by_id
+from ..helper_functions.common_function import can_it_update
 
 
-def create_reservation(reservation_data):
-    reservation = Reservation(**reservation_data)
-    reservation.save()
+def create_reservation(reservation_data, company_id):
+    can_update = can_it_update(company_id=company_id)
+    if can_update:
+        reservation = Reservation(**reservation_data)
+        company = get_company_by_id(company_id)
+        reservation.company = company
+        reservation.save()
+    else:
+        msg = "You can't change other people's data."
+        raise CannotChangeOthersData(message=msg)
 
     return reservation
 
 
-def get_all_reservations():
-    reservations = Reservation.query.all()
+def get_reservation(reservation_id, company_id):
+    can_update = can_it_update(company_id=company_id)
+    if can_update:
+        reservation = get_reservation_by_id(reservation_id)
+    else:
+        msg = "You can't change other people's data."
+        raise CannotChangeOthersData(message=msg)
+
+    return reservation
+
+
+def get_all_reservations(company_id):
+    can_update = can_it_update(company_id=company_id)
+    if can_update:
+        company = get_company_by_id(company_id)
+        reservations = company.reservations.all()
+    else:
+        msg = "You can't change other people's data."
+        raise CannotChangeOthersData(message=msg)
 
     return reservations
 
 
-def update_reservation(reservation_data, reservation_id):
-    if int(reservation_id) == g.current_user.id:
+def update_reservation(reservation_data, reservation_id, company_id):
+    can_update = can_it_update(company_id=company_id)
+    if can_update:
         reservation = get_reservation_by_id(reservation_id)
         reservation.update(**reservation_data)
         reservation.save()
@@ -32,8 +54,9 @@ def update_reservation(reservation_data, reservation_id):
     return reservation
 
 
-def delete_reservation(reservation_id):
-    if int(reservation_id) == g.current_user.id:
+def delete_reservation(reservation_id, company_id):
+    can_update = can_it_update(company_id=company_id)
+    if can_update:
         reservation = get_reservation_by_id(reservation_id)
         reservation.delete()
     else:

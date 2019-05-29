@@ -5,9 +5,10 @@ from datetime import datetime, timedelta
 from sqlalchemy import (
     Integer,
     String,
-    DateTime,
     Column,
+    DateTime,
     Date,
+    Time,
     Text,
     ForeignKey,
 )
@@ -138,7 +139,8 @@ class Reservation(BaseModel, ModelSerializerMixin):
     code = Column(String, default="no_code")
     pickup = Column(String)
     destination = Column(String)
-    datetime = Column(DateTime)
+    date = Column(Date)
+    time = Column(Time)
     status = Column(String)
 
     company = relationship("Company", back_populates="reservations")

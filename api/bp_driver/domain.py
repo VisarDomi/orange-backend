@@ -1,4 +1,3 @@
-from ..helper_functions.get_by_id import get_driver_by_id as backend_get_driver_by_id
 from . import backend
 
 
@@ -10,7 +9,7 @@ def create_driver(driver_data):
 
 
 def get_driver_by_id(driver_id):
-    driver = backend_get_driver_by_id(driver_id)
+    driver = backend.get_driver(driver_id)
     driver_dict = driver.to_dict()
 
     return driver_dict

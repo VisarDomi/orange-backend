@@ -9,6 +9,7 @@ from . import domain
 @schema("create_admin.json")
 @token_auth.login_required
 def create_admin():
+
     return domain.create_admin(request.json)
 
 
@@ -45,4 +46,12 @@ def delete_admin(admin_id):
 @schema("change_role.json")
 @token_auth.login_required
 def change_role():
+
     return domain.change_role(request.json)
+
+
+@bp.route("/invoice/all", methods=["GET"])
+@token_auth.login_required
+def get_invoices():
+
+    return domain.get_all_invoices()

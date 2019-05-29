@@ -14,6 +14,12 @@ def create_employee(employee_data, company_id):
     return employee
 
 
+def get_employee(employee_id, company_id):
+    employee = get_employee_by_id(employee_id)
+
+    return employee
+
+
 def get_all_employees(company_id):
     company = get_company_by_id(company_id)
     employees = company.employees.all()
@@ -30,11 +36,12 @@ def update_employee(employee_data, employee_id, company_id):
     else:
         msg = "You can't change other people's data."
         raise CannotChangeOthersData(message=msg)
+
     return employee
 
 
 def delete_employee(employee_id, company_id):
-    can_update = can_it_update(employee_id, company_id)
+    can_update = can_it_update(employee_id=employee_id, company_id=company_id)
     if can_update:
         employee = get_employee_by_id(employee_id)
         employee.delete()

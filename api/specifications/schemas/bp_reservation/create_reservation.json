@@ -3,6 +3,7 @@
   "description": "Create a reservation object",
   "type": "object",
   "$schema": "http://json-schema.org/draft-04/schema",
+  "required": ["date", "time"],
   "properties": {
     "code": {
       "type": "string"
@@ -13,7 +14,10 @@
     "destination": {
       "type": "string"
     },
-    "datetime": {
+    "date": {
+      "type": "string"
+    },
+    "time": {
       "type": "string"
     },
     "status": {

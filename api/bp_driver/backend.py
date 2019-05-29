@@ -1,7 +1,4 @@
-from ..common.exceptions import (
-    CannotChangeOthersData,
-    CannotDeleteOthersData,
-)
+from ..common.exceptions import CannotChangeOthersData, CannotDeleteOthersData
 from ..common.models import Driver
 from ..helper_functions.create import create_entity
 from ..helper_functions.get_by_id import get_driver_by_id
@@ -12,6 +9,12 @@ from ..helper_functions.common_function import can_it_update
 @admin_required
 def create_driver(driver_data):
     driver = create_entity(driver_data, Driver)
+
+    return driver
+
+
+def get_driver(driver_id):
+    driver = get_driver_by_id(driver_id)
 
     return driver
 

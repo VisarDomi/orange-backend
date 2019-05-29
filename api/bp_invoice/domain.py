@@ -1,23 +1,22 @@
-from ..helper_functions.get_by_id import get_invoice_by_id as backend_get_invoice_by_id
 from . import backend
 
 
-def create_invoice(invoice_data):
-    invoice = backend.create_invoice(invoice_data)
+def create_invoice(invoice_data, company_id, reservation_id):
+    invoice = backend.create_invoice(invoice_data, company_id, reservation_id)
     invoice_dict = invoice.to_dict()
 
     return invoice_dict
 
 
-def get_invoice_by_id(invoice_id):
-    invoice = backend_get_invoice_by_id(invoice_id)
+def get_invoice_by_id(invoice_id, company_id, reservation_id):
+    invoice = backend.get_invoice(invoice_id, company_id, reservation_id)
     invoice_dict = invoice.to_dict()
 
     return invoice_dict
 
 
-def get_all_invoices():
-    invoices = backend.get_all_invoices()
+def get_all_invoices(company_id, reservation_id):
+    invoices = backend.get_all_invoices(company_id, reservation_id)
     invoices_list = []
     for invoice in invoices:
         invoice_dict = invoice.to_dict()
@@ -26,12 +25,12 @@ def get_all_invoices():
     return invoices_list
 
 
-def update_invoice(invoice_data, invoice_id):
-    invoice = backend.update_invoice(invoice_data, invoice_id)
+def update_invoice(invoice_data, invoice_id, company_id, reservation_id):
+    invoice = backend.update_invoice(invoice_data, invoice_id, company_id, reservation_id)
     invoice_dict = invoice.to_dict()
 
     return invoice_dict
 
 
-def delete_invoice(invoice_id):
-    backend.delete_invoice(invoice_id)
+def delete_invoice(invoice_id, company_id, reservation_id):
+    backend.delete_invoice(invoice_id, company_id, reservation_id)

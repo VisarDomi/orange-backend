@@ -8,6 +8,7 @@ from . import domain
 @bp.route("", methods=["POST"])
 @schema("create_company.json")
 def create_company():
+
     return domain.create_company(request.json)
 
 
@@ -38,3 +39,10 @@ def delete_company(company_id):
     domain.delete_company(company_id)
 
     return {"message": "Company with `id: %s` has been deleted." % company_id}
+
+
+@bp.route("/<company_id>/invoice/all", methods=["GET"])
+@token_auth.login_required
+def get_invoices(company_id):
+
+    return domain.get_all_invoices(company_id)
