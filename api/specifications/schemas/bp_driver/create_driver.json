@@ -3,6 +3,7 @@
   "description": "Create a driver object",
   "type": "object",
   "$schema": "http://json-schema.org/draft-04/schema",
+  "required": ["user_id"],
   "properties": {
     "full_name": {
       "type": "string"
