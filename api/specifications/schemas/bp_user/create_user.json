@@ -3,9 +3,9 @@
   "description": "Create a user object",
   "type": "object",
   "$schema": "http://json-schema.org/draft-04/schema",
-  "required": ["login", "password"],
+  "required": ["email", "password"],
   "properties": {
-    "login": {
+    "email": {
       "type": "string"
     },
     "password": {
