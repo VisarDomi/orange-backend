@@ -64,7 +64,7 @@ class User(BaseModel, ModelSerializerMixin):
         return user
 
     def __repr__(self):
-        return f"{self.__class__.__name__}({self.login}, id = {self.id})"
+        return f"{self.__class__.__name__}({self.email}, id = {self.id})"
 
 
 class Admin(BaseModel, ModelSerializerMixin):
