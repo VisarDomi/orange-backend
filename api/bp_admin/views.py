@@ -19,7 +19,6 @@ def get_admin(admin_id):
 
 
 @bp.route("/all", methods=["GET"])
-@token_auth.login_required
 def get_admins():
 
     return domain.get_all_admins()

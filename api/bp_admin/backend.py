@@ -5,6 +5,7 @@ from ..common.exceptions import (
     CannotDeleteOthersData,
 )
 from ..common.models import Admin
+from ..helper_functions.create import create_entity
 from ..helper_functions.get_by_id import (
     get_admin_by_id,
     get_user_by_id,
@@ -17,8 +18,7 @@ from ..helper_functions.decorators import admin_required
 
 @admin_required
 def create_admin(admin_data):
-    admin = Admin(**admin_data)
-    admin.save()
+    admin = create_entity(admin_data, Admin)
 
     return admin
 
@@ -31,12 +31,16 @@ def get_all_admins():
 
 @admin_required
 def update_admin(admin_data, admin_id):
-    if int(admin_id) == g.user.current_user.id:
-        admin = get_admin_by_id(admin_id)
-        admin.update(**admin_data)
-        admin.save()
-    else:
-        msg = "You can't change other people's data."
+    try:
+        if int(admin_id) == g.current_user.admin.id:
+            admin = get_admin_by_id(admin_id)
+            admin.update(**admin_data)
+            admin.save()
+        else:
+            msg = "You can't change other people's data."
+            raise CannotChangeOthersData(message=msg)
+    except AttributeError:
+        msg = "AttributeError, You can't change other people's data."
         raise CannotChangeOthersData(message=msg)
 
     return admin
@@ -44,12 +48,16 @@ def update_admin(admin_data, admin_id):
 
 @admin_required
 def delete_admin(admin_id):
-    if int(admin_id) == g.user.current_user.id:
-        admin = get_admin_by_id(admin_id)
-        admin.delete()
-    else:
-        msg = "You can't delete other people's data."
-        raise CannotDeleteOthersData(message=msg)
+    try:
+        if int(admin_id) == g.current_user.admin.id:
+            admin = get_admin_by_id(admin_id)
+            admin.delete()
+        else:
+            msg = "You can't delete other people's data."
+            raise CannotDeleteOthersData(message=msg)
+    except AttributeError:
+        msg = "AttributeError, You can't change other people's data."
+        raise CannotChangeOthersData(message=msg)
 
 
 @admin_required
@@ -59,6 +67,12 @@ def change_role(role_data):
         msg = "Please provide a user_id you want to change it's role."
         raise MissingArguments(message=msg)
     user = get_user_by_id(user_id)
+
+    # comment the following block to add/remove the "without a role" restriction
+    # if user.admin or user.driver or user.company or user.company:
+    #     msg = "Please provide a user without a role."
+    #     raise MissingArguments(message=msg)
+
     counter_error = 0
     max_role = 0
     try:

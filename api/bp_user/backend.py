@@ -11,16 +11,16 @@ from ..helper_functions.constants import EXPIRES_IN
 
 
 def create_user(user_data):
-    if user_data["login"] is None or user_data["password"] is None:
-        msg = "Please provide a login and a password."
+    if user_data["email"] is None or user_data["password"] is None:
+        msg = "Please provide a email and a password."
         raise MissingArguments(message=msg)
-    if not User.query.filter(User.login == user_data["login"]).one_or_none():
-        user_data["login"] = user_data["login"].lower()
+    if not User.query.filter(User.email == user_data["email"]).one_or_none():
+        user_data["email"] = user_data["email"].lower()
         user = User(**user_data)
         user.set_password(user_data["password"])
         user.save()
     else:
-        msg = "Login `%s` is already in use for another account." % user_data["login"]
+        msg = "Login `%s` is already in use for another account." % user_data["email"]
         raise RecordAlreadyExists(message=msg)
     user.get_token(expires_in=EXPIRES_IN)
 

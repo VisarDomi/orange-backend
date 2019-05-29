@@ -20,7 +20,7 @@ class User(BaseModel, ModelSerializerMixin):
 
     id = Column(Integer, primary_key=True, autoincrement=True)
 
-    login = Column(String, unique=True)
+    email = Column(String, unique=True)
 
     # database only
     password_hash = Column(String)

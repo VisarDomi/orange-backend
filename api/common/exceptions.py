@@ -58,7 +58,6 @@ class MissingArguments(Exception):
 
 class TypeErrorFlusk(InvalidAPIRequest):
     status_code = BadRequest.code
-    pass
 
 
 class InvalidURL(InvalidAPIRequest):
@@ -75,3 +74,7 @@ class CannotChangeOthersData(InvalidPermissions):
 
 class CannotDeleteOthersData(InvalidPermissions):
     pass
+
+
+class CannotHaveMultipleRoles(DatabaseError):
+    message = "There are multiple roles in a user, contact the database administrator"

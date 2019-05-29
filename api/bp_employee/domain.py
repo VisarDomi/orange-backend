@@ -2,22 +2,22 @@ from ..helper_functions.get_by_id import get_employee_by_id as backend_get_emplo
 from . import backend
 
 
-def create_employee(employee_data):
-    employee = backend.create_employee(employee_data)
+def create_employee(employee_data, company_id):
+    employee = backend.create_employee(employee_data, company_id)
     employee_dict = employee.to_dict()
 
     return employee_dict
 
 
-def get_employee_by_id(employee_id):
+def get_employee_by_id(employee_id, company_id):
     employee = backend_get_employee_by_id(employee_id)
     employee_dict = employee.to_dict()
 
     return employee_dict
 
 
-def get_all_employees():
-    employees = backend.get_all_employees()
+def get_all_employees(company_id):
+    employees = backend.get_all_employees(company_id)
     employees_list = []
     for employee in employees:
         employee_dict = employee.to_dict()
@@ -26,12 +26,12 @@ def get_all_employees():
     return employees_list
 
 
-def update_employee(employee_data, employee_id):
-    employee = backend.update_employee(employee_data, employee_id)
+def update_employee(employee_data, employee_id, company_id):
+    employee = backend.update_employee(employee_data, employee_id, company_id)
     employee_dict = employee.to_dict()
 
     return employee_dict
 
 
-def delete_employee(employee_id):
-    backend.delete_employee(employee_id)
+def delete_employee(employee_id, company_id):
+    backend.delete_employee(employee_id, company_id)

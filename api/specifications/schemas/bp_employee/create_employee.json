@@ -9,6 +9,9 @@
     },
     "address": {
       "type": "string"
+    },
+    "user_id": {
+      "type": "string"
     }
   },
   "additionalProperties": false
