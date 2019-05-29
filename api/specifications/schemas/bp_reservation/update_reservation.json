@@ -13,7 +13,10 @@
     "destination": {
       "type": "string"
     },
-    "datetime": {
+    "date": {
+      "type": "string"
+    },
+    "time": {
       "type": "string"
     },
     "status": {
