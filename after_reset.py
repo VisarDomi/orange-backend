@@ -1,4 +1,5 @@
 from sqlalchemy.orm.exc import NoResultFound
+from api.common.database import db_session
 from api.common.exceptions import RecordNotFound, InvalidURL
 from api.common.exceptions import (
     RecordAlreadyExists,
@@ -84,3 +85,6 @@ admin_data = {
 
 admin = create_admin(admin_data)
 print("admin is:", admin)
+
+
+db_session.commit()
