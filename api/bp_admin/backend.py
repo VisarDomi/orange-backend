@@ -1,4 +1,3 @@
-from flask import g
 from ..common.exceptions import (
     MissingArguments,
     CannotChangeOthersData,
@@ -14,6 +13,7 @@ from ..helper_functions.get_by_id import (
     get_employee_by_id,
 )
 from ..helper_functions.decorators import admin_required
+from ..helper_functions.common_function import can_it_update
 
 
 @admin_required
@@ -31,16 +31,13 @@ def get_all_admins():
 
 @admin_required
 def update_admin(admin_data, admin_id):
-    try:
-        if int(admin_id) == g.current_user.admin.id:
-            admin = get_admin_by_id(admin_id)
-            admin.update(**admin_data)
-            admin.save()
-        else:
-            msg = "You can't change other people's data."
-            raise CannotChangeOthersData(message=msg)
-    except AttributeError:
-        msg = "AttributeError, You can't change other people's data."
+    can_update = can_it_update()
+    if can_update:
+        admin = get_admin_by_id(admin_id)
+        admin.update(**admin_data)
+        admin.save()
+    else:
+        msg = "You can't change other people's data."
         raise CannotChangeOthersData(message=msg)
 
     return admin
@@ -48,18 +45,16 @@ def update_admin(admin_data, admin_id):
 
 @admin_required
 def delete_admin(admin_id):
-    try:
-        if int(admin_id) == g.current_user.admin.id:
-            admin = get_admin_by_id(admin_id)
-            admin.delete()
-        else:
-            msg = "You can't delete other people's data."
-            raise CannotDeleteOthersData(message=msg)
-    except AttributeError:
-        msg = "AttributeError, You can't change other people's data."
-        raise CannotChangeOthersData(message=msg)
+    can_update = can_it_update()
+    if can_update:
+        admin = get_admin_by_id(admin_id)
+        admin.delete()
+    else:
+        msg = "You can't delete other people's data."
+        raise CannotDeleteOthersData(message=msg)
 
 
+# dev only
 @admin_required
 def change_role(role_data):
     user_id = role_data["user_id"]

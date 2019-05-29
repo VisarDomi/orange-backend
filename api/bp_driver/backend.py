@@ -1,4 +1,3 @@
-from flask import g
 from ..common.exceptions import (
     CannotChangeOthersData,
     CannotDeleteOthersData,
@@ -6,8 +5,11 @@ from ..common.exceptions import (
 from ..common.models import Driver
 from ..helper_functions.create import create_entity
 from ..helper_functions.get_by_id import get_driver_by_id
+from ..helper_functions.decorators import admin_required
+from ..helper_functions.common_function import can_it_update
 
 
+@admin_required
 def create_driver(driver_data):
     driver = create_entity(driver_data, Driver)
 
@@ -21,29 +23,23 @@ def get_all_drivers():
 
 
 def update_driver(driver_data, driver_id):
-    try:
-        if int(driver_id) == g.current_user.driver.id:
-            driver = get_driver_by_id(driver_id)
-            driver.update(**driver_data)
-            driver.save()
-        else:
-            msg = "You can't change other people's data."
-            raise CannotChangeOthersData(message=msg)
-    except AttributeError:
-        msg = "AttributeError, You can't change other people's data."
+    can_update = can_it_update(driver_id=driver_id)
+    if can_update:
+        driver = get_driver_by_id(driver_id)
+        driver.update(**driver_data)
+        driver.save()
+    else:
+        msg = "You can't change other people's data."
         raise CannotChangeOthersData(message=msg)
 
     return driver
 
 
 def delete_driver(driver_id):
-    try:
-        if int(driver_id) == g.current_user.driver.id:
-            driver = get_driver_by_id(driver_id)
-            driver.delete()
-        else:
-            msg = "You can't delete other people's data."
-            raise CannotDeleteOthersData(message=msg)
-    except AttributeError:
-        msg = "AttributeError, You can't change other people's data."
-        raise CannotChangeOthersData(message=msg)
+    can_update = can_it_update(driver_id=driver_id)
+    if can_update:
+        driver = get_driver_by_id(driver_id)
+        driver.delete()
+    else:
+        msg = "You can't delete other people's data."
+        raise CannotDeleteOthersData(message=msg)

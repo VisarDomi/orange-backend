@@ -7,6 +7,7 @@ from . import domain
 
 @bp.route("", methods=["POST"])
 @schema("create_employee.json")
+@token_auth.login_required
 def create_employee(company_id):
     return domain.create_employee(request.json, company_id)
 

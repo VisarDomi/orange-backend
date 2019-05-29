@@ -7,6 +7,7 @@ from . import domain
 
 @bp.route("", methods=["POST"])
 @schema("create_driver.json")
+@token_auth.login_required
 def create_driver():
     return domain.create_driver(request.json)
 
