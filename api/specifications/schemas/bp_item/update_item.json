@@ -7,6 +7,9 @@
     "name": {
       "type": "string"
     },
+    "date": {
+      "type": "string"
+    },
     "description": {
       "type": "string"
     },

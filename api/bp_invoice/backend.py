@@ -4,8 +4,8 @@ from ..helper_functions.get_by_id import get_invoice_by_id, get_reservation_by_i
 from ..helper_functions.common_function import can_it_update
 
 
-def create_invoice(invoice_data, company_id, reservation_id):
-    can_update = can_it_update(company_id=company_id)
+def create_invoice(invoice_data, reservation_id):
+    can_update = can_it_update()
     if can_update:
         invoice = Invoice(**invoice_data)
         reservation = get_reservation_by_id(reservation_id)
@@ -18,8 +18,8 @@ def create_invoice(invoice_data, company_id, reservation_id):
     return invoice
 
 
-def get_invoice(invoice_id, company_id, reservation_id):
-    can_update = can_it_update(company_id=company_id)
+def get_invoice(invoice_id, reservation_id):
+    can_update = can_it_update()
     if can_update:
         invoice = get_invoice_by_id(invoice_id)
     else:
@@ -29,8 +29,8 @@ def get_invoice(invoice_id, company_id, reservation_id):
     return invoice
 
 
-def get_all_invoices(company_id, reservation_id):
-    can_update = can_it_update(company_id=company_id)
+def get_all_invoices(reservation_id):
+    can_update = can_it_update()
     if can_update:
         reservation = get_reservation_by_id(reservation_id)
         invoices = reservation.invoices.all()
@@ -41,8 +41,8 @@ def get_all_invoices(company_id, reservation_id):
     return invoices
 
 
-def update_invoice(invoice_data, invoice_id, company_id, reservation_id):
-    can_update = can_it_update(company_id=company_id)
+def update_invoice(invoice_data, invoice_id, reservation_id):
+    can_update = can_it_update()
     if can_update:
         invoice = get_invoice_by_id(invoice_id)
         invoice.update(**invoice_data)
@@ -54,8 +54,8 @@ def update_invoice(invoice_data, invoice_id, company_id, reservation_id):
     return invoice
 
 
-def delete_invoice(invoice_id, company_id, reservation_id):
-    can_update = can_it_update(company_id=company_id)
+def delete_invoice(invoice_id, reservation_id):
+    can_update = can_it_update()
     if can_update:
         invoice = get_invoice_by_id(invoice_id)
         invoice.delete()

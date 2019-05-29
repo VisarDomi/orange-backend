@@ -28,19 +28,31 @@
     "from_postcode": {
       "type": "string"
     },
-    "to_client_name": {
+    "from_vat": {
       "type": "string"
+    },
+    "from_phone": {
+      "type": "string"
+    },
+    "to_client_name": {
+        "type": "string"
     },
     "to_addressline_1": {
-      "type": "string"
+        "type": "string"
     },
     "to_addressline_2": {
-      "type": "string"
+        "type": "string"
     },
     "to_city": {
       "type": "string"
     },
     "to_postcode": {
+      "type": "string"
+    },
+    "to_vat": {
+      "type": "string"
+    },
+    "to_phone": {
       "type": "string"
     },
     "payment_account_name": {
