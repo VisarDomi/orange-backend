@@ -66,6 +66,15 @@
     },
     "invoice_notes": {
       "type": "string"
+    },
+    "sub_total": {
+      "type": "string"
+    },
+    "tax": {
+      "type": "string"
+    },
+    "grand_total": {
+      "type": "string"
     }
   },
   "additionalProperties": false

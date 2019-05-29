@@ -186,6 +186,10 @@ class Invoice(BaseModel, ModelSerializerMixin):
 
     invoice_notes = Column(Text)
 
+    sub_total = Column(String)
+    tax = Column(String)
+    grand_total = Column(String)
+
     reservation = relationship("Reservation", back_populates="invoices")
     reservation_id = Column(Integer, ForeignKey("reservations.id"))
 

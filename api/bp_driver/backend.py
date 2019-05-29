@@ -2,13 +2,16 @@ from ..common.exceptions import CannotChangeOthersData, CannotDeleteOthersData
 from ..common.models import Driver
 from ..helper_functions.create import create_entity
 from ..helper_functions.get_by_id import get_driver_by_id
-from ..helper_functions.decorators import admin_required
 from ..helper_functions.common_function import can_it_update
 
 
-@admin_required
 def create_driver(driver_data):
-    driver = create_entity(driver_data, Driver)
+    can_update = can_it_update()
+    if can_update:
+        driver = create_entity(driver_data, Driver)
+    else:
+        msg = "You can't change other people's data."
+        raise CannotChangeOthersData(message=msg)
 
     return driver
 
