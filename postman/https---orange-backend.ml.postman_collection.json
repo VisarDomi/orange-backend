@@ -597,6 +597,50 @@
 					"response": []
 				},
 				{
+					"name": "{{url}}/api/admin/reservation/1",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "nxVcKE5BIU44KFEbSs+FffUzXnfiMH8s",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Secure-Api-Key",
+								"value": "{{Secure-Api-Key}}"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"driver_id\": \"1\"\n}"
+						},
+						"url": {
+							"raw": "{{url}}/api/admin/reservation/1",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"admin",
+								"reservation",
+								"1"
+							]
+						},
+						"description": "get users with token"
+					},
+					"response": []
+				},
+				{
 					"name": "{{url}}/api/admin/invoice/all",
 					"protocolProfileBehavior": {
 						"disableBodyPruning": true
@@ -683,6 +727,152 @@
 								"api",
 								"admin",
 								"invoice",
+								"1"
+							]
+						},
+						"description": "get users with token"
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "driver",
+			"item": [
+				{
+					"name": "{{url}}/api/driver/1/reservation/all",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "fW6CIMqzhNj1V8rrib9osTilBMSQUxrf",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Secure-Api-Key",
+								"value": "{{Secure-Api-Key}}"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{url}}/api/driver/1/reservation/all",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"driver",
+								"1",
+								"reservation",
+								"all"
+							]
+						},
+						"description": "get users with token"
+					},
+					"response": []
+				},
+				{
+					"name": "{{url}}/api/driver/1/reservation/1",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "fW6CIMqzhNj1V8rrib9osTilBMSQUxrf",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Secure-Api-Key",
+								"value": "{{Secure-Api-Key}}"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{url}}/api/driver/1/reservation/1",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"driver",
+								"1",
+								"reservation",
+								"1"
+							]
+						},
+						"description": "get users with token"
+					},
+					"response": []
+				},
+				{
+					"name": "{{url}}/api/driver/1/reservation/1",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "fW6CIMqzhNj1V8rrib9osTilBMSQUxrf",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Secure-Api-Key",
+								"value": "{{Secure-Api-Key}}"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"status\": \"rejected\"\n}"
+						},
+						"url": {
+							"raw": "{{url}}/api/driver/1/reservation/1",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"driver",
+								"1",
+								"reservation",
 								"1"
 							]
 						},
@@ -1957,7 +2147,7 @@
 			]
 		},
 		{
-			"name": "driver",
+			"name": "admin_driver",
 			"item": [
 				{
 					"name": "{{url}}/api/admin/driver",
