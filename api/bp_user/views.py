@@ -7,17 +7,20 @@ from . import domain
 
 @bp.route("", methods=["POST"])
 @schema("create_user.json")
+@token_auth.login_required
 def create_user():
     return domain.create_user(request.json)
 
 
 @bp.route("/<user_id>", methods=["GET"])
+@token_auth.login_required
 def get_user(user_id):
 
     return domain.get_user_by_id(user_id)
 
 
 @bp.route("/all", methods=["GET"])
+@token_auth.login_required
 def get_users():
 
     return domain.get_all_users()

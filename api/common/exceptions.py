@@ -76,5 +76,9 @@ class CannotDeleteOthersData(InvalidPermissions):
     pass
 
 
-class CannotHaveMultipleRoles(DatabaseError):
-    message = "There are multiple roles in a user, contact the database administrator"
+class CannotGetOthersData(InvalidPermissions):
+    pass
+
+
+class CannotCreateData(InvalidPermissions):
+    pass

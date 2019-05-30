@@ -1,8 +1,8 @@
 """first
 
-Revision ID: ee3d6daa2beb
+Revision ID: ca680f12e27f
 Revises: 
-Create Date: 2019-05-29 21:10:00.667127
+Create Date: 2019-05-30 16:05:49.263152
 
 """
 from alembic import op
@@ -10,7 +10,7 @@ import sqlalchemy as sa
 
 
 # revision identifiers, used by Alembic.
-revision = 'ee3d6daa2beb'
+revision = 'ca680f12e27f'
 down_revision = None
 branch_labels = None
 depends_on = None
@@ -65,7 +65,8 @@ def upgrade():
     sa.Column('code', sa.String(), nullable=True),
     sa.Column('pickup', sa.String(), nullable=True),
     sa.Column('destination', sa.String(), nullable=True),
-    sa.Column('datetime', sa.DateTime(), nullable=True),
+    sa.Column('date', sa.Date(), nullable=True),
+    sa.Column('time', sa.Time(), nullable=True),
     sa.Column('status', sa.String(), nullable=True),
     sa.Column('company_id', sa.Integer(), nullable=True),
     sa.Column('driver_id', sa.Integer(), nullable=True),
@@ -83,15 +84,22 @@ def upgrade():
     sa.Column('from_addressline_2', sa.String(), nullable=True),
     sa.Column('from_city', sa.String(), nullable=True),
     sa.Column('from_postcode', sa.String(), nullable=True),
+    sa.Column('from_vat', sa.String(), nullable=True),
+    sa.Column('from_phone', sa.String(), nullable=True),
     sa.Column('to_client_name', sa.String(), nullable=True),
     sa.Column('to_addressline_1', sa.String(), nullable=True),
     sa.Column('to_addressline_2', sa.String(), nullable=True),
     sa.Column('to_city', sa.String(), nullable=True),
     sa.Column('to_postcode', sa.String(), nullable=True),
+    sa.Column('to_vat', sa.String(), nullable=True),
+    sa.Column('to_phone', sa.String(), nullable=True),
     sa.Column('payment_account_name', sa.String(), nullable=True),
     sa.Column('payment_account_sortcode', sa.String(), nullable=True),
     sa.Column('payment_account_number', sa.String(), nullable=True),
     sa.Column('invoice_notes', sa.Text(), nullable=True),
+    sa.Column('sub_total', sa.String(), nullable=True),
+    sa.Column('tax', sa.String(), nullable=True),
+    sa.Column('grand_total', sa.String(), nullable=True),
     sa.Column('reservation_id', sa.Integer(), nullable=True),
     sa.ForeignKeyConstraint(['reservation_id'], ['reservations.id'], ),
     sa.PrimaryKeyConstraint('id')
@@ -99,6 +107,7 @@ def upgrade():
     op.create_table('items',
     sa.Column('id', sa.Integer(), autoincrement=True, nullable=False),
     sa.Column('name', sa.String(), nullable=True),
+    sa.Column('date', sa.Date(), nullable=True),
     sa.Column('description', sa.String(), nullable=True),
     sa.Column('quantity', sa.String(), nullable=True),
     sa.Column('price', sa.String(), nullable=True),

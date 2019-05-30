@@ -1,4 +1,8 @@
-from ..common.exceptions import CannotChangeOthersData, CannotDeleteOthersData
+from ..common.exceptions import (
+    CannotChangeOthersData,
+    CannotDeleteOthersData,
+    CannotCreateData,
+)
 from ..common.models import Employee
 from ..helper_functions.create import create_entity
 from ..helper_functions.get_by_id import get_employee_by_id, get_company_by_id
@@ -6,10 +10,15 @@ from ..helper_functions.common_function import can_it_update
 
 
 def create_employee(employee_data, company_id):
-    employee = create_entity(employee_data, Employee)
-    company = get_company_by_id(company_id)
-    employee.company = company
-    employee.save()
+    can_update = can_it_update(company_id=company_id)
+    if can_update:
+        employee = create_entity(employee_data, Employee)
+        company = get_company_by_id(company_id)
+        employee.company = company
+        employee.save()
+    else:
+        msg = "You can't create data."
+        raise CannotCreateData(message=msg)
 
     return employee
 
@@ -28,7 +37,7 @@ def get_all_employees(company_id):
 
 
 def update_employee(employee_data, employee_id, company_id):
-    can_update = can_it_update(employee_id=employee_id, company_id=company_id)
+    can_update = can_it_update(employee_id=employee_id)
     if can_update:
         employee = get_employee_by_id(employee_id)
         employee.update(**employee_data)
@@ -41,7 +50,7 @@ def update_employee(employee_data, employee_id, company_id):
 
 
 def delete_employee(employee_id, company_id):
-    can_update = can_it_update(employee_id=employee_id, company_id=company_id)
+    can_update = can_it_update(employee_id=employee_id)
     if can_update:
         employee = get_employee_by_id(employee_id)
         employee.delete()

@@ -1,5 +1,3 @@
-from ..helper_functions.constants import ONLY
-from ..helper_functions.common_function import apply_role_to_dict
 from . import backend
 
 
@@ -36,14 +34,6 @@ def update_admin(admin_data, admin_id):
 
 def delete_admin(admin_id):
     backend.delete_admin(admin_id)
-
-
-def change_role(role_data):
-    user = backend.change_role(role_data)
-    user_dict = user.to_dict(only=ONLY)
-    user_dict = apply_role_to_dict(user, user_dict)
-
-    return user_dict
 
 
 def get_all_invoices():

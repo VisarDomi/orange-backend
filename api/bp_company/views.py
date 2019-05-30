@@ -7,18 +7,21 @@ from . import domain
 
 @bp.route("", methods=["POST"])
 @schema("create_company.json")
+@token_auth.login_required
 def create_company():
 
     return domain.create_company(request.json)
 
 
 @bp.route("/<company_id>", methods=["GET"])
+@token_auth.login_required
 def get_company(company_id):
 
     return domain.get_company_by_id(company_id)
 
 
 @bp.route("/all", methods=["GET"])
+@token_auth.login_required
 def get_companys():
 
     return domain.get_all_companys()

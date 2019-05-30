@@ -1,41 +1,28 @@
 from flask import g
-from ..common.exceptions import CannotHaveMultipleRoles
-from ..common.models import Admin
 
 
 def apply_role_to_dict(user, user_dict):
     role = "unassigned"
-    counter = 0
+    role_id = "no_id"
     if user.admin:
         role = "admin"
-        counter += 1
+        role_id = user.admin.id
     if user.driver:
         role = "driver"
-        counter += 1
+        role_id = user.driver.id
     if user.company:
         role = "company"
-        counter += 1
+        role_id = user.company.id
     if user.employee:
         role = "employee"
-        counter += 1
+        role_id = user.employee.id
     user_dict["role"] = role
-    if counter > 1:
-        msg = "There are multiple roles for this user which is not allowed"
-        raise CannotHaveMultipleRoles(message=msg)
+    user_dict["role_id"] = role_id
 
     return user_dict
 
 
-def is_it_admin():
-    is_admin = False
-    admins = Admin.query.all()
-    for admin in admins:
-        if admin == g.current_user.admin:
-            is_admin = True
-    return is_admin
-
-
-def can_it_update(employee_id=0, company_id=0, driver_id=0):
+def can_it_update(employee_id=0, company_id=0, driver_id=0, admin_id=0):
     is_employee = False
     is_company = False
     is_driver = False
@@ -48,7 +35,7 @@ def can_it_update(employee_id=0, company_id=0, driver_id=0):
     if g.current_user.driver:
         is_driver = int(driver_id) == g.current_user.driver.id
     if g.current_user.admin:
-        is_admin = is_it_admin()
+        is_admin = int(admin_id) == g.current_user.admin.id
     if is_company or is_employee or is_driver or is_admin:
         can_update = True
 
