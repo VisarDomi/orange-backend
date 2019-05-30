@@ -11,6 +11,7 @@ from ..helper_functions.get_by_id import (
     get_admin_by_id,
     get_invoice_by_id,
     get_reservation_by_id,
+    get_driver_by_id,
 )
 from ..helper_functions.common_function import can_it_update
 
@@ -93,6 +94,21 @@ def get_reservations():
 def get_reservation(reservation_id):
     if g.current_user.admin:
         reservation = get_reservation_by_id(reservation_id)
+    else:
+        msg = "You can't get reservation."
+        raise CannotGetOthersData(message=msg)
+
+    return reservation
+
+
+def update_reservation(reservation_data, reservation_id):
+    if g.current_user.admin:
+        driver_id = reservation_data.pop("driver_id")
+        driver = get_driver_by_id(driver_id)
+        reservation = get_reservation_by_id(reservation_id)
+        reservation.status = "waiting"
+        reservation.driver = driver
+        reservation.save()
     else:
         msg = "You can't get reservation."
         raise CannotGetOthersData(message=msg)

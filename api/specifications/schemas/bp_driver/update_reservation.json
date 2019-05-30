@@ -1,0 +1,12 @@
+{
+  "title": "Update reservation",
+  "description": "Update a reservation object",
+  "type": "object",
+  "$schema": "http://json-schema.org/draft-04/schema",
+  "properties": {
+    "status": {
+      "type": "string"
+    }
+  },
+  "additionalProperties": false
+}

@@ -70,3 +70,11 @@ def get_reservations():
 def get_reservation(reservation_id):
 
     return domain.get_reservation(reservation_id)
+
+
+@bp.route("/reservation/<reservation_id>", methods=["PUT"])
+@schema("/update_reservation.json")
+@token_auth.login_required
+def update_reservation(reservation_id):
+
+    return domain.update_reservation(request.json, reservation_id)

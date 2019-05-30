@@ -68,3 +68,10 @@ def get_reservation(reservation_id):
     reservation_dict = reservation.to_dict()
 
     return reservation_dict
+
+
+def update_reservation(reservation_data, reservation_id):
+    reservation = backend.update_reservation(reservation_data, reservation_id)
+    reservation_dict = reservation.to_dict()
+
+    return reservation_dict
