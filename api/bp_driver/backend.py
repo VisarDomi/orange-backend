@@ -20,16 +20,16 @@ def create_driver(driver_data):
     return driver
 
 
+def get_drivers():
+    drivers = Driver.query.all()
+
+    return drivers
+
+
 def get_driver(driver_id):
     driver = get_driver_by_id(driver_id)
 
     return driver
-
-
-def get_all_drivers():
-    drivers = Driver.query.all()
-
-    return drivers
 
 
 def update_driver(driver_data, driver_id):

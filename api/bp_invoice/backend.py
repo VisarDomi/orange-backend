@@ -22,17 +22,7 @@ def create_invoice(invoice_data, reservation_id):
     return invoice
 
 
-def get_invoice(invoice_id, reservation_id):
-    if g.current_user.admin:
-        invoice = get_invoice_by_id(invoice_id)
-    else:
-        msg = "You can't get invoice."
-        raise CannotGetOthersData(message=msg)
-
-    return invoice
-
-
-def get_all_invoices(reservation_id):
+def get_invoices(reservation_id):
     if g.current_user.admin:
         reservation = get_reservation_by_id(reservation_id)
         invoices = reservation.invoices.all()
@@ -41,6 +31,16 @@ def get_all_invoices(reservation_id):
         raise CannotGetOthersData(message=msg)
 
     return invoices
+
+
+def get_invoice(invoice_id, reservation_id):
+    if g.current_user.admin:
+        invoice = get_invoice_by_id(invoice_id)
+    else:
+        msg = "You can't get invoice."
+        raise CannotGetOthersData(message=msg)
+
+    return invoice
 
 
 def update_invoice(invoice_data, invoice_id, reservation_id):

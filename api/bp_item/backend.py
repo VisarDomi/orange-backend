@@ -6,10 +6,7 @@ from ..common.exceptions import (
     CannotGetOthersData,
 )
 from ..common.models import Item
-from ..helper_functions.get_by_id import (
-    get_item_by_id,
-    get_invoice_by_id,
-)
+from ..helper_functions.get_by_id import get_item_by_id, get_invoice_by_id
 
 
 def create_item(item_data, reservation_id, invoice_id):
@@ -25,17 +22,7 @@ def create_item(item_data, reservation_id, invoice_id):
     return item
 
 
-def get_item(item_id, reservation_id, invoice_id):
-    if g.current_user.admin:
-        item = get_item_by_id(item_id)
-    else:
-        msg = "You can't get item."
-        raise CannotGetOthersData(message=msg)
-
-    return item
-
-
-def get_all_items(reservation_id, invoice_id):
+def get_items(reservation_id, invoice_id):
     if g.current_user.admin:
         invoice = get_invoice_by_id(invoice_id)
         items = invoice.items.all()
@@ -44,6 +31,16 @@ def get_all_items(reservation_id, invoice_id):
         raise CannotGetOthersData(message=msg)
 
     return items
+
+
+def get_item(item_id, reservation_id, invoice_id):
+    if g.current_user.admin:
+        item = get_item_by_id(item_id)
+    else:
+        msg = "You can't get item."
+        raise CannotGetOthersData(message=msg)
+
+    return item
 
 
 def update_item(item_data, item_id, reservation_id, invoice_id):

@@ -13,18 +13,18 @@ def create_admin():
     return domain.create_admin(request.json)
 
 
+@bp.route("/all", methods=["GET"])
+@token_auth.login_required
+def get_admins():
+
+    return domain.get_admins()
+
+
 @bp.route("/<admin_id>", methods=["GET"])
 @token_auth.login_required
 def get_admin(admin_id):
 
     return domain.get_admin_by_id(admin_id)
-
-
-@bp.route("/all", methods=["GET"])
-@token_auth.login_required
-def get_admins():
-
-    return domain.get_all_admins()
 
 
 # order is route, schema, auth
@@ -48,4 +48,25 @@ def delete_admin(admin_id):
 @token_auth.login_required
 def get_invoices():
 
-    return domain.get_all_invoices()
+    return domain.get_invoices()
+
+
+@bp.route("/invoice/<invoice_id>", methods=["GET"])
+@token_auth.login_required
+def get_invoice(invoice_id):
+
+    return domain.get_invoice(invoice_id)
+
+
+@bp.route("/reservation/all", methods=["GET"])
+@token_auth.login_required
+def get_reservations():
+
+    return domain.get_reservations()
+
+
+@bp.route("/reservation/<reservation_id>", methods=["GET"])
+@token_auth.login_required
+def get_reservation(reservation_id):
+
+    return domain.get_reservation(reservation_id)

@@ -7,7 +7,7 @@ from ..common.exceptions import (
 )
 from ..common.models import Company
 from ..helper_functions.create import create_entity
-from ..helper_functions.get_by_id import get_company_by_id
+from ..helper_functions.get_by_id import get_company_by_id, get_invoice_by_id
 from ..helper_functions.common_function import can_it_update
 
 
@@ -21,16 +21,16 @@ def create_company(company_data):
     return company
 
 
+def get_companys():
+    companys = Company.query.all()
+
+    return companys
+
+
 def get_company(company_id):
     company = get_company_by_id(company_id)
 
     return company
-
-
-def get_all_companys():
-    companys = Company.query.all()
-
-    return companys
 
 
 def update_company(company_data, company_id):
@@ -56,7 +56,7 @@ def delete_company(company_id):
         raise CannotDeleteOthersData(message=msg)
 
 
-def get_all_invoices(company_id):
+def get_invoices(company_id):
     can_update = can_it_update(company_id=company_id)
     if can_update:
         company = get_company_by_id(company_id)
@@ -66,3 +66,14 @@ def get_all_invoices(company_id):
         raise CannotGetOthersData(message=msg)
 
     return invoices
+
+
+def get_invoice(company_id, invoice_id):
+    can_update = can_it_update(company_id=company_id)
+    if can_update:
+        invoice = get_invoice_by_id(invoice_id)
+    else:
+        msg = "You can't get invoice."
+        raise CannotGetOthersData(message=msg)
+
+    return invoice

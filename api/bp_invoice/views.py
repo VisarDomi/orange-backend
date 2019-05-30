@@ -13,18 +13,18 @@ def create_invoice(reservation_id):
     return domain.create_invoice(request.json, reservation_id)
 
 
+@bp.route("/all", methods=["GET"])
+@token_auth.login_required
+def get_invoices(reservation_id):
+
+    return domain.get_invoices(reservation_id)
+
+
 @bp.route("/<invoice_id>", methods=["GET"])
 @token_auth.login_required
 def get_invoice(invoice_id, reservation_id):
 
     return domain.get_invoice_by_id(invoice_id, reservation_id)
-
-
-@bp.route("/all", methods=["GET"])
-@token_auth.login_required
-def get_invoices(reservation_id):
-
-    return domain.get_all_invoices(reservation_id)
 
 
 # order is route, schema, auth

@@ -11,16 +11,8 @@ def create_user(user_data):
     return user_dict
 
 
-def get_user_by_id(user_id):
-    user = backend.get_user(user_id)
-    user_dict = user.to_dict(only=ONLY)
-    user_dict = apply_role_to_dict(user, user_dict)
-
-    return user_dict
-
-
-def get_all_users():
-    users = backend.get_all_users()
+def get_users():
+    users = backend.get_users()
     users_list = []
     for user in users:
         user_dict = user.to_dict(only=ONLY)
@@ -28,6 +20,14 @@ def get_all_users():
         users_list.append(user_dict)
 
     return users_list
+
+
+def get_user_by_id(user_id):
+    user = backend.get_user(user_id)
+    user_dict = user.to_dict(only=ONLY)
+    user_dict = apply_role_to_dict(user, user_dict)
+
+    return user_dict
 
 
 def update_user(user_data, user_id):

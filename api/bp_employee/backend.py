@@ -23,17 +23,17 @@ def create_employee(employee_data, company_id):
     return employee
 
 
-def get_employee(employee_id, company_id):
-    employee = get_employee_by_id(employee_id)
-
-    return employee
-
-
-def get_all_employees(company_id):
+def get_employees(company_id):
     company = get_company_by_id(company_id)
     employees = company.employees.all()
 
     return employees
+
+
+def get_employee(employee_id, company_id):
+    employee = get_employee_by_id(employee_id)
+
+    return employee
 
 
 def update_employee(employee_data, employee_id, company_id):

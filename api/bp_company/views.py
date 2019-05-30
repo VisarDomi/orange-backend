@@ -13,18 +13,18 @@ def create_company():
     return domain.create_company(request.json)
 
 
+@bp.route("/all", methods=["GET"])
+@token_auth.login_required
+def get_companys():
+
+    return domain.get_companys()
+
+
 @bp.route("/<company_id>", methods=["GET"])
 @token_auth.login_required
 def get_company(company_id):
 
     return domain.get_company_by_id(company_id)
-
-
-@bp.route("/all", methods=["GET"])
-@token_auth.login_required
-def get_companys():
-
-    return domain.get_all_companys()
 
 
 # order is route, schema, auth
@@ -48,4 +48,11 @@ def delete_company(company_id):
 @token_auth.login_required
 def get_invoices(company_id):
 
-    return domain.get_all_invoices(company_id)
+    return domain.get_invoices(company_id)
+
+
+@bp.route("/<company_id>/invoice/<invoice_id>", methods=["GET"])
+@token_auth.login_required
+def get_invoice(company_id, invoice_id):
+
+    return domain.get_invoice(company_id, invoice_id)

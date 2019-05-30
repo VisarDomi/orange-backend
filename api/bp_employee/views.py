@@ -13,18 +13,18 @@ def create_employee(company_id):
     return domain.create_employee(request.json, company_id)
 
 
+@bp.route("/all", methods=["GET"])
+@token_auth.login_required
+def get_employees(company_id):
+
+    return domain.get_employees(company_id)
+
+
 @bp.route("/<employee_id>", methods=["GET"])
 @token_auth.login_required
 def get_employee(employee_id, company_id):
 
     return domain.get_employee_by_id(employee_id, company_id)
-
-
-@bp.route("/all", methods=["GET"])
-@token_auth.login_required
-def get_employees(company_id):
-
-    return domain.get_all_employees(company_id)
 
 
 # order is route, schema, auth

@@ -23,18 +23,7 @@ def create_reservation(reservation_data, company_id):
     return reservation
 
 
-def get_reservation(reservation_id, company_id):
-    can_update = can_it_update(company_id=company_id)
-    if can_update:
-        reservation = get_reservation_by_id(reservation_id)
-    else:
-        msg = "You can't get reservation."
-        raise CannotGetOthersData(message=msg)
-
-    return reservation
-
-
-def get_all_reservations(company_id):
+def get_reservations(company_id):
     can_update = can_it_update(company_id=company_id)
     if can_update:
         company = get_company_by_id(company_id)
@@ -44,6 +33,17 @@ def get_all_reservations(company_id):
         raise CannotGetOthersData(message=msg)
 
     return reservations
+
+
+def get_reservation(reservation_id, company_id):
+    can_update = can_it_update(company_id=company_id)
+    if can_update:
+        reservation = get_reservation_by_id(reservation_id)
+    else:
+        msg = "You can't get reservation."
+        raise CannotGetOthersData(message=msg)
+
+    return reservation
 
 
 def update_reservation(reservation_data, reservation_id, company_id):

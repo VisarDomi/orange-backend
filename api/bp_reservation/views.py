@@ -12,18 +12,18 @@ def create_reservation(company_id):
     return domain.create_reservation(request.json, company_id)
 
 
+@bp.route("/all", methods=["GET"])
+@token_auth.login_required
+def get_reservations(company_id):
+
+    return domain.get_reservations(company_id)
+
+
 @bp.route("/<reservation_id>", methods=["GET"])
 @token_auth.login_required
 def get_reservation(reservation_id, company_id):
 
     return domain.get_reservation_by_id(reservation_id, company_id)
-
-
-@bp.route("/all", methods=["GET"])
-@token_auth.login_required
-def get_reservations(company_id):
-
-    return domain.get_all_reservations(company_id)
 
 
 # order is route, schema, auth

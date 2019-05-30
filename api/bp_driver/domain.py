@@ -8,21 +8,21 @@ def create_driver(driver_data):
     return driver_dict
 
 
-def get_driver_by_id(driver_id):
-    driver = backend.get_driver(driver_id)
-    driver_dict = driver.to_dict()
-
-    return driver_dict
-
-
-def get_all_drivers():
-    drivers = backend.get_all_drivers()
+def get_drivers():
+    drivers = backend.get_drivers()
     drivers_list = []
     for driver in drivers:
         driver_dict = driver.to_dict()
         drivers_list.append(driver_dict)
 
     return drivers_list
+
+
+def get_driver_by_id(driver_id):
+    driver = backend.get_driver(driver_id)
+    driver_dict = driver.to_dict()
+
+    return driver_dict
 
 
 def update_driver(driver_data, driver_id):

@@ -8,21 +8,21 @@ def create_employee(employee_data, company_id):
     return employee_dict
 
 
-def get_employee_by_id(employee_id, company_id):
-    employee = backend.get_employee(employee_id, company_id)
-    employee_dict = employee.to_dict()
-
-    return employee_dict
-
-
-def get_all_employees(company_id):
-    employees = backend.get_all_employees(company_id)
+def get_employees(company_id):
+    employees = backend.get_employees(company_id)
     employees_list = []
     for employee in employees:
         employee_dict = employee.to_dict()
         employees_list.append(employee_dict)
 
     return employees_list
+
+
+def get_employee_by_id(employee_id, company_id):
+    employee = backend.get_employee(employee_id, company_id)
+    employee_dict = employee.to_dict()
+
+    return employee_dict
 
 
 def update_employee(employee_data, employee_id, company_id):

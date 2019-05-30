@@ -12,18 +12,18 @@ def create_item(reservation_id, invoice_id):
     return domain.create_item(request.json, reservation_id, invoice_id)
 
 
+@bp.route("/all", methods=["GET"])
+@token_auth.login_required
+def get_items(reservation_id, invoice_id):
+
+    return domain.get_items(reservation_id, invoice_id)
+
+
 @bp.route("/<item_id>", methods=["GET"])
 @token_auth.login_required
 def get_item(item_id, reservation_id, invoice_id):
 
     return domain.get_item_by_id(item_id, reservation_id, invoice_id)
-
-
-@bp.route("/all", methods=["GET"])
-@token_auth.login_required
-def get_items(reservation_id, invoice_id):
-
-    return domain.get_all_items(reservation_id, invoice_id)
 
 
 # order is route, schema, auth
