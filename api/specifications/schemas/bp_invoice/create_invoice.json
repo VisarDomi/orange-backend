@@ -67,6 +67,9 @@
     "invoice_notes": {
       "type": "string"
     },
+    "discount": {
+      "type": "string"
+    },
     "sub_total": {
       "type": "string"
     },

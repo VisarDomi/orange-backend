@@ -185,6 +185,7 @@ class Invoice(BaseModel, ModelSerializerMixin):
 
     invoice_notes = Column(Text)
 
+    discount = Column(String)
     sub_total = Column(String)
     tax = Column(String)
     grand_total = Column(String)

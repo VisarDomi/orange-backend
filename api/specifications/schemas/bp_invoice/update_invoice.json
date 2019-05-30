@@ -35,13 +35,13 @@
       "type": "string"
     },
     "to_client_name": {
-        "type": "string"
+      "type": "string"
     },
     "to_addressline_1": {
-        "type": "string"
+      "type": "string"
     },
     "to_addressline_2": {
-        "type": "string"
+      "type": "string"
     },
     "to_city": {
       "type": "string"
@@ -65,6 +65,9 @@
       "type": "string"
     },
     "invoice_notes": {
+      "type": "string"
+    },
+    "discount": {
       "type": "string"
     },
     "sub_total": {
