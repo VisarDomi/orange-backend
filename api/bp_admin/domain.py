@@ -49,6 +49,11 @@ def get_invoices():
 def get_invoice(invoice_id):
     invoice = backend.get_invoice(invoice_id)
     invoice_dict = invoice.to_dict()
+    items = invoice.items.all()
+    invoice_dict["items"] = []
+    for item in items:
+        item_dict = item.to_dict()
+        invoice_dict["items"].append(item_dict)
 
     return invoice_dict
 
