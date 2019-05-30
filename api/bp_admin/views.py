@@ -24,7 +24,7 @@ def get_admins():
 @token_auth.login_required
 def get_admin(admin_id):
 
-    return domain.get_admin_by_id(admin_id)
+    return domain.get_admin(admin_id)
 
 
 # order is route, schema, auth

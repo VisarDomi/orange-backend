@@ -60,7 +60,12 @@ def get_invoices(company_id):
     can_update = can_it_update(company_id=company_id)
     if can_update:
         company = get_company_by_id(company_id)
-        invoices = company.invoices.all()
+        reservations = company.reservations.all()
+        invoices = []
+        for reservation in reservations:
+            invoices_reservation = reservation.invoices.all()
+            for invoice in invoices_reservation:
+                invoices.append(invoice)
     else:
         msg = "You can't get invoices."
         raise CannotGetOthersData(message=msg)

@@ -16,7 +16,7 @@
 							"basic": [
 								{
 									"key": "username",
-									"value": "usertest4@orange-backend.ml",
+									"value": "admin@orange-backend.ml",
 									"type": "string"
 								},
 								{
@@ -64,6 +64,16 @@
 				{
 					"name": "{{url}}/api/user",
 					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "fv+UmLq+q/aIcGCBisxmRqUYhc05xo6q",
+									"type": "string"
+								}
+							]
+						},
 						"method": "POST",
 						"header": [
 							{
@@ -77,7 +87,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"email\": \"usertest3@orange-backend.ml\",\r\n    \"password\": \"password\"\r\n}"
+							"raw": "{\r\n    \"email\": \"usertest9@orange-backend.ml\",\r\n    \"password\": \"password\"\r\n}"
 						},
 						"url": {
 							"raw": "{{url}}/api/user",
@@ -100,7 +110,14 @@
 					},
 					"request": {
 						"auth": {
-							"type": "noauth"
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "fv+UmLq+q/aIcGCBisxmRqUYhc05xo6q",
+									"type": "string"
+								}
+							]
 						},
 						"method": "GET",
 						"header": [
@@ -138,6 +155,16 @@
 						"disableBodyPruning": true
 					},
 					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "fv+UmLq+q/aIcGCBisxmRqUYhc05xo6q",
+									"type": "string"
+								}
+							]
+						},
 						"method": "GET",
 						"header": [
 							{
@@ -175,7 +202,7 @@
 							"bearer": [
 								{
 									"key": "token",
-									"value": "sxt51VNvKvpTlAIFah0zJpMEJBZICtj8",
+									"value": "Pl3ABKNSOt/GEQouNbROrPbF4sL7yhco",
 									"type": "string"
 								}
 							]
@@ -193,17 +220,17 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"login\": \"test3\"\n}"
+							"raw": "{\n    \"email\": \"usertest9-2@orange-backend.ml\"\n}"
 						},
 						"url": {
-							"raw": "{{url}}/api/user/7",
+							"raw": "{{url}}/api/user/9",
 							"host": [
 								"{{url}}"
 							],
 							"path": [
 								"api",
 								"user",
-								"7"
+								"9"
 							]
 						},
 						"description": "Put"
@@ -218,7 +245,7 @@
 							"bearer": [
 								{
 									"key": "token",
-									"value": "TytksUT4TKn/ybSKVrEbGS7Wlv01JtrM",
+									"value": "VpVdN5o288smTg0551Pv7Q2tU7Mxewv4",
 									"type": "string"
 								}
 							]
@@ -239,14 +266,14 @@
 							"raw": ""
 						},
 						"url": {
-							"raw": "{{url}}/api/user/2",
+							"raw": "{{url}}/api/user/8",
 							"host": [
 								"{{url}}"
 							],
 							"path": [
 								"api",
 								"user",
-								"2"
+								"8"
 							]
 						}
 					},
@@ -265,7 +292,7 @@
 							"bearer": [
 								{
 									"key": "token",
-									"value": "vJ2l7++j5665SM+0HJm3b7L9HxI5QvnY",
+									"value": "fv+UmLq+q/aIcGCBisxmRqUYhc05xo6q",
 									"type": "string"
 								}
 							]
@@ -283,7 +310,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"full_name\": \"admintest3\",\r\n    \"user_id\": \"7\"\r\n}"
+							"raw": "{\r\n    \"full_name\": \"admintest2\",\r\n    \"user_id\": \"4\"\r\n}"
 						},
 						"url": {
 							"raw": "{{url}}/api/admin",
@@ -300,54 +327,21 @@
 					"response": []
 				},
 				{
-					"name": "{{url}}/api/admin/role",
+					"name": "{{url}}/api/admin/all",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
 					"request": {
 						"auth": {
 							"type": "bearer",
 							"bearer": [
 								{
 									"key": "token",
-									"value": "sxt51VNvKvpTlAIFah0zJpMEJBZICtj8",
+									"value": "fv+UmLq+q/aIcGCBisxmRqUYhc05xo6q",
 									"type": "string"
 								}
 							]
 						},
-						"method": "POST",
-						"header": [
-							{
-								"key": "Secure-Api-Key",
-								"value": "{{Secure-Api-Key}}"
-							},
-							{
-								"key": "Content-Type",
-								"value": "application/json"
-							}
-						],
-						"body": {
-							"mode": "raw",
-							"raw": "{\r\n    \"user_id\": \"10\",\r\n    \"admin_id\": \"\",\r\n    \"driver_id\": \"\",\r\n    \"company_id\": \"2\",\r\n    \"employee_id\": \"\"\r\n}"
-						},
-						"url": {
-							"raw": "{{url}}/api/admin/role",
-							"host": [
-								"{{url}}"
-							],
-							"path": [
-								"api",
-								"admin",
-								"role"
-							]
-						},
-						"description": "user1"
-					},
-					"response": []
-				},
-				{
-					"name": "{{url}}/api/admin/all",
-					"protocolProfileBehavior": {
-						"disableBodyPruning": true
-					},
-					"request": {
 						"method": "GET",
 						"header": [
 							{
@@ -379,7 +373,7 @@
 					"response": []
 				},
 				{
-					"name": "{{url}}/api/admin/invoice/all",
+					"name": "{{url}}/api/admin/1",
 					"protocolProfileBehavior": {
 						"disableBodyPruning": true
 					},
@@ -389,48 +383,11 @@
 							"bearer": [
 								{
 									"key": "token",
-									"value": "vJ2l7++j5665SM+0HJm3b7L9HxI5QvnY",
+									"value": "fv+UmLq+q/aIcGCBisxmRqUYhc05xo6q",
 									"type": "string"
 								}
 							]
 						},
-						"method": "GET",
-						"header": [
-							{
-								"key": "Secure-Api-Key",
-								"value": "{{Secure-Api-Key}}"
-							},
-							{
-								"key": "Content-Type",
-								"value": "application/json"
-							}
-						],
-						"body": {
-							"mode": "raw",
-							"raw": ""
-						},
-						"url": {
-							"raw": "{{url}}/api/admin/invoice/all",
-							"host": [
-								"{{url}}"
-							],
-							"path": [
-								"api",
-								"admin",
-								"invoice",
-								"all"
-							]
-						},
-						"description": "get users with token"
-					},
-					"response": []
-				},
-				{
-					"name": "{{url}}/api/admin/1",
-					"protocolProfileBehavior": {
-						"disableBodyPruning": true
-					},
-					"request": {
 						"method": "GET",
 						"header": [
 							{
@@ -468,7 +425,7 @@
 							"bearer": [
 								{
 									"key": "token",
-									"value": "sxt51VNvKvpTlAIFah0zJpMEJBZICtj8",
+									"value": "fqKRTIA2ReeuB2abc3mvgYXXR0faMhiH",
 									"type": "string"
 								}
 							]
@@ -511,7 +468,7 @@
 							"bearer": [
 								{
 									"key": "token",
-									"value": "TytksUT4TKn/ybSKVrEbGS7Wlv01JtrM",
+									"value": "fqKRTIA2ReeuB2abc3mvgYXXR0faMhiH",
 									"type": "string"
 								}
 							]
@@ -532,16 +489,204 @@
 							"raw": ""
 						},
 						"url": {
-							"raw": "{{url}}/api/admin/2",
+							"raw": "{{url}}/api/admin/3",
 							"host": [
 								"{{url}}"
 							],
 							"path": [
 								"api",
 								"admin",
-								"2"
+								"3"
 							]
 						}
+					},
+					"response": []
+				},
+				{
+					"name": "{{url}}/api/admin/reservation/all",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "nxVcKE5BIU44KFEbSs+FffUzXnfiMH8s",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Secure-Api-Key",
+								"value": "{{Secure-Api-Key}}"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{url}}/api/admin/reservation/all",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"admin",
+								"reservation",
+								"all"
+							]
+						},
+						"description": "get users with token"
+					},
+					"response": []
+				},
+				{
+					"name": "{{url}}/api/admin/reservation/1",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "nxVcKE5BIU44KFEbSs+FffUzXnfiMH8s",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Secure-Api-Key",
+								"value": "{{Secure-Api-Key}}"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{url}}/api/admin/reservation/1",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"admin",
+								"reservation",
+								"1"
+							]
+						},
+						"description": "get users with token"
+					},
+					"response": []
+				},
+				{
+					"name": "{{url}}/api/admin/invoice/all",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "nxVcKE5BIU44KFEbSs+FffUzXnfiMH8s",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Secure-Api-Key",
+								"value": "{{Secure-Api-Key}}"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{url}}/api/admin/invoice/all",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"admin",
+								"invoice",
+								"all"
+							]
+						},
+						"description": "get users with token"
+					},
+					"response": []
+				},
+				{
+					"name": "{{url}}/api/admin/invoice/1",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "nxVcKE5BIU44KFEbSs+FffUzXnfiMH8s",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Secure-Api-Key",
+								"value": "{{Secure-Api-Key}}"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{url}}/api/admin/invoice/1",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"admin",
+								"invoice",
+								"1"
+							]
+						},
+						"description": "get users with token"
 					},
 					"response": []
 				}
@@ -553,6 +698,16 @@
 				{
 					"name": "{{url}}/api/company",
 					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "fv+UmLq+q/aIcGCBisxmRqUYhc05xo6q",
+									"type": "string"
+								}
+							]
+						},
 						"method": "POST",
 						"header": [
 							{
@@ -566,7 +721,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"full_name\": \"companytest20\",\r\n    \"user_id\": \"20\"\r\n}"
+							"raw": "{\r\n    \"full_name\": \"companytest2\",\r\n    \"user_id\": \"5\"\r\n}"
 						},
 						"url": {
 							"raw": "{{url}}/api/company",
@@ -589,7 +744,14 @@
 					},
 					"request": {
 						"auth": {
-							"type": "noauth"
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "fv+UmLq+q/aIcGCBisxmRqUYhc05xo6q",
+									"type": "string"
+								}
+							]
 						},
 						"method": "GET",
 						"header": [
@@ -622,7 +784,7 @@
 					"response": []
 				},
 				{
-					"name": "{{url}}/api/company/1/invoice/all",
+					"name": "{{url}}/api/company/1",
 					"protocolProfileBehavior": {
 						"disableBodyPruning": true
 					},
@@ -632,7 +794,7 @@
 							"bearer": [
 								{
 									"key": "token",
-									"value": "vJ2l7++j5665SM+0HJm3b7L9HxI5QvnY",
+									"value": "fv+UmLq+q/aIcGCBisxmRqUYhc05xo6q",
 									"type": "string"
 								}
 							]
@@ -653,52 +815,14 @@
 							"raw": ""
 						},
 						"url": {
-							"raw": "{{url}}/api/company/1/invoice/all",
+							"raw": "{{url}}/api/company/2",
 							"host": [
 								"{{url}}"
 							],
 							"path": [
 								"api",
 								"company",
-								"1",
-								"invoice",
-								"all"
-							]
-						},
-						"description": "get users with token"
-					},
-					"response": []
-				},
-				{
-					"name": "{{url}}/api/company/1",
-					"protocolProfileBehavior": {
-						"disableBodyPruning": true
-					},
-					"request": {
-						"method": "GET",
-						"header": [
-							{
-								"key": "Secure-Api-Key",
-								"value": "{{Secure-Api-Key}}"
-							},
-							{
-								"key": "Content-Type",
-								"value": "application/json"
-							}
-						],
-						"body": {
-							"mode": "raw",
-							"raw": ""
-						},
-						"url": {
-							"raw": "{{url}}/api/company/3",
-							"host": [
-								"{{url}}"
-							],
-							"path": [
-								"api",
-								"company",
-								"3"
+								"2"
 							]
 						}
 					},
@@ -786,6 +910,102 @@
 								"4"
 							]
 						}
+					},
+					"response": []
+				},
+				{
+					"name": "{{url}}/api/company/1/invoice/all",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "beebuuisroTX+DItAQOGmlmYmO9drrSu",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Secure-Api-Key",
+								"value": "{{Secure-Api-Key}}"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{url}}/api/company/2/invoice/all",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"company",
+								"2",
+								"invoice",
+								"all"
+							]
+						},
+						"description": "get users with token"
+					},
+					"response": []
+				},
+				{
+					"name": "{{url}}/api/company/1/invoice/1",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "beebuuisroTX+DItAQOGmlmYmO9drrSu",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Secure-Api-Key",
+								"value": "{{Secure-Api-Key}}"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{url}}/api/company/2/invoice/1",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"company",
+								"2",
+								"invoice",
+								"1"
+							]
+						},
+						"description": "get users with token"
 					},
 					"response": []
 				}
@@ -885,6 +1105,16 @@
 						"disableBodyPruning": true
 					},
 					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "beebuuisroTX+DItAQOGmlmYmO9drrSu",
+									"type": "string"
+								}
+							]
+						},
 						"method": "GET",
 						"header": [
 							{
@@ -1108,6 +1338,16 @@
 						"disableBodyPruning": true
 					},
 					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "TH2nDtycNW/v5u5/buLat16X/3/gVOHB",
+									"type": "string"
+								}
+							]
+						},
 						"method": "GET",
 						"header": [
 							{
@@ -1124,16 +1364,16 @@
 							"raw": ""
 						},
 						"url": {
-							"raw": "{{url}}/api/company/2/employee/3",
+							"raw": "{{url}}/api/company/1/reservation/2",
 							"host": [
 								"{{url}}"
 							],
 							"path": [
 								"api",
 								"company",
-								"2",
-								"employee",
-								"3"
+								"1",
+								"reservation",
+								"2"
 							]
 						}
 					},
@@ -1241,7 +1481,7 @@
 							"bearer": [
 								{
 									"key": "token",
-									"value": "vJ2l7++j5665SM+0HJm3b7L9HxI5QvnY",
+									"value": "nxVcKE5BIU44KFEbSs+FffUzXnfiMH8s",
 									"type": "string"
 								}
 							]
@@ -1259,10 +1499,10 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"ref\": \"ref2\",\r\n    \"date\": \"2018-12-31\",\r\n    \"due\": \"2019-12-31\",\r\n    \"from_business_name\": \"adsf\",\r\n    \"from_addressline_1\": \"adsfasd\",\r\n    \"from_addressline_2\": \"wer\",\r\n    \"from_city\": \"werf\",\r\n    \"from_postcode\": \"sdf\",\r\n    \"from_vat\": \"sdsf\",\r\n    \"from_phone\": \"sdqwf\",\r\n    \"to_client_name\": \"sdaflk\",\r\n    \"to_addressline_1\": \"werjo\",\r\n    \"to_addressline_2\": \"wer\",\r\n    \"to_city\": \"werg\",\r\n    \"to_postcode\": \"edfg\",\r\n    \"to_vat\": \"sdwef\",\r\n    \"to_phone\": \"sdrf\",\r\n    \"payment_account_name\": \"weroui\",\r\n    \"payment_account_sortcode\": \"weroi\",\r\n    \"payment_account_number\": \"235890\",\r\n    \"invoice_notes\": \"aerguiopd\",\r\n    \"sub_total\": \"213\",\r\n    \"tax\": \"123\",\r\n    \"grand_total\": \"569\"\r\n}"
+							"raw": "{\r\n    \"ref\": \"ref1\",\r\n    \"date\": \"2018-12-31\",\r\n    \"due\": \"2019-12-31\",\r\n    \"from_business_name\": \"adsf\",\r\n    \"from_addressline_1\": \"adsfasd\",\r\n    \"from_addressline_2\": \"wer\",\r\n    \"from_city\": \"werf\",\r\n    \"from_postcode\": \"sdf\",\r\n    \"from_vat\": \"sdsf\",\r\n    \"from_phone\": \"sdqwf\",\r\n    \"to_client_name\": \"sdaflk\",\r\n    \"to_addressline_1\": \"werjo\",\r\n    \"to_addressline_2\": \"wer\",\r\n    \"to_city\": \"werg\",\r\n    \"to_postcode\": \"edfg\",\r\n    \"to_vat\": \"sdwef\",\r\n    \"to_phone\": \"sdrf\",\r\n    \"payment_account_name\": \"weroui\",\r\n    \"payment_account_sortcode\": \"weroi\",\r\n    \"payment_account_number\": \"235890\",\r\n    \"invoice_notes\": \"aerguiopd\",\r\n    \"sub_total\": \"213\",\r\n    \"tax\": \"123\",\r\n    \"grand_total\": \"569\"\r\n}"
 						},
 						"url": {
-							"raw": "{{url}}/api/admin/reservation/4/invoice",
+							"raw": "{{url}}/api/admin/reservation/2/invoice",
 							"host": [
 								"{{url}}"
 							],
@@ -1270,7 +1510,7 @@
 								"api",
 								"admin",
 								"reservation",
-								"4",
+								"2",
 								"invoice"
 							]
 						},
@@ -1338,7 +1578,7 @@
 							"bearer": [
 								{
 									"key": "token",
-									"value": "vJ2l7++j5665SM+0HJm3b7L9HxI5QvnY",
+									"value": "nxVcKE5BIU44KFEbSs+FffUzXnfiMH8s",
 									"type": "string"
 								}
 							]
@@ -1359,7 +1599,7 @@
 							"raw": ""
 						},
 						"url": {
-							"raw": "{{url}}/api/admin/reservation/4/invoice/2",
+							"raw": "{{url}}/api/admin/reservation/2/invoice/1",
 							"host": [
 								"{{url}}"
 							],
@@ -1367,9 +1607,9 @@
 								"api",
 								"admin",
 								"reservation",
-								"4",
+								"2",
 								"invoice",
-								"2"
+								"1"
 							]
 						}
 					},
@@ -1479,7 +1719,7 @@
 							"bearer": [
 								{
 									"key": "token",
-									"value": "vJ2l7++j5665SM+0HJm3b7L9HxI5QvnY",
+									"value": "nxVcKE5BIU44KFEbSs+FffUzXnfiMH8s",
 									"type": "string"
 								}
 							]
@@ -1497,10 +1737,10 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"name\": \"sdqwf\",\r\n    \"date\": \"1999-12-31\",\r\n    \"description\": \"werjo\",\r\n    \"quantity\": \"wer\",\r\n    \"price\": \"werg\",\r\n    \"discount\": \"edfg\",\r\n    \"tax\": \"sdwef\",\r\n    \"total\": \"sdrf\"\r\n}"
+							"raw": "{\r\n    \"name\": \"itemtest1\",\r\n    \"date\": \"1999-12-31\",\r\n    \"description\": \"werjo\",\r\n    \"quantity\": \"wer\",\r\n    \"price\": \"werg\",\r\n    \"discount\": \"edfg\",\r\n    \"tax\": \"sdwef\",\r\n    \"total\": \"sdrf\"\r\n}"
 						},
 						"url": {
-							"raw": "{{url}}/api/admin/reservation/4/invoice/3/item",
+							"raw": "{{url}}/api/admin/reservation/2/invoice/1/item",
 							"host": [
 								"{{url}}"
 							],
@@ -1508,9 +1748,9 @@
 								"api",
 								"admin",
 								"reservation",
-								"4",
+								"2",
 								"invoice",
-								"3",
+								"1",
 								"item"
 							]
 						},
@@ -1529,7 +1769,7 @@
 							"bearer": [
 								{
 									"key": "token",
-									"value": "vJ2l7++j5665SM+0HJm3b7L9HxI5QvnY",
+									"value": "nxVcKE5BIU44KFEbSs+FffUzXnfiMH8s",
 									"type": "string"
 								}
 							]
@@ -1550,7 +1790,7 @@
 							"raw": ""
 						},
 						"url": {
-							"raw": "{{url}}/api/admin/reservation/4/invoice/3/item/all",
+							"raw": "{{url}}/api/admin/reservation/2/invoice/1/item/all",
 							"host": [
 								"{{url}}"
 							],
@@ -1558,9 +1798,9 @@
 								"api",
 								"admin",
 								"reservation",
-								"4",
+								"2",
 								"invoice",
-								"3",
+								"1",
 								"item",
 								"all"
 							]
@@ -1580,7 +1820,7 @@
 							"bearer": [
 								{
 									"key": "token",
-									"value": "vJ2l7++j5665SM+0HJm3b7L9HxI5QvnY",
+									"value": "nxVcKE5BIU44KFEbSs+FffUzXnfiMH8s",
 									"type": "string"
 								}
 							]
@@ -1601,7 +1841,7 @@
 							"raw": ""
 						},
 						"url": {
-							"raw": "{{url}}/api/admin/reservation/4/invoice/3/item/2",
+							"raw": "{{url}}/api/admin/reservation/2/invoice/1/item/3",
 							"host": [
 								"{{url}}"
 							],
@@ -1609,11 +1849,11 @@
 								"api",
 								"admin",
 								"reservation",
-								"4",
+								"2",
 								"invoice",
-								"3",
+								"1",
 								"item",
-								"2"
+								"3"
 							]
 						}
 					},
@@ -1769,7 +2009,14 @@
 					},
 					"request": {
 						"auth": {
-							"type": "noauth"
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "nxVcKE5BIU44KFEbSs+FffUzXnfiMH8s",
+									"type": "string"
+								}
+							]
 						},
 						"method": "GET",
 						"header": [
@@ -1808,6 +2055,16 @@
 						"disableBodyPruning": true
 					},
 					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "nxVcKE5BIU44KFEbSs+FffUzXnfiMH8s",
+									"type": "string"
+								}
+							]
+						},
 						"method": "GET",
 						"header": [
 							{
@@ -1824,7 +2081,7 @@
 							"raw": ""
 						},
 						"url": {
-							"raw": "{{url}}/api/admin/driver/3",
+							"raw": "{{url}}/api/admin/driver/2",
 							"host": [
 								"{{url}}"
 							],
@@ -1832,7 +2089,7 @@
 								"api",
 								"admin",
 								"driver",
-								"3"
+								"2"
 							]
 						}
 					},

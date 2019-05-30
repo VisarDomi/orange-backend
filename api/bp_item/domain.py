@@ -18,7 +18,7 @@ def get_items(reservation_id, invoice_id):
     return items_list
 
 
-def get_item_by_id(item_id, reservation_id, invoice_id):
+def get_item(item_id, reservation_id, invoice_id):
     item = backend.get_item(item_id, reservation_id, invoice_id)
     item_dict = item.to_dict()
 

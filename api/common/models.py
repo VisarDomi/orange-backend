@@ -8,7 +8,6 @@ from sqlalchemy import (
     Column,
     DateTime,
     Date,
-    Time,
     Text,
     ForeignKey,
 )
@@ -140,7 +139,7 @@ class Reservation(BaseModel, ModelSerializerMixin):
     pickup = Column(String)
     destination = Column(String)
     date = Column(Date)
-    time = Column(Time)
+    time = Column(String)
     status = Column(String)
 
     company = relationship("Company", back_populates="reservations")

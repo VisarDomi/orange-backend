@@ -23,7 +23,7 @@ def get_users():
 @token_auth.login_required
 def get_user(user_id):
 
-    return domain.get_user_by_id(user_id)
+    return domain.get_user(user_id)
 
 
 # order is route, schema, auth

@@ -24,7 +24,7 @@ def get_drivers():
 @token_auth.login_required
 def get_driver(driver_id):
 
-    return domain.get_driver_by_id(driver_id)
+    return domain.get_driver(driver_id)
 
 
 # order is route, schema, auth

@@ -24,7 +24,7 @@ def get_employees(company_id):
 @token_auth.login_required
 def get_employee(employee_id, company_id):
 
-    return domain.get_employee_by_id(employee_id, company_id)
+    return domain.get_employee(employee_id, company_id)
 
 
 # order is route, schema, auth

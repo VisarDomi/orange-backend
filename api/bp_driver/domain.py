@@ -18,7 +18,7 @@ def get_drivers():
     return drivers_list
 
 
-def get_driver_by_id(driver_id):
+def get_driver(driver_id):
     driver = backend.get_driver(driver_id)
     driver_dict = driver.to_dict()
 

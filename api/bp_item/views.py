@@ -23,7 +23,7 @@ def get_items(reservation_id, invoice_id):
 @token_auth.login_required
 def get_item(item_id, reservation_id, invoice_id):
 
-    return domain.get_item_by_id(item_id, reservation_id, invoice_id)
+    return domain.get_item(item_id, reservation_id, invoice_id)
 
 
 # order is route, schema, auth

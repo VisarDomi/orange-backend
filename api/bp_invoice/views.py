@@ -24,7 +24,7 @@ def get_invoices(reservation_id):
 @token_auth.login_required
 def get_invoice(invoice_id, reservation_id):
 
-    return domain.get_invoice_by_id(invoice_id, reservation_id)
+    return domain.get_invoice(invoice_id, reservation_id)
 
 
 # order is route, schema, auth

@@ -18,7 +18,7 @@ def get_employees(company_id):
     return employees_list
 
 
-def get_employee_by_id(employee_id, company_id):
+def get_employee(employee_id, company_id):
     employee = backend.get_employee(employee_id, company_id)
     employee_dict = employee.to_dict()
 

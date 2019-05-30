@@ -22,7 +22,7 @@ def get_users():
     return users_list
 
 
-def get_user_by_id(user_id):
+def get_user(user_id):
     user = backend.get_user(user_id)
     user_dict = user.to_dict(only=ONLY)
     user_dict = apply_role_to_dict(user, user_dict)

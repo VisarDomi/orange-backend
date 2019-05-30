@@ -23,7 +23,7 @@ def get_reservations(company_id):
 @token_auth.login_required
 def get_reservation(reservation_id, company_id):
 
-    return domain.get_reservation_by_id(reservation_id, company_id)
+    return domain.get_reservation(reservation_id, company_id)
 
 
 # order is route, schema, auth

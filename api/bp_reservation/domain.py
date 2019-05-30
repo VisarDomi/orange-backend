@@ -18,7 +18,7 @@ def get_reservations(company_id):
     return reservations_list
 
 
-def get_reservation_by_id(reservation_id, company_id):
+def get_reservation(reservation_id, company_id):
     reservation = backend.get_reservation(reservation_id, company_id)
     reservation_dict = reservation.to_dict()
 

@@ -18,7 +18,7 @@ def get_invoices(reservation_id):
     return invoices_list
 
 
-def get_invoice_by_id(invoice_id, reservation_id):
+def get_invoice(invoice_id, reservation_id):
     invoice = backend.get_invoice(invoice_id, reservation_id)
     invoice_dict = invoice.to_dict()
 

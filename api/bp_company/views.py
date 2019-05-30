@@ -24,7 +24,7 @@ def get_companys():
 @token_auth.login_required
 def get_company(company_id):
 
-    return domain.get_company_by_id(company_id)
+    return domain.get_company(company_id)
 
 
 # order is route, schema, auth

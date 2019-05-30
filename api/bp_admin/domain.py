@@ -18,7 +18,7 @@ def get_admins():
     return admins_list
 
 
-def get_admin_by_id(admin_id):
+def get_admin(admin_id):
     admin = backend.get_admin(admin_id)
     admin_dict = admin.to_dict()
 

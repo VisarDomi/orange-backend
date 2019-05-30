@@ -18,7 +18,7 @@ def get_companys():
     return companys_list
 
 
-def get_company_by_id(company_id):
+def get_company(company_id):
     company = backend.get_company(company_id)
     company_dict = company.to_dict()
 
@@ -46,8 +46,8 @@ def get_invoices(company_id):
     return invoices_list
 
 
-def get_invoice_by_id(invoice_id):
-    invoice = backend.get_invoice(invoice_id)
+def get_invoice(company_id, invoice_id):
+    invoice = backend.get_invoice(company_id, invoice_id)
     invoice_dict = invoice.to_dict()
 
     return invoice_dict
