@@ -21,6 +21,9 @@
     },
     "status": {
       "type": "string"
+    },
+    "employee_ids": {
+      "type": "array"
     }
   },
   "additionalProperties": false

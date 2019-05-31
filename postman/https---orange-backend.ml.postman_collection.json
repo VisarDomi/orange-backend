@@ -69,7 +69,7 @@
 							"bearer": [
 								{
 									"key": "token",
-									"value": "fv+UmLq+q/aIcGCBisxmRqUYhc05xo6q",
+									"value": "j2tIctsqePJRIs1Sf2dnRKA4Zc3b5lI2",
 									"type": "string"
 								}
 							]
@@ -114,7 +114,7 @@
 							"bearer": [
 								{
 									"key": "token",
-									"value": "fv+UmLq+q/aIcGCBisxmRqUYhc05xo6q",
+									"value": "j2tIctsqePJRIs1Sf2dnRKA4Zc3b5lI2",
 									"type": "string"
 								}
 							]
@@ -160,7 +160,7 @@
 							"bearer": [
 								{
 									"key": "token",
-									"value": "fv+UmLq+q/aIcGCBisxmRqUYhc05xo6q",
+									"value": "j2tIctsqePJRIs1Sf2dnRKA4Zc3b5lI2",
 									"type": "string"
 								}
 							]
@@ -181,14 +181,14 @@
 							"raw": ""
 						},
 						"url": {
-							"raw": "{{url}}/api/user/1",
+							"raw": "{{url}}/api/user/9",
 							"host": [
 								"{{url}}"
 							],
 							"path": [
 								"api",
 								"user",
-								"1"
+								"9"
 							]
 						}
 					},
@@ -513,7 +513,7 @@
 							"bearer": [
 								{
 									"key": "token",
-									"value": "nxVcKE5BIU44KFEbSs+FffUzXnfiMH8s",
+									"value": "j2tIctsqePJRIs1Sf2dnRKA4Zc3b5lI2",
 									"type": "string"
 								}
 							]
@@ -651,7 +651,7 @@
 							"bearer": [
 								{
 									"key": "token",
-									"value": "nxVcKE5BIU44KFEbSs+FffUzXnfiMH8s",
+									"value": "j2tIctsqePJRIs1Sf2dnRKA4Zc3b5lI2",
 									"type": "string"
 								}
 							]
@@ -698,7 +698,7 @@
 							"bearer": [
 								{
 									"key": "token",
-									"value": "nxVcKE5BIU44KFEbSs+FffUzXnfiMH8s",
+									"value": "j2tIctsqePJRIs1Sf2dnRKA4Zc3b5lI2",
 									"type": "string"
 								}
 							]
@@ -719,7 +719,7 @@
 							"raw": ""
 						},
 						"url": {
-							"raw": "{{url}}/api/admin/invoice/1",
+							"raw": "{{url}}/api/admin/invoice/21",
 							"host": [
 								"{{url}}"
 							],
@@ -727,7 +727,7 @@
 								"api",
 								"admin",
 								"invoice",
-								"1"
+								"21"
 							]
 						},
 						"description": "get users with token"
@@ -893,7 +893,7 @@
 							"bearer": [
 								{
 									"key": "token",
-									"value": "fv+UmLq+q/aIcGCBisxmRqUYhc05xo6q",
+									"value": "j2tIctsqePJRIs1Sf2dnRKA4Zc3b5lI2",
 									"type": "string"
 								}
 							]
@@ -911,7 +911,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"full_name\": \"companytest2\",\r\n    \"user_id\": \"5\"\r\n}"
+							"raw": "{\r\n    \"full_name\": \"companytest2\",\r\n    \"user_id\": \"9\"\r\n}"
 						},
 						"url": {
 							"raw": "{{url}}/api/company",
@@ -938,7 +938,7 @@
 							"bearer": [
 								{
 									"key": "token",
-									"value": "fv+UmLq+q/aIcGCBisxmRqUYhc05xo6q",
+									"value": "j2tIctsqePJRIs1Sf2dnRKA4Zc3b5lI2",
 									"type": "string"
 								}
 							]
@@ -1255,7 +1255,14 @@
 					},
 					"request": {
 						"auth": {
-							"type": "noauth"
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "cGjQXvu0hfB//Hj8ZIUqsqjhVIspfVnP",
+									"type": "string"
+								}
+							]
 						},
 						"method": "GET",
 						"header": [
@@ -1438,7 +1445,7 @@
 							"bearer": [
 								{
 									"key": "token",
-									"value": "2hqAL/Al4yPXEv65AXQQ1jnX0NSOs/Zc",
+									"value": "f4sZoJUj6bqZ8YxNGSC7jMDEijAk7fqC",
 									"type": "string"
 								}
 							]
@@ -1456,17 +1463,17 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"code\": \"datetime6\",\r\n    \"pickup\": \"here\",\r\n    \"destination\": \"there\",\r\n    \"date\": \"2019-12-31\",\r\n    \"time\": \"13:45:39\",\r\n    \"status\": \"ongoing\"\r\n}"
+							"raw": "{\r\n    \"code\": \"cod1\",\r\n    \"pickup\": \"here\",\r\n    \"destination\": \"there\",\r\n    \"date\": \"2019-12-31\",\r\n    \"time\": \"13:45:39\",\r\n    \"status\": \"unassigned\",\r\n    \"employee_ids\": [\"1\", \"2\"]\r\n}"
 						},
 						"url": {
-							"raw": "{{url}}/api/company/2/reservation",
+							"raw": "{{url}}/api/company/1/reservation",
 							"host": [
 								"{{url}}"
 							],
 							"path": [
 								"api",
 								"company",
-								"2",
+								"1",
 								"reservation"
 							]
 						},
@@ -1485,7 +1492,7 @@
 							"bearer": [
 								{
 									"key": "token",
-									"value": "2hqAL/Al4yPXEv65AXQQ1jnX0NSOs/Zc",
+									"value": "cGjQXvu0hfB//Hj8ZIUqsqjhVIspfVnP",
 									"type": "string"
 								}
 							]
@@ -1577,7 +1584,7 @@
 							"bearer": [
 								{
 									"key": "token",
-									"value": "2hqAL/Al4yPXEv65AXQQ1jnX0NSOs/Zc",
+									"value": "f4sZoJUj6bqZ8YxNGSC7jMDEijAk7fqC",
 									"type": "string"
 								}
 							]
@@ -1595,18 +1602,18 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"full_name\": \"employeetest7@orange-backend.ml\",\n    \"address\": \"Rruga Budi2\"\n}"
+							"raw": "{\r\n    \"code\": \"cod111\",\r\n    \"pickup\": \"here\",\r\n    \"destination\": \"there\",\r\n    \"date\": \"2019-12-31\",\r\n    \"time\": \"13:45:39\",\r\n    \"status\": \"unassigned\",\r\n    \"employee_ids\": [\"1\", \"2\"]\r\n}"
 						},
 						"url": {
-							"raw": "{{url}}/api/company/2/employee/3",
+							"raw": "{{url}}/api/company/1/reservation/3",
 							"host": [
 								"{{url}}"
 							],
 							"path": [
 								"api",
 								"company",
-								"2",
-								"employee",
+								"1",
+								"reservation",
 								"3"
 							]
 						},
@@ -1689,10 +1696,10 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"ref\": \"ref1\",\r\n    \"date\": \"2018-12-31\",\r\n    \"due\": \"2019-12-31\",\r\n    \"from_business_name\": \"adsf\",\r\n    \"from_addressline_1\": \"adsfasd\",\r\n    \"from_addressline_2\": \"wer\",\r\n    \"from_city\": \"werf\",\r\n    \"from_postcode\": \"sdf\",\r\n    \"from_vat\": \"sdsf\",\r\n    \"from_phone\": \"sdqwf\",\r\n    \"to_client_name\": \"sdaflk\",\r\n    \"to_addressline_1\": \"werjo\",\r\n    \"to_addressline_2\": \"wer\",\r\n    \"to_city\": \"werg\",\r\n    \"to_postcode\": \"edfg\",\r\n    \"to_vat\": \"sdwef\",\r\n    \"to_phone\": \"sdrf\",\r\n    \"payment_account_name\": \"weroui\",\r\n    \"payment_account_sortcode\": \"weroi\",\r\n    \"payment_account_number\": \"235890\",\r\n    \"invoice_notes\": \"aerguiopd\",\r\n    \"sub_total\": \"213\",\r\n    \"tax\": \"123\",\r\n    \"grand_total\": \"569\"\r\n}"
+							"raw": "{\r\n    \"ref\": \"ref1\",\r\n    \"date\": \"2018-12-31\",\r\n    \"due\": \"2019-12-31\",\r\n    \"from_business_name\": \"adsf\",\r\n    \"from_addressline_1\": \"adsfasd\",\r\n    \"from_addressline_2\": \"wer\",\r\n    \"from_city\": \"werf\",\r\n    \"from_postcode\": \"sdf\",\r\n    \"from_vat\": \"sdsf\",\r\n    \"from_phone\": \"sdqwf\",\r\n    \"to_client_name\": \"sdaflk\",\r\n    \"to_addressline_1\": \"werjo\",\r\n    \"to_addressline_2\": \"wer\",\r\n    \"to_city\": \"werg\",\r\n    \"to_postcode\": \"edfg\",\r\n    \"to_vat\": \"sdwef\",\r\n    \"to_phone\": \"sdrf\",\r\n    \"payment_account_name\": \"weroui\",\r\n    \"payment_account_sortcode\": \"weroi\",\r\n    \"payment_account_number\": \"235890\",\r\n    \"invoice_notes\": \"aerguiopd\",\r\n    \"discount\": \"324\"\r\n    \"sub_total\": \"213\",\r\n    \"tax\": \"123\",\r\n    \"grand_total\": \"569\"\r\n}"
 						},
 						"url": {
-							"raw": "{{url}}/api/admin/reservation/2/invoice",
+							"raw": "{{url}}/api/admin/reservation/1/invoice",
 							"host": [
 								"{{url}}"
 							],
@@ -1700,7 +1707,7 @@
 								"api",
 								"admin",
 								"reservation",
-								"2",
+								"1",
 								"invoice"
 							]
 						},
@@ -1831,7 +1838,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"ref\": \"ref2\",\r\n    \"date\": \"2018-12-31\",\r\n    \"due\": \"2019-12-31\",\r\n    \"from_business_name\": \"adsf\",\r\n    \"from_addressline_1\": \"adsfasd\",\r\n    \"from_addressline_2\": \"wer\",\r\n    \"from_city\": \"werf\",\r\n    \"from_postcode\": \"sdf\",\r\n    \"from_vat\": \"sdsf\",\r\n    \"from_phone\": \"sdqwf\",\r\n    \"to_client_name\": \"sdaflk\",\r\n    \"to_addressline_1\": \"werjo\",\r\n    \"to_addressline_2\": \"wer\",\r\n    \"to_city\": \"werg\",\r\n    \"to_postcode\": \"edfg\",\r\n    \"to_vat\": \"sdwef\",\r\n    \"to_phone\": \"sdrf\",\r\n    \"payment_account_name\": \"weroui\",\r\n    \"payment_account_sortcode\": \"weroi\",\r\n    \"payment_account_number\": \"235890\",\r\n    \"invoice_notes\": \"aerguiopd\",\r\n    \"sub_total\": \"213\",\r\n    \"tax\": \"123\",\r\n    \"grand_total\": \"569\"\r\n}"
+							"raw": "{\r\n    \"ref\": \"ref2\",\r\n    \"date\": \"2018-12-31\",\r\n    \"due\": \"2019-12-31\",\r\n    \"from_business_name\": \"adsf\",\r\n    \"from_addressline_1\": \"adsfasd\",\r\n    \"from_addressline_2\": \"wer\",\r\n    \"from_city\": \"werf\",\r\n    \"from_postcode\": \"sdf\",\r\n    \"from_vat\": \"sdsf\",\r\n    \"from_phone\": \"sdqwf\",\r\n    \"to_client_name\": \"sdaflk\",\r\n    \"to_addressline_1\": \"werjo\",\r\n    \"to_addressline_2\": \"wer\",\r\n    \"to_city\": \"werg\",\r\n    \"to_postcode\": \"edfg\",\r\n    \"to_vat\": \"sdwef\",\r\n    \"to_phone\": \"sdrf\",\r\n    \"payment_account_name\": \"weroui\",\r\n    \"payment_account_sortcode\": \"weroi\",\r\n    \"payment_account_number\": \"235890\",\r\n    \"invoice_notes\": \"aerguiopd\",\r\n    \"discount\": \"34\"\r\n    \"sub_total\": \"213\",\r\n    \"tax\": \"123\",\r\n    \"grand_total\": \"569\"\r\n}"
 						},
 						"url": {
 							"raw": "{{url}}/api/admin/reservation/4/invoice/3",

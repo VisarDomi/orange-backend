@@ -2,18 +2,19 @@ import base64
 import os
 from werkzeug.security import generate_password_hash, check_password_hash
 from datetime import datetime, timedelta
-from sqlalchemy import (
-    Integer,
-    String,
-    Column,
-    DateTime,
-    Date,
-    Text,
-    ForeignKey,
-)
+from sqlalchemy import Table, Integer, String, Column, DateTime, Date, Text, ForeignKey
 from sqlalchemy.orm import relationship
 from ..common.database import BaseModel
 from ..common.serializers import ModelSerializerMixin
+
+
+# employee_reservation
+employee_reservation = Table(
+    "employee_reservation",
+    BaseModel.metadata,
+    Column("employee_id", Integer, ForeignKey("employees.id")),
+    Column("reservation_id", Integer, ForeignKey("reservations.id")),
+)
 
 
 class User(BaseModel, ModelSerializerMixin):
@@ -110,6 +111,12 @@ class Employee(BaseModel, ModelSerializerMixin):
     company = relationship("Company", back_populates="employees")
     company_id = Column(Integer, ForeignKey("companys.id"))
 
+    # reservations
+    reservations = relationship(
+        "Reservation", secondary="employee_reservation", back_populates="employees", lazy="dynamic"
+    )
+
+
     def __repr__(self):
         return f"{self.__class__.__name__}({self.full_name}, id = {self.id})"
 
@@ -150,6 +157,11 @@ class Reservation(BaseModel, ModelSerializerMixin):
 
     # invoices
     invoices = relationship("Invoice", back_populates="reservation", lazy="dynamic")
+
+    # employees
+    employees = relationship(
+        "Employee", secondary="employee_reservation", back_populates="reservations", lazy="dynamic"
+    )
 
     def __repr__(self):
         return f"{self.__class__.__name__}({self.code}, id = {self.id})"
