@@ -113,9 +113,11 @@ class Employee(BaseModel, ModelSerializerMixin):
 
     # reservations
     reservations = relationship(
-        "Reservation", secondary="employee_reservation", back_populates="employees", lazy="dynamic"
+        "Reservation",
+        secondary="employee_reservation",
+        back_populates="employees",
+        lazy="dynamic",
     )
-
 
     def __repr__(self):
         return f"{self.__class__.__name__}({self.full_name}, id = {self.id})"
@@ -160,7 +162,10 @@ class Reservation(BaseModel, ModelSerializerMixin):
 
     # employees
     employees = relationship(
-        "Employee", secondary="employee_reservation", back_populates="reservations", lazy="dynamic"
+        "Employee",
+        secondary="employee_reservation",
+        back_populates="reservations",
+        lazy="dynamic",
     )
 
     def __repr__(self):
