@@ -1,10 +1,11 @@
-from flask import g
+from flask import g, request
 from flask_httpauth import HTTPBasicAuth
 from flask_httpauth import HTTPTokenAuth
 from ..common.models import User
 from ..helper_functions.constants import EXCLUDE, EXPIRES_IN
 from ..helper_functions.common_function import apply_role_to_dict
 from . import bp
+from ..common.exceptions import NotCorrectRole
 
 
 basic_auth = HTTPBasicAuth()
@@ -37,6 +38,10 @@ def login():
     user = g.current_user
     user_dict = user.to_dict(exclude=EXCLUDE)
     user_dict = apply_role_to_dict(user, user_dict)
+    login_data = request.json
+    if login_data["role"] != user_dict["role"]:
+        msg = "This is not the correct role, cannot proceed login"
+        raise NotCorrectRole(message=msg)
 
     return user_dict
 

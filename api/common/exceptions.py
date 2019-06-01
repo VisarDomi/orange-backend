@@ -82,3 +82,6 @@ class CannotGetOthersData(InvalidPermissions):
 
 class CannotCreateData(InvalidPermissions):
     pass
+
+class NotCorrectRole(InvalidPermissions):
+    pass
