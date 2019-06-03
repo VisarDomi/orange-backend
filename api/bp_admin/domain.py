@@ -66,6 +66,14 @@ def get_reservations():
         employees = []
         for employee in reservation.employees.all():
             employees.append(employee.to_dict())
+        if reservation.company:
+            reservation_dict["company"] = reservation.company.to_dict()
+        else:
+            reservation_dict["company"] = {}
+        if reservation.driver:
+            reservation_dict["driver"] = reservation.driver.to_dict()
+        else:
+            reservation_dict["driver"] = {}
         reservation_dict["employees"] = employees
         reservations_list.append(reservation_dict)
 
@@ -78,6 +86,14 @@ def get_reservation(reservation_id):
     employees = []
     for employee in reservation.employees.all():
         employees.append(employee.to_dict())
+    if reservation.company:
+        reservation_dict["company"] = reservation.company.to_dict()
+    else:
+        reservation_dict["company"] = {}
+    if reservation.driver:
+        reservation_dict["driver"] = reservation.driver.to_dict()
+    else:
+        reservation_dict["driver"] = {}
     reservation_dict["employees"] = employees
 
     return reservation_dict
@@ -89,6 +105,14 @@ def update_reservation(reservation_data, reservation_id):
     employees = []
     for employee in reservation.employees.all():
         employees.append(employee.to_dict())
+    if reservation.company:
+        reservation_dict["company"] = reservation.company.to_dict()
+    else:
+        reservation_dict["company"] = {}
+    if reservation.driver:
+        reservation_dict["driver"] = reservation.driver.to_dict()
+    else:
+        reservation_dict["driver"] = {}
     reservation_dict["employees"] = employees
 
     return reservation_dict
