@@ -2,10 +2,15 @@ from ..common.exceptions import (
     CannotChangeOthersData,
     CannotDeleteOthersData,
     CannotCreateData,
+    CannotGetOthersData,
 )
 from ..common.models import Employee
 from ..helper_functions.create import create_entity
-from ..helper_functions.get_by_id import get_employee_by_id, get_company_by_id
+from ..helper_functions.get_by_id import (
+    get_reservation_by_id,
+    get_employee_by_id,
+    get_company_by_id,
+)
 from ..helper_functions.common_function import can_it_update
 
 
@@ -57,3 +62,20 @@ def delete_employee(employee_id, company_id):
     else:
         msg = "You can't delete other people's data."
         raise CannotDeleteOthersData(message=msg)
+
+
+def get_reservations(employee_id, company_id):
+    employee = get_employee_by_id(employee_id)
+    reservations = employee.reservations.all()
+
+    return reservations
+
+
+def get_reservation(employee_id, company_id, reservation_id):
+    reservation = get_reservation_by_id(reservation_id)
+    employee = get_employee_by_id(employee_id)
+    if reservation not in employee.reservations.all():
+        msg = "Cannot get other's reservations"
+        raise CannotGetOthersData(message=msg)
+
+    return reservation

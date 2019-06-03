@@ -42,3 +42,17 @@ def delete_employee(employee_id, company_id):
     domain.delete_employee(employee_id, company_id)
 
     return {"message": "Employee with `id: %s` has been deleted." % employee_id}
+
+
+@bp.route("/<employee_id>/reservation/all", methods=["GET"])
+@token_auth.login_required
+def get_reservations(employee_id, company_id):
+
+    return domain.get_reservations(employee_id, company_id)
+
+
+@bp.route("/<employee_id>/reservation/<reservation_id>", methods=["GET"])
+@token_auth.login_required
+def get_reservation(employee_id, company_id, reservation_id):
+
+    return domain.get_reservation(employee_id, company_id, reservation_id)

@@ -1344,6 +1344,104 @@
 					"response": []
 				},
 				{
+					"name": "{{url}}/api/company/1/employee/3/reservation/all",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "nxVcKE5BIU44KFEbSs+FffUzXnfiMH8s",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Secure-Api-Key",
+								"value": "{{Secure-Api-Key}}"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{url}}/api/company/1/employee/2/reservation/all",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"company",
+								"1",
+								"employee",
+								"2",
+								"reservation",
+								"all"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "{{url}}/api/company/1/employee/3/reservation/1",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "nxVcKE5BIU44KFEbSs+FffUzXnfiMH8s",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Secure-Api-Key",
+								"value": "{{Secure-Api-Key}}"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{url}}/api/company/1/employee/2/reservation/3",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"company",
+								"1",
+								"employee",
+								"2",
+								"reservation",
+								"3"
+							]
+						}
+					},
+					"response": []
+				},
+				{
 					"name": "{{url}}/api/company/1/employee/3",
 					"request": {
 						"auth": {
