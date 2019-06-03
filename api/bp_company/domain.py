@@ -41,6 +41,14 @@ def get_invoices(company_id):
     invoices_list = []
     for invoice in invoices:
         invoice_dict = invoice.to_dict()
+        employees = []
+        for employee in invoice.reservation.employees.all():
+            employees.append(employee.to_dict())
+        if invoice.reservation.destination:
+            invoice_dict["destination"] = invoice.reservation.destination
+        else:
+            invoice_dict["destination"] = ""
+        invoice_dict["employees"] = employees
         invoices_list.append(invoice_dict)
 
     return invoices_list
@@ -49,5 +57,13 @@ def get_invoices(company_id):
 def get_invoice(company_id, invoice_id):
     invoice = backend.get_invoice(company_id, invoice_id)
     invoice_dict = invoice.to_dict()
+    employees = []
+    for employee in invoice.reservation.employees.all():
+        employees.append(employee.to_dict())
+    if invoice.reservation.destination:
+        invoice_dict["destination"] = invoice.reservation.destination
+    else:
+        invoice_dict["destination"] = ""
+    invoice_dict["employees"] = employees
 
     return invoice_dict
