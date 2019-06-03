@@ -42,6 +42,14 @@ def login():
     if login_data["role"] != user_dict["role"]:
         msg = "This is not the correct role, cannot proceed login"
         raise NotCorrectRole(message=msg)
+    if user_dict["role"] == "admin":
+        user_dict["full_name"] = user.admin.full_name
+    if user_dict["role"] == "company":
+        user_dict["full_name"] = user.company.full_name
+    if user_dict["role"] == "employee":
+        user_dict["full_name"] = user.employee.full_name
+    if user_dict["role"] == "driver":
+        user_dict["full_name"] = user.driver.full_name
 
     return user_dict
 
