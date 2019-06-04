@@ -21,7 +21,7 @@ su ubuntu
 3. create ssh keys with no password:
 ssh-keygen
 
-4. add public keys of people so they can enter to the server with ssh. they can make those keys by typing ssh-keygen into git bash:
+4. add public keys of people so they can enter to the server with ssh. tip: you can make those keys by typing ssh-keygen into git bash:
 echo ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQC0ssiRxRsqwt4us+EfpJYuCrLlox/9lbyOBEu5Bkuf67Rh3WlzlTv113GM5YANusReJLhEM1l3rmhi6l2ELIs6bPh0vE92Z01J3CfF9QGG47U4DkauoAjzBhM5BOFz922vbAXTdJ/6VFG5Y8b/mz7cAS7MUMJ90b0Kz0l9TKoRZSawmO9gbhuPjSk/TBe+LoWSrPCXFhOeL4/BVGYWeoVk+bbsfjud1lYPDcD2RWC0olp2Zw/c6sYQGNdzTNVyMXUFZpMygn8KVbBWvTliujLhdUNei6eY3bLBiXrXeEY3wxFBcuQcM2HSovcOMj0K+HmaZdkMS5LjNr06Q/4/5IPl visar@DESKTOP-F8LD6IB >> ~/.ssh/authorized_keys
 chmod 600 ~/.ssh/authorized_keys
 
