@@ -39,7 +39,7 @@ def create_admin(admin_data):
     return admin
 
 
-user_data = {"email": "admin@orange-backend.ml", "password": "password"}
+user_data = {"email": "admin@orange.com", "password": "password"}
 user = create_user(user_data)
 user_id = user.id
 print("user is:", user)
