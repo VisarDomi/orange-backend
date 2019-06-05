@@ -7,9 +7,6 @@
     "code": {
       "type": "string"
     },
-    "pickup": {
-      "type": "string"
-    },
     "destination": {
       "type": "string"
     },
@@ -21,9 +18,6 @@
     },
     "status": {
       "type": "string"
-    },
-    "employee_ids": {
-      "type": "array"
     }
   },
   "additionalProperties": false

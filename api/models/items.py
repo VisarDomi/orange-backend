@@ -4,12 +4,18 @@ from ..common.database import BaseModel
 from ..common.serializers import ModelSerializerMixin
 
 
-# employee_reservation
-employee_reservation = Table(
-    "employee_reservation",
+reservation_stop = Table(
+    "reservation_stop",
+    BaseModel.metadata,
+    Column("reservation_id", Integer, ForeignKey("reservations.id")),
+    Column("stop_id", Integer, ForeignKey("stops.id")),
+)
+
+employee_stop = Table(
+    "employee_stop",
     BaseModel.metadata,
     Column("employee_id", Integer, ForeignKey("employees.id")),
-    Column("reservation_id", Integer, ForeignKey("reservations.id")),
+    Column("stop_id", Integer, ForeignKey("stops.id")),
 )
 
 
@@ -18,10 +24,12 @@ class Reservation(BaseModel, ModelSerializerMixin):
     id = Column(Integer, primary_key=True, autoincrement=True)
 
     code = Column(String, default="no_code")
-    pickup = Column(String)
     destination = Column(String)
     date = Column(Date)
     time = Column(String)
+    big_luggage = Column(String)
+    small_luggage = Column(String)
+    payment_method = Column(String)
     status = Column(String)
 
     company = relationship("Company", back_populates="reservations")
@@ -33,10 +41,10 @@ class Reservation(BaseModel, ModelSerializerMixin):
     # invoices
     invoices = relationship("Invoice", back_populates="reservation", lazy="dynamic")
 
-    # employees
-    employees = relationship(
-        "Employee",
-        secondary="employee_reservation",
+    # stops
+    stops = relationship(
+        "Stop",
+        secondary="reservation_stop",
         back_populates="reservations",
         lazy="dynamic",
     )
@@ -144,6 +152,20 @@ class Stop(BaseModel, ModelSerializerMixin):
 
     name = Column(String, default="no_name")
     pickup = Column(String)
+
+    # employees, reservations
+    employees = relationship(
+        "Employee",
+        secondary="employee_stop",
+        back_populates="stops",
+        lazy="dynamic",
+    )
+    reservations = relationship(
+        "Reservation",
+        secondary="reservation_stop",
+        back_populates="stops",
+        lazy="dynamic",
+    )
 
     def __repr__(self):
         return f"{self.__class__.__name__}({self.name}, id = {self.id})"

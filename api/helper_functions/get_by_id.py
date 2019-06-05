@@ -1,7 +1,7 @@
 from sqlalchemy.orm.exc import NoResultFound
 from ..common.exceptions import RecordNotFound, InvalidURL
 from ..models.users import User, Admin, Driver, Employee, Company
-from ..models.items import Reservation, Invoice, Item
+from ..models.items import Reservation, Invoice, Item, Itinerary, ItineraryMaster, Stop
 
 
 def get_entity(entity_id, Entity):
@@ -22,6 +22,12 @@ def get_entity(entity_id, Entity):
         entity_name = "Invoice"
     if Entity == Item:
         entity_name = "Item"
+    if Entity == Itinerary:
+        entity_name = "Itinerary"
+    if Entity == ItineraryMaster:
+        entity_name = "ItineraryMaster"
+    if Entity == Stop:
+        entity_name = "Stop"
     try:
         entity = Entity.query.filter(Entity.id == int(entity_id)).one()
     except NoResultFound:
@@ -80,3 +86,21 @@ def get_item_by_id(item_id):
     item = get_entity(item_id, Item)
 
     return item
+
+
+def get_itinerary_by_id(itinerary_id):
+    itinerary = get_entity(itinerary_id, Item)
+
+    return itinerary
+
+
+def get_itinerary_master_by_id(itinerary_master_id):
+    itinerary_master = get_entity(itinerary_master_id, Item)
+
+    return itinerary_master
+
+
+def get_stop_by_id(stop_id):
+    stop = get_entity(stop_id, Item)
+
+    return stop

@@ -121,10 +121,10 @@ class Employee(BaseModel, ModelSerializerMixin):
     company = relationship("Company", back_populates="employees")
     company_id = Column(Integer, ForeignKey("companys.id"))
 
-    # reservations
-    reservations = relationship(
-        "Reservation",
-        secondary="employee_reservation",
+    # stops
+    stops = relationship(
+        "Stop",
+        secondary="employee_stop",
         back_populates="employees",
         lazy="dynamic",
     )

@@ -1,17 +1,16 @@
 {
-  "title": "Create company",
-  "description": "Create a company object",
+  "title": "Create itinerary_master",
+  "description": "Create a itinerary_master object",
   "type": "object",
   "$schema": "http://json-schema.org/draft-04/schema",
-  "required": ["user_id"],
   "properties": {
-    "full_name": {
+    "name": {
       "type": "string"
     },
-    "payment_frequency": {
+    "departure": {
       "type": "string"
     },
-    "user_id": {
+    "destination": {
       "type": "string"
     }
   },

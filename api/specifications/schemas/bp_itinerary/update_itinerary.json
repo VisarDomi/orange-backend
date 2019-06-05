@@ -1,23 +1,19 @@
 {
-  "title": "Create reservation",
-  "description": "Create a reservation object",
+  "title": "Update itinerary",
+  "description": "Update a itinerary object",
   "type": "object",
   "$schema": "http://json-schema.org/draft-04/schema",
-  "required": ["date", "time"],
   "properties": {
-    "code": {
+    "name": {
+      "type": "string"
+    },
+    "departure": {
       "type": "string"
     },
     "destination": {
       "type": "string"
     },
-    "date": {
-      "type": "string"
-    },
-    "time": {
-      "type": "string"
-    },
-    "status": {
+    "price": {
       "type": "string"
     }
   },

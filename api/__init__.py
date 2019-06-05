@@ -16,6 +16,9 @@ from .bp_item import bp as item_bp
 from .bp_company import bp as company_bp
 from .bp_employee import bp as employee_bp
 from .bp_reservation import bp as reservation_bp
+from .bp_itinerary import bp as itinerary_bp
+from .bp_itinerary_master import bp as itinerary_master_bp
+from .bp_stop import bp as stop_bp
 import os
 from config import Config
 import logging
@@ -42,6 +45,9 @@ def create_app(config_class=Config):
     app.register_blueprint(company_bp, url_prefix="/api/company")
     app.register_blueprint(employee_bp, url_prefix="/api/company/<company_id>/employee")
     app.register_blueprint(reservation_bp, url_prefix="/api/company/<company_id>/reservation")
+    app.register_blueprint(itinerary_bp, url_prefix="/api/company/<company_id>/itinerary")
+    app.register_blueprint(itinerary_master_bp, url_prefix="/api/itinerary_master")
+    app.register_blueprint(stop_bp, url_prefix="/api/stop")
 
     # register custom response class
     app.response_class = response.JSONResponse
