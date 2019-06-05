@@ -16,7 +16,7 @@
 							"basic": [
 								{
 									"key": "username",
-									"value": "admin@orange-backend.ml",
+									"value": "admin@orange.com",
 									"type": "string"
 								},
 								{
@@ -69,7 +69,7 @@
 							"bearer": [
 								{
 									"key": "token",
-									"value": "j2tIctsqePJRIs1Sf2dnRKA4Zc3b5lI2",
+									"value": "/KN0GKKYPuvLiMn+5jtlLKgVIO8WURrI",
 									"type": "string"
 								}
 							]
@@ -87,7 +87,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"email\": \"usertest9@orange-backend.ml\",\r\n    \"password\": \"password\"\r\n}"
+							"raw": "{\r\n    \"email\": \"user2@orange.com\",\r\n    \"password\": \"password\"\r\n}"
 						},
 						"url": {
 							"raw": "{{url}}/api/user",
@@ -276,6 +276,47 @@
 								"8"
 							]
 						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "dataintegration",
+			"item": [
+				{
+					"name": "{{url}}/api/dataintegration/books",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Secure-Api-Key",
+								"value": "{{Secure-Api-Key}}"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{url}}/api/dataintegration/books",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"dataintegration",
+								"books"
+							]
+						},
+						"description": "get users with token"
 					},
 					"response": []
 				}
@@ -893,7 +934,7 @@
 							"bearer": [
 								{
 									"key": "token",
-									"value": "j2tIctsqePJRIs1Sf2dnRKA4Zc3b5lI2",
+									"value": "/KN0GKKYPuvLiMn+5jtlLKgVIO8WURrI",
 									"type": "string"
 								}
 							]
@@ -911,7 +952,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"full_name\": \"companytest2\",\r\n    \"user_id\": \"9\"\r\n}"
+							"raw": "{\r\n    \"full_name\": \"company1\",\r\n    \"user_id\": \"2\"\r\n}"
 						},
 						"url": {
 							"raw": "{{url}}/api/company",
@@ -1114,7 +1155,7 @@
 							"bearer": [
 								{
 									"key": "token",
-									"value": "cGjQXvu0hfB//Hj8ZIUqsqjhVIspfVnP",
+									"value": "beebuuisroTX+DItAQOGmlmYmO9drrSu",
 									"type": "string"
 								}
 							]

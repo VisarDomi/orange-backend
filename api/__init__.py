@@ -5,6 +5,7 @@ from .common.middleware import (
     teardown_appcontext_middleware,
 )
 from .common.middleware import response
+from .bp_dataintegration import bp as dataintegration_bp
 from .bp_user import bp as user_bp
 from .bp_auth import bp as auth_bp
 from .bp_admin import bp as admin_bp
@@ -30,6 +31,7 @@ def create_app(config_class=Config):
     app.config.from_object(config_class)
 
     # register all blueprints
+    app.register_blueprint(dataintegration_bp, url_prefix="/api/dataintegration")
     app.register_blueprint(user_bp, url_prefix="/api/user")
     app.register_blueprint(auth_bp, url_prefix="/api/auth")
     app.register_blueprint(admin_bp, url_prefix="/api/admin")
