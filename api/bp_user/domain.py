@@ -1,5 +1,5 @@
 from ..helper_functions.constants import ONLY, EXCLUDE
-from ..helper_functions.common_function import apply_role_to_dict
+from ..helper_functions.common_functions import apply_role_to_dict
 from . import backend
 
 

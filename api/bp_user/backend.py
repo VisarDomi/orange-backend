@@ -5,10 +5,10 @@ from ..common.exceptions import (
     CannotChangeOthersData,
     CannotDeleteOthersData,
 )
-from ..common.models import User
+from ..models.users import User
 from ..helper_functions.get_by_id import get_user_by_id
 from ..helper_functions.constants import EXPIRES_IN
-from ..helper_functions.common_function import can_it_update
+from ..helper_functions.common_functions import can_it_update
 
 
 def create_user(user_data):

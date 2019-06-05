@@ -1,5 +1,8 @@
 local computer
-
+ssh-keygen, sourcetree preferred auth ssh
+git config --global credential.helper 'cache --timeout 3600000'
+git config --global user.name "Visar Domi"
+git config --global user.email "visardomi4@gmail.com"
 
 end local computer
 

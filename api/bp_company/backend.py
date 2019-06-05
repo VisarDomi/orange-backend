@@ -5,10 +5,10 @@ from ..common.exceptions import (
     CannotGetOthersData,
     CannotCreateData,
 )
-from ..common.models import Company
+from ..models.users import Company
 from ..helper_functions.create import create_entity
 from ..helper_functions.get_by_id import get_company_by_id, get_invoice_by_id
-from ..helper_functions.common_function import can_it_update
+from ..helper_functions.common_functions import can_it_update
 
 
 def create_company(company_data):

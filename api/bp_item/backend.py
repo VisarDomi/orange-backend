@@ -5,7 +5,7 @@ from ..common.exceptions import (
     CannotCreateData,
     CannotGetOthersData,
 )
-from ..common.models import Item
+from ..models.items import Item
 from ..helper_functions.get_by_id import get_item_by_id, get_invoice_by_id
 
 

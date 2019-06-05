@@ -4,13 +4,13 @@ from ..common.exceptions import (
     CannotCreateData,
     CannotGetOthersData,
 )
-from ..common.models import Reservation
+from ..models.items import Reservation
 from ..helper_functions.get_by_id import (
     get_employee_by_id,
     get_reservation_by_id,
     get_company_by_id,
 )
-from ..helper_functions.common_function import can_it_update
+from ..helper_functions.common_functions import can_it_update
 
 
 def create_reservation(reservation_data, company_id):

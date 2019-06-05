@@ -1,9 +1,9 @@
 from flask import g, request
 from flask_httpauth import HTTPBasicAuth
 from flask_httpauth import HTTPTokenAuth
-from ..common.models import User
+from ..models.users import User
 from ..helper_functions.constants import EXCLUDE, EXPIRES_IN
-from ..helper_functions.common_function import apply_role_to_dict
+from ..helper_functions.common_functions import apply_role_to_dict
 from . import bp
 from ..common.exceptions import NotCorrectRole
 

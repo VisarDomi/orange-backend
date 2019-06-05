@@ -1,15 +1,7 @@
 from sqlalchemy.orm.exc import NoResultFound
 from ..common.exceptions import RecordNotFound, InvalidURL
-from ..common.models import (
-    User,
-    Admin,
-    Driver,
-    Employee,
-    Company,
-    Reservation,
-    Invoice,
-    Item,
-)
+from ..models.users import User, Admin, Driver, Employee, Company
+from ..models.items import Reservation, Invoice, Item
 
 
 def get_entity(entity_id, Entity):
