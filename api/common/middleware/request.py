@@ -5,6 +5,27 @@ from ..database import db_session
 from ..exceptions import InvalidContentType, InvalidPermissions
 
 
+ALLOWED_FIRST_CONTENT_TYPE = "application/json"
+ALLOWED_SECOND_CONTENT_TYPE = "multipart/form-data"
+
+
+def resolve_content_type():
+    content_type = ""
+    content_type = request.headers.get("Content-Type")
+
+    is_first_content = False
+    is_second_content = False
+    if content_type:
+        is_first_content = ALLOWED_FIRST_CONTENT_TYPE in content_type
+        is_second_content = ALLOWED_SECOND_CONTENT_TYPE in content_type
+
+    is_invalid_content_type = True
+    # and is evaluated first, then not
+    is_invalid_content_type = not is_first_content and is_second_content
+
+    return content_type, is_invalid_content_type
+
+
 def ensure_content_type():
     """
     Ensures that the Content-Type for all requests
@@ -14,18 +35,12 @@ def ensure_content_type():
     `application/json` or `multipart/form-data`
     """
 
-    ALLOWED_FIRST_CONTENT_TYPE = "application/json"
-    ALLOWED_SECOND_CONTENT_TYPE = "multipart/form-data"
-    content_type = request.headers.get("Content-type")
+    # api exceptions from content_type
+    is_not_dataintegration = request.path != "/api/dataintegration/books"
 
+    content_type, is_invalid_content_type = resolve_content_type()
     if content_type:
-        is_not_first_content = ALLOWED_FIRST_CONTENT_TYPE not in content_type
-        is_not_second_content = ALLOWED_SECOND_CONTENT_TYPE not in content_type
-    else:
-        content_type = ""
-
-    if content_type:
-        if is_not_first_content and is_not_second_content:
+        if is_invalid_content_type and is_not_dataintegration:
             msg = (
                 f"Invalid content-type `{content_type}`. "
                 f"Only `{ALLOWED_FIRST_CONTENT_TYPE}` or "
@@ -35,7 +50,11 @@ def ensure_content_type():
 
 
 def ensure_public_unavailability():
-    if request.headers.get("Secure-Api-Key", "") != Config.SECURE_API_KEY:
+    is_not_dataintegration = request.path != "/api/dataintegration/books"
+    is_not_secure_api_key = (
+        request.headers.get("Secure-Api-Key", "") != Config.SECURE_API_KEY
+    )
+    if is_not_secure_api_key and is_not_dataintegration:
         msg = "You have the wrong api key."
         raise InvalidPermissions(message=msg)
 
