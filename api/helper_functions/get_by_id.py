@@ -13,10 +13,27 @@ from ..common.models import (
 
 
 def get_entity(entity_id, Entity):
+    entity_name = "Entity"
+    if Entity == User:
+        entity_name = "User"
+    if Entity == Admin:
+        entity_name = "Admin"
+    if Entity == Driver:
+        entity_name = "Driver"
+    if Entity == Employee:
+        entity_name = "Employee"
+    if Entity == Company:
+        entity_name = "Company"
+    if Entity == Reservation:
+        entity_name = "Reservation"
+    if Entity == Invoice:
+        entity_name = "Invoice"
+    if Entity == Item:
+        entity_name = "Item"
     try:
         entity = Entity.query.filter(Entity.id == int(entity_id)).one()
     except NoResultFound:
-        msg = f"There is no entity with id {entity_id}"
+        msg = f"There is no {entity_name} with id {entity_id}"
         raise RecordNotFound(message=msg)
     except (InvalidURL, ValueError):
         msg = f"This is not a valid URL: {entity_id}`"
