@@ -8,6 +8,7 @@ from ..common.exceptions import (
 from ..common.models import User
 from ..helper_functions.get_by_id import get_user_by_id
 from ..helper_functions.constants import EXPIRES_IN
+from ..helper_functions.common_function import can_it_update
 
 
 def create_user(user_data):
@@ -40,7 +41,9 @@ def get_user(user_id):
 
 
 def update_user(user_data, user_id):
-    if int(user_id) == g.current_user.id:
+    can_update = can_it_update()
+    is_current_user = int(user_id) == g.current_user.id
+    if is_current_user or can_update:
         user = get_user_by_id(user_id)
         user.update(**user_data)
         user.save()
@@ -53,7 +56,9 @@ def update_user(user_data, user_id):
 
 
 def delete_user(user_id):
-    if int(user_id) == g.current_user.id:
+    can_update = can_it_update()
+    is_current_user = int(user_id) == g.current_user.id
+    if is_current_user or can_update:
         user = get_user_by_id(user_id)
         user.delete()
     else:

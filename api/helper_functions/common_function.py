@@ -22,7 +22,7 @@ def apply_role_to_dict(user, user_dict):
     return user_dict
 
 
-def can_it_update(employee_id=0, company_id=0, driver_id=0, admin_id=0):
+def can_it_update(employee_id=0, company_id=0, driver_id=0):
     is_employee = False
     is_company = False
     is_driver = False
@@ -35,7 +35,7 @@ def can_it_update(employee_id=0, company_id=0, driver_id=0, admin_id=0):
     if g.current_user.driver:
         is_driver = int(driver_id) == g.current_user.driver.id
     if g.current_user.admin:
-        is_admin = int(admin_id) == g.current_user.admin.id
+        is_admin = True
     if is_company or is_employee or is_driver or is_admin:
         can_update = True
 

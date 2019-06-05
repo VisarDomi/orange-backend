@@ -1,5 +1,4 @@
 from . import request
-# from . import response
 
 
 def before_request_middleware(app):

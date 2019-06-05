@@ -1,4 +1,3 @@
-from flask import g
 from ..common.exceptions import (
     CannotChangeOthersData,
     CannotDeleteOthersData,
@@ -11,7 +10,8 @@ from ..helper_functions.common_function import can_it_update
 
 
 def create_driver(driver_data):
-    if g.current_user.admin:
+    can_update = can_it_update()
+    if can_update:
         driver = create_entity(driver_data, Driver)
     else:
         msg = "You can't create data."
