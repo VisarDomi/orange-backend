@@ -6,5 +6,4 @@ from . import domain
 def get_books():
 
     books = domain.get_books()
-    print("books", books)
     return books
