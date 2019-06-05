@@ -1,4 +1,3 @@
-from flask import g
 from ..common.exceptions import (
     CannotChangeOthersData,
     CannotDeleteOthersData,
@@ -17,7 +16,8 @@ from ..helper_functions.common_function import can_it_update
 
 
 def create_admin(admin_data):
-    if g.current_user.admin:
+    can_update = can_it_update()
+    if can_update:
         admin = create_entity(admin_data, Admin)
     else:
         msg = "You can't create data."
@@ -39,7 +39,7 @@ def get_admin(admin_id):
 
 
 def update_admin(admin_data, admin_id):
-    can_update = can_it_update(admin_id=admin_id)
+    can_update = can_it_update()
     if can_update:
         admin = get_admin_by_id(admin_id)
         admin.update(**admin_data)
@@ -52,7 +52,7 @@ def update_admin(admin_data, admin_id):
 
 
 def delete_admin(admin_id):
-    can_update = can_it_update(admin_id=admin_id)
+    can_update = can_it_update()
     if can_update:
         admin = get_admin_by_id(admin_id)
         admin.delete()
@@ -62,7 +62,8 @@ def delete_admin(admin_id):
 
 
 def get_invoices():
-    if g.current_user.admin:
+    can_update = can_it_update()
+    if can_update:
         invoices = Invoice.query.all()
     else:
         msg = "You can't get invoices."
@@ -72,7 +73,8 @@ def get_invoices():
 
 
 def get_invoice(invoice_id):
-    if g.current_user.admin:
+    can_update = can_it_update()
+    if can_update:
         invoice = get_invoice_by_id(invoice_id)
     else:
         msg = "You can't get invoice."
@@ -82,7 +84,8 @@ def get_invoice(invoice_id):
 
 
 def get_reservations():
-    if g.current_user.admin:
+    can_update = can_it_update()
+    if can_update:
         reservations = Reservation.query.all()
     else:
         msg = "You can't get reservations."
@@ -92,7 +95,8 @@ def get_reservations():
 
 
 def get_reservation(reservation_id):
-    if g.current_user.admin:
+    can_update = can_it_update()
+    if can_update:
         reservation = get_reservation_by_id(reservation_id)
     else:
         msg = "You can't get reservation."
@@ -102,7 +106,8 @@ def get_reservation(reservation_id):
 
 
 def update_reservation(reservation_data, reservation_id):
-    if g.current_user.admin:
+    can_update = can_it_update()
+    if can_update:
         driver_id = reservation_data.pop("driver_id")
         driver = get_driver_by_id(driver_id)
         reservation = get_reservation_by_id(reservation_id)
