@@ -12,9 +12,10 @@ from ..helper_functions.common_functions import can_it_update
 def create_itinerary(itinerary_data, company_id):
     can_update = can_it_update(company_id=company_id)
     if can_update:
-        itinerary = Itinerary(**itinerary_data)
         company = get_company_by_id(company_id)
+        itinerary = Itinerary(**itinerary_data)
         itinerary.company = company
+        itinerary.save()
         itinerary.save()
     else:
         msg = "You can't create data."

@@ -14,6 +14,8 @@ class User(BaseModel, ModelSerializerMixin):
 
     email = Column(String, unique=True)
 
+    timestamp = Column(DateTime, default=datetime.utcnow)
+
     # database only
     password_hash = Column(String)
 
@@ -65,6 +67,8 @@ class Admin(BaseModel, ModelSerializerMixin):
 
     full_name = Column(String, default="no_full_name")
 
+    timestamp = Column(DateTime, default=datetime.utcnow)
+
     user = relationship("User", back_populates="admin")
     user_id = Column(Integer, ForeignKey("users.id"))
 
@@ -78,6 +82,8 @@ class Driver(BaseModel, ModelSerializerMixin):
 
     full_name = Column(String, default="no_full_name")
     status = Column(String)
+
+    timestamp = Column(DateTime, default=datetime.utcnow)
 
     user = relationship("User", back_populates="driver")
     user_id = Column(Integer, ForeignKey("users.id"))
@@ -95,6 +101,8 @@ class Company(BaseModel, ModelSerializerMixin):
 
     full_name = Column(String, default="no_full_name")
     payment_frequency = Column(String)
+
+    timestamp = Column(DateTime, default=datetime.utcnow)
 
     user = relationship("User", back_populates="company")
     user_id = Column(Integer, ForeignKey("users.id"))
@@ -115,6 +123,8 @@ class Employee(BaseModel, ModelSerializerMixin):
     full_name = Column(String, default="no_full_name")
     address = Column(String)
 
+    timestamp = Column(DateTime, default=datetime.utcnow)
+
     user = relationship("User", back_populates="employee")
     user_id = Column(Integer, ForeignKey("users.id"))
 
@@ -122,12 +132,7 @@ class Employee(BaseModel, ModelSerializerMixin):
     company_id = Column(Integer, ForeignKey("companys.id"))
 
     # stops
-    stops = relationship(
-        "Stop",
-        secondary="employee_stop",
-        back_populates="employees",
-        lazy="dynamic",
-    )
+    stops = relationship("Stop", back_populates="employee", lazy="dynamic")
 
     def __repr__(self):
         return f"{self.__class__.__name__}({self.full_name}, id = {self.id})"

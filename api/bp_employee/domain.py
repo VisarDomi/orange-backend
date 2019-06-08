@@ -1,4 +1,5 @@
 from . import backend
+from ..helper_functions.dict import reservation_to_dict
 
 
 def create_employee(employee_data, company_id):
@@ -40,7 +41,7 @@ def get_reservations(employee_id, company_id):
     reservations = backend.get_reservations(employee_id, company_id)
     reservation_list = []
     for reservation in reservations:
-        reservation_dict = reservation.to_dict()
+        reservation_dict = reservation_to_dict(reservation)
         reservation_list.append(reservation_dict)
 
     return reservation_list
@@ -48,6 +49,6 @@ def get_reservations(employee_id, company_id):
 
 def get_reservation(employee_id, company_id, reservation_id):
     reservation = backend.get_reservation(employee_id, company_id, reservation_id)
-    reservation_dict = reservation.to_dict()
+    reservation_dict = reservation_to_dict(reservation)
 
     return reservation_dict

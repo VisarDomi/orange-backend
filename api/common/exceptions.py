@@ -1,9 +1,4 @@
-from werkzeug.exceptions import (
-    Conflict,
-    NotFound,
-    Unauthorized,
-    BadRequest,
-)
+from werkzeug.exceptions import Conflict, NotFound, Unauthorized, BadRequest
 
 
 class JSONException(Exception):
@@ -83,5 +78,10 @@ class CannotGetOthersData(InvalidPermissions):
 class CannotCreateData(InvalidPermissions):
     pass
 
+
 class NotCorrectRole(InvalidPermissions):
+    pass
+
+
+class DuplicateRole(InvalidPermissions):
     pass

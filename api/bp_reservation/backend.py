@@ -4,11 +4,12 @@ from ..common.exceptions import (
     CannotCreateData,
     CannotGetOthersData,
 )
-from ..models.items import Reservation
+from ..models.items import Reservation, Stop
 from ..helper_functions.get_by_id import (
     get_employee_by_id,
     get_reservation_by_id,
     get_company_by_id,
+    get_stop_by_id,
 )
 from ..helper_functions.common_functions import can_it_update
 
@@ -16,13 +17,18 @@ from ..helper_functions.common_functions import can_it_update
 def create_reservation(reservation_data, company_id):
     can_update = can_it_update(company_id=company_id)
     if can_update:
-        employee_ids = reservation_data.pop("employee_ids")
+        stops_data = reservation_data.pop("stops")
         reservation = Reservation(**reservation_data)
+        reservation.save()
         company = get_company_by_id(company_id)
         reservation.company = company
-        for employee_id in employee_ids:
+        for stop_data in stops_data:
+            employee_id = stop_data.pop("employee_id")
             employee = get_employee_by_id(employee_id)
-            reservation.employees.append(employee)
+            stop = Stop(**stop_data)
+            stop.employee = employee
+            stop.reservation = reservation
+            stop.save()
         reservation.save()
     else:
         msg = "You can't create data."
@@ -57,14 +63,18 @@ def get_reservation(reservation_id, company_id):
 def update_reservation(reservation_data, reservation_id, company_id):
     can_update = can_it_update(company_id=company_id)
     if can_update:
-        employee_ids = reservation_data.pop("employee_ids")
+        stops_data = reservation_data.pop("stops")
         reservation = get_reservation_by_id(reservation_id)
         reservation.update(**reservation_data)
-        for employee in reservation.employees.all():
-            reservation.employees.remove(employee)
-        for employee_id in employee_ids:
+        for stop_data in stops_data:
+            stop_id = stop_data["id"]
+            stop = get_stop_by_id(stop_id)
+            employee_id = stop_data["employee_id"]
             employee = get_employee_by_id(employee_id)
-            reservation.employees.append(employee)
+            stop.employee = employee
+            stop.reservation = reservation
+            stop.update(**stop_data)
+            stop.save()
         reservation.save()
     else:
         msg = "You can't change other people's data."

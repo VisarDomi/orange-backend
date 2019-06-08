@@ -9,6 +9,18 @@
     },
     "pickup": {
       "type": "string"
+    },
+    "date": {
+      "type": "string"
+    },
+    "time": {
+      "type": "string"
+    },
+    "employee_id": {
+      "type": "string"
+    },
+    "reservation_id": {
+      "type": "string"
     }
   },
   "additionalProperties": false

@@ -2,10 +2,10 @@ from flask import g, request
 from flask_httpauth import HTTPBasicAuth
 from flask_httpauth import HTTPTokenAuth
 from ..models.users import User
-from ..helper_functions.constants import EXCLUDE, EXPIRES_IN
-from ..helper_functions.common_functions import apply_role_to_dict
+from ..helper_functions.constants import EXPIRES_IN, EXCLUDE
+from ..helper_functions.dict import user_to_dict
+from ..helper_functions.common_functions import apply_role_check
 from . import bp
-from ..common.exceptions import NotCorrectRole
 
 
 basic_auth = HTTPBasicAuth()
@@ -36,20 +36,9 @@ def basic_auth_error():
 def login():
     g.current_user.get_token(expires_in=EXPIRES_IN)
     user = g.current_user
-    user_dict = user.to_dict(exclude=EXCLUDE)
-    user_dict = apply_role_to_dict(user, user_dict)
+    user_dict = user_to_dict(user, EXCLUDE)
     login_data = request.json
-    if login_data["role"] != user_dict["role"]:
-        msg = "This is not the correct role, cannot proceed login"
-        raise NotCorrectRole(message=msg)
-    if user_dict["role"] == "admin":
-        user_dict["full_name"] = user.admin.full_name
-    if user_dict["role"] == "company":
-        user_dict["full_name"] = user.company.full_name
-    if user_dict["role"] == "employee":
-        user_dict["full_name"] = user.employee.full_name
-    if user_dict["role"] == "driver":
-        user_dict["full_name"] = user.driver.full_name
+    apply_role_check(login_data, user_dict)
 
     return user_dict
 

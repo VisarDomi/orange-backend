@@ -1,4 +1,3 @@
-from flask import g
 from ..common.exceptions import (
     CannotChangeOthersData,
     CannotDeleteOthersData,
@@ -12,7 +11,8 @@ from ..helper_functions.common_functions import can_it_update
 
 
 def create_company(company_data):
-    if g.current_user.admin:
+    can_update = can_it_update()
+    if can_update:
         company = create_entity(company_data, Company)
     else:
         msg = "You can't create data."

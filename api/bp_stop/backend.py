@@ -5,14 +5,22 @@ from ..common.exceptions import (
     CannotGetOthersData,
 )
 from ..models.items import Stop
-from ..helper_functions.get_by_id import get_stop_by_id
+from ..helper_functions.get_by_id import (
+    get_stop_by_id,
+    get_employee_by_id,
+    get_reservation_by_id,
+)
 from ..helper_functions.common_functions import can_it_update
 
 
 def create_stop(stop_data):
     can_update = can_it_update()
     if can_update:
+        employee_id = stop_data.pop("employee_id")
+        reservation_id = stop_data.pop("reservation_id")
         stop = Stop(**stop_data)
+        stop.employee = get_employee_by_id(employee_id)
+        stop.reservation = get_reservation_by_id(reservation_id)
         stop.save()
     else:
         msg = "You can't create data."

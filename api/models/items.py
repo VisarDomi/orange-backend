@@ -1,22 +1,8 @@
-from sqlalchemy import Table, Integer, String, Column, Date, Text, ForeignKey
+from datetime import datetime
+from sqlalchemy import Integer, String, Column, Date, DateTime, Text, ForeignKey
 from sqlalchemy.orm import relationship
 from ..common.database import BaseModel
 from ..common.serializers import ModelSerializerMixin
-
-
-reservation_stop = Table(
-    "reservation_stop",
-    BaseModel.metadata,
-    Column("reservation_id", Integer, ForeignKey("reservations.id")),
-    Column("stop_id", Integer, ForeignKey("stops.id")),
-)
-
-employee_stop = Table(
-    "employee_stop",
-    BaseModel.metadata,
-    Column("employee_id", Integer, ForeignKey("employees.id")),
-    Column("stop_id", Integer, ForeignKey("stops.id")),
-)
 
 
 class Reservation(BaseModel, ModelSerializerMixin):
@@ -32,6 +18,8 @@ class Reservation(BaseModel, ModelSerializerMixin):
     payment_method = Column(String)
     status = Column(String)
 
+    timestamp = Column(DateTime, default=datetime.utcnow)
+
     company = relationship("Company", back_populates="reservations")
     company_id = Column(Integer, ForeignKey("companys.id"))
 
@@ -42,12 +30,7 @@ class Reservation(BaseModel, ModelSerializerMixin):
     invoices = relationship("Invoice", back_populates="reservation", lazy="dynamic")
 
     # stops
-    stops = relationship(
-        "Stop",
-        secondary="reservation_stop",
-        back_populates="reservations",
-        lazy="dynamic",
-    )
+    stops = relationship("Stop", back_populates="reservation", lazy="dynamic")
 
     def __repr__(self):
         return f"{self.__class__.__name__}({self.code}, id = {self.id})"
@@ -91,6 +74,8 @@ class Invoice(BaseModel, ModelSerializerMixin):
     reservation = relationship("Reservation", back_populates="invoices")
     reservation_id = Column(Integer, ForeignKey("reservations.id"))
 
+    timestamp = Column(DateTime, default=datetime.utcnow)
+
     # items
     items = relationship("Item", back_populates="invoice", lazy="dynamic")
 
@@ -111,6 +96,8 @@ class Item(BaseModel, ModelSerializerMixin):
     tax = Column(String)
     total = Column(String)
 
+    timestamp = Column(DateTime, default=datetime.utcnow)
+
     invoice = relationship("Invoice", back_populates="items")
     invoice_id = Column(Integer, ForeignKey("invoices.id"))
 
@@ -127,6 +114,8 @@ class Itinerary(BaseModel, ModelSerializerMixin):
     destination = Column(String)
     price = Column(String)
 
+    timestamp = Column(DateTime, default=datetime.utcnow)
+
     company = relationship("Company", back_populates="itinerarys")
     company_id = Column(Integer, ForeignKey("companys.id"))
 
@@ -142,30 +131,30 @@ class ItineraryMaster(BaseModel, ModelSerializerMixin):
     departure = Column(String)
     destination = Column(String)
 
+    timestamp = Column(DateTime, default=datetime.utcnow)
+
     def __repr__(self):
         return f"{self.__class__.__name__}({self.name}, id = {self.id})"
 
 
 class Stop(BaseModel, ModelSerializerMixin):
+    """Intermediate table employee-reservation"""
 
     id = Column(Integer, primary_key=True, autoincrement=True)
 
     name = Column(String, default="no_name")
     pickup = Column(String)
+    date = Column(Date)
+    time = Column(String)
 
-    # employees, reservations
-    employees = relationship(
-        "Employee",
-        secondary="employee_stop",
-        back_populates="stops",
-        lazy="dynamic",
-    )
-    reservations = relationship(
-        "Reservation",
-        secondary="reservation_stop",
-        back_populates="stops",
-        lazy="dynamic",
-    )
+    timestamp = Column(DateTime, default=datetime.utcnow)
+
+    # employee, reservation
+    employee = relationship("Employee", back_populates="stops")
+    employee_id = Column(Integer, ForeignKey("employees.id"))
+
+    reservation = relationship("Reservation", back_populates="stops")
+    reservation_id = Column(Integer, ForeignKey("reservations.id"))
 
     def __repr__(self):
         return f"{self.__class__.__name__}({self.name}, id = {self.id})"

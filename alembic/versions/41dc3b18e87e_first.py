@@ -1,8 +1,8 @@
 """first
 
-Revision ID: 321390f2c2fa
+Revision ID: 41dc3b18e87e
 Revises: 
-Create Date: 2019-06-05 23:00:35.804437
+Create Date: 2019-06-07 22:55:10.954429
 
 """
 from alembic import op
@@ -10,7 +10,7 @@ import sqlalchemy as sa
 
 
 # revision identifiers, used by Alembic.
-revision = '321390f2c2fa'
+revision = '41dc3b18e87e'
 down_revision = None
 branch_labels = None
 depends_on = None
@@ -22,17 +22,13 @@ def upgrade():
     sa.Column('name', sa.String(), nullable=True),
     sa.Column('departure', sa.String(), nullable=True),
     sa.Column('destination', sa.String(), nullable=True),
-    sa.PrimaryKeyConstraint('id')
-    )
-    op.create_table('stops',
-    sa.Column('id', sa.Integer(), autoincrement=True, nullable=False),
-    sa.Column('name', sa.String(), nullable=True),
-    sa.Column('pickup', sa.String(), nullable=True),
+    sa.Column('timestamp', sa.DateTime(), nullable=True),
     sa.PrimaryKeyConstraint('id')
     )
     op.create_table('users',
     sa.Column('id', sa.Integer(), autoincrement=True, nullable=False),
     sa.Column('email', sa.String(), nullable=True),
+    sa.Column('timestamp', sa.DateTime(), nullable=True),
     sa.Column('password_hash', sa.String(), nullable=True),
     sa.Column('token', sa.String(), nullable=True),
     sa.Column('token_expiration', sa.DateTime(), nullable=True),
@@ -44,6 +40,7 @@ def upgrade():
     op.create_table('admins',
     sa.Column('id', sa.Integer(), autoincrement=True, nullable=False),
     sa.Column('full_name', sa.String(), nullable=True),
+    sa.Column('timestamp', sa.DateTime(), nullable=True),
     sa.Column('user_id', sa.Integer(), nullable=True),
     sa.ForeignKeyConstraint(['user_id'], ['users.id'], ),
     sa.PrimaryKeyConstraint('id')
@@ -52,6 +49,7 @@ def upgrade():
     sa.Column('id', sa.Integer(), autoincrement=True, nullable=False),
     sa.Column('full_name', sa.String(), nullable=True),
     sa.Column('payment_frequency', sa.String(), nullable=True),
+    sa.Column('timestamp', sa.DateTime(), nullable=True),
     sa.Column('user_id', sa.Integer(), nullable=True),
     sa.ForeignKeyConstraint(['user_id'], ['users.id'], ),
     sa.PrimaryKeyConstraint('id')
@@ -60,6 +58,7 @@ def upgrade():
     sa.Column('id', sa.Integer(), autoincrement=True, nullable=False),
     sa.Column('full_name', sa.String(), nullable=True),
     sa.Column('status', sa.String(), nullable=True),
+    sa.Column('timestamp', sa.DateTime(), nullable=True),
     sa.Column('user_id', sa.Integer(), nullable=True),
     sa.ForeignKeyConstraint(['user_id'], ['users.id'], ),
     sa.PrimaryKeyConstraint('id')
@@ -68,6 +67,7 @@ def upgrade():
     sa.Column('id', sa.Integer(), autoincrement=True, nullable=False),
     sa.Column('full_name', sa.String(), nullable=True),
     sa.Column('address', sa.String(), nullable=True),
+    sa.Column('timestamp', sa.DateTime(), nullable=True),
     sa.Column('user_id', sa.Integer(), nullable=True),
     sa.Column('company_id', sa.Integer(), nullable=True),
     sa.ForeignKeyConstraint(['company_id'], ['companys.id'], ),
@@ -80,6 +80,7 @@ def upgrade():
     sa.Column('departure', sa.String(), nullable=True),
     sa.Column('destination', sa.String(), nullable=True),
     sa.Column('price', sa.String(), nullable=True),
+    sa.Column('timestamp', sa.DateTime(), nullable=True),
     sa.Column('company_id', sa.Integer(), nullable=True),
     sa.ForeignKeyConstraint(['company_id'], ['companys.id'], ),
     sa.PrimaryKeyConstraint('id')
@@ -94,17 +95,12 @@ def upgrade():
     sa.Column('small_luggage', sa.String(), nullable=True),
     sa.Column('payment_method', sa.String(), nullable=True),
     sa.Column('status', sa.String(), nullable=True),
+    sa.Column('timestamp', sa.DateTime(), nullable=True),
     sa.Column('company_id', sa.Integer(), nullable=True),
     sa.Column('driver_id', sa.Integer(), nullable=True),
     sa.ForeignKeyConstraint(['company_id'], ['companys.id'], ),
     sa.ForeignKeyConstraint(['driver_id'], ['drivers.id'], ),
     sa.PrimaryKeyConstraint('id')
-    )
-    op.create_table('employee_stop',
-    sa.Column('employee_id', sa.Integer(), nullable=True),
-    sa.Column('stop_id', sa.Integer(), nullable=True),
-    sa.ForeignKeyConstraint(['employee_id'], ['employees.id'], ),
-    sa.ForeignKeyConstraint(['stop_id'], ['stops.id'], )
     )
     op.create_table('invoices',
     sa.Column('id', sa.Integer(), autoincrement=True, nullable=False),
@@ -134,14 +130,20 @@ def upgrade():
     sa.Column('tax', sa.String(), nullable=True),
     sa.Column('grand_total', sa.String(), nullable=True),
     sa.Column('reservation_id', sa.Integer(), nullable=True),
+    sa.Column('timestamp', sa.DateTime(), nullable=True),
     sa.ForeignKeyConstraint(['reservation_id'], ['reservations.id'], ),
     sa.PrimaryKeyConstraint('id')
     )
-    op.create_table('reservation_stop',
+    op.create_table('stops',
+    sa.Column('id', sa.Integer(), autoincrement=True, nullable=False),
+    sa.Column('name', sa.String(), nullable=True),
+    sa.Column('pickup', sa.String(), nullable=True),
+    sa.Column('timestamp', sa.DateTime(), nullable=True),
+    sa.Column('employee_id', sa.Integer(), nullable=True),
     sa.Column('reservation_id', sa.Integer(), nullable=True),
-    sa.Column('stop_id', sa.Integer(), nullable=True),
+    sa.ForeignKeyConstraint(['employee_id'], ['employees.id'], ),
     sa.ForeignKeyConstraint(['reservation_id'], ['reservations.id'], ),
-    sa.ForeignKeyConstraint(['stop_id'], ['stops.id'], )
+    sa.PrimaryKeyConstraint('id')
     )
     op.create_table('items',
     sa.Column('id', sa.Integer(), autoincrement=True, nullable=False),
@@ -153,6 +155,7 @@ def upgrade():
     sa.Column('discount', sa.String(), nullable=True),
     sa.Column('tax', sa.String(), nullable=True),
     sa.Column('total', sa.String(), nullable=True),
+    sa.Column('timestamp', sa.DateTime(), nullable=True),
     sa.Column('invoice_id', sa.Integer(), nullable=True),
     sa.ForeignKeyConstraint(['invoice_id'], ['invoices.id'], ),
     sa.PrimaryKeyConstraint('id')
@@ -163,9 +166,8 @@ def upgrade():
 def downgrade():
     # ### commands auto generated by Alembic - please adjust! ###
     op.drop_table('items')
-    op.drop_table('reservation_stop')
+    op.drop_table('stops')
     op.drop_table('invoices')
-    op.drop_table('employee_stop')
     op.drop_table('reservations')
     op.drop_table('itinerarys')
     op.drop_table('employees')
@@ -173,6 +175,5 @@ def downgrade():
     op.drop_table('companys')
     op.drop_table('admins')
     op.drop_table('users')
-    op.drop_table('stops')
     op.drop_table('itinerarymasters')
     # ### end Alembic commands ###
