@@ -2,7 +2,6 @@ from ..common.exceptions import (
     CannotChangeOthersData,
     CannotDeleteOthersData,
     CannotCreateData,
-    CannotGetOthersData,
 )
 from ..models.users import Employee
 from ..helper_functions.create import create_entity

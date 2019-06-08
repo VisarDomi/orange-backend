@@ -20,13 +20,6 @@ def get_invoices(reservation_id):
     return domain.get_invoices(reservation_id)
 
 
-@bp.route("/<invoice_id>", methods=["GET"])
-@token_auth.login_required
-def get_invoice(invoice_id, reservation_id):
-
-    return domain.get_invoice(invoice_id, reservation_id)
-
-
 # order is route, schema, auth
 @bp.route("/<invoice_id>", methods=["PUT"])
 @schema("/update_invoice.json")

@@ -23,8 +23,12 @@ def create_reservation(reservation_data, company_id):
         company = get_company_by_id(company_id)
         reservation.company = company
         for stop_data in stops_data:
-            employee_id = stop_data.pop("employee_id")
-            employee = get_employee_by_id(employee_id)
+            try:
+                employee_id = stop_data.pop("employee_id")
+                employee = get_employee_by_id(employee_id)
+            except KeyError:
+                msg = "There is no employee_id in stop."
+                raise CannotCreateData(message=msg)
             stop = Stop(**stop_data)
             company = get_company_by_id(company_id)
             if employee in company.employees.all():
@@ -69,9 +73,13 @@ def update_reservation(reservation_data, reservation_id, company_id):
         reservation = get_reservation_by_id(reservation_id)
         reservation.update(**reservation_data)
         for stop_data in stops_data:
-            stop_id = stop_data["id"]
-            stop = get_stop_by_id(stop_id)
-            employee_id = stop_data["employee_id"]
+            try:
+                stop_id = stop_data["id"]
+                stop = get_stop_by_id(stop_id)
+                employee_id = stop_data["employee_id"]
+            except KeyError:
+                msg = "There is no id or employee_id in stop."
+                raise CannotChangeOthersData(message=msg)
             employee = get_employee_by_id(employee_id)
             company = get_company_by_id(company_id)
             if employee in company.employees.all():

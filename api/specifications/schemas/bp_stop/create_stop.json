@@ -10,9 +10,6 @@
     "pickup": {
       "type": "string"
     },
-    "date": {
-      "type": "string"
-    },
     "time": {
       "type": "string"
     },
