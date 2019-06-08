@@ -26,8 +26,10 @@ def create_reservation(reservation_data, company_id):
             employee_id = stop_data.pop("employee_id")
             employee = get_employee_by_id(employee_id)
             stop = Stop(**stop_data)
-            stop.employee = employee
-            stop.reservation = reservation
+            company = get_company_by_id(company_id)
+            if employee in company.employees.all():
+                stop.employee = employee
+                stop.reservation = reservation
             stop.save()
         reservation.save()
     else:
@@ -71,10 +73,12 @@ def update_reservation(reservation_data, reservation_id, company_id):
             stop = get_stop_by_id(stop_id)
             employee_id = stop_data["employee_id"]
             employee = get_employee_by_id(employee_id)
-            stop.employee = employee
-            stop.reservation = reservation
-            stop.update(**stop_data)
-            stop.save()
+            company = get_company_by_id(company_id)
+            if employee in company.employees.all():
+                stop.employee = employee
+                stop.reservation = reservation
+                stop.update(**stop_data)
+                stop.save()
         reservation.save()
     else:
         msg = "You can't change other people's data."
