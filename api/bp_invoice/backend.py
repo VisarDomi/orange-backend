@@ -12,8 +12,12 @@ from ..helper_functions.get_by_id import get_invoice_by_id, get_reservation_by_i
 def create_invoice(invoice_data, reservation_id):
     if g.current_user.admin:
         invoice = Invoice(**invoice_data)
+        invoice.save()
         reservation = get_reservation_by_id(reservation_id)
         invoice.reservation = reservation
+        code = reservation.company.code
+        number = str(invoice.id).zfill(5)
+        invoice.ref = code + number
         invoice.save()
     else:
         msg = "You can't create data."

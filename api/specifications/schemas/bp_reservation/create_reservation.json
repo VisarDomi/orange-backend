@@ -31,9 +31,6 @@
     },
     "stops": {
       "type": "array"
-    },
-    "employee_ids": {
-      "type": "array"
     }
   },
   "additionalProperties": false
