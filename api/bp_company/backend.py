@@ -18,10 +18,18 @@ def create_company(company_data):
     if can_update:
         company = create_entity(company_data, Company)
         letters = LETTERS
-        letter1 = random.choice(letters)
-        letter2 = random.choice(letters)
-        letter3 = random.choice(letters)
-        code = letter1 + letter2 + letter3
+        companys = Company.query.all()
+        existing_codes = []
+        for company in companys:
+            existing_codes.append(company.code)
+        is_duplicate_code = True
+        while is_duplicate_code:
+            letter1 = random.choice(letters)
+            letter2 = random.choice(letters)
+            letter3 = random.choice(letters)
+            code = letter1 + letter2 + letter3
+            if code not in existing_codes:
+                is_duplicate_code = False
         company.code = code
         itinerarys_master = ItineraryMaster.query.all()
         for itinerary_master in itinerarys_master:
