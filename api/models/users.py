@@ -101,6 +101,7 @@ class Company(BaseModel, ModelSerializerMixin):
 
     full_name = Column(String, default="no_full_name")
     payment_frequency = Column(String)
+    code = Column(String)
 
     timestamp = Column(DateTime, default=datetime.utcnow)
 
