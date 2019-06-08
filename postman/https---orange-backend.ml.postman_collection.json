@@ -1804,7 +1804,7 @@
 							"bearer": [
 								{
 									"key": "token",
-									"value": "{{company1_token}}",
+									"value": "{{company6_token}}",
 									"type": "string"
 								}
 							]
@@ -1822,17 +1822,17 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"code\": \"cod1\",\r\n    \"destination\": \"there\",\r\n    \"date\": \"2019-12-31\",\r\n    \"time\": \"13:45:39\",\r\n    \"status\": \"unassigned\",\r\n    \"payment_method\": \"individual\",\r\n    \"big_luggage\": \"0\",\r\n    \"small_luggage\": \"1\",\r\n    \"stops\": [{\r\n    \t\"pickup\": \"here\",\r\n    \t\"date\": \"1999-12-31\",\r\n    \t\"time\": \"15:30\",\r\n    \t\"employee_id\": \"2\"\r\n    },\r\n    {\r\n    \t\"pickup\": \"there\",\r\n    \t\"date\": \"1999-12-31\",\r\n    \t\"time\": \"15:30\",\r\n    \t\"employee_id\": \"3\"\r\n    }]\r\n}"
+							"raw": "{\r\n    \"code\": \"cod1\",\r\n    \"destination\": \"there\",\r\n    \"date\": \"2019-12-31\",\r\n    \"time\": \"13:45:39\",\r\n    \"status\": \"unassigned\",\r\n    \"payment_method\": \"individual\",\r\n    \"big_luggage\": \"0\",\r\n    \"small_luggage\": \"1\",\r\n    \"vehicle\": \"mini bus\",\r\n    \"stops\": [{\r\n    \t\"pickup\": \"here\",\r\n    \t\"date\": \"1999-12-31\",\r\n    \t\"time\": \"15:30\",\r\n    \t\"employee_id\": \"4\"\r\n    }]\r\n}"
 						},
 						"url": {
-							"raw": "{{url}}/api/company/1/reservation",
+							"raw": "{{url}}/api/company/6/reservation",
 							"host": [
 								"{{url}}"
 							],
 							"path": [
 								"api",
 								"company",
-								"1",
+								"6",
 								"reservation"
 							]
 						},
@@ -1961,10 +1961,10 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"code\": \"cod111\",\r\n    \"pickup\": \"here\",\r\n    \"destination\": \"there\",\r\n    \"date\": \"2019-12-31\",\r\n    \"time\": \"13:45:39\",\r\n    \"status\": \"unassigned\",\r\n    \"employee_ids\": [\"1\", \"2\"]\r\n}"
+							"raw": "{\r\n    \"code\": \"cod1\",\r\n    \"destination\": \"there\",\r\n    \"date\": \"2019-12-31\",\r\n    \"time\": \"13:45:39\",\r\n    \"status\": \"unassigned\",\r\n    \"payment_method\": \"individual\",\r\n    \"big_luggage\": \"0\",\r\n    \"small_luggage\": \"1\",\r\n    \"vehicle\": \"mini bus\",\r\n    \"stops\": [{\r\n    \t\"id\": \"1\",\r\n    \t\"pickup\": \"here\",\r\n    \t\"date\": \"1999-12-31\",\r\n    \t\"time\": \"15:30\",\r\n    \t\"employee_id\": \"2\"\r\n    },\r\n    {\r\n    \t\"id\": \"2\",\r\n    \t\"pickup\": \"there\",\r\n    \t\"date\": \"1999-12-31\",\r\n    \t\"time\": \"15:30\",\r\n    \t\"employee_id\": \"3\"\r\n    }]\r\n}"
 						},
 						"url": {
-							"raw": "{{url}}/api/company/1/reservation/1",
+							"raw": "{{url}}/api/company/1/reservation/15",
 							"host": [
 								"{{url}}"
 							],
@@ -1973,7 +1973,7 @@
 								"company",
 								"1",
 								"reservation",
-								"1"
+								"15"
 							]
 						},
 						"description": "Put"

@@ -25,6 +25,9 @@
     "small_luggage": {
       "type": "string"
     },
+    "vehicle_type": {
+      "type": "string"
+    },
     "payment_method": {
       "type": "string"
     },
