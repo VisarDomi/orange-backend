@@ -66,16 +66,17 @@ def delete_employee(employee_id, company_id):
 
 def get_reservations(employee_id, company_id):
     employee = get_employee_by_id(employee_id)
-    reservations = employee.reservations.all()
+    stops = employee.stops.all()
+    reservations = []
+    for stop in stops:
+        reservation = stop.reservation
+        if reservation not in reservations:
+            reservations.append(reservation)
 
     return reservations
 
 
 def get_reservation(employee_id, company_id, reservation_id):
     reservation = get_reservation_by_id(reservation_id)
-    employee = get_employee_by_id(employee_id)
-    if reservation not in employee.reservations.all():
-        msg = "Cannot get other's reservations"
-        raise CannotGetOthersData(message=msg)
 
     return reservation

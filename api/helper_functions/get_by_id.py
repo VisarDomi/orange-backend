@@ -89,18 +89,18 @@ def get_item_by_id(item_id):
 
 
 def get_itinerary_by_id(itinerary_id):
-    itinerary = get_entity(itinerary_id, Item)
+    itinerary = get_entity(itinerary_id, Itinerary)
 
     return itinerary
 
 
 def get_itinerary_master_by_id(itinerary_master_id):
-    itinerary_master = get_entity(itinerary_master_id, Item)
+    itinerary_master = get_entity(itinerary_master_id, ItineraryMaster)
 
     return itinerary_master
 
 
 def get_stop_by_id(stop_id):
-    stop = get_entity(stop_id, Item)
+    stop = get_entity(stop_id, Stop)
 
     return stop
