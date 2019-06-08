@@ -5,6 +5,7 @@ from ..common.exceptions import (
     CannotCreateData,
 )
 from ..models.users import Company
+from ..models.items import Itinerary, ItineraryMaster
 from ..helper_functions.create import create_entity
 from ..helper_functions.get_by_id import get_company_by_id, get_invoice_by_id
 from ..helper_functions.common_functions import can_it_update
@@ -14,6 +15,14 @@ def create_company(company_data):
     can_update = can_it_update()
     if can_update:
         company = create_entity(company_data, Company)
+        itinerarys_master = ItineraryMaster.query.all()
+        for itinerary_master in itinerarys_master:
+            itinerary_data = itinerary_master.to_dict()
+            del itinerary_data["id"]
+            del itinerary_data["timestamp"]
+            itinerary = Itinerary(**itinerary_data)
+            company.itinerarys.append(itinerary)
+        company.save()
     else:
         msg = "You can't create data."
         raise CannotCreateData(message=msg)

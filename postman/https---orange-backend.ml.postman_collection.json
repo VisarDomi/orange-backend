@@ -783,6 +783,224 @@
 			"name": "driver",
 			"item": [
 				{
+					"name": "{{url}}/api/driver",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{admin1_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Secure-Api-Key",
+								"value": "{{Secure-Api-Key}}"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"full_name\": \"drivertest2\",\r\n    \"status\": \"occupied\",\r\n    \"user_id\": \"2\"\r\n}"
+						},
+						"url": {
+							"raw": "{{url}}/api/driver",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"driver"
+							]
+						},
+						"description": "user1"
+					},
+					"response": []
+				},
+				{
+					"name": "{{url}}/api/driver/all",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{admin1_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Secure-Api-Key",
+								"value": "{{Secure-Api-Key}}"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{url}}/api/driver/all",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"driver",
+								"all"
+							]
+						},
+						"description": "get users with token"
+					},
+					"response": []
+				},
+				{
+					"name": "{{url}}/api/driver/1",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{admin1_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Secure-Api-Key",
+								"value": "{{Secure-Api-Key}}"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{url}}/api/driver/1",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"driver",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "{{url}}/api/driver/1",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{admin1_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Secure-Api-Key",
+								"value": "{{Secure-Api-Key}}"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"full_name\": \"drivertest2\",\r\n    \"status\": \"occupied\"\r\n}"
+						},
+						"url": {
+							"raw": "{{url}}/api/driver/1",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"driver",
+								"1"
+							]
+						},
+						"description": "Put"
+					},
+					"response": []
+				},
+				{
+					"name": "{{url}}/api/driver/2",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{admin1_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Secure-Api-Key",
+								"value": "{{Secure-Api-Key}}"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{url}}/api/driver/1",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"driver",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
 					"name": "{{url}}/api/driver/1/reservation/all",
 					"protocolProfileBehavior": {
 						"disableBodyPruning": true
@@ -1087,7 +1305,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"full_name\": \"companytest4\"\n}"
+							"raw": "{\n    \"full_name\": \"company1\",\n    \"payment_frequency\": \"individual\"\n}"
 						},
 						"url": {
 							"raw": "{{url}}/api/company/1",
@@ -1604,7 +1822,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"code\": \"cod1\",\r\n    \"pickup\": \"here\",\r\n    \"destination\": \"there\",\r\n    \"date\": \"2019-12-31\",\r\n    \"time\": \"13:45:39\",\r\n    \"status\": \"unassigned\",\r\n    \"employee_ids\": [\"2\"]\r\n}"
+							"raw": "{\r\n    \"code\": \"cod1\",\r\n    \"destination\": \"there\",\r\n    \"date\": \"2019-12-31\",\r\n    \"time\": \"13:45:39\",\r\n    \"status\": \"unassigned\",\r\n    \"payment_method\": \"individual\",\r\n    \"big_luggage\": \"0\",\r\n    \"small_luggage\": \"1\",\r\n    \"stops\": [{\r\n    \t\"pickup\": \"here\",\r\n    \t\"date\": \"1999-12-31\",\r\n    \t\"time\": \"15:30\",\r\n    \t\"employee_id\": \"2\"\r\n    },\r\n    {\r\n    \t\"pickup\": \"there\",\r\n    \t\"date\": \"1999-12-31\",\r\n    \t\"time\": \"15:30\",\r\n    \t\"employee_id\": \"3\"\r\n    }]\r\n}"
 						},
 						"url": {
 							"raw": "{{url}}/api/company/1/reservation",
@@ -1800,6 +2018,239 @@
 								"company",
 								"2",
 								"reservation",
+								"3"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "itinerary",
+			"item": [
+				{
+					"name": "{{url}}/api/company/2/itinerary",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{company1_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Secure-Api-Key",
+								"value": "{{Secure-Api-Key}}"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"cod1\",\r\n    \"departure\": \"here\",\r\n    \"destination\": \"there\",\r\n    \"price\": \"399\"\r\n}"
+						},
+						"url": {
+							"raw": "{{url}}/api/company/1/itinerary",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"company",
+								"1",
+								"itinerary"
+							]
+						},
+						"description": "user1"
+					},
+					"response": []
+				},
+				{
+					"name": "{{url}}/api/company/2/itinerary/all",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{company1_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Secure-Api-Key",
+								"value": "{{Secure-Api-Key}}"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{url}}/api/company/1/reservation/all",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"company",
+								"1",
+								"reservation",
+								"all"
+							]
+						},
+						"description": "get users with token"
+					},
+					"response": []
+				},
+				{
+					"name": "{{url}}/api/company/1/itinerary/3",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{company1_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Secure-Api-Key",
+								"value": "{{Secure-Api-Key}}"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{url}}/api/company/1/reservation/1",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"company",
+								"1",
+								"reservation",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "{{url}}/api/company/1/itinerary/3",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{company1_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Secure-Api-Key",
+								"value": "{{Secure-Api-Key}}"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"cod1\",\r\n    \"departure\": \"here\",\r\n    \"destination\": \"there\",\r\n    \"price\": \"399\"\r\n}"
+						},
+						"url": {
+							"raw": "{{url}}/api/company/1/itinerary/2",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"company",
+								"1",
+								"itinerary",
+								"2"
+							]
+						},
+						"description": "Put"
+					},
+					"response": []
+				},
+				{
+					"name": "{{url}}/api/company/2/itinerary/3",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{company1_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Secure-Api-Key",
+								"value": "{{Secure-Api-Key}}"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{url}}/api/company/2/itinerary/3",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"company",
+								"2",
+								"itinerary",
 								"3"
 							]
 						}
@@ -2295,10 +2746,10 @@
 			]
 		},
 		{
-			"name": "admin_driver",
+			"name": "itinerary_master",
 			"item": [
 				{
-					"name": "{{url}}/api/admin/driver",
+					"name": "{{url}}/api/itinerary_master",
 					"request": {
 						"auth": {
 							"type": "bearer",
@@ -2323,17 +2774,16 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"full_name\": \"drivertest2\",\r\n    \"status\": \"occupied\",\r\n    \"user_id\": \"2\"\r\n}"
+							"raw": "{\r\n    \"name\": \"here\",\r\n    \"departure\": \"from here\",\r\n    \"destination\": \"to there\"\r\n}"
 						},
 						"url": {
-							"raw": "{{url}}/api/admin/driver",
+							"raw": "{{url}}/api/itinerary_master",
 							"host": [
 								"{{url}}"
 							],
 							"path": [
 								"api",
-								"admin",
-								"driver"
+								"itinerary_master"
 							]
 						},
 						"description": "user1"
@@ -2341,7 +2791,7 @@
 					"response": []
 				},
 				{
-					"name": "{{url}}/api/admin/driver/all",
+					"name": "{{url}}/api/itinerary_master/all",
 					"protocolProfileBehavior": {
 						"disableBodyPruning": true
 					},
@@ -2372,14 +2822,13 @@
 							"raw": ""
 						},
 						"url": {
-							"raw": "{{url}}/api/admin/driver/all",
+							"raw": "{{url}}/api/itinerary_master/all",
 							"host": [
 								"{{url}}"
 							],
 							"path": [
 								"api",
-								"admin",
-								"driver",
+								"itinerary_master",
 								"all"
 							]
 						},
@@ -2388,7 +2837,7 @@
 					"response": []
 				},
 				{
-					"name": "{{url}}/api/admin/driver/1",
+					"name": "{{url}}/api/itinerary_master/1",
 					"protocolProfileBehavior": {
 						"disableBodyPruning": true
 					},
@@ -2419,22 +2868,21 @@
 							"raw": ""
 						},
 						"url": {
-							"raw": "{{url}}/api/admin/driver/1",
+							"raw": "{{url}}/api/stop/9",
 							"host": [
 								"{{url}}"
 							],
 							"path": [
 								"api",
-								"admin",
-								"driver",
-								"1"
+								"stop",
+								"9"
 							]
 						}
 					},
 					"response": []
 				},
 				{
-					"name": "{{url}}/api/admin/driver/1",
+					"name": "{{url}}/api/itinerary_master/1",
 					"request": {
 						"auth": {
 							"type": "bearer",
@@ -2459,17 +2907,16 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"full_name\": \"driver1\",\r\n    \"status\": \"free\"\r\n}"
+							"raw": "{\r\n    \"name\": \"here\",\r\n    \"departure\": \"from here\",\r\n    \"destination\": \"to there\"\r\n}"
 						},
 						"url": {
-							"raw": "{{url}}/api/admin/driver/1",
+							"raw": "{{url}}/api/itinerary_master/1",
 							"host": [
 								"{{url}}"
 							],
 							"path": [
 								"api",
-								"admin",
-								"driver",
+								"itinerary_master",
 								"1"
 							]
 						},
@@ -2478,7 +2925,7 @@
 					"response": []
 				},
 				{
-					"name": "{{url}}/api/admin/driver/2",
+					"name": "{{url}}/api/itinerary_master/2",
 					"request": {
 						"auth": {
 							"type": "bearer",
@@ -2506,15 +2953,237 @@
 							"raw": ""
 						},
 						"url": {
-							"raw": "{{url}}/api/admin/driver/1",
+							"raw": "{{url}}/api/itinerary_master/8",
 							"host": [
 								"{{url}}"
 							],
 							"path": [
 								"api",
-								"admin",
-								"driver",
-								"1"
+								"itinerary_master",
+								"8"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "stop",
+			"item": [
+				{
+					"name": "{{url}}/api/stop",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{admin1_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Secure-Api-Key",
+								"value": "{{Secure-Api-Key}}"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n\t\"name\": \"my name\",\r\n    \"pickup\": \"here\",\r\n    \"date\": \"2019-12-31\",\r\n    \"time\": \"15:30\",\r\n    \"employee_id\": \"2\",\r\n    \"reservation_id\": \"3\"\r\n}"
+						},
+						"url": {
+							"raw": "{{url}}/api/stop",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"stop"
+							]
+						},
+						"description": "user1"
+					},
+					"response": []
+				},
+				{
+					"name": "{{url}}/api/stop/all",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{admin1_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Secure-Api-Key",
+								"value": "{{Secure-Api-Key}}"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{url}}/api/stop/all",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"stop",
+								"all"
+							]
+						},
+						"description": "get users with token"
+					},
+					"response": []
+				},
+				{
+					"name": "{{url}}/api/stop/1",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{admin1_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Secure-Api-Key",
+								"value": "{{Secure-Api-Key}}"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{url}}/api/stop/9",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"stop",
+								"9"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "{{url}}/api/stop/1",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{admin1_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Secure-Api-Key",
+								"value": "{{Secure-Api-Key}}"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n\t\"name\": \"my name\",\r\n    \"pickup\": \"here\",\r\n    \"date\": \"2019-12-31\",\r\n    \"time\": \"15:30\"\r\n}"
+						},
+						"url": {
+							"raw": "{{url}}/api/stop/18",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"stop",
+								"18"
+							]
+						},
+						"description": "Put"
+					},
+					"response": []
+				},
+				{
+					"name": "{{url}}/api/stop/2",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{admin1_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Secure-Api-Key",
+								"value": "{{Secure-Api-Key}}"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{url}}/api/stop/8",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"stop",
+								"8"
 							]
 						}
 					},
