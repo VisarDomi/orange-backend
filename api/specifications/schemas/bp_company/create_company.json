@@ -8,6 +8,9 @@
     "full_name": {
       "type": "string"
     },
+    "payment_frequency": {
+      "type": "string"
+    },
     "user_id": {
       "type": "string"
     }

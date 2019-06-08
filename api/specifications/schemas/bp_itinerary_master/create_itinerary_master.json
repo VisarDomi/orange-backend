@@ -1,0 +1,18 @@
+{
+  "title": "Create itinerary_master",
+  "description": "Create a itinerary_master object",
+  "type": "object",
+  "$schema": "http://json-schema.org/draft-04/schema",
+  "properties": {
+    "name": {
+      "type": "string"
+    },
+    "departure": {
+      "type": "string"
+    },
+    "destination": {
+      "type": "string"
+    }
+  },
+  "additionalProperties": false
+}

@@ -6,6 +6,9 @@
   "properties": {
     "full_name": {
       "type": "string"
+    },
+    "payment_frequency": {
+      "type": "string"
     }
   },
   "additionalProperties": false

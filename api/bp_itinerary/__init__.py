@@ -1,7 +1,7 @@
 from flask import Blueprint
 
 
-BP_NAME = 'bp_admin_driver'
+BP_NAME = 'bp_itinerary'
 bp = Blueprint(BP_NAME, __name__)
 
 from . import views

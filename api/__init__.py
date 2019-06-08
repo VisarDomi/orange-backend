@@ -9,13 +9,15 @@ from .bp_dataintegration import bp as dataintegration_bp
 from .bp_user import bp as user_bp
 from .bp_auth import bp as auth_bp
 from .bp_admin import bp as admin_bp
-from .bp_admin_driver import bp as admin_driver_bp
 from .bp_driver import bp as driver_bp
 from .bp_invoice import bp as invoice_bp
 from .bp_item import bp as item_bp
 from .bp_company import bp as company_bp
 from .bp_employee import bp as employee_bp
 from .bp_reservation import bp as reservation_bp
+from .bp_itinerary import bp as itinerary_bp
+from .bp_itinerary_master import bp as itinerary_master_bp
+from .bp_stop import bp as stop_bp
 import os
 from config import Config
 import logging
@@ -35,13 +37,15 @@ def create_app(config_class=Config):
     app.register_blueprint(user_bp, url_prefix="/api/user")
     app.register_blueprint(auth_bp, url_prefix="/api/auth")
     app.register_blueprint(admin_bp, url_prefix="/api/admin")
-    app.register_blueprint(driver_bp, url_prefix="/api/driver/<driver_id>/reservation")
-    app.register_blueprint(admin_driver_bp, url_prefix="/api/admin/driver")
+    app.register_blueprint(driver_bp, url_prefix="/api/driver")
     app.register_blueprint(invoice_bp, url_prefix="/api/admin/reservation/<reservation_id>/invoice")
     app.register_blueprint(item_bp, url_prefix="/api/admin/reservation/<reservation_id>/invoice/<invoice_id>/item")
     app.register_blueprint(company_bp, url_prefix="/api/company")
     app.register_blueprint(employee_bp, url_prefix="/api/company/<company_id>/employee")
     app.register_blueprint(reservation_bp, url_prefix="/api/company/<company_id>/reservation")
+    app.register_blueprint(itinerary_bp, url_prefix="/api/company/<company_id>/itinerary")
+    app.register_blueprint(itinerary_master_bp, url_prefix="/api/itinerary_master")
+    app.register_blueprint(stop_bp, url_prefix="/api/stop")
 
     # register custom response class
     app.response_class = response.JSONResponse

@@ -7,9 +7,6 @@
     "code": {
       "type": "string"
     },
-    "pickup": {
-      "type": "string"
-    },
     "destination": {
       "type": "string"
     },
@@ -21,6 +18,18 @@
     },
     "status": {
       "type": "string"
+    },
+    "big_luggage": {
+      "type": "string"
+    },
+    "small_luggage": {
+      "type": "string"
+    },
+    "payment_method": {
+      "type": "string"
+    },
+    "stops": {
+      "type": "array"
     },
     "employee_ids": {
       "type": "array"

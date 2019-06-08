@@ -1,4 +1,5 @@
 from . import backend
+from ..helper_functions.dict import reservation_to_dict, invoice_to_dict
 
 
 def create_admin(admin_data):
@@ -40,15 +41,7 @@ def get_invoices():
     invoices = backend.get_invoices()
     invoices_list = []
     for invoice in invoices:
-        invoice_dict = invoice.to_dict()
-        employees = []
-        for employee in invoice.reservation.employees.all():
-            employees.append(employee.to_dict())
-        if invoice.reservation.destination:
-            invoice_dict["destination"] = invoice.reservation.destination
-        else:
-            invoice_dict["destination"] = ""
-        invoice_dict["employees"] = employees
+        invoice_dict = invoice_to_dict(invoice)
         invoices_list.append(invoice_dict)
 
     return invoices_list
@@ -56,20 +49,7 @@ def get_invoices():
 
 def get_invoice(invoice_id):
     invoice = backend.get_invoice(invoice_id)
-    invoice_dict = invoice.to_dict()
-    items = invoice.items.all()
-    invoice_dict["items"] = []
-    for item in items:
-        item_dict = item.to_dict()
-        invoice_dict["items"].append(item_dict)
-    employees = []
-    for employee in invoice.reservation.employees.all():
-        employees.append(employee.to_dict())
-    if invoice.reservation.destination:
-        invoice_dict["destination"] = invoice.reservation.destination
-    else:
-        invoice_dict["destination"] = ""
-    invoice_dict["employees"] = employees
+    invoice_dict = invoice_to_dict(invoice)
 
     return invoice_dict
 
@@ -78,19 +58,7 @@ def get_reservations():
     reservations = backend.get_reservations()
     reservations_list = []
     for reservation in reservations:
-        reservation_dict = reservation.to_dict()
-        employees = []
-        for employee in reservation.employees.all():
-            employees.append(employee.to_dict())
-        if reservation.company:
-            reservation_dict["company"] = reservation.company.to_dict()
-        else:
-            reservation_dict["company"] = {}
-        if reservation.driver:
-            reservation_dict["driver"] = reservation.driver.to_dict()
-        else:
-            reservation_dict["driver"] = {}
-        reservation_dict["employees"] = employees
+        reservation_dict = reservation_to_dict(reservation)
         reservations_list.append(reservation_dict)
 
     return reservations_list
@@ -98,37 +66,13 @@ def get_reservations():
 
 def get_reservation(reservation_id):
     reservation = backend.get_reservation(reservation_id)
-    reservation_dict = reservation.to_dict()
-    employees = []
-    for employee in reservation.employees.all():
-        employees.append(employee.to_dict())
-    if reservation.company:
-        reservation_dict["company"] = reservation.company.to_dict()
-    else:
-        reservation_dict["company"] = {}
-    if reservation.driver:
-        reservation_dict["driver"] = reservation.driver.to_dict()
-    else:
-        reservation_dict["driver"] = {}
-    reservation_dict["employees"] = employees
+    reservation_dict = reservation_to_dict(reservation)
 
     return reservation_dict
 
 
 def update_reservation(reservation_data, reservation_id):
     reservation = backend.update_reservation(reservation_data, reservation_id)
-    reservation_dict = reservation.to_dict()
-    employees = []
-    for employee in reservation.employees.all():
-        employees.append(employee.to_dict())
-    if reservation.company:
-        reservation_dict["company"] = reservation.company.to_dict()
-    else:
-        reservation_dict["company"] = {}
-    if reservation.driver:
-        reservation_dict["driver"] = reservation.driver.to_dict()
-    else:
-        reservation_dict["driver"] = {}
-    reservation_dict["employees"] = employees
+    reservation_dict = reservation_to_dict(reservation)
 
     return reservation_dict
