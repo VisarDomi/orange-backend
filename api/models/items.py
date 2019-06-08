@@ -145,7 +145,6 @@ class Stop(BaseModel, ModelSerializerMixin):
 
     name = Column(String, default="no_name")
     pickup = Column(String)
-    date = Column(Date)
     time = Column(String)
 
     timestamp = Column(DateTime, default=datetime.utcnow)

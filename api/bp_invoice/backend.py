@@ -1,4 +1,3 @@
-from flask import g
 from ..common.exceptions import (
     CannotChangeOthersData,
     CannotDeleteOthersData,
@@ -7,10 +6,12 @@ from ..common.exceptions import (
 )
 from ..models.items import Invoice
 from ..helper_functions.get_by_id import get_invoice_by_id, get_reservation_by_id
+from ..helper_functions.common_functions import can_it_update
 
 
 def create_invoice(invoice_data, reservation_id):
-    if g.current_user.admin:
+    can_update = can_it_update()
+    if can_update:
         invoice = Invoice(**invoice_data)
         invoice.save()
         reservation = get_reservation_by_id(reservation_id)
@@ -27,7 +28,8 @@ def create_invoice(invoice_data, reservation_id):
 
 
 def get_invoices(reservation_id):
-    if g.current_user.admin:
+    can_update = can_it_update()
+    if can_update:
         reservation = get_reservation_by_id(reservation_id)
         invoices = reservation.invoices.all()
     else:
@@ -37,18 +39,9 @@ def get_invoices(reservation_id):
     return invoices
 
 
-def get_invoice(invoice_id, reservation_id):
-    if g.current_user.admin:
-        invoice = get_invoice_by_id(invoice_id)
-    else:
-        msg = "You can't get invoice."
-        raise CannotGetOthersData(message=msg)
-
-    return invoice
-
-
 def update_invoice(invoice_data, invoice_id, reservation_id):
-    if g.current_user.admin:
+    can_update = can_it_update()
+    if can_update:
         invoice = get_invoice_by_id(invoice_id)
         invoice.update(**invoice_data)
         invoice.save()
@@ -60,7 +53,8 @@ def update_invoice(invoice_data, invoice_id, reservation_id):
 
 
 def delete_invoice(invoice_id, reservation_id):
-    if g.current_user.admin:
+    can_update = can_it_update()
+    if can_update:
         invoice = get_invoice_by_id(invoice_id)
         invoice.delete()
     else:
