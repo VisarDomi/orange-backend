@@ -17,6 +17,7 @@ class Reservation(BaseModel, ModelSerializerMixin):
     small_luggage = Column(String)
     payment_method = Column(String)
     status = Column(String)
+    vehicle_type = Column(String)
 
     timestamp = Column(DateTime, default=datetime.utcnow)
 
