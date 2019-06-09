@@ -85,3 +85,7 @@ class NotCorrectRole(InvalidPermissions):
 
 class DuplicateRole(InvalidPermissions):
     pass
+
+
+class BadLogin(InvalidPermissions):
+    pass

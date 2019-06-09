@@ -69,7 +69,7 @@
 							"bearer": [
 								{
 									"key": "token",
-									"value": "{{admin1_token}}",
+									"value": "{{admin_token}}",
 									"type": "string"
 								}
 							]
@@ -87,7 +87,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"email\": \"user4@orange.com\",\r\n    \"password\": \"password\"\r\n}"
+							"raw": "{\r\n    \"email\": \"user14@orange.com\",\r\n    \"password\": \"password\"\r\n}"
 						},
 						"url": {
 							"raw": "{{url}}/api/user",
@@ -114,7 +114,7 @@
 							"bearer": [
 								{
 									"key": "token",
-									"value": "{{admin1_token}}",
+									"value": "{{admin_token}}",
 									"type": "string"
 								}
 							]
@@ -160,7 +160,7 @@
 							"bearer": [
 								{
 									"key": "token",
-									"value": "{{admin1_token}}",
+									"value": "{{admin_token}}",
 									"type": "string"
 								}
 							]
@@ -181,14 +181,14 @@
 							"raw": ""
 						},
 						"url": {
-							"raw": "{{url}}/api/user/9",
+							"raw": "{{url}}/api/user/5",
 							"host": [
 								"{{url}}"
 							],
 							"path": [
 								"api",
 								"user",
-								"9"
+								"5"
 							]
 						}
 					},
@@ -202,7 +202,7 @@
 							"bearer": [
 								{
 									"key": "token",
-									"value": "{{admin1_token}}",
+									"value": "{{admin_token}}",
 									"type": "string"
 								}
 							]
@@ -245,7 +245,7 @@
 							"bearer": [
 								{
 									"key": "token",
-									"value": "{{admin1_token}}",
+									"value": "{{admin_token}}",
 									"type": "string"
 								}
 							]
@@ -266,14 +266,14 @@
 							"raw": ""
 						},
 						"url": {
-							"raw": "{{url}}/api/user/8",
+							"raw": "{{url}}/api/user/7",
 							"host": [
 								"{{url}}"
 							],
 							"path": [
 								"api",
 								"user",
-								"8"
+								"7"
 							]
 						}
 					},
@@ -325,6 +325,196 @@
 			]
 		},
 		{
+			"name": "invoice",
+			"item": [
+				{
+					"name": "{{url}}/api/admin/reservation/4/invoice",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{admin_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Secure-Api-Key",
+								"value": "{{Secure-Api-Key}}"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"date\": \"2018-12-31\",\r\n    \"due\": \"2019-12-31\",\r\n    \"from_business_name\": \"adsf\",\r\n    \"from_addressline_1\": \"adsfasd\",\r\n    \"from_addressline_2\": \"wer\",\r\n    \"from_city\": \"werf\",\r\n    \"from_postcode\": \"sdf\",\r\n    \"from_vat\": \"sdsf\",\r\n    \"from_phone\": \"sdqwf\",\r\n    \"to_client_name\": \"sdaflk\",\r\n    \"to_addressline_1\": \"werjo\",\r\n    \"to_addressline_2\": \"wer\",\r\n    \"to_city\": \"werg\",\r\n    \"to_postcode\": \"edfg\",\r\n    \"to_vat\": \"sdwef\",\r\n    \"to_phone\": \"sdrf\",\r\n    \"payment_account_name\": \"weroui\",\r\n    \"payment_account_sortcode\": \"weroi\",\r\n    \"payment_account_number\": \"235890\",\r\n    \"invoice_notes\": \"aerguiopd\",\r\n    \"discount\": \"324\",\r\n    \"sub_total\": \"213\",\r\n    \"tax\": \"123\",\r\n    \"grand_total\": \"569\"\r\n}"
+						},
+						"url": {
+							"raw": "{{url}}/api/admin/reservation/19/invoice",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"admin",
+								"reservation",
+								"19",
+								"invoice"
+							]
+						},
+						"description": "user1"
+					},
+					"response": []
+				},
+				{
+					"name": "{{url}}/api/admin/reservation/4/invoice/all",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{admin_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Secure-Api-Key",
+								"value": "{{Secure-Api-Key}}"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{url}}/api/admin/reservation/1/invoice/all",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"admin",
+								"reservation",
+								"1",
+								"invoice",
+								"all"
+							]
+						},
+						"description": "get users with token"
+					},
+					"response": []
+				},
+				{
+					"name": "{{url}}/api/admin/reservation/4/invoice/2",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{admin_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Secure-Api-Key",
+								"value": "{{Secure-Api-Key}}"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"date\": \"2018-12-31\",\r\n    \"due\": \"2019-12-31\",\r\n    \"from_business_name\": \"adsf\",\r\n    \"from_addressline_1\": \"adsfasd\",\r\n    \"from_addressline_2\": \"wer\",\r\n    \"from_city\": \"werf\",\r\n    \"from_postcode\": \"sdf\",\r\n    \"from_vat\": \"sdsf\",\r\n    \"from_phone\": \"sdqwf\",\r\n    \"to_client_name\": \"sdaflk\",\r\n    \"to_addressline_1\": \"werjo\",\r\n    \"to_addressline_2\": \"wer\",\r\n    \"to_city\": \"werg\",\r\n    \"to_postcode\": \"edfg\",\r\n    \"to_vat\": \"sdwef\",\r\n    \"to_phone\": \"sdrf\",\r\n    \"payment_account_name\": \"weroui\",\r\n    \"payment_account_sortcode\": \"weroi\",\r\n    \"payment_account_number\": \"235890\",\r\n    \"invoice_notes\": \"aerguiopd\",\r\n    \"discount\": \"34\",\r\n    \"sub_total\": \"213\",\r\n    \"tax\": \"123\",\r\n    \"grand_total\": \"569\"\r\n}"
+						},
+						"url": {
+							"raw": "{{url}}/api/admin/reservation/1/invoice/1",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"admin",
+								"reservation",
+								"1",
+								"invoice",
+								"1"
+							]
+						},
+						"description": "Put"
+					},
+					"response": []
+				},
+				{
+					"name": "{{url}}/api/admin/reservation/4/invoice/2",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{admin_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Secure-Api-Key",
+								"value": "{{Secure-Api-Key}}"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{url}}/api/admin/reservation/1/invoice/1",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"admin",
+								"reservation",
+								"1",
+								"invoice",
+								"1"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
 			"name": "admin",
 			"item": [
 				{
@@ -335,7 +525,7 @@
 							"bearer": [
 								{
 									"key": "token",
-									"value": "{{admin1_token}}",
+									"value": "{{admin_token}}",
 									"type": "string"
 								}
 							]
@@ -380,7 +570,7 @@
 							"bearer": [
 								{
 									"key": "token",
-									"value": "{{admin1_token}}",
+									"value": "{{admin_token}}",
 									"type": "string"
 								}
 							]
@@ -426,7 +616,7 @@
 							"bearer": [
 								{
 									"key": "token",
-									"value": "{{admin1_token}}",
+									"value": "{{admin_token}}",
 									"type": "string"
 								}
 							]
@@ -468,7 +658,7 @@
 							"bearer": [
 								{
 									"key": "token",
-									"value": "{{admin1_token}}",
+									"value": "{{admin_token}}",
 									"type": "string"
 								}
 							]
@@ -511,7 +701,7 @@
 							"bearer": [
 								{
 									"key": "token",
-									"value": "{{admin1_token}}",
+									"value": "{{admin_token}}",
 									"type": "string"
 								}
 							]
@@ -556,7 +746,7 @@
 							"bearer": [
 								{
 									"key": "token",
-									"value": "{{admin1_token}}",
+									"value": "{{admin_token}}",
 									"type": "string"
 								}
 							]
@@ -603,7 +793,7 @@
 							"bearer": [
 								{
 									"key": "token",
-									"value": "{{admin1_token}}",
+									"value": "{{admin_token}}",
 									"type": "string"
 								}
 							]
@@ -647,7 +837,7 @@
 							"bearer": [
 								{
 									"key": "token",
-									"value": "{{admin1_token}}",
+									"value": "{{admin_token}}",
 									"type": "string"
 								}
 							]
@@ -694,7 +884,7 @@
 							"bearer": [
 								{
 									"key": "token",
-									"value": "{{admin1_token}}",
+									"value": "{{admin_token}}",
 									"type": "string"
 								}
 							]
@@ -741,7 +931,7 @@
 							"bearer": [
 								{
 									"key": "token",
-									"value": "{{admin1_token}}",
+									"value": "{{admin_token}}",
 									"type": "string"
 								}
 							]
@@ -790,7 +980,7 @@
 							"bearer": [
 								{
 									"key": "token",
-									"value": "{{admin1_token}}",
+									"value": "{{admin_token}}",
 									"type": "string"
 								}
 							]
@@ -808,7 +998,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"full_name\": \"drivertest2\",\r\n    \"status\": \"occupied\",\r\n    \"user_id\": \"2\"\r\n}"
+							"raw": "{\r\n    \"full_name\": \"driver1\",\r\n    \"status\": \"occupied\",\r\n    \"user_id\": \"2\"\r\n}"
 						},
 						"url": {
 							"raw": "{{url}}/api/driver",
@@ -835,7 +1025,7 @@
 							"bearer": [
 								{
 									"key": "token",
-									"value": "{{admin1_token}}",
+									"value": "{{admin_token}}",
 									"type": "string"
 								}
 							]
@@ -881,7 +1071,7 @@
 							"bearer": [
 								{
 									"key": "token",
-									"value": "{{admin1_token}}",
+									"value": "{{admin_token}}",
 									"type": "string"
 								}
 							]
@@ -923,7 +1113,7 @@
 							"bearer": [
 								{
 									"key": "token",
-									"value": "{{admin1_token}}",
+									"value": "{{admin_token}}",
 									"type": "string"
 								}
 							]
@@ -966,7 +1156,7 @@
 							"bearer": [
 								{
 									"key": "token",
-									"value": "{{admin1_token}}",
+									"value": "{{admin_token}}",
 									"type": "string"
 								}
 							]
@@ -1154,7 +1344,7 @@
 							"bearer": [
 								{
 									"key": "token",
-									"value": "{{admin1_token}}",
+									"value": "{{admin_token}}",
 									"type": "string"
 								}
 							]
@@ -1172,7 +1362,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"full_name\": \"company1\",\r\n    \"user_id\": \"3\"\r\n}"
+							"raw": "{\r\n    \"full_name\": \"company7\",\r\n    \"payment_frequency\": \"individual\",\r\n    \"user_id\": \"14\"\r\n}"
 						},
 						"url": {
 							"raw": "{{url}}/api/company",
@@ -1199,7 +1389,7 @@
 							"bearer": [
 								{
 									"key": "token",
-									"value": "{{admin1_token}}",
+									"value": "{{admin_token}}",
 									"type": "string"
 								}
 							]
@@ -1245,7 +1435,7 @@
 							"bearer": [
 								{
 									"key": "token",
-									"value": "{{admin1_token}}",
+									"value": "{{admin_token}}",
 									"type": "string"
 								}
 							]
@@ -1463,6 +1653,239 @@
 			]
 		},
 		{
+			"name": "reservation",
+			"item": [
+				{
+					"name": "{{url}}/api/company/2/reservation",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{company6_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Secure-Api-Key",
+								"value": "{{Secure-Api-Key}}"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"code\": \"cod1\",\r\n    \"destination\": \"there\",\r\n    \"date\": \"2019-12-31\",\r\n    \"time\": \"13:45:39\",\r\n    \"status\": \"unassigned\",\r\n    \"payment_method\": \"individual\",\r\n    \"big_luggage\": \"0\",\r\n    \"small_luggage\": \"1\",\r\n    \"vehicle_type\": \"mini bus\",\r\n    \"stops\": [{\r\n    \t\"pickup\": \"here\",\r\n    \t\"employee_id\": \"4\"\r\n    }]\r\n}"
+						},
+						"url": {
+							"raw": "{{url}}/api/company/6/reservation",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"company",
+								"6",
+								"reservation"
+							]
+						},
+						"description": "user1"
+					},
+					"response": []
+				},
+				{
+					"name": "{{url}}/api/company/2/reservation/all",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{company1_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Secure-Api-Key",
+								"value": "{{Secure-Api-Key}}"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{url}}/api/company/1/reservation/all",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"company",
+								"1",
+								"reservation",
+								"all"
+							]
+						},
+						"description": "get users with token"
+					},
+					"response": []
+				},
+				{
+					"name": "{{url}}/api/company/1/reservation/3",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{company1_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Secure-Api-Key",
+								"value": "{{Secure-Api-Key}}"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{url}}/api/company/1/reservation/1",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"company",
+								"1",
+								"reservation",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "{{url}}/api/company/1/reservation/3",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{company1_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Secure-Api-Key",
+								"value": "{{Secure-Api-Key}}"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"code\": \"cod1\",\r\n    \"destination\": \"there\",\r\n    \"date\": \"2019-12-31\",\r\n    \"time\": \"13:45:39\",\r\n    \"status\": \"unassigned\",\r\n    \"payment_method\": \"individual\",\r\n    \"big_luggage\": \"0\",\r\n    \"small_luggage\": \"1\",\r\n    \"vehicle_type\": \"mini bus\",\r\n    \"stops\": [{\r\n    \t\"id\": \"1\",\r\n    \t\"pickup\": \"here\",\r\n    \t\"employee_id\": \"2\"\r\n    },\r\n    {\r\n    \t\"id\": \"2\",\r\n    \t\"pickup\": \"there\",\r\n    \t\"employee_id\": \"3\"\r\n    }]\r\n}"
+						},
+						"url": {
+							"raw": "{{url}}/api/company/1/reservation/15",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"company",
+								"1",
+								"reservation",
+								"15"
+							]
+						},
+						"description": "Put"
+					},
+					"response": []
+				},
+				{
+					"name": "{{url}}/api/company/2/reservation/3",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{company1_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Secure-Api-Key",
+								"value": "{{Secure-Api-Key}}"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{url}}/api/company/2/reservation/3",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"company",
+								"2",
+								"reservation",
+								"3"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
 			"name": "employee",
 			"item": [
 				{
@@ -1657,7 +2080,7 @@
 							"bearer": [
 								{
 									"key": "token",
-									"value": "{{company1_token}}",
+									"value": "{{admin_token}}",
 									"type": "string"
 								}
 							]
@@ -1678,7 +2101,7 @@
 							"raw": ""
 						},
 						"url": {
-							"raw": "{{url}}/api/company/1/employee/1",
+							"raw": "{{url}}/api/company/1/employee/2",
 							"host": [
 								"{{url}}"
 							],
@@ -1687,7 +2110,7 @@
 								"company",
 								"1",
 								"employee",
-								"1"
+								"2"
 							]
 						}
 					},
@@ -1786,239 +2209,6 @@
 								"2",
 								"reservation",
 								"1"
-							]
-						}
-					},
-					"response": []
-				}
-			]
-		},
-		{
-			"name": "reservation",
-			"item": [
-				{
-					"name": "{{url}}/api/company/2/reservation",
-					"request": {
-						"auth": {
-							"type": "bearer",
-							"bearer": [
-								{
-									"key": "token",
-									"value": "{{company6_token}}",
-									"type": "string"
-								}
-							]
-						},
-						"method": "POST",
-						"header": [
-							{
-								"key": "Secure-Api-Key",
-								"value": "{{Secure-Api-Key}}"
-							},
-							{
-								"key": "Content-Type",
-								"value": "application/json"
-							}
-						],
-						"body": {
-							"mode": "raw",
-							"raw": "{\r\n    \"code\": \"cod1\",\r\n    \"destination\": \"there\",\r\n    \"date\": \"2019-12-31\",\r\n    \"time\": \"13:45:39\",\r\n    \"status\": \"unassigned\",\r\n    \"payment_method\": \"individual\",\r\n    \"big_luggage\": \"0\",\r\n    \"small_luggage\": \"1\",\r\n    \"vehicle\": \"mini bus\",\r\n    \"stops\": [{\r\n    \t\"pickup\": \"here\",\r\n    \t\"date\": \"1999-12-31\",\r\n    \t\"time\": \"15:30\",\r\n    \t\"employee_id\": \"4\"\r\n    }]\r\n}"
-						},
-						"url": {
-							"raw": "{{url}}/api/company/6/reservation",
-							"host": [
-								"{{url}}"
-							],
-							"path": [
-								"api",
-								"company",
-								"6",
-								"reservation"
-							]
-						},
-						"description": "user1"
-					},
-					"response": []
-				},
-				{
-					"name": "{{url}}/api/company/2/reservation/all",
-					"protocolProfileBehavior": {
-						"disableBodyPruning": true
-					},
-					"request": {
-						"auth": {
-							"type": "bearer",
-							"bearer": [
-								{
-									"key": "token",
-									"value": "{{company1_token}}",
-									"type": "string"
-								}
-							]
-						},
-						"method": "GET",
-						"header": [
-							{
-								"key": "Secure-Api-Key",
-								"value": "{{Secure-Api-Key}}"
-							},
-							{
-								"key": "Content-Type",
-								"value": "application/json"
-							}
-						],
-						"body": {
-							"mode": "raw",
-							"raw": ""
-						},
-						"url": {
-							"raw": "{{url}}/api/company/1/reservation/all",
-							"host": [
-								"{{url}}"
-							],
-							"path": [
-								"api",
-								"company",
-								"1",
-								"reservation",
-								"all"
-							]
-						},
-						"description": "get users with token"
-					},
-					"response": []
-				},
-				{
-					"name": "{{url}}/api/company/1/reservation/3",
-					"protocolProfileBehavior": {
-						"disableBodyPruning": true
-					},
-					"request": {
-						"auth": {
-							"type": "bearer",
-							"bearer": [
-								{
-									"key": "token",
-									"value": "{{company1_token}}",
-									"type": "string"
-								}
-							]
-						},
-						"method": "GET",
-						"header": [
-							{
-								"key": "Secure-Api-Key",
-								"value": "{{Secure-Api-Key}}"
-							},
-							{
-								"key": "Content-Type",
-								"value": "application/json"
-							}
-						],
-						"body": {
-							"mode": "raw",
-							"raw": ""
-						},
-						"url": {
-							"raw": "{{url}}/api/company/1/reservation/1",
-							"host": [
-								"{{url}}"
-							],
-							"path": [
-								"api",
-								"company",
-								"1",
-								"reservation",
-								"1"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "{{url}}/api/company/1/reservation/3",
-					"request": {
-						"auth": {
-							"type": "bearer",
-							"bearer": [
-								{
-									"key": "token",
-									"value": "{{company1_token}}",
-									"type": "string"
-								}
-							]
-						},
-						"method": "PUT",
-						"header": [
-							{
-								"key": "Secure-Api-Key",
-								"value": "{{Secure-Api-Key}}"
-							},
-							{
-								"key": "Content-Type",
-								"value": "application/json"
-							}
-						],
-						"body": {
-							"mode": "raw",
-							"raw": "{\r\n    \"code\": \"cod1\",\r\n    \"destination\": \"there\",\r\n    \"date\": \"2019-12-31\",\r\n    \"time\": \"13:45:39\",\r\n    \"status\": \"unassigned\",\r\n    \"payment_method\": \"individual\",\r\n    \"big_luggage\": \"0\",\r\n    \"small_luggage\": \"1\",\r\n    \"vehicle\": \"mini bus\",\r\n    \"stops\": [{\r\n    \t\"id\": \"1\",\r\n    \t\"pickup\": \"here\",\r\n    \t\"date\": \"1999-12-31\",\r\n    \t\"time\": \"15:30\",\r\n    \t\"employee_id\": \"2\"\r\n    },\r\n    {\r\n    \t\"id\": \"2\",\r\n    \t\"pickup\": \"there\",\r\n    \t\"date\": \"1999-12-31\",\r\n    \t\"time\": \"15:30\",\r\n    \t\"employee_id\": \"3\"\r\n    }]\r\n}"
-						},
-						"url": {
-							"raw": "{{url}}/api/company/1/reservation/15",
-							"host": [
-								"{{url}}"
-							],
-							"path": [
-								"api",
-								"company",
-								"1",
-								"reservation",
-								"15"
-							]
-						},
-						"description": "Put"
-					},
-					"response": []
-				},
-				{
-					"name": "{{url}}/api/company/2/reservation/3",
-					"request": {
-						"auth": {
-							"type": "bearer",
-							"bearer": [
-								{
-									"key": "token",
-									"value": "{{company1_token}}",
-									"type": "string"
-								}
-							]
-						},
-						"method": "DELETE",
-						"header": [
-							{
-								"key": "Secure-Api-Key",
-								"value": "{{Secure-Api-Key}}"
-							},
-							{
-								"key": "Content-Type",
-								"value": "application/json"
-							}
-						],
-						"body": {
-							"mode": "raw",
-							"raw": ""
-						},
-						"url": {
-							"raw": "{{url}}/api/company/2/reservation/3",
-							"host": [
-								"{{url}}"
-							],
-							"path": [
-								"api",
-								"company",
-								"2",
-								"reservation",
-								"3"
 							]
 						}
 					},
@@ -2260,244 +2450,6 @@
 			]
 		},
 		{
-			"name": "invoice",
-			"item": [
-				{
-					"name": "{{url}}/api/admin/reservation/4/invoice",
-					"request": {
-						"auth": {
-							"type": "bearer",
-							"bearer": [
-								{
-									"key": "token",
-									"value": "{{admin1_token}}",
-									"type": "string"
-								}
-							]
-						},
-						"method": "POST",
-						"header": [
-							{
-								"key": "Secure-Api-Key",
-								"value": "{{Secure-Api-Key}}"
-							},
-							{
-								"key": "Content-Type",
-								"value": "application/json"
-							}
-						],
-						"body": {
-							"mode": "raw",
-							"raw": "{\r\n    \"date\": \"2018-12-31\",\r\n    \"due\": \"2019-12-31\",\r\n    \"from_business_name\": \"adsf\",\r\n    \"from_addressline_1\": \"adsfasd\",\r\n    \"from_addressline_2\": \"wer\",\r\n    \"from_city\": \"werf\",\r\n    \"from_postcode\": \"sdf\",\r\n    \"from_vat\": \"sdsf\",\r\n    \"from_phone\": \"sdqwf\",\r\n    \"to_client_name\": \"sdaflk\",\r\n    \"to_addressline_1\": \"werjo\",\r\n    \"to_addressline_2\": \"wer\",\r\n    \"to_city\": \"werg\",\r\n    \"to_postcode\": \"edfg\",\r\n    \"to_vat\": \"sdwef\",\r\n    \"to_phone\": \"sdrf\",\r\n    \"payment_account_name\": \"weroui\",\r\n    \"payment_account_sortcode\": \"weroi\",\r\n    \"payment_account_number\": \"235890\",\r\n    \"invoice_notes\": \"aerguiopd\",\r\n    \"discount\": \"324\",\r\n    \"sub_total\": \"213\",\r\n    \"tax\": \"123\",\r\n    \"grand_total\": \"569\"\r\n}"
-						},
-						"url": {
-							"raw": "{{url}}/api/admin/reservation/19/invoice",
-							"host": [
-								"{{url}}"
-							],
-							"path": [
-								"api",
-								"admin",
-								"reservation",
-								"19",
-								"invoice"
-							]
-						},
-						"description": "user1"
-					},
-					"response": []
-				},
-				{
-					"name": "{{url}}/api/admin/reservation/4/invoice/all",
-					"protocolProfileBehavior": {
-						"disableBodyPruning": true
-					},
-					"request": {
-						"auth": {
-							"type": "bearer",
-							"bearer": [
-								{
-									"key": "token",
-									"value": "{{admin1_token}}",
-									"type": "string"
-								}
-							]
-						},
-						"method": "GET",
-						"header": [
-							{
-								"key": "Secure-Api-Key",
-								"value": "{{Secure-Api-Key}}"
-							},
-							{
-								"key": "Content-Type",
-								"value": "application/json"
-							}
-						],
-						"body": {
-							"mode": "raw",
-							"raw": ""
-						},
-						"url": {
-							"raw": "{{url}}/api/admin/reservation/1/invoice/all",
-							"host": [
-								"{{url}}"
-							],
-							"path": [
-								"api",
-								"admin",
-								"reservation",
-								"1",
-								"invoice",
-								"all"
-							]
-						},
-						"description": "get users with token"
-					},
-					"response": []
-				},
-				{
-					"name": "{{url}}/api/admin/reservation/4/invoice/2",
-					"protocolProfileBehavior": {
-						"disableBodyPruning": true
-					},
-					"request": {
-						"auth": {
-							"type": "bearer",
-							"bearer": [
-								{
-									"key": "token",
-									"value": "{{admin1_token}}",
-									"type": "string"
-								}
-							]
-						},
-						"method": "GET",
-						"header": [
-							{
-								"key": "Secure-Api-Key",
-								"value": "{{Secure-Api-Key}}"
-							},
-							{
-								"key": "Content-Type",
-								"value": "application/json"
-							}
-						],
-						"body": {
-							"mode": "raw",
-							"raw": ""
-						},
-						"url": {
-							"raw": "{{url}}/api/admin/reservation/1/invoice/1",
-							"host": [
-								"{{url}}"
-							],
-							"path": [
-								"api",
-								"admin",
-								"reservation",
-								"1",
-								"invoice",
-								"1"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "{{url}}/api/admin/reservation/4/invoice/2",
-					"request": {
-						"auth": {
-							"type": "bearer",
-							"bearer": [
-								{
-									"key": "token",
-									"value": "{{admin1_token}}",
-									"type": "string"
-								}
-							]
-						},
-						"method": "PUT",
-						"header": [
-							{
-								"key": "Secure-Api-Key",
-								"value": "{{Secure-Api-Key}}"
-							},
-							{
-								"key": "Content-Type",
-								"value": "application/json"
-							}
-						],
-						"body": {
-							"mode": "raw",
-							"raw": "{\r\n    \"date\": \"2018-12-31\",\r\n    \"due\": \"2019-12-31\",\r\n    \"from_business_name\": \"adsf\",\r\n    \"from_addressline_1\": \"adsfasd\",\r\n    \"from_addressline_2\": \"wer\",\r\n    \"from_city\": \"werf\",\r\n    \"from_postcode\": \"sdf\",\r\n    \"from_vat\": \"sdsf\",\r\n    \"from_phone\": \"sdqwf\",\r\n    \"to_client_name\": \"sdaflk\",\r\n    \"to_addressline_1\": \"werjo\",\r\n    \"to_addressline_2\": \"wer\",\r\n    \"to_city\": \"werg\",\r\n    \"to_postcode\": \"edfg\",\r\n    \"to_vat\": \"sdwef\",\r\n    \"to_phone\": \"sdrf\",\r\n    \"payment_account_name\": \"weroui\",\r\n    \"payment_account_sortcode\": \"weroi\",\r\n    \"payment_account_number\": \"235890\",\r\n    \"invoice_notes\": \"aerguiopd\",\r\n    \"discount\": \"34\",\r\n    \"sub_total\": \"213\",\r\n    \"tax\": \"123\",\r\n    \"grand_total\": \"569\"\r\n}"
-						},
-						"url": {
-							"raw": "{{url}}/api/admin/reservation/1/invoice/1",
-							"host": [
-								"{{url}}"
-							],
-							"path": [
-								"api",
-								"admin",
-								"reservation",
-								"1",
-								"invoice",
-								"1"
-							]
-						},
-						"description": "Put"
-					},
-					"response": []
-				},
-				{
-					"name": "{{url}}/api/admin/reservation/4/invoice/2",
-					"request": {
-						"auth": {
-							"type": "bearer",
-							"bearer": [
-								{
-									"key": "token",
-									"value": "{{admin1_token}}",
-									"type": "string"
-								}
-							]
-						},
-						"method": "DELETE",
-						"header": [
-							{
-								"key": "Secure-Api-Key",
-								"value": "{{Secure-Api-Key}}"
-							},
-							{
-								"key": "Content-Type",
-								"value": "application/json"
-							}
-						],
-						"body": {
-							"mode": "raw",
-							"raw": ""
-						},
-						"url": {
-							"raw": "{{url}}/api/admin/reservation/1/invoice/1",
-							"host": [
-								"{{url}}"
-							],
-							"path": [
-								"api",
-								"admin",
-								"reservation",
-								"1",
-								"invoice",
-								"1"
-							]
-						}
-					},
-					"response": []
-				}
-			]
-		},
-		{
 			"name": "item",
 			"item": [
 				{
@@ -2508,7 +2460,7 @@
 							"bearer": [
 								{
 									"key": "token",
-									"value": "{{admin1_token}}",
+									"value": "{{admin_token}}",
 									"type": "string"
 								}
 							]
@@ -2526,7 +2478,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"name\": \"itemtest1\",\r\n    \"date\": \"1999-12-31\",\r\n    \"description\": \"werjo\",\r\n    \"quantity\": \"wer\",\r\n    \"price\": \"werg\",\r\n    \"discount\": \"edfg\",\r\n    \"tax\": \"sdwef\",\r\n    \"total\": \"sdrf\"\r\n}"
+							"raw": "{\r\n    \"name\": \"itemtest2\",\r\n    \"date\": \"1999-12-31\",\r\n    \"description\": \"werjo\",\r\n    \"quantity\": \"wer\",\r\n    \"price\": \"werg\",\r\n    \"discount\": \"edfg\",\r\n    \"tax\": \"sdwef\",\r\n    \"total\": \"sdrf\"\r\n}"
 						},
 						"url": {
 							"raw": "{{url}}/api/admin/reservation/1/invoice/1/item",
@@ -2558,7 +2510,7 @@
 							"bearer": [
 								{
 									"key": "token",
-									"value": "{{admin1_token}}",
+									"value": "{{admin_token}}",
 									"type": "string"
 								}
 							]
@@ -2609,7 +2561,7 @@
 							"bearer": [
 								{
 									"key": "token",
-									"value": "{{admin1_token}}",
+									"value": "{{admin_token}}",
 									"type": "string"
 								}
 							]
@@ -2656,7 +2608,7 @@
 							"bearer": [
 								{
 									"key": "token",
-									"value": "{{admin1_token}}",
+									"value": "{{admin_token}}",
 									"type": "string"
 								}
 							]
@@ -2704,7 +2656,7 @@
 							"bearer": [
 								{
 									"key": "token",
-									"value": "{{admin1_token}}",
+									"value": "{{admin_token}}",
 									"type": "string"
 								}
 							]
@@ -2756,7 +2708,7 @@
 							"bearer": [
 								{
 									"key": "token",
-									"value": "{{admin1_token}}",
+									"value": "{{admin_token}}",
 									"type": "string"
 								}
 							]
@@ -2774,7 +2726,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"name\": \"here\",\r\n    \"departure\": \"from here\",\r\n    \"destination\": \"to there\"\r\n}"
+							"raw": "{\r\n    \"name\": \"here23\",\r\n    \"departure\": \"from here23\",\r\n    \"destination\": \"to there32\"\r\n}"
 						},
 						"url": {
 							"raw": "{{url}}/api/itinerary_master",
@@ -2801,7 +2753,7 @@
 							"bearer": [
 								{
 									"key": "token",
-									"value": "{{admin1_token}}",
+									"value": "{{admin_token}}",
 									"type": "string"
 								}
 							]
@@ -2847,7 +2799,7 @@
 							"bearer": [
 								{
 									"key": "token",
-									"value": "{{admin1_token}}",
+									"value": "{{admin_token}}",
 									"type": "string"
 								}
 							]
@@ -2868,14 +2820,14 @@
 							"raw": ""
 						},
 						"url": {
-							"raw": "{{url}}/api/stop/9",
+							"raw": "{{url}}/api/itinerary_master/1",
 							"host": [
 								"{{url}}"
 							],
 							"path": [
 								"api",
-								"stop",
-								"9"
+								"itinerary_master",
+								"1"
 							]
 						}
 					},
@@ -2889,7 +2841,7 @@
 							"bearer": [
 								{
 									"key": "token",
-									"value": "{{admin1_token}}",
+									"value": "{{admin_token}}",
 									"type": "string"
 								}
 							]
@@ -2932,7 +2884,7 @@
 							"bearer": [
 								{
 									"key": "token",
-									"value": "{{admin1_token}}",
+									"value": "{{admin_token}}",
 									"type": "string"
 								}
 							]
@@ -2979,7 +2931,7 @@
 							"bearer": [
 								{
 									"key": "token",
-									"value": "{{admin1_token}}",
+									"value": "{{admin_token}}",
 									"type": "string"
 								}
 							]
@@ -2997,7 +2949,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n\t\"name\": \"my name\",\r\n    \"pickup\": \"here\",\r\n    \"date\": \"2019-12-31\",\r\n    \"time\": \"15:30\",\r\n    \"employee_id\": \"2\",\r\n    \"reservation_id\": \"3\"\r\n}"
+							"raw": "{\r\n\t\"name\": \"my name\",\r\n    \"pickup\": \"here\",\r\n    \"employee_id\": \"2\",\r\n    \"reservation_id\": \"3\"\r\n}"
 						},
 						"url": {
 							"raw": "{{url}}/api/stop",
@@ -3024,7 +2976,7 @@
 							"bearer": [
 								{
 									"key": "token",
-									"value": "{{admin1_token}}",
+									"value": "{{admin_token}}",
 									"type": "string"
 								}
 							]
@@ -3070,7 +3022,7 @@
 							"bearer": [
 								{
 									"key": "token",
-									"value": "{{admin1_token}}",
+									"value": "{{admin_token}}",
 									"type": "string"
 								}
 							]
@@ -3112,7 +3064,7 @@
 							"bearer": [
 								{
 									"key": "token",
-									"value": "{{admin1_token}}",
+									"value": "{{admin_token}}",
 									"type": "string"
 								}
 							]
@@ -3130,7 +3082,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n\t\"name\": \"my name\",\r\n    \"pickup\": \"here\",\r\n    \"date\": \"2019-12-31\",\r\n    \"time\": \"15:30\"\r\n}"
+							"raw": "{\r\n\t\"name\": \"my name\",\r\n    \"pickup\": \"here\"\r\n}"
 						},
 						"url": {
 							"raw": "{{url}}/api/stop/18",
@@ -3155,7 +3107,7 @@
 							"bearer": [
 								{
 									"key": "token",
-									"value": "{{admin1_token}}",
+									"value": "{{admin_token}}",
 									"type": "string"
 								}
 							]
