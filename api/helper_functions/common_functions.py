@@ -7,10 +7,10 @@ from ..common.exceptions import NotCorrectRole
 def apply_role_check(login_data, user_dict):
     if login_data["role"] == UNASSIGNED:
         msg = "The user does not have a role, cannot proceed login"
-        raise NotCorrectRole(message=msg)
+        raise NotCorrectRole(message=msg, status_code=403)
     if login_data["role"] != user_dict["role"]:
         msg = "This is not the correct role of the user, cannot proceed login"
-        raise NotCorrectRole(message=msg)
+        raise NotCorrectRole(message=msg, status_code=403)
 
 
 def can_it_update(employee_id=0, company_id=0, driver_id=0):

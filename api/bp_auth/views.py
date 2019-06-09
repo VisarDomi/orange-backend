@@ -1,6 +1,7 @@
 from flask import g, request
 from flask_httpauth import HTTPBasicAuth
 from flask_httpauth import HTTPTokenAuth
+from ..common.exceptions import BadLogin
 from ..models.users import User
 from ..helper_functions.constants import EXPIRES_IN, EXCLUDE
 from ..helper_functions.dict import user_to_dict
@@ -24,6 +25,11 @@ def verify_password(email, password):
 
 @basic_auth.error_handler
 def basic_auth_error():
+    msg = (
+        "You are not logged in or bad login "
+        "username/password combo. (@basic_auth.error_handler)"
+    )
+    raise BadLogin(message=msg, status_code=401)
 
     return {
         "error message": "You are not logged in or bad login "
