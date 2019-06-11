@@ -1,9 +1,6 @@
 import os
-
 from werkzeug.contrib.fixers import ProxyFix
-
 from api import create_app
-
 from api.common.database import db_session
 from api.models.users import User, Admin, Driver, Employee, Secretary, Company
 from api.models.items import (
