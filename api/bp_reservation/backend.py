@@ -15,7 +15,13 @@ from ..helper_functions.common_functions import can_it_update
 
 
 def create_reservation(reservation_data, company_id):
-    can_update = can_it_update(company_id=company_id)
+    secretary_id = 0
+    try:
+        secretary_id = reservation_data.pop("secretary_id")
+    except KeyError:
+        msg = "There is no secretary_id in reservation."
+        raise CannotCreateData(message=msg)
+    can_update = can_it_update(company_id=company_id, secretary_id=secretary_id)
     if can_update:
         stops_data = reservation_data.pop("stops")
         reservation = Reservation(**reservation_data)
@@ -67,7 +73,13 @@ def get_reservation(reservation_id, company_id):
 
 
 def update_reservation(reservation_data, reservation_id, company_id):
-    can_update = can_it_update(company_id=company_id)
+    secretary_id = 0
+    try:
+        secretary_id = reservation_data.pop("secretary_id")
+    except KeyError:
+        msg = "There is no secretary_id in reservation."
+        raise CannotCreateData(message=msg)
+    can_update = can_it_update(company_id=company_id, secretary_id=secretary_id)
     if can_update:
         stops_data = reservation_data.pop("stops")
         reservation = get_reservation_by_id(reservation_id)

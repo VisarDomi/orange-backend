@@ -1,8 +1,8 @@
 """first
 
-Revision ID: 41dc3b18e87e
+Revision ID: beb143839279
 Revises: 
-Create Date: 2019-06-07 22:55:10.954429
+Create Date: 2019-06-11 04:30:42.297542
 
 """
 from alembic import op
@@ -10,7 +10,7 @@ import sqlalchemy as sa
 
 
 # revision identifiers, used by Alembic.
-revision = '41dc3b18e87e'
+revision = 'beb143839279'
 down_revision = None
 branch_labels = None
 depends_on = None
@@ -49,6 +49,7 @@ def upgrade():
     sa.Column('id', sa.Integer(), autoincrement=True, nullable=False),
     sa.Column('full_name', sa.String(), nullable=True),
     sa.Column('payment_frequency', sa.String(), nullable=True),
+    sa.Column('code', sa.String(), nullable=True),
     sa.Column('timestamp', sa.DateTime(), nullable=True),
     sa.Column('user_id', sa.Integer(), nullable=True),
     sa.ForeignKeyConstraint(['user_id'], ['users.id'], ),
@@ -95,6 +96,7 @@ def upgrade():
     sa.Column('small_luggage', sa.String(), nullable=True),
     sa.Column('payment_method', sa.String(), nullable=True),
     sa.Column('status', sa.String(), nullable=True),
+    sa.Column('vehicle_type', sa.String(), nullable=True),
     sa.Column('timestamp', sa.DateTime(), nullable=True),
     sa.Column('company_id', sa.Integer(), nullable=True),
     sa.Column('driver_id', sa.Integer(), nullable=True),
@@ -102,33 +104,38 @@ def upgrade():
     sa.ForeignKeyConstraint(['driver_id'], ['drivers.id'], ),
     sa.PrimaryKeyConstraint('id')
     )
+    op.create_table('secretarys',
+    sa.Column('id', sa.Integer(), autoincrement=True, nullable=False),
+    sa.Column('full_name', sa.String(), nullable=True),
+    sa.Column('role', sa.String(), nullable=True),
+    sa.Column('timestamp', sa.DateTime(), nullable=True),
+    sa.Column('user_id', sa.Integer(), nullable=True),
+    sa.Column('company_id', sa.Integer(), nullable=True),
+    sa.ForeignKeyConstraint(['company_id'], ['companys.id'], ),
+    sa.ForeignKeyConstraint(['user_id'], ['users.id'], ),
+    sa.PrimaryKeyConstraint('id')
+    )
     op.create_table('invoices',
     sa.Column('id', sa.Integer(), autoincrement=True, nullable=False),
     sa.Column('ref', sa.String(), nullable=True),
-    sa.Column('date', sa.Date(), nullable=True),
-    sa.Column('due', sa.Date(), nullable=True),
-    sa.Column('from_business_name', sa.String(), nullable=True),
-    sa.Column('from_addressline_1', sa.String(), nullable=True),
-    sa.Column('from_addressline_2', sa.String(), nullable=True),
-    sa.Column('from_city', sa.String(), nullable=True),
-    sa.Column('from_postcode', sa.String(), nullable=True),
-    sa.Column('from_vat', sa.String(), nullable=True),
-    sa.Column('from_phone', sa.String(), nullable=True),
-    sa.Column('to_client_name', sa.String(), nullable=True),
-    sa.Column('to_addressline_1', sa.String(), nullable=True),
-    sa.Column('to_addressline_2', sa.String(), nullable=True),
-    sa.Column('to_city', sa.String(), nullable=True),
-    sa.Column('to_postcode', sa.String(), nullable=True),
-    sa.Column('to_vat', sa.String(), nullable=True),
-    sa.Column('to_phone', sa.String(), nullable=True),
-    sa.Column('payment_account_name', sa.String(), nullable=True),
-    sa.Column('payment_account_sortcode', sa.String(), nullable=True),
-    sa.Column('payment_account_number', sa.String(), nullable=True),
-    sa.Column('invoice_notes', sa.Text(), nullable=True),
-    sa.Column('discount', sa.String(), nullable=True),
-    sa.Column('sub_total', sa.String(), nullable=True),
+    sa.Column('datum', sa.Date(), nullable=True),
+    sa.Column('rechnung_nr', sa.String(), nullable=True),
+    sa.Column('uid_nr', sa.String(), nullable=True),
+    sa.Column('bank_name', sa.String(), nullable=True),
+    sa.Column('bic', sa.String(), nullable=True),
+    sa.Column('iban', sa.String(), nullable=True),
+    sa.Column('an_name', sa.String(), nullable=True),
+    sa.Column('an_company', sa.String(), nullable=True),
+    sa.Column('an_company_address', sa.String(), nullable=True),
+    sa.Column('an_company_postcode', sa.String(), nullable=True),
+    sa.Column('an_company_city', sa.String(), nullable=True),
+    sa.Column('an_company_state', sa.String(), nullable=True),
+    sa.Column('rechnungsersteller', sa.String(), nullable=True),
+    sa.Column('zahlungsform', sa.String(), nullable=True),
+    sa.Column('rechnung_datum', sa.Date(), nullable=True),
+    sa.Column('zahlungsziel', sa.String(), nullable=True),
     sa.Column('tax', sa.String(), nullable=True),
-    sa.Column('grand_total', sa.String(), nullable=True),
+    sa.Column('total', sa.String(), nullable=True),
     sa.Column('reservation_id', sa.Integer(), nullable=True),
     sa.Column('timestamp', sa.DateTime(), nullable=True),
     sa.ForeignKeyConstraint(['reservation_id'], ['reservations.id'], ),
@@ -138,6 +145,7 @@ def upgrade():
     sa.Column('id', sa.Integer(), autoincrement=True, nullable=False),
     sa.Column('name', sa.String(), nullable=True),
     sa.Column('pickup', sa.String(), nullable=True),
+    sa.Column('time', sa.String(), nullable=True),
     sa.Column('timestamp', sa.DateTime(), nullable=True),
     sa.Column('employee_id', sa.Integer(), nullable=True),
     sa.Column('reservation_id', sa.Integer(), nullable=True),
@@ -148,13 +156,14 @@ def upgrade():
     op.create_table('items',
     sa.Column('id', sa.Integer(), autoincrement=True, nullable=False),
     sa.Column('name', sa.String(), nullable=True),
-    sa.Column('date', sa.Date(), nullable=True),
-    sa.Column('description', sa.String(), nullable=True),
-    sa.Column('quantity', sa.String(), nullable=True),
+    sa.Column('pickup_date', sa.Date(), nullable=True),
+    sa.Column('pickup_address', sa.String(), nullable=True),
+    sa.Column('kst', sa.String(), nullable=True),
+    sa.Column('orderer_name', sa.String(), nullable=True),
+    sa.Column('message', sa.String(), nullable=True),
+    sa.Column('n_stops', sa.String(), nullable=True),
+    sa.Column('destination', sa.String(), nullable=True),
     sa.Column('price', sa.String(), nullable=True),
-    sa.Column('discount', sa.String(), nullable=True),
-    sa.Column('tax', sa.String(), nullable=True),
-    sa.Column('total', sa.String(), nullable=True),
     sa.Column('timestamp', sa.DateTime(), nullable=True),
     sa.Column('invoice_id', sa.Integer(), nullable=True),
     sa.ForeignKeyConstraint(['invoice_id'], ['invoices.id'], ),
@@ -168,6 +177,7 @@ def downgrade():
     op.drop_table('items')
     op.drop_table('stops')
     op.drop_table('invoices')
+    op.drop_table('secretarys')
     op.drop_table('reservations')
     op.drop_table('itinerarys')
     op.drop_table('employees')

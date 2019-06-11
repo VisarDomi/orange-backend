@@ -11,6 +11,9 @@
     "payment_frequency": {
       "type": "string"
     },
+    "code": {
+      "type": "string"
+    },
     "user_id": {
       "type": "string"
     }

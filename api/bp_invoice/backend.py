@@ -12,13 +12,22 @@ from ..helper_functions.common_functions import can_it_update
 def create_invoice(invoice_data, reservation_id):
     can_update = can_it_update()
     if can_update:
+        ref = False
+        try:
+            ref = invoice_data.pop("ref")
+        except KeyError:
+            msg = "There is no ref in invoice."
+            raise CannotCreateData(message=msg)
         invoice = Invoice(**invoice_data)
         invoice.save()
         reservation = get_reservation_by_id(reservation_id)
         invoice.reservation = reservation
         code = reservation.company.code
-        number = str(invoice.id).zfill(5)
-        invoice.ref = code + number
+        if ref:
+            invoice.ref = code + ref
+        else:
+            number = str(invoice.id).zfill(5)
+            invoice.ref = code + number
         invoice.save()
     else:
         msg = "You can't create data."

@@ -26,10 +26,11 @@ class User(BaseModel, ModelSerializerMixin):
     # activity
     register_date = Column(DateTime, default=datetime.utcnow)
 
-    # admin, driver, employee, company
+    # admin, driver, employee, secretary, company
     admin = relationship("Admin", uselist=False, back_populates="user")
     driver = relationship("Driver", uselist=False, back_populates="user")
     employee = relationship("Employee", uselist=False, back_populates="user")
+    secretary = relationship("Secretary", uselist=False, back_populates="user")
     company = relationship("Company", uselist=False, back_populates="user")
 
     def set_password(self, password):
@@ -108,8 +109,9 @@ class Company(BaseModel, ModelSerializerMixin):
     user = relationship("User", back_populates="company")
     user_id = Column(Integer, ForeignKey("users.id"))
 
-    # employees, reservations, itinerarys
+    # employees, secretary, reservations, itinerarys
     employees = relationship("Employee", back_populates="company", lazy="dynamic")
+    secretarys = relationship("Secretary", back_populates="company", lazy="dynamic")
     reservations = relationship("Reservation", back_populates="company", lazy="dynamic")
     itinerarys = relationship("Itinerary", back_populates="company", lazy="dynamic")
 
@@ -134,6 +136,25 @@ class Employee(BaseModel, ModelSerializerMixin):
 
     # stops
     stops = relationship("Stop", back_populates="employee", lazy="dynamic")
+
+    def __repr__(self):
+        return f"{self.__class__.__name__}({self.full_name}, id = {self.id})"
+
+
+class Secretary(BaseModel, ModelSerializerMixin):
+
+    id = Column(Integer, primary_key=True, autoincrement=True)
+
+    full_name = Column(String, default="no_full_name")
+    role = Column(String)
+
+    timestamp = Column(DateTime, default=datetime.utcnow)
+
+    user = relationship("User", back_populates="secretary")
+    user_id = Column(Integer, ForeignKey("users.id"))
+
+    company = relationship("Company", back_populates="secretarys")
+    company_id = Column(Integer, ForeignKey("companys.id"))
 
     def __repr__(self):
         return f"{self.__class__.__name__}({self.full_name}, id = {self.id})"

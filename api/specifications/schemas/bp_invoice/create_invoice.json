@@ -4,76 +4,61 @@
   "type": "object",
   "$schema": "http://json-schema.org/draft-04/schema",
   "properties": {
-    "date": {
+    "ref": {
       "type": "string"
     },
-    "due": {
+    "datum": {
       "type": "string"
     },
-    "from_business_name": {
+    "rechnung_nr": {
       "type": "string"
     },
-    "from_addressline_1": {
+    "uid_nr": {
       "type": "string"
     },
-    "from_addressline_2": {
+    "bank_name": {
       "type": "string"
     },
-    "from_city": {
+    "bic": {
       "type": "string"
     },
-    "from_postcode": {
+    "iban": {
       "type": "string"
     },
-    "from_vat": {
+    "an_name": {
       "type": "string"
     },
-    "from_phone": {
+    "an_company": {
       "type": "string"
     },
-    "to_client_name": {
+    "an_company_address": {
       "type": "string"
     },
-    "to_addressline_1": {
+    "an_company_postcode": {
       "type": "string"
     },
-    "to_addressline_2": {
+    "an_company_city": {
       "type": "string"
     },
-    "to_city": {
+    "an_company_state": {
       "type": "string"
     },
-    "to_postcode": {
+    "rechnungsersteller": {
       "type": "string"
     },
-    "to_vat": {
+    "zahlungsform": {
       "type": "string"
     },
-    "to_phone": {
+    "rechnung_datum": {
       "type": "string"
     },
-    "payment_account_name": {
-      "type": "string"
-    },
-    "payment_account_sortcode": {
-      "type": "string"
-    },
-    "payment_account_number": {
-      "type": "string"
-    },
-    "invoice_notes": {
-      "type": "string"
-    },
-    "discount": {
-      "type": "string"
-    },
-    "sub_total": {
+    "zahlungsziel": {
       "type": "string"
     },
     "tax": {
       "type": "string"
     },
-    "grand_total": {
+    "total": {
       "type": "string"
     }
   },

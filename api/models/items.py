@@ -1,5 +1,5 @@
 from datetime import datetime
-from sqlalchemy import Integer, String, Column, Date, DateTime, Text, ForeignKey
+from sqlalchemy import Integer, String, Column, Date, DateTime, ForeignKey
 from sqlalchemy.orm import relationship
 from ..common.database import BaseModel
 from ..common.serializers import ModelSerializerMixin
@@ -42,35 +42,24 @@ class Invoice(BaseModel, ModelSerializerMixin):
     id = Column(Integer, primary_key=True, autoincrement=True)
 
     ref = Column(String, default="no_ref")
-    date = Column(Date)
-    due = Column(Date)
-
-    from_business_name = Column(String)
-    from_addressline_1 = Column(String)
-    from_addressline_2 = Column(String)
-    from_city = Column(String)
-    from_postcode = Column(String)
-    from_vat = Column(String)
-    from_phone = Column(String)
-
-    to_client_name = Column(String)
-    to_addressline_1 = Column(String)
-    to_addressline_2 = Column(String)
-    to_city = Column(String)
-    to_postcode = Column(String)
-    to_vat = Column(String)
-    to_phone = Column(String)
-
-    payment_account_name = Column(String)
-    payment_account_sortcode = Column(String)
-    payment_account_number = Column(String)
-
-    invoice_notes = Column(Text)
-
-    discount = Column(String)
-    sub_total = Column(String)
+    datum = Column(Date)
+    rechnung_nr = Column(String)
+    uid_nr = Column(String)
+    bank_name = Column(String)
+    bic = Column(String)
+    iban = Column(String)
+    an_name = Column(String)
+    an_company = Column(String)
+    an_company_address = Column(String)
+    an_company_postcode = Column(String)
+    an_company_city = Column(String)
+    an_company_state = Column(String)
+    rechnungsersteller = Column(String)
+    zahlungsform = Column(String)
+    rechnung_datum = Column(Date)
+    zahlungsziel = Column(String)
     tax = Column(String)
-    grand_total = Column(String)
+    total = Column(String)
 
     reservation = relationship("Reservation", back_populates="invoices")
     reservation_id = Column(Integer, ForeignKey("reservations.id"))
@@ -89,13 +78,14 @@ class Item(BaseModel, ModelSerializerMixin):
     id = Column(Integer, primary_key=True, autoincrement=True)
 
     name = Column(String, default="no_name")
-    date = Column(Date)
-    description = Column(String)
-    quantity = Column(String)
+    pickup_date = Column(Date)
+    pickup_address = Column(String)
+    kst = Column(String)
+    orderer_name = Column(String)
+    message = Column(String)
+    n_stops = Column(String)
+    destination = Column(String)
     price = Column(String)
-    discount = Column(String)
-    tax = Column(String)
-    total = Column(String)
 
     timestamp = Column(DateTime, default=datetime.utcnow)
 

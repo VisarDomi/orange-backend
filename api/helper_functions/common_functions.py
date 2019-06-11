@@ -13,11 +13,12 @@ def apply_role_check(login_data, user_dict):
         raise NotCorrectRole(message=msg, status_code=403)
 
 
-def can_it_update(employee_id=0, company_id=0, driver_id=0):
+def can_it_update(employee_id=0, secretary_id=0, company_id=0, driver_id=0):
     is_admin = False
     is_company = False
     is_driver = False
     is_employee = False
+    is_secretary = False
     can_update = False
     if g.current_user.admin:
         is_admin = True
@@ -27,7 +28,9 @@ def can_it_update(employee_id=0, company_id=0, driver_id=0):
         is_driver = int(driver_id) == g.current_user.driver.id
     if g.current_user.employee:
         is_employee = int(employee_id) == g.current_user.employee.id
-    if is_admin or is_company or is_driver or is_employee:
+    if g.current_user.secretary:
+        is_secretary = int(secretary_id) == g.current_user.secretary.id
+    if is_admin or is_company or is_driver or is_employee or is_secretary:
         can_update = True
 
     return can_update
@@ -42,6 +45,8 @@ def is_it_duplicate_role(user_id):
     if user.company:
         counter += 1
     if user.employee:
+        counter += 1
+    if user.secretary:
         counter += 1
     if user.driver:
         counter += 1
