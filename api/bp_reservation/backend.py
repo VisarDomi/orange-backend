@@ -19,8 +19,9 @@ def create_reservation(reservation_data, company_id):
     try:
         secretary_id = reservation_data.pop("secretary_id")
     except KeyError:
-        msg = "There is no secretary_id in reservation."
-        raise CannotCreateData(message=msg)
+        # msg = "There is no secretary_id in reservation."
+        # raise CannotCreateData(message=msg)
+        pass
     can_update = can_it_update(company_id=company_id, secretary_id=secretary_id)
     if can_update:
         stops_data = reservation_data.pop("stops")
@@ -77,8 +78,9 @@ def update_reservation(reservation_data, reservation_id, company_id):
     try:
         secretary_id = reservation_data.pop("secretary_id")
     except KeyError:
-        msg = "There is no secretary_id in reservation."
-        raise CannotCreateData(message=msg)
+        # msg = "There is no secretary_id in reservation."
+        # raise CannotCreateData(message=msg)
+        pass
     can_update = can_it_update(company_id=company_id, secretary_id=secretary_id)
     if can_update:
         stops_data = reservation_data.pop("stops")
