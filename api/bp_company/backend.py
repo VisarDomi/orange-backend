@@ -1,4 +1,3 @@
-import random
 from ..common.exceptions import (
     CannotChangeOthersData,
     CannotDeleteOthersData,
@@ -10,27 +9,29 @@ from ..models.items import Itinerary, ItineraryMaster
 from ..helper_functions.create import create_entity
 from ..helper_functions.get_by_id import get_company_by_id, get_invoice_by_id
 from ..helper_functions.common_functions import can_it_update
-from ..helper_functions.constants import LETTERS
+
+# import random
+# from ..helper_functions.constants import LETTERS
 
 
 def create_company(company_data):
     can_update = can_it_update()
     if can_update:
         company = create_entity(company_data, Company)
-        letters = LETTERS
-        companys = Company.query.all()
-        existing_codes = []
-        for company in companys:
-            existing_codes.append(company.code)
-        is_duplicate_code = True
-        while is_duplicate_code:
-            letter1 = random.choice(letters)
-            letter2 = random.choice(letters)
-            letter3 = random.choice(letters)
-            code = letter1 + letter2 + letter3
-            if code not in existing_codes:
-                is_duplicate_code = False
-        company.code = code
+        # letters = LETTERS
+        # companys = Company.query.all()
+        # existing_codes = []
+        # for company in companys:
+        #     existing_codes.append(company.code)
+        # is_duplicate_code = True
+        # while is_duplicate_code:
+        #     letter1 = random.choice(letters)
+        #     letter2 = random.choice(letters)
+        #     letter3 = random.choice(letters)
+        #     code = letter1 + letter2 + letter3
+        #     if code not in existing_codes:
+        #         is_duplicate_code = False
+        # company.code = code
         itinerarys_master = ItineraryMaster.query.all()
         for itinerary_master in itinerarys_master:
             itinerary_data = itinerary_master.to_dict()

@@ -8,25 +8,28 @@
     "name": {
       "type": "string"
     },
-    "date": {
+    "pickup_date": {
       "type": "string"
     },
-    "description": {
+    "pickup_address": {
       "type": "string"
     },
-    "quantity": {
+    "kst": {
+      "type": "string"
+    },
+    "orderer_name": {
+      "type": "string"
+    },
+    "message": {
+      "type": "string"
+    },
+    "n_stops": {
+      "type": "string"
+    },
+    "destination": {
       "type": "string"
     },
     "price": {
-      "type": "string"
-    },
-    "discount": {
-      "type": "string"
-    },
-    "tax": {
-      "type": "string"
-    },
-    "total": {
       "type": "string"
     }
   },

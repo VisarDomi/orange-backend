@@ -1,6 +1,6 @@
 from sqlalchemy.orm.exc import NoResultFound
 from ..common.exceptions import RecordNotFound, InvalidURL
-from ..models.users import User, Admin, Driver, Employee, Company
+from ..models.users import User, Admin, Driver, Employee, Secretary, Company
 from ..models.items import Reservation, Invoice, Item, Itinerary, ItineraryMaster, Stop
 
 
@@ -14,6 +14,8 @@ def get_entity(entity_id, Entity):
         entity_name = "Driver"
     if Entity == Employee:
         entity_name = "Employee"
+    if Entity == Secretary:
+        entity_name = "Secretary"
     if Entity == Company:
         entity_name = "Company"
     if Entity == Reservation:
@@ -62,6 +64,12 @@ def get_employee_by_id(employee_id):
     employee = get_entity(employee_id, Employee)
 
     return employee
+
+
+def get_secretary_by_id(secretary_id):
+    secretary = get_entity(secretary_id, Secretary)
+
+    return secretary
 
 
 def get_company_by_id(company_id):

@@ -5,6 +5,9 @@
   "$schema": "http://json-schema.org/draft-04/schema",
   "required": ["date", "time"],
   "properties": {
+    "secretary_id": {
+      "type": "string"
+    },
     "code": {
       "type": "string"
     },

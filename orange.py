@@ -4,8 +4,8 @@ from werkzeug.contrib.fixers import ProxyFix
 
 from api import create_app
 
-from api.common.database import db_session, drop_db, init_db
-from api.models.users import User, Admin, Driver, Employee, Company
+from api.common.database import db_session
+from api.models.users import User, Admin, Driver, Employee, Secretary, Company
 from api.models.items import (
     Reservation,
     Invoice,
@@ -22,12 +22,11 @@ app = create_app()
 def make_shell_context():
     return {
         "db_session": db_session,
-        "drop_db": drop_db,
-        "init_db": init_db,
         "User": User,
         "Admin": Admin,
         "Driver": Driver,
         "Employee": Employee,
+        "Secretary": Secretary,
         "Company": Company,
         "Reservation": Reservation,
         "Invoice": Invoice,
