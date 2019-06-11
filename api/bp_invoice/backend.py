@@ -16,8 +16,9 @@ def create_invoice(invoice_data, reservation_id):
         try:
             ref = invoice_data.pop("ref")
         except KeyError:
-            msg = "There is no ref in invoice."
-            raise CannotCreateData(message=msg)
+            # msg = "There is no ref in invoice."
+            # raise CannotCreateData(message=msg)
+            pass
         invoice = Invoice(**invoice_data)
         invoice.save()
         reservation = get_reservation_by_id(reservation_id)
