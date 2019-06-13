@@ -87,7 +87,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"email\": \"user14@orange.com\",\r\n    \"password\": \"password\"\r\n}"
+							"raw": "{\r\n    \"email\": \"secretary3@orange.com\",\r\n    \"password\": \"password\"\r\n}"
 						},
 						"url": {
 							"raw": "{{url}}/api/user",
@@ -282,25 +282,77 @@
 			]
 		},
 		{
-			"name": "dataintegration",
+			"name": "reservation",
 			"item": [
 				{
-					"name": "{{url}}/api/dataintegration/books",
+					"name": "{{url}}/api/company/2/reservation",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{secretary1_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Secure-Api-Key",
+								"value": "{{Secure-Api-Key}}"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"reservation1\",\r\n    \"destination\": \"there\",\r\n    \"date\": \"2019-12-31\",\r\n    \"time\": \"13:45:39\",\r\n    \"status\": \"unassigned\",\r\n    \"payment_method\": \"individual\",\r\n    \"big_luggage\": \"0\",\r\n    \"small_luggage\": \"1\",\r\n    \"vehicle_type\": \"limo\",\r\n    \"stops\": [\r\n    \t{\r\n\t    \t\"pickup\": \"here1\",\r\n\t    \t\"employee_id\": \"1\"\r\n\t    },\r\n\t    {\r\n\t    \t\"pickup\": \"here2\",\r\n\t    \t\"employee_id\": \"2\"\r\n\t    }\r\n    ]\r\n}"
+						},
+						"url": {
+							"raw": "{{url}}/api/company/1/reservation",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"company",
+								"1",
+								"reservation"
+							]
+						},
+						"description": "user1"
+					},
+					"response": []
+				},
+				{
+					"name": "{{url}}/api/company/2/reservation/all",
 					"protocolProfileBehavior": {
 						"disableBodyPruning": true
 					},
 					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{secretary1_token}}",
+									"type": "string"
+								}
+							]
+						},
 						"method": "GET",
 						"header": [
 							{
 								"key": "Secure-Api-Key",
-								"value": "{{Secure-Api-Key}}",
-								"disabled": true
+								"value": "{{Secure-Api-Key}}"
 							},
 							{
 								"key": "Content-Type",
-								"value": "application/json",
-								"disabled": true
+								"value": "application/json"
 							}
 						],
 						"body": {
@@ -308,17 +360,155 @@
 							"raw": ""
 						},
 						"url": {
-							"raw": "{{url}}/api/dataintegration/books",
+							"raw": "{{url}}/api/company/1/reservation/all",
 							"host": [
 								"{{url}}"
 							],
 							"path": [
 								"api",
-								"dataintegration",
-								"books"
+								"company",
+								"1",
+								"reservation",
+								"all"
 							]
 						},
 						"description": "get users with token"
+					},
+					"response": []
+				},
+				{
+					"name": "{{url}}/api/company/1/reservation/3",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{secretary1_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Secure-Api-Key",
+								"value": "{{Secure-Api-Key}}"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{url}}/api/company/1/reservation/1",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"company",
+								"1",
+								"reservation",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "{{url}}/api/company/1/reservation/3",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{secretary1_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Secure-Api-Key",
+								"value": "{{Secure-Api-Key}}"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"reservation1\",\r\n    \"destination\": \"there\",\r\n    \"date\": \"2019-12-31\",\r\n    \"time\": \"13:45:39\",\r\n    \"status\": \"unassigned\",\r\n    \"payment_method\": \"individual\",\r\n    \"big_luggage\": \"0\",\r\n    \"small_luggage\": \"1\",\r\n    \"vehicle_type\": \"limo\",\r\n    \"stops\": [\r\n    \t{\r\n    \t\t\"id\": \"1\",\r\n\t    \t\"pickup\": \"here12\",\r\n\t    \t\"employee_id\": \"1\"\r\n\t    },\r\n\t    {\r\n\t    \t\"id\": \"2\",\r\n\t    \t\"pickup\": \"here23\",\r\n\t    \t\"employee_id\": \"2\"\r\n\t    }\r\n    ]\r\n}"
+						},
+						"url": {
+							"raw": "{{url}}/api/company/1/reservation/1",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"company",
+								"1",
+								"reservation",
+								"1"
+							]
+						},
+						"description": "Put"
+					},
+					"response": []
+				},
+				{
+					"name": "{{url}}/api/company/2/reservation/3",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{company1_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Secure-Api-Key",
+								"value": "{{Secure-Api-Key}}"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{url}}/api/company/2/reservation/3",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"company",
+								"2",
+								"reservation",
+								"3"
+							]
+						}
 					},
 					"response": []
 				}
@@ -353,10 +543,10 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{    \r\n\t\"ref\": \"ASD\",\r\n    \"datum\": \"1999-12-31\",\r\n    \"rechnung_nr\": \"123\",\r\n    \"uid_nr\": \"523\",\r\n    \"bank_name\": \"asdf\",\r\n    \"bic\": \"adf\",\r\n    \"iban\": \"234df\",\r\n    \"an_name\": \"asdf\",\r\n    \"an_company\": \"qwer\",\r\n    \"an_company_address\": \"wefioj\",\r\n    \"an_company_postcode\": \"2314\",\r\n    \"an_company_city\": \"sdf\",\r\n    \"an_company_state\": \"sdf3er\",\r\n    \"rechnungsersteller\": \"asdfwe\",\r\n    \"zahlungsform\": \"credit\",\r\n    \"rechnung_datum\": \"2000-12-31\",\r\n    \"zahlungsziel\": \"14\",\r\n    \"tax\": \"10\",\r\n    \"total\": \"999\"\r\n}"
+							"raw": "{    \r\n\t\"ref\": \"12342\",\r\n    \"datum\": \"1999-12-31\",\r\n    \"rechnung_nr\": \"123\",\r\n    \"uid_nr\": \"523\",\r\n    \"bank_name\": \"asdf\",\r\n    \"bic\": \"adf\",\r\n    \"iban\": \"234df\",\r\n    \"an_name\": \"asdf\",\r\n    \"an_company\": \"qwer\",\r\n    \"an_company_address\": \"wefioj\",\r\n    \"an_company_postcode\": \"2314\",\r\n    \"an_company_city\": \"sdf\",\r\n    \"an_company_state\": \"sdf3er\",\r\n    \"rechnungsersteller\": \"asdfwe\",\r\n    \"zahlungsform\": \"credit\",\r\n    \"rechnung_datum\": \"2000-12-31\",\r\n    \"zahlungsziel\": \"14\",\r\n    \"tax\": \"10\",\r\n    \"total\": \"999\",\r\n    \"items\": [\r\n    \t{\r\n\t\t    \"pickup_date\": \"1999-12-31\",\r\n\t\t    \"pickup_address\": \"address1\",\r\n\t\t    \"kst\": \"7hj6\",\r\n\t\t    \"orderer_name\": \"filan fisteku\",\r\n\t\t    \"message\": \"message1\",\r\n\t\t    \"n_stops\": \"4\",\r\n\t\t    \"destination\": \"there\",\r\n\t\t    \"price\": \"399\"\r\n    \t},\r\n    \t{\r\n\t\t    \"pickup_date\": \"2001-12-31\",\r\n\t\t    \"pickup_address\": \"address2\",\r\n\t\t    \"kst\": \"adsef\",\r\n\t\t    \"orderer_name\": \"filan2 fisteku2\",\r\n\t\t    \"message\": \"message2\",\r\n\t\t    \"n_stops\": \"2\",\r\n\t\t    \"destination\": \"there2\",\r\n\t\t    \"price\": \"155\"\r\n    \t}    \t\r\n    ]\r\n}"
 						},
 						"url": {
-							"raw": "{{url}}/api/admin/reservation/19/invoice",
+							"raw": "{{url}}/api/admin/reservation/1/invoice",
 							"host": [
 								"{{url}}"
 							],
@@ -364,7 +554,7 @@
 								"api",
 								"admin",
 								"reservation",
-								"19",
+								"1",
 								"invoice"
 							]
 						},
@@ -447,10 +637,10 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{    \r\n\t\"ref\": \"ASD\",\r\n    \"datum\": \"1999-12-31\",\r\n    \"rechnung_nr\": \"123\",\r\n    \"uid_nr\": \"523\",\r\n    \"bank_name\": \"asdf\",\r\n    \"bic\": \"adf\",\r\n    \"iban\": \"234df\",\r\n    \"an_name\": \"asdf\",\r\n    \"an_company\": \"qwer\",\r\n    \"an_company_address\": \"wefioj\",\r\n    \"an_company_postcode\": \"2314\",\r\n    \"an_company_city\": \"sdf\",\r\n    \"an_company_state\": \"sdf3er\",\r\n    \"rechnungsersteller\": \"asdfwe\",\r\n    \"zahlungsform\": \"credit\",\r\n    \"rechnung_datum\": \"2000-12-31\",\r\n    \"zahlungsziel\": \"14\",\r\n    \"tax\": \"10\",\r\n    \"total\": \"999\"\r\n}"
+							"raw": "{    \r\n\t\"ref\": \"12342\",\r\n    \"datum\": \"1999-12-31\",\r\n    \"rechnung_nr\": \"123\",\r\n    \"uid_nr\": \"523\",\r\n    \"bank_name\": \"asdf\",\r\n    \"bic\": \"adf\",\r\n    \"iban\": \"234df\",\r\n    \"an_name\": \"asdf\",\r\n    \"an_company\": \"qwer\",\r\n    \"an_company_address\": \"wefioj\",\r\n    \"an_company_postcode\": \"2314\",\r\n    \"an_company_city\": \"sdf\",\r\n    \"an_company_state\": \"sdf3er\",\r\n    \"rechnungsersteller\": \"asdfwe\",\r\n    \"zahlungsform\": \"credit\",\r\n    \"rechnung_datum\": \"2000-12-31\",\r\n    \"zahlungsziel\": \"14\",\r\n    \"tax\": \"10\",\r\n    \"total\": \"999\",\r\n    \"items\": [\r\n    \t{\r\n    \t\t\"id\": \"1\",\r\n\t\t    \"pickup_date\": \"1999-12-31\",\r\n\t\t    \"pickup_address\": \"address11\",\r\n\t\t    \"kst\": \"7hj6\",\r\n\t\t    \"orderer_name\": \"filan fisteku1\",\r\n\t\t    \"message\": \"message11\",\r\n\t\t    \"n_stops\": \"4\",\r\n\t\t    \"destination\": \"there1\",\r\n\t\t    \"price\": \"999\"\r\n    \t},\r\n    \t{\r\n    \t\t\"id\": \"2\",\r\n\t\t    \"pickup_date\": \"2001-12-31\",\r\n\t\t    \"pickup_address\": \"address22\",\r\n\t\t    \"kst\": \"adsef\",\r\n\t\t    \"orderer_name\": \"filan2 fisteku22\",\r\n\t\t    \"message\": \"message22\",\r\n\t\t    \"n_stops\": \"2\",\r\n\t\t    \"destination\": \"there22\",\r\n\t\t    \"price\": \"255\"\r\n    \t}    \t\r\n    ]\r\n}"
 						},
 						"url": {
-							"raw": "{{url}}/api/admin/reservation/1/invoice/1",
+							"raw": "{{url}}/api/admin/reservation/1/invoice/2",
 							"host": [
 								"{{url}}"
 							],
@@ -460,7 +650,7 @@
 								"reservation",
 								"1",
 								"invoice",
-								"1"
+								"2"
 							]
 						},
 						"description": "Put"
@@ -952,7 +1142,7 @@
 							"raw": ""
 						},
 						"url": {
-							"raw": "{{url}}/api/admin/invoice/21",
+							"raw": "{{url}}/api/admin/invoice/2",
 							"host": [
 								"{{url}}"
 							],
@@ -960,7 +1150,7 @@
 								"api",
 								"admin",
 								"invoice",
-								"21"
+								"2"
 							]
 						},
 						"description": "get users with token"
@@ -998,7 +1188,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"full_name\": \"driver1\",\r\n    \"status\": \"occupied\",\r\n    \"user_id\": \"2\"\r\n}"
+							"raw": "{\r\n    \"full_name\": \"driver2\",\r\n    \"status\": \"occupied\",\r\n    \"user_id\": \"3\"\r\n}"
 						},
 						"url": {
 							"raw": "{{url}}/api/driver",
@@ -1113,7 +1303,7 @@
 							"bearer": [
 								{
 									"key": "token",
-									"value": "{{admin_token}}",
+									"value": "{{driver1_token}}",
 									"type": "string"
 								}
 							]
@@ -1131,7 +1321,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"full_name\": \"drivertest2\",\r\n    \"status\": \"occupied\"\r\n}"
+							"raw": "{\r\n    \"full_name\": \"driver1\",\r\n    \"status\": \"occupied\"\r\n}"
 						},
 						"url": {
 							"raw": "{{url}}/api/driver/1",
@@ -1312,7 +1502,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n\t\"status\": \"rejected\"\n}"
+							"raw": "{\n\t\"status\": \"accepted\"\n}"
 						},
 						"url": {
 							"raw": "{{url}}/api/driver/1/reservation/1",
@@ -1362,7 +1552,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"full_name\": \"company7\",\r\n    \"payment_frequency\": \"individual\",\r\n    \"code\": \"individual\",\r\n    \"user_id\": \"14\"\r\n}"
+							"raw": "{\r\n    \"name\": \"company1\",\r\n    \"payment_frequency\": \"single\",\r\n    \"code\": \"CDK\",\r\n    \"invoice_number\": \"00543\",\r\n    \"head_secretary\": {\r\n\t    \"full_name\": \"head_secretary1\",\r\n\t    \"role\": \"head_secretary\",\r\n\t    \"user_id\": \"4\"\r\n    }\r\n}"
 						},
 						"url": {
 							"raw": "{{url}}/api/company",
@@ -1435,7 +1625,7 @@
 							"bearer": [
 								{
 									"key": "token",
-									"value": "{{admin_token}}",
+									"value": "{{secretary1_token}}",
 									"type": "string"
 								}
 							]
@@ -1456,14 +1646,14 @@
 							"raw": ""
 						},
 						"url": {
-							"raw": "{{url}}/api/company/2",
+							"raw": "{{url}}/api/company/1",
 							"host": [
 								"{{url}}"
 							],
 							"path": [
 								"api",
 								"company",
-								"2"
+								"1"
 							]
 						}
 					},
@@ -1477,7 +1667,7 @@
 							"bearer": [
 								{
 									"key": "token",
-									"value": "{{company1_token}}",
+									"value": "{{admin_token}}",
 									"type": "string"
 								}
 							]
@@ -1495,7 +1685,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"full_name\": \"company1\",\n    \"payment_frequency\": \"individual\",\n    \"code\": \"individual\"\n}"
+							"raw": "{\r\n    \"name\": \"company1\",\r\n    \"payment_frequency\": \"single\",\r\n    \"code\": \"CDE\",\r\n    \"invoice_number\": \"00143\"\r\n}"
 						},
 						"url": {
 							"raw": "{{url}}/api/company/1",
@@ -1565,7 +1755,7 @@
 							"bearer": [
 								{
 									"key": "token",
-									"value": "{{company1_token}}",
+									"value": "{{secretary1_token}}",
 									"type": "string"
 								}
 							]
@@ -1613,7 +1803,7 @@
 							"bearer": [
 								{
 									"key": "token",
-									"value": "{{company1_token}}",
+									"value": "{{secretary1_token}}",
 									"type": "string"
 								}
 							]
@@ -1634,7 +1824,7 @@
 							"raw": ""
 						},
 						"url": {
-							"raw": "{{url}}/api/company/1/invoice/1",
+							"raw": "{{url}}/api/company/1/invoice/2",
 							"host": [
 								"{{url}}"
 							],
@@ -1643,7 +1833,7 @@
 								"company",
 								"1",
 								"invoice",
-								"1"
+								"2"
 							]
 						},
 						"description": "get users with token"
@@ -1653,17 +1843,17 @@
 			]
 		},
 		{
-			"name": "reservation",
+			"name": "secretary",
 			"item": [
 				{
-					"name": "{{url}}/api/company/2/reservation",
+					"name": "{{url}}/api/company/2/secretary",
 					"request": {
 						"auth": {
 							"type": "bearer",
 							"bearer": [
 								{
 									"key": "token",
-									"value": "{{company6_token}}",
+									"value": "{{secretary1_token}}",
 									"type": "string"
 								}
 							]
@@ -1681,18 +1871,18 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"secretary_id\": \"3\",\r\n    \"code\": \"cod1\",\r\n    \"destination\": \"there\",\r\n    \"date\": \"2019-12-31\",\r\n    \"time\": \"13:45:39\",\r\n    \"status\": \"unassigned\",\r\n    \"payment_method\": \"individual\",\r\n    \"big_luggage\": \"0\",\r\n    \"small_luggage\": \"1\",\r\n    \"vehicle_type\": \"mini bus\",\r\n    \"stops\": [{\r\n    \t\"pickup\": \"here\",\r\n    \t\"employee_id\": \"4\"\r\n    }]\r\n}"
+							"raw": "{\r\n    \"full_name\": \"secretary3\",\r\n    \"role\": \"normal_secretary\",\r\n    \"user_id\": \"8\"\r\n}"
 						},
 						"url": {
-							"raw": "{{url}}/api/company/6/reservation",
+							"raw": "{{url}}/api/company/1/secretary",
 							"host": [
 								"{{url}}"
 							],
 							"path": [
 								"api",
 								"company",
-								"6",
-								"reservation"
+								"1",
+								"secretary"
 							]
 						},
 						"description": "user1"
@@ -1700,7 +1890,7 @@
 					"response": []
 				},
 				{
-					"name": "{{url}}/api/company/2/reservation/all",
+					"name": "{{url}}/api/company/2/secretary/all",
 					"protocolProfileBehavior": {
 						"disableBodyPruning": true
 					},
@@ -1710,7 +1900,7 @@
 							"bearer": [
 								{
 									"key": "token",
-									"value": "{{company1_token}}",
+									"value": "{{secretary1_token}}",
 									"type": "string"
 								}
 							]
@@ -1731,7 +1921,7 @@
 							"raw": ""
 						},
 						"url": {
-							"raw": "{{url}}/api/company/1/reservation/all",
+							"raw": "{{url}}/api/company/1/secretary/all",
 							"host": [
 								"{{url}}"
 							],
@@ -1739,7 +1929,7 @@
 								"api",
 								"company",
 								"1",
-								"reservation",
+								"secretary",
 								"all"
 							]
 						},
@@ -1748,7 +1938,7 @@
 					"response": []
 				},
 				{
-					"name": "{{url}}/api/company/1/reservation/3",
+					"name": "{{url}}/api/company/1/secretary/3",
 					"protocolProfileBehavior": {
 						"disableBodyPruning": true
 					},
@@ -1758,7 +1948,7 @@
 							"bearer": [
 								{
 									"key": "token",
-									"value": "{{company1_token}}",
+									"value": "{{secretary3_token}}",
 									"type": "string"
 								}
 							]
@@ -1779,7 +1969,7 @@
 							"raw": ""
 						},
 						"url": {
-							"raw": "{{url}}/api/company/1/reservation/1",
+							"raw": "{{url}}/api/company/1/secretary/3",
 							"host": [
 								"{{url}}"
 							],
@@ -1787,22 +1977,22 @@
 								"api",
 								"company",
 								"1",
-								"reservation",
-								"1"
+								"secretary",
+								"3"
 							]
 						}
 					},
 					"response": []
 				},
 				{
-					"name": "{{url}}/api/company/1/reservation/3",
+					"name": "{{url}}/api/company/1/secretary/3",
 					"request": {
 						"auth": {
 							"type": "bearer",
 							"bearer": [
 								{
 									"key": "token",
-									"value": "{{company1_token}}",
+									"value": "{{secretary1_token}}",
 									"type": "string"
 								}
 							]
@@ -1820,10 +2010,10 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"secretary_id\": \"3\",\r\n    \"code\": \"cod1\",\r\n    \"destination\": \"there\",\r\n    \"date\": \"2019-12-31\",\r\n    \"time\": \"13:45:39\",\r\n    \"status\": \"unassigned\",\r\n    \"payment_method\": \"individual\",\r\n    \"big_luggage\": \"0\",\r\n    \"small_luggage\": \"1\",\r\n    \"vehicle_type\": \"mini bus\",\r\n    \"stops\": [{\r\n    \t\"id\": \"1\",\r\n    \t\"pickup\": \"here\",\r\n    \t\"employee_id\": \"2\"\r\n    },\r\n    {\r\n    \t\"id\": \"2\",\r\n    \t\"pickup\": \"there\",\r\n    \t\"employee_id\": \"3\"\r\n    }]\r\n}"
+							"raw": "{\r\n    \"full_name\": \"secretary3\",\r\n    \"role\": \"normal_secretary\"\r\n}"
 						},
 						"url": {
-							"raw": "{{url}}/api/company/1/reservation/15",
+							"raw": "{{url}}/api/company/1/secretary/3",
 							"host": [
 								"{{url}}"
 							],
@@ -1831,8 +2021,8 @@
 								"api",
 								"company",
 								"1",
-								"reservation",
-								"15"
+								"secretary",
+								"3"
 							]
 						},
 						"description": "Put"
@@ -1840,14 +2030,14 @@
 					"response": []
 				},
 				{
-					"name": "{{url}}/api/company/2/reservation/3",
+					"name": "{{url}}/api/company/2/secretary/3",
 					"request": {
 						"auth": {
 							"type": "bearer",
 							"bearer": [
 								{
 									"key": "token",
-									"value": "{{company1_token}}",
+									"value": "{{admin_token}}",
 									"type": "string"
 								}
 							]
@@ -1868,16 +2058,114 @@
 							"raw": ""
 						},
 						"url": {
-							"raw": "{{url}}/api/company/2/reservation/3",
+							"raw": "{{url}}/api/company/1/secretary/2",
 							"host": [
 								"{{url}}"
 							],
 							"path": [
 								"api",
 								"company",
-								"2",
+								"1",
+								"secretary",
+								"2"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "{{url}}/api/company/1/secretary/3/reservation/all",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{secretary1_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Secure-Api-Key",
+								"value": "{{Secure-Api-Key}}"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{url}}/api/company/1/secretary/1/reservation/all",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"company",
+								"1",
+								"secretary",
+								"1",
 								"reservation",
-								"3"
+								"all"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "{{url}}/api/company/1/secretary/3/reservation/1",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{secretary1_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Secure-Api-Key",
+								"value": "{{Secure-Api-Key}}"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{url}}/api/company/1/secretary/1/reservation/1",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"company",
+								"1",
+								"secretary",
+								"1",
+								"reservation",
+								"1"
 							]
 						}
 					},
@@ -1896,7 +2184,7 @@
 							"bearer": [
 								{
 									"key": "token",
-									"value": "{{company1_token}}",
+									"value": "{{secretary1_token}}",
 									"type": "string"
 								}
 							]
@@ -1914,7 +2202,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"full_name\": \"employee1\",\r\n    \"address\": \"Rruga Budi\",\r\n    \"user_id\": \"4\"\r\n}"
+							"raw": "{\r\n    \"full_name\": \"employee2\",\r\n    \"address\": \"Rruga Budi\",\r\n    \"user_id\": \"7\"\r\n}"
 						},
 						"url": {
 							"raw": "{{url}}/api/company/1/employee",
@@ -1943,7 +2231,7 @@
 							"bearer": [
 								{
 									"key": "token",
-									"value": "{{company1_token}}",
+									"value": "{{secretary1_token}}",
 									"type": "string"
 								}
 							]
@@ -1991,7 +2279,7 @@
 							"bearer": [
 								{
 									"key": "token",
-									"value": "{{company1_token}}",
+									"value": "{{secretary1_token}}",
 									"type": "string"
 								}
 							]
@@ -2035,7 +2323,7 @@
 							"bearer": [
 								{
 									"key": "token",
-									"value": "{{company1_token}}",
+									"value": "{{secretary1_token}}",
 									"type": "string"
 								}
 							]
@@ -2053,7 +2341,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"full_name\": \"employeetest7@orange-backend.ml\",\n    \"address\": \"Rruga Budi2\"\n}"
+							"raw": "{\r\n    \"full_name\": \"employee1\",\r\n    \"address\": \"Rruga Budi1\"\r\n}"
 						},
 						"url": {
 							"raw": "{{url}}/api/company/1/employee/1",
@@ -2080,7 +2368,7 @@
 							"bearer": [
 								{
 									"key": "token",
-									"value": "{{admin_token}}",
+									"value": "{{secretary1_token}}",
 									"type": "string"
 								}
 							]
@@ -2217,194 +2505,10 @@
 			]
 		},
 		{
-			"name": "secretary",
+			"name": "itinerary",
 			"item": [
 				{
-					"name": "{{url}}/api/company/2/secretary",
-					"request": {
-						"auth": {
-							"type": "bearer",
-							"bearer": [
-								{
-									"key": "token",
-									"value": "{{company1_token}}",
-									"type": "string"
-								}
-							]
-						},
-						"method": "POST",
-						"header": [
-							{
-								"key": "Secure-Api-Key",
-								"value": "{{Secure-Api-Key}}"
-							},
-							{
-								"key": "Content-Type",
-								"value": "application/json"
-							}
-						],
-						"body": {
-							"mode": "raw",
-							"raw": "{\r\n    \"full_name\": \"employee1\",\r\n    \"role\": \"head_secretary\",\r\n    \"user_id\": \"4\"\r\n}"
-						},
-						"url": {
-							"raw": "{{url}}/api/company/1/secretary",
-							"host": [
-								"{{url}}"
-							],
-							"path": [
-								"api",
-								"company",
-								"1",
-								"secretary"
-							]
-						},
-						"description": "user1"
-					},
-					"response": []
-				},
-				{
-					"name": "{{url}}/api/company/2/secretary/all",
-					"protocolProfileBehavior": {
-						"disableBodyPruning": true
-					},
-					"request": {
-						"auth": {
-							"type": "bearer",
-							"bearer": [
-								{
-									"key": "token",
-									"value": "{{company1_token}}",
-									"type": "string"
-								}
-							]
-						},
-						"method": "GET",
-						"header": [
-							{
-								"key": "Secure-Api-Key",
-								"value": "{{Secure-Api-Key}}"
-							},
-							{
-								"key": "Content-Type",
-								"value": "application/json"
-							}
-						],
-						"body": {
-							"mode": "raw",
-							"raw": ""
-						},
-						"url": {
-							"raw": "{{url}}/api/company/1/secretary/all",
-							"host": [
-								"{{url}}"
-							],
-							"path": [
-								"api",
-								"company",
-								"1",
-								"secretary",
-								"all"
-							]
-						},
-						"description": "get users with token"
-					},
-					"response": []
-				},
-				{
-					"name": "{{url}}/api/company/1/secretary/3",
-					"protocolProfileBehavior": {
-						"disableBodyPruning": true
-					},
-					"request": {
-						"auth": {
-							"type": "bearer",
-							"bearer": [
-								{
-									"key": "token",
-									"value": "{{company1_token}}",
-									"type": "string"
-								}
-							]
-						},
-						"method": "GET",
-						"header": [
-							{
-								"key": "Secure-Api-Key",
-								"value": "{{Secure-Api-Key}}"
-							},
-							{
-								"key": "Content-Type",
-								"value": "application/json"
-							}
-						],
-						"body": {
-							"mode": "raw",
-							"raw": ""
-						},
-						"url": {
-							"raw": "{{url}}/api/company/1/secretary/1",
-							"host": [
-								"{{url}}"
-							],
-							"path": [
-								"api",
-								"company",
-								"1",
-								"secretary",
-								"1"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "{{url}}/api/company/1/secretary/3",
-					"request": {
-						"auth": {
-							"type": "bearer",
-							"bearer": [
-								{
-									"key": "token",
-									"value": "{{company1_token}}",
-									"type": "string"
-								}
-							]
-						},
-						"method": "PUT",
-						"header": [
-							{
-								"key": "Secure-Api-Key",
-								"value": "{{Secure-Api-Key}}"
-							},
-							{
-								"key": "Content-Type",
-								"value": "application/json"
-							}
-						],
-						"body": {
-							"mode": "raw",
-							"raw": "{\n    \"full_name\": \"employeetest7@orange-backend.ml\",\n    \"role\": \"normal_secretary\"\n}"
-						},
-						"url": {
-							"raw": "{{url}}/api/company/1/secretary/1",
-							"host": [
-								"{{url}}"
-							],
-							"path": [
-								"api",
-								"company",
-								"1",
-								"secretary",
-								"1"
-							]
-						},
-						"description": "Put"
-					},
-					"response": []
-				},
-				{
-					"name": "{{url}}/api/company/2/secretary/3",
+					"name": "{{url}}/api/company/2/itinerary",
 					"request": {
 						"auth": {
 							"type": "bearer",
@@ -2416,153 +2520,6 @@
 								}
 							]
 						},
-						"method": "DELETE",
-						"header": [
-							{
-								"key": "Secure-Api-Key",
-								"value": "{{Secure-Api-Key}}"
-							},
-							{
-								"key": "Content-Type",
-								"value": "application/json"
-							}
-						],
-						"body": {
-							"mode": "raw",
-							"raw": ""
-						},
-						"url": {
-							"raw": "{{url}}/api/company/1/secretary/2",
-							"host": [
-								"{{url}}"
-							],
-							"path": [
-								"api",
-								"company",
-								"1",
-								"secretary",
-								"2"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "{{url}}/api/company/1/secretary/3/reservation/all",
-					"protocolProfileBehavior": {
-						"disableBodyPruning": true
-					},
-					"request": {
-						"auth": {
-							"type": "bearer",
-							"bearer": [
-								{
-									"key": "token",
-									"value": "{{employee2_token}}",
-									"type": "string"
-								}
-							]
-						},
-						"method": "GET",
-						"header": [
-							{
-								"key": "Secure-Api-Key",
-								"value": "{{Secure-Api-Key}}"
-							},
-							{
-								"key": "Content-Type",
-								"value": "application/json"
-							}
-						],
-						"body": {
-							"mode": "raw",
-							"raw": ""
-						},
-						"url": {
-							"raw": "{{url}}/api/company/1/secretary/2/reservation/all",
-							"host": [
-								"{{url}}"
-							],
-							"path": [
-								"api",
-								"company",
-								"1",
-								"secretary",
-								"2",
-								"reservation",
-								"all"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "{{url}}/api/company/1/secretary/3/reservation/1",
-					"protocolProfileBehavior": {
-						"disableBodyPruning": true
-					},
-					"request": {
-						"auth": {
-							"type": "bearer",
-							"bearer": [
-								{
-									"key": "token",
-									"value": "{{employee2_token}}",
-									"type": "string"
-								}
-							]
-						},
-						"method": "GET",
-						"header": [
-							{
-								"key": "Secure-Api-Key",
-								"value": "{{Secure-Api-Key}}"
-							},
-							{
-								"key": "Content-Type",
-								"value": "application/json"
-							}
-						],
-						"body": {
-							"mode": "raw",
-							"raw": ""
-						},
-						"url": {
-							"raw": "{{url}}/api/company/1/secretary/2/reservation/1",
-							"host": [
-								"{{url}}"
-							],
-							"path": [
-								"api",
-								"company",
-								"1",
-								"secretary",
-								"2",
-								"reservation",
-								"1"
-							]
-						}
-					},
-					"response": []
-				}
-			]
-		},
-		{
-			"name": "itinerary",
-			"item": [
-				{
-					"name": "{{url}}/api/company/2/itinerary",
-					"request": {
-						"auth": {
-							"type": "bearer",
-							"bearer": [
-								{
-									"key": "token",
-									"value": "{{company1_token}}",
-									"type": "string"
-								}
-							]
-						},
 						"method": "POST",
 						"header": [
 							{
@@ -2576,7 +2533,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"name\": \"cod1\",\r\n    \"departure\": \"here\",\r\n    \"destination\": \"there\",\r\n    \"price\": \"399\"\r\n}"
+							"raw": "{\r\n    \"name\": \"itinerary1\",\r\n    \"departure\": \"here\",\r\n    \"destination\": \"there\",\r\n    \"price\": \"399\"\r\n}"
 						},
 						"url": {
 							"raw": "{{url}}/api/company/1/itinerary",
@@ -2605,7 +2562,7 @@
 							"bearer": [
 								{
 									"key": "token",
-									"value": "{{company1_token}}",
+									"value": "{{admin_token}}",
 									"type": "string"
 								}
 							]
@@ -2626,7 +2583,7 @@
 							"raw": ""
 						},
 						"url": {
-							"raw": "{{url}}/api/company/1/reservation/all",
+							"raw": "{{url}}/api/company/1/itinerary/all",
 							"host": [
 								"{{url}}"
 							],
@@ -2634,7 +2591,7 @@
 								"api",
 								"company",
 								"1",
-								"reservation",
+								"itinerary",
 								"all"
 							]
 						},
@@ -2653,7 +2610,7 @@
 							"bearer": [
 								{
 									"key": "token",
-									"value": "{{company1_token}}",
+									"value": "{{admin_token}}",
 									"type": "string"
 								}
 							]
@@ -2674,7 +2631,7 @@
 							"raw": ""
 						},
 						"url": {
-							"raw": "{{url}}/api/company/1/reservation/1",
+							"raw": "{{url}}/api/company/1/itinerary/1",
 							"host": [
 								"{{url}}"
 							],
@@ -2682,7 +2639,7 @@
 								"api",
 								"company",
 								"1",
-								"reservation",
+								"itinerary",
 								"1"
 							]
 						}
@@ -2697,7 +2654,7 @@
 							"bearer": [
 								{
 									"key": "token",
-									"value": "{{company1_token}}",
+									"value": "{{admin_token}}",
 									"type": "string"
 								}
 							]
@@ -2715,10 +2672,10 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"name\": \"cod1\",\r\n    \"departure\": \"here\",\r\n    \"destination\": \"there\",\r\n    \"price\": \"399\"\r\n}"
+							"raw": "{\r\n    \"name\": \"itinerary1\",\r\n    \"departure\": \"here\",\r\n    \"destination\": \"there\",\r\n    \"price\": \"399\"\r\n}"
 						},
 						"url": {
-							"raw": "{{url}}/api/company/1/itinerary/2",
+							"raw": "{{url}}/api/company/1/itinerary/1",
 							"host": [
 								"{{url}}"
 							],
@@ -2727,7 +2684,7 @@
 								"company",
 								"1",
 								"itinerary",
-								"2"
+								"1"
 							]
 						},
 						"description": "Put"
@@ -2773,254 +2730,6 @@
 								"2",
 								"itinerary",
 								"3"
-							]
-						}
-					},
-					"response": []
-				}
-			]
-		},
-		{
-			"name": "item",
-			"item": [
-				{
-					"name": "{{url}}/api/admin/reservation/4/invoice/3/item",
-					"request": {
-						"auth": {
-							"type": "bearer",
-							"bearer": [
-								{
-									"key": "token",
-									"value": "{{admin_token}}",
-									"type": "string"
-								}
-							]
-						},
-						"method": "POST",
-						"header": [
-							{
-								"key": "Secure-Api-Key",
-								"value": "{{Secure-Api-Key}}"
-							},
-							{
-								"key": "Content-Type",
-								"value": "application/json"
-							}
-						],
-						"body": {
-							"mode": "raw",
-							"raw": "{\r\n    \"name\": \"itemtest2\",\r\n    \"pickup_date\": \"1999-12-31\",\r\n    \"pickup_address\": \"werjo\",\r\n    \"kst\": \"234\",\r\n    \"orderer_name\": \"werg\",\r\n    \"message\": \"edfg\",\r\n    \"n_stops\": \"3\",\r\n    \"destination\": \"sdrf\",\r\n    \"price\": \"577\"\r\n}"
-						},
-						"url": {
-							"raw": "{{url}}/api/admin/reservation/1/invoice/1/item",
-							"host": [
-								"{{url}}"
-							],
-							"path": [
-								"api",
-								"admin",
-								"reservation",
-								"1",
-								"invoice",
-								"1",
-								"item"
-							]
-						},
-						"description": "user1"
-					},
-					"response": []
-				},
-				{
-					"name": "{{url}}/api/admin/reservation/4/invoice/3/item/all",
-					"protocolProfileBehavior": {
-						"disableBodyPruning": true
-					},
-					"request": {
-						"auth": {
-							"type": "bearer",
-							"bearer": [
-								{
-									"key": "token",
-									"value": "{{admin_token}}",
-									"type": "string"
-								}
-							]
-						},
-						"method": "GET",
-						"header": [
-							{
-								"key": "Secure-Api-Key",
-								"value": "{{Secure-Api-Key}}"
-							},
-							{
-								"key": "Content-Type",
-								"value": "application/json"
-							}
-						],
-						"body": {
-							"mode": "raw",
-							"raw": ""
-						},
-						"url": {
-							"raw": "{{url}}/api/admin/reservation/1/invoice/1/item/all",
-							"host": [
-								"{{url}}"
-							],
-							"path": [
-								"api",
-								"admin",
-								"reservation",
-								"1",
-								"invoice",
-								"1",
-								"item",
-								"all"
-							]
-						},
-						"description": "get users with token"
-					},
-					"response": []
-				},
-				{
-					"name": "{{url}}/api/admin/reservation/4/invoice/3/item/2",
-					"protocolProfileBehavior": {
-						"disableBodyPruning": true
-					},
-					"request": {
-						"auth": {
-							"type": "bearer",
-							"bearer": [
-								{
-									"key": "token",
-									"value": "{{admin_token}}",
-									"type": "string"
-								}
-							]
-						},
-						"method": "GET",
-						"header": [
-							{
-								"key": "Secure-Api-Key",
-								"value": "{{Secure-Api-Key}}"
-							},
-							{
-								"key": "Content-Type",
-								"value": "application/json"
-							}
-						],
-						"body": {
-							"mode": "raw",
-							"raw": ""
-						},
-						"url": {
-							"raw": "{{url}}/api/admin/reservation/1/invoice/1/item/1",
-							"host": [
-								"{{url}}"
-							],
-							"path": [
-								"api",
-								"admin",
-								"reservation",
-								"1",
-								"invoice",
-								"1",
-								"item",
-								"1"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "{{url}}/api/admin/reservation/4/invoice/3/item/2",
-					"request": {
-						"auth": {
-							"type": "bearer",
-							"bearer": [
-								{
-									"key": "token",
-									"value": "{{admin_token}}",
-									"type": "string"
-								}
-							]
-						},
-						"method": "PUT",
-						"header": [
-							{
-								"key": "Secure-Api-Key",
-								"value": "{{Secure-Api-Key}}"
-							},
-							{
-								"key": "Content-Type",
-								"value": "application/json"
-							}
-						],
-						"body": {
-							"mode": "raw",
-							"raw": "{\r\n    \"name\": \"itemtest2\",\r\n    \"pickup_date\": \"1999-12-31\",\r\n    \"pickup_address\": \"werjo\",\r\n    \"kst\": \"234\",\r\n    \"orderer_name\": \"werg\",\r\n    \"message\": \"edfg\",\r\n    \"n_stops\": \"3\",\r\n    \"destination\": \"sdrf\",\r\n    \"price\": \"577\"\r\n}"
-						},
-						"url": {
-							"raw": "{{url}}/api/admin/reservation/1/invoice/1/item/1",
-							"host": [
-								"{{url}}"
-							],
-							"path": [
-								"api",
-								"admin",
-								"reservation",
-								"1",
-								"invoice",
-								"1",
-								"item",
-								"1"
-							]
-						},
-						"description": "Put"
-					},
-					"response": []
-				},
-				{
-					"name": "{{url}}/api/admin/reservation/4/invoice/3/item/2",
-					"request": {
-						"auth": {
-							"type": "bearer",
-							"bearer": [
-								{
-									"key": "token",
-									"value": "{{admin_token}}",
-									"type": "string"
-								}
-							]
-						},
-						"method": "DELETE",
-						"header": [
-							{
-								"key": "Secure-Api-Key",
-								"value": "{{Secure-Api-Key}}"
-							},
-							{
-								"key": "Content-Type",
-								"value": "application/json"
-							}
-						],
-						"body": {
-							"mode": "raw",
-							"raw": ""
-						},
-						"url": {
-							"raw": "{{url}}/api/admin/reservation/1/invoice/1/item/1",
-							"host": [
-								"{{url}}"
-							],
-							"path": [
-								"api",
-								"admin",
-								"reservation",
-								"1",
-								"invoice",
-								"1",
-								"item",
-								"1"
 							]
 						}
 					},
@@ -3252,75 +2961,25 @@
 			]
 		},
 		{
-			"name": "stop",
+			"name": "dataintegration",
 			"item": [
 				{
-					"name": "{{url}}/api/stop",
-					"request": {
-						"auth": {
-							"type": "bearer",
-							"bearer": [
-								{
-									"key": "token",
-									"value": "{{admin_token}}",
-									"type": "string"
-								}
-							]
-						},
-						"method": "POST",
-						"header": [
-							{
-								"key": "Secure-Api-Key",
-								"value": "{{Secure-Api-Key}}"
-							},
-							{
-								"key": "Content-Type",
-								"value": "application/json"
-							}
-						],
-						"body": {
-							"mode": "raw",
-							"raw": "{\r\n\t\"name\": \"my name\",\r\n    \"pickup\": \"here\",\r\n    \"employee_id\": \"2\",\r\n    \"reservation_id\": \"3\"\r\n}"
-						},
-						"url": {
-							"raw": "{{url}}/api/stop",
-							"host": [
-								"{{url}}"
-							],
-							"path": [
-								"api",
-								"stop"
-							]
-						},
-						"description": "user1"
-					},
-					"response": []
-				},
-				{
-					"name": "{{url}}/api/stop/all",
+					"name": "{{url}}/api/dataintegration/books",
 					"protocolProfileBehavior": {
 						"disableBodyPruning": true
 					},
 					"request": {
-						"auth": {
-							"type": "bearer",
-							"bearer": [
-								{
-									"key": "token",
-									"value": "{{admin_token}}",
-									"type": "string"
-								}
-							]
-						},
 						"method": "GET",
 						"header": [
 							{
 								"key": "Secure-Api-Key",
-								"value": "{{Secure-Api-Key}}"
+								"value": "{{Secure-Api-Key}}",
+								"disabled": true
 							},
 							{
 								"key": "Content-Type",
-								"value": "application/json"
+								"value": "application/json",
+								"disabled": true
 							}
 						],
 						"body": {
@@ -3328,151 +2987,99 @@
 							"raw": ""
 						},
 						"url": {
-							"raw": "{{url}}/api/stop/all",
+							"raw": "{{url}}/api/dataintegration/books",
 							"host": [
 								"{{url}}"
 							],
 							"path": [
 								"api",
-								"stop",
-								"all"
+								"dataintegration",
+								"books"
 							]
 						},
 						"description": "get users with token"
 					},
 					"response": []
-				},
-				{
-					"name": "{{url}}/api/stop/1",
-					"protocolProfileBehavior": {
-						"disableBodyPruning": true
-					},
-					"request": {
-						"auth": {
-							"type": "bearer",
-							"bearer": [
-								{
-									"key": "token",
-									"value": "{{admin_token}}",
-									"type": "string"
-								}
-							]
-						},
-						"method": "GET",
-						"header": [
-							{
-								"key": "Secure-Api-Key",
-								"value": "{{Secure-Api-Key}}"
-							},
-							{
-								"key": "Content-Type",
-								"value": "application/json"
-							}
-						],
-						"body": {
-							"mode": "raw",
-							"raw": ""
-						},
-						"url": {
-							"raw": "{{url}}/api/stop/9",
-							"host": [
-								"{{url}}"
-							],
-							"path": [
-								"api",
-								"stop",
-								"9"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "{{url}}/api/stop/1",
-					"request": {
-						"auth": {
-							"type": "bearer",
-							"bearer": [
-								{
-									"key": "token",
-									"value": "{{admin_token}}",
-									"type": "string"
-								}
-							]
-						},
-						"method": "PUT",
-						"header": [
-							{
-								"key": "Secure-Api-Key",
-								"value": "{{Secure-Api-Key}}"
-							},
-							{
-								"key": "Content-Type",
-								"value": "application/json"
-							}
-						],
-						"body": {
-							"mode": "raw",
-							"raw": "{\r\n\t\"name\": \"my name\",\r\n    \"pickup\": \"here\"\r\n}"
-						},
-						"url": {
-							"raw": "{{url}}/api/stop/18",
-							"host": [
-								"{{url}}"
-							],
-							"path": [
-								"api",
-								"stop",
-								"18"
-							]
-						},
-						"description": "Put"
-					},
-					"response": []
-				},
-				{
-					"name": "{{url}}/api/stop/2",
-					"request": {
-						"auth": {
-							"type": "bearer",
-							"bearer": [
-								{
-									"key": "token",
-									"value": "{{admin_token}}",
-									"type": "string"
-								}
-							]
-						},
-						"method": "DELETE",
-						"header": [
-							{
-								"key": "Secure-Api-Key",
-								"value": "{{Secure-Api-Key}}"
-							},
-							{
-								"key": "Content-Type",
-								"value": "application/json"
-							}
-						],
-						"body": {
-							"mode": "raw",
-							"raw": ""
-						},
-						"url": {
-							"raw": "{{url}}/api/stop/8",
-							"host": [
-								"{{url}}"
-							],
-							"path": [
-								"api",
-								"stop",
-								"8"
-							]
-						}
-					},
-					"response": []
 				}
 			]
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"id": "e69f81f1-6507-46b9-b873-8f5076f8f5e0",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"id": "37b28a31-a723-4aa4-9be1-6602bfbc5e2e",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"id": "db92b52b-7e78-457c-a40e-08fcf63e237d",
+			"key": "url",
+			"value": "https://orange-backend.ml",
+			"type": "string"
+		},
+		{
+			"id": "eaeae64e-401f-43d5-b3f3-c5e87b26cc45",
+			"key": "Secure-Api-Key",
+			"value": "asdfasdfetye1a2",
+			"type": "string"
+		},
+		{
+			"id": "111b6856-679e-49e8-a137-869bee457f2d",
+			"key": "admin_token",
+			"value": "tKdEj30CCqIPdqIdNDDMWS7fUJ/79/Oa",
+			"type": "string"
+		},
+		{
+			"id": "f97e966a-4ec6-4fd6-8a9b-04567541b678",
+			"key": "secretary1_token",
+			"value": "usQ7NDGMOCIA0wL+kNNmrWHUVwqLzSXi",
+			"type": "string"
+		},
+		{
+			"id": "71f1542f-7d97-4a7e-b1f6-18ad0581da27",
+			"key": "secretary2_token",
+			"value": "HobP1Rwvsaa01a6EgThDacudr3KaTIzf",
+			"type": "string"
+		},
+		{
+			"id": "a5250b40-820b-4cfc-a4b2-9279488b5201",
+			"key": "driver1_token",
+			"value": "YYq6nEAEyr1pMJnPqTgKPVvndL3USNX9",
+			"type": "string"
+		},
+		{
+			"id": "01c54745-764e-4e47-bd88-63681687bd65",
+			"key": "driver2_token",
+			"value": "F+TuIr8MZKQQT6mDsnk37ihUYfAPjEj9",
+			"type": "string"
+		},
+		{
+			"id": "1fc557cf-6b20-4f33-9a08-bf50459a75b5",
+			"key": "employee1_token",
+			"value": "p3U+d2xxyw7uctrccg6hEsDjkwd3QLLc",
+			"type": "string"
+		},
+		{
+			"id": "fb244581-9558-40d0-ba13-7bb5861c5b6a",
+			"key": "employee2_token",
+			"value": "ObZ7rQPKmSwZL+2pwK8Apz05SVsevdA1",
+			"type": "string"
 		}
 	]
 }
