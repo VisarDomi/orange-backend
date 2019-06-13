@@ -3,6 +3,7 @@
   "description": "Update a invoice object",
   "type": "object",
   "$schema": "http://json-schema.org/draft-04/schema",
+  "required": ["ref"],
   "properties": {
     "ref": {
       "type": "string"
@@ -60,6 +61,9 @@
     },
     "total": {
       "type": "string"
+    },
+    "items": {
+      "type": "array"
     }
   },
   "additionalProperties": false

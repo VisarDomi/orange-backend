@@ -1,7 +1,15 @@
 from sqlalchemy.orm.exc import NoResultFound
-from ..common.exceptions import RecordNotFound, InvalidURL
-from ..models.users import User, Admin, Driver, Employee, Secretary, Company
-from ..models.items import Reservation, Invoice, Item, Itinerary, ItineraryMaster, Stop
+from ..common.exceptions import RecordNotFound, InvalidURL, CannotGetOthersData
+from ..models.users import User, Admin, Driver, Employee, Secretary
+from ..models.items import (
+    Company,
+    Reservation,
+    Invoice,
+    Item,
+    Itinerary,
+    ItineraryMaster,
+    Stop,
+)
 
 
 def get_entity(entity_id, Entity):
@@ -33,8 +41,13 @@ def get_entity(entity_id, Entity):
     try:
         entity = Entity.query.filter(Entity.id == int(entity_id)).one()
     except NoResultFound:
-        msg = f"There is no {entity_name} with id {entity_id}"
-        raise RecordNotFound(message=msg)
+        if int(entity_id) == 0:
+            msg = f"You don't have permissions."
+            status_code = 403
+            raise CannotGetOthersData(message=msg, status_code=status_code)
+        else:
+            msg = f"There is no {entity_name} with id {entity_id}."
+            raise RecordNotFound(message=msg)
     except (InvalidURL, ValueError):
         msg = f"This is not a valid URL: {entity_id}`"
         raise InvalidURL(message=msg)

@@ -3,12 +3,9 @@
   "description": "Create a reservation object",
   "type": "object",
   "$schema": "http://json-schema.org/draft-04/schema",
-  "required": ["date", "time"],
+  "required": ["date", "time", "stops"],
   "properties": {
-    "secretary_id": {
-      "type": "string"
-    },
-    "code": {
+    "name": {
       "type": "string"
     },
     "destination": {

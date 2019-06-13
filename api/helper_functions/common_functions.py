@@ -1,5 +1,5 @@
-from .get_by_id import get_user_by_id
-from .constants import UNASSIGNED
+from .get_by_id import get_user_by_id, get_company_by_id, get_secretary_by_id
+from .constants import UNASSIGNED, HEAD_SECRETARY
 from flask import g
 from ..common.exceptions import NotCorrectRole
 
@@ -15,22 +15,19 @@ def apply_role_check(login_data, user_dict):
 
 def can_it_update(employee_id=0, secretary_id=0, company_id=0, driver_id=0):
     is_admin = False
-    is_company = False
     is_driver = False
     is_employee = False
     is_secretary = False
     can_update = False
     if g.current_user.admin:
         is_admin = True
-    if g.current_user.company:
-        is_company = int(company_id) == g.current_user.company.id
     if g.current_user.driver:
         is_driver = int(driver_id) == g.current_user.driver.id
     if g.current_user.employee:
         is_employee = int(employee_id) == g.current_user.employee.id
     if g.current_user.secretary:
         is_secretary = int(secretary_id) == g.current_user.secretary.id
-    if is_admin or is_company or is_driver or is_employee or is_secretary:
+    if is_admin or is_driver or is_employee or is_secretary:
         can_update = True
 
     return can_update
@@ -42,8 +39,6 @@ def is_it_duplicate_role(user_id):
     user = get_user_by_id(user_id)
     if user.admin:
         counter += 1
-    if user.company:
-        counter += 1
     if user.employee:
         counter += 1
     if user.secretary:
@@ -54,3 +49,25 @@ def is_it_duplicate_role(user_id):
         has_role = True
 
     return has_role
+
+
+def get_secretary_id_from_company(company_id):
+    secretary_id = 0
+    company = get_company_by_id(company_id)
+    secretarys = company.secretarys.all()
+    for secretary in secretarys:
+        if g.current_user.secretary == secretary:
+            secretary_id = secretary.id
+
+    return secretary_id
+
+
+def are_you_head_secretary(company_id):
+    is_head_secretary = False
+    secretary_id = get_secretary_id_from_company(company_id)
+    if g.current_user.secretary:
+        secretary = get_secretary_by_id(secretary_id)
+        if secretary.role == HEAD_SECRETARY:
+            is_head_secretary = True
+
+    return is_head_secretary

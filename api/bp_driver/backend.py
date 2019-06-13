@@ -22,13 +22,23 @@ def create_driver(driver_data):
 
 
 def get_drivers():
-    drivers = Driver.query.all()
+    can_update = can_it_update()
+    if can_update:
+        drivers = Driver.query.all()
+    else:
+        msg = "You can't get admins."
+        raise CannotGetOthersData(message=msg)
 
     return drivers
 
 
 def get_driver(driver_id):
-    driver = get_driver_by_id(driver_id)
+    can_update = can_it_update(driver_id=driver_id)
+    if can_update:
+        driver = get_driver_by_id(driver_id)
+    else:
+        msg = "You can't get admins."
+        raise CannotGetOthersData(message=msg)
 
     return driver
 

@@ -3,9 +3,9 @@
   "description": "Create a company object",
   "type": "object",
   "$schema": "http://json-schema.org/draft-04/schema",
-  "required": ["user_id"],
+  "required": ["head_secretary"],
   "properties": {
-    "full_name": {
+    "name": {
       "type": "string"
     },
     "payment_frequency": {
@@ -14,8 +14,11 @@
     "code": {
       "type": "string"
     },
-    "user_id": {
+    "invoice_number": {
       "type": "string"
+    },
+    "head_secretary": {
+      "type": "object"
     }
   },
   "additionalProperties": false
