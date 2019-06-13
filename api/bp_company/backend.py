@@ -4,42 +4,28 @@ from ..common.exceptions import (
     CannotGetOthersData,
     CannotCreateData,
 )
-from ..models.users import Company
-from ..models.items import Itinerary, ItineraryMaster
+from ..models.items import Company
+from ..models.users import Secretary
 from ..helper_functions.create import create_entity
-from ..helper_functions.get_by_id import get_company_by_id, get_invoice_by_id
-from ..helper_functions.common_functions import can_it_update
-
-# import random
-# from ..helper_functions.constants import LETTERS
+from ..helper_functions.get_by_id import (
+    get_company_by_id,
+    get_invoice_by_id,
+)
+from ..helper_functions.common_functions import (
+    can_it_update,
+    get_secretary_id_from_company,
+)
 
 
 def create_company(company_data):
     can_update = can_it_update()
     if can_update:
-        company = create_entity(company_data, Company)
-        # letters = LETTERS
-        # companys = Company.query.all()
-        # existing_codes = []
-        # for company in companys:
-        #     existing_codes.append(company.code)
-        # is_duplicate_code = True
-        # while is_duplicate_code:
-        #     letter1 = random.choice(letters)
-        #     letter2 = random.choice(letters)
-        #     letter3 = random.choice(letters)
-        #     code = letter1 + letter2 + letter3
-        #     if code not in existing_codes:
-        #         is_duplicate_code = False
-        # company.code = code
-        itinerarys_master = ItineraryMaster.query.all()
-        for itinerary_master in itinerarys_master:
-            itinerary_data = itinerary_master.to_dict()
-            del itinerary_data["id"]
-            del itinerary_data["timestamp"]
-            itinerary = Itinerary(**itinerary_data)
-            company.itinerarys.append(itinerary)
+        secretary_data = company_data.pop("head_secretary")
+        company = Company(**company_data)
         company.save()
+        secretary = create_entity(secretary_data, Secretary)
+        secretary.company = company
+        secretary.save()
     else:
         msg = "You can't create data."
         raise CannotCreateData(message=msg)
@@ -48,32 +34,43 @@ def create_company(company_data):
 
 
 def get_companys():
-    companys = Company.query.all()
+    can_update = can_it_update()
+    if can_update:
+        companys = Company.query.all()
+    else:
+        msg = "You can't get companys."
+        raise CannotGetOthersData(message=msg)
 
     return companys
 
 
 def get_company(company_id):
-    company = get_company_by_id(company_id)
+    secretary_id = get_secretary_id_from_company(company_id)
+    can_update = can_it_update(secretary_id=secretary_id)
+    if can_update:
+        company = get_company_by_id(company_id)
+    else:
+        msg = "You can't get company."
+        raise CannotGetOthersData(message=msg)
 
     return company
 
 
 def update_company(company_data, company_id):
-    can_update = can_it_update(company_id=company_id)
+    can_update = can_it_update()
     if can_update:
         company = get_company_by_id(company_id)
         company.update(**company_data)
         company.save()
     else:
-        msg = "You can't change other people's data."
+        msg = "You can't change company data."
         raise CannotChangeOthersData(message=msg)
 
     return company
 
 
 def delete_company(company_id):
-    can_update = can_it_update(company_id=company_id)
+    can_update = can_it_update()
     if can_update:
         company = get_company_by_id(company_id)
         company.delete()
@@ -83,7 +80,8 @@ def delete_company(company_id):
 
 
 def get_invoices(company_id):
-    can_update = can_it_update(company_id=company_id)
+    secretary_id = get_secretary_id_from_company(company_id)
+    can_update = can_it_update(secretary_id=secretary_id)
     if can_update:
         company = get_company_by_id(company_id)
         reservations = company.reservations.all()
@@ -100,7 +98,8 @@ def get_invoices(company_id):
 
 
 def get_invoice(company_id, invoice_id):
-    can_update = can_it_update(company_id=company_id)
+    secretary_id = get_secretary_id_from_company(company_id)
+    can_update = can_it_update(secretary_id=secretary_id)
     if can_update:
         invoice = get_invoice_by_id(invoice_id)
     else:

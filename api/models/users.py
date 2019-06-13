@@ -26,12 +26,11 @@ class User(BaseModel, ModelSerializerMixin):
     # activity
     register_date = Column(DateTime, default=datetime.utcnow)
 
-    # admin, driver, employee, secretary, company
+    # admin, driver, employee, secretary
     admin = relationship("Admin", uselist=False, back_populates="user")
     driver = relationship("Driver", uselist=False, back_populates="user")
     employee = relationship("Employee", uselist=False, back_populates="user")
     secretary = relationship("Secretary", uselist=False, back_populates="user")
-    company = relationship("Company", uselist=False, back_populates="user")
 
     def set_password(self, password):
         self.password_hash = generate_password_hash(password)
@@ -96,29 +95,6 @@ class Driver(BaseModel, ModelSerializerMixin):
         return f"{self.__class__.__name__}({self.full_name}, id = {self.id})"
 
 
-class Company(BaseModel, ModelSerializerMixin):
-
-    id = Column(Integer, primary_key=True, autoincrement=True)
-
-    full_name = Column(String, default="no_full_name")
-    payment_frequency = Column(String)
-    code = Column(String)
-
-    timestamp = Column(DateTime, default=datetime.utcnow)
-
-    user = relationship("User", back_populates="company")
-    user_id = Column(Integer, ForeignKey("users.id"))
-
-    # employees, secretary, reservations, itinerarys
-    employees = relationship("Employee", back_populates="company", lazy="dynamic")
-    secretarys = relationship("Secretary", back_populates="company", lazy="dynamic")
-    reservations = relationship("Reservation", back_populates="company", lazy="dynamic")
-    itinerarys = relationship("Itinerary", back_populates="company", lazy="dynamic")
-
-    def __repr__(self):
-        return f"{self.__class__.__name__}({self.full_name}, id = {self.id})"
-
-
 class Employee(BaseModel, ModelSerializerMixin):
 
     id = Column(Integer, primary_key=True, autoincrement=True)
@@ -155,6 +131,11 @@ class Secretary(BaseModel, ModelSerializerMixin):
 
     company = relationship("Company", back_populates="secretarys")
     company_id = Column(Integer, ForeignKey("companys.id"))
+
+    # reservations
+    reservations = relationship(
+        "Reservation", back_populates="secretary", lazy="dynamic"
+    )
 
     def __repr__(self):
         return f"{self.__class__.__name__}({self.full_name}, id = {self.id})"

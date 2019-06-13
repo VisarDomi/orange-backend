@@ -31,10 +31,10 @@ def basic_auth_error():
     )
     raise BadLogin(message=msg, status_code=401)
 
-    return {
-        "error message": "You are not logged in or bad login "
-        "username/password combo. (@basic_auth.error_handler)"
-    }
+    # return {
+    #     "error message": "You are not logged in or bad login "
+    #     "username/password combo. (@basic_auth.error_handler)"
+    # }
 
 
 @bp.route("/login", methods=["POST"])

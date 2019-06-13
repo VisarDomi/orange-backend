@@ -21,20 +21,30 @@ def create_admin(admin_data):
     if can_update:
         admin = create_entity(admin_data, Admin)
     else:
-        msg = "You can't create data."
+        msg = "You can't create admin."
         raise CannotCreateData(message=msg)
 
     return admin
 
 
 def get_admins():
-    admins = Admin.query.all()
+    can_update = can_it_update()
+    if can_update:
+        admins = Admin.query.all()
+    else:
+        msg = "You can't get admins."
+        raise CannotGetOthersData(message=msg)
 
     return admins
 
 
 def get_admin(admin_id):
-    admin = get_admin_by_id(admin_id)
+    can_update = can_it_update()
+    if can_update:
+        admin = get_admin_by_id(admin_id)
+    else:
+        msg = "You can't get admins."
+        raise CannotGetOthersData(message=msg)
 
     return admin
 

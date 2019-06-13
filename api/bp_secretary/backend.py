@@ -1,6 +1,7 @@
 from ..common.exceptions import (
     CannotChangeOthersData,
     CannotDeleteOthersData,
+    CannotGetOthersData,
     CannotCreateData,
 )
 from ..models.users import Secretary
@@ -10,12 +11,16 @@ from ..helper_functions.get_by_id import (
     get_secretary_by_id,
     get_company_by_id,
 )
-from ..helper_functions.common_functions import can_it_update
+from ..helper_functions.common_functions import (
+    can_it_update,
+    are_you_head_secretary,
+)
 
 
 def create_secretary(secretary_data, company_id):
-    can_update = can_it_update(company_id=company_id)
-    if can_update:
+    is_head_secretary = are_you_head_secretary(company_id)
+    can_update = can_it_update()
+    if can_update or is_head_secretary:
         secretary = create_entity(secretary_data, Secretary)
         company = get_company_by_id(company_id)
         secretary.company = company
@@ -28,21 +33,34 @@ def create_secretary(secretary_data, company_id):
 
 
 def get_secretarys(company_id):
-    company = get_company_by_id(company_id)
-    secretarys = company.secretarys.all()
+    is_head_secretary = are_you_head_secretary(company_id)
+    can_update = can_it_update()
+    if can_update or is_head_secretary:
+        company = get_company_by_id(company_id)
+        secretarys = company.secretarys.all()
+    else:
+        msg = "You can't get secretarys."
+        raise CannotGetOthersData(message=msg)
 
     return secretarys
 
 
 def get_secretary(secretary_id, company_id):
-    secretary = get_secretary_by_id(secretary_id)
+    is_head_secretary = are_you_head_secretary(company_id)
+    can_update = can_it_update(secretary_id=secretary_id)
+    if can_update or is_head_secretary:
+        secretary = get_secretary_by_id(secretary_id)
+    else:
+        msg = "You can't get secretary."
+        raise CannotGetOthersData(message=msg)
 
     return secretary
 
 
 def update_secretary(secretary_data, secretary_id, company_id):
+    is_head_secretary = are_you_head_secretary(company_id)
     can_update = can_it_update(secretary_id=secretary_id)
-    if can_update:
+    if can_update or is_head_secretary:
         secretary = get_secretary_by_id(secretary_id)
         secretary.update(**secretary_data)
         secretary.save()
@@ -54,8 +72,9 @@ def update_secretary(secretary_data, secretary_id, company_id):
 
 
 def delete_secretary(secretary_id, company_id):
+    is_head_secretary = are_you_head_secretary(company_id)
     can_update = can_it_update(secretary_id=secretary_id)
-    if can_update:
+    if can_update or is_head_secretary:
         secretary = get_secretary_by_id(secretary_id)
         secretary.delete()
     else:
@@ -64,18 +83,27 @@ def delete_secretary(secretary_id, company_id):
 
 
 def get_reservations(secretary_id, company_id):
-    secretary = get_secretary_by_id(secretary_id)
-    stops = secretary.stops.all()
-    reservations = []
-    for stop in stops:
-        reservation = stop.reservation
-        if reservation not in reservations:
+    is_head_secretary = are_you_head_secretary(company_id)
+    can_update = can_it_update(secretary_id=secretary_id)
+    if can_update or is_head_secretary:
+        secretary = get_secretary_by_id(secretary_id)
+        reservations = []
+        for reservation in secretary.reservations.all():
             reservations.append(reservation)
+    else:
+        msg = "You can't get reservations."
+        raise CannotGetOthersData(message=msg)
 
     return reservations
 
 
 def get_reservation(secretary_id, company_id, reservation_id):
-    reservation = get_reservation_by_id(reservation_id)
+    is_head_secretary = are_you_head_secretary(company_id)
+    can_update = can_it_update(secretary_id=secretary_id)
+    if can_update or is_head_secretary:
+        reservation = get_reservation_by_id(reservation_id)
+    else:
+        msg = "You can't get reservations."
+        raise CannotGetOthersData(message=msg)
 
     return reservation

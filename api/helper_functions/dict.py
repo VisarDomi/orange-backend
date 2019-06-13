@@ -1,4 +1,12 @@
-from .constants import UNASSIGNED, ADMIN, COMPANY, DRIVER, EMPLOYEE, EXCLUDE, ONLY
+from .constants import (
+    UNASSIGNED,
+    ADMIN,
+    DRIVER,
+    EMPLOYEE,
+    SECRETARY,
+    EXCLUDE,
+    ONLY,
+)
 
 
 def reservation_to_dict(reservation):
@@ -62,10 +70,6 @@ def user_to_dict(user, serialization_type):
         role = ADMIN
         role_id = user.admin.id
         role_name = user.admin.full_name
-    if user.company:
-        role = COMPANY
-        role_id = user.company.id
-        role_name = user.company.full_name
     if user.driver:
         role = DRIVER
         role_id = user.driver.id
@@ -74,6 +78,12 @@ def user_to_dict(user, serialization_type):
         role = EMPLOYEE
         role_id = user.employee.id
         role_name = user.employee.full_name
+    if user.secretary:
+        role = SECRETARY
+        role_id = user.secretary.id
+        role_name = user.secretary.full_name
+        role_secretary = user.secretary.role
+        user_dict["role_secretary"] = role_secretary
     user_dict["role"] = role
     user_dict["role_id"] = role_id
     user_dict["role_name"] = role_name

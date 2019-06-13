@@ -10,7 +10,7 @@ from ..helper_functions.common_functions import can_it_update
 
 
 def create_itinerary(itinerary_data, company_id):
-    can_update = can_it_update(company_id=company_id)
+    can_update = can_it_update()
     if can_update:
         company = get_company_by_id(company_id)
         itinerary = Itinerary(**itinerary_data)
@@ -25,7 +25,7 @@ def create_itinerary(itinerary_data, company_id):
 
 
 def get_itinerarys(company_id):
-    can_update = can_it_update(company_id=company_id)
+    can_update = can_it_update()
     if can_update:
         company = get_company_by_id(company_id)
         itinerarys = company.itinerarys.all()
@@ -37,7 +37,7 @@ def get_itinerarys(company_id):
 
 
 def get_itinerary(itinerary_id, company_id):
-    can_update = can_it_update(company_id=company_id)
+    can_update = can_it_update()
     if can_update:
         itinerary = get_itinerary_by_id(itinerary_id)
     else:
@@ -48,7 +48,7 @@ def get_itinerary(itinerary_id, company_id):
 
 
 def update_itinerary(itinerary_data, itinerary_id, company_id):
-    can_update = can_it_update(company_id=company_id)
+    can_update = can_it_update()
     if can_update:
         itinerary = get_itinerary_by_id(itinerary_id)
         itinerary.update(**itinerary_data)
@@ -61,7 +61,7 @@ def update_itinerary(itinerary_data, itinerary_id, company_id):
 
 
 def delete_itinerary(itinerary_id, company_id):
-    can_update = can_it_update(company_id=company_id)
+    can_update = can_it_update()
     if can_update:
         itinerary = get_itinerary_by_id(itinerary_id)
         itinerary.delete()

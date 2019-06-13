@@ -5,11 +5,32 @@ from ..common.database import BaseModel
 from ..common.serializers import ModelSerializerMixin
 
 
+class Company(BaseModel, ModelSerializerMixin):
+
+    id = Column(Integer, primary_key=True, autoincrement=True)
+
+    name = Column(String, default="no_name")
+    payment_frequency = Column(String)
+    code = Column(String)
+    invoice_number = Column(String)
+
+    timestamp = Column(DateTime, default=datetime.utcnow)
+
+    # employees, secretary, reservations, itinerarys
+    employees = relationship("Employee", back_populates="company", lazy="dynamic")
+    secretarys = relationship("Secretary", back_populates="company", lazy="dynamic")
+    reservations = relationship("Reservation", back_populates="company", lazy="dynamic")
+    itinerarys = relationship("Itinerary", back_populates="company", lazy="dynamic")
+
+    def __repr__(self):
+        return f"{self.__class__.__name__}({self.name}, id = {self.id})"
+
+
 class Reservation(BaseModel, ModelSerializerMixin):
 
     id = Column(Integer, primary_key=True, autoincrement=True)
 
-    code = Column(String, default="no_code")
+    name = Column(String, default="no_name")
     destination = Column(String)
     date = Column(Date)
     time = Column(String)
@@ -20,6 +41,9 @@ class Reservation(BaseModel, ModelSerializerMixin):
     vehicle_type = Column(String)
 
     timestamp = Column(DateTime, default=datetime.utcnow)
+
+    secretary = relationship("Secretary", back_populates="reservations")
+    secretary_id = Column(Integer, ForeignKey("secretarys.id"))
 
     company = relationship("Company", back_populates="reservations")
     company_id = Column(Integer, ForeignKey("companys.id"))
@@ -34,7 +58,29 @@ class Reservation(BaseModel, ModelSerializerMixin):
     stops = relationship("Stop", back_populates="reservation", lazy="dynamic")
 
     def __repr__(self):
-        return f"{self.__class__.__name__}({self.code}, id = {self.id})"
+        return f"{self.__class__.__name__}({self.name}, id = {self.id})"
+
+
+class Stop(BaseModel, ModelSerializerMixin):
+    """Intermediate table employee-reservation"""
+
+    id = Column(Integer, primary_key=True, autoincrement=True)
+
+    name = Column(String, default="no_name")
+    pickup = Column(String)
+    time = Column(String)
+
+    timestamp = Column(DateTime, default=datetime.utcnow)
+
+    # employee, reservation
+    employee = relationship("Employee", back_populates="stops")
+    employee_id = Column(Integer, ForeignKey("employees.id"))
+
+    reservation = relationship("Reservation", back_populates="stops")
+    reservation_id = Column(Integer, ForeignKey("reservations.id"))
+
+    def __repr__(self):
+        return f"{self.__class__.__name__}({self.name}, id = {self.id})"
 
 
 class Invoice(BaseModel, ModelSerializerMixin):
@@ -123,28 +169,6 @@ class ItineraryMaster(BaseModel, ModelSerializerMixin):
     destination = Column(String)
 
     timestamp = Column(DateTime, default=datetime.utcnow)
-
-    def __repr__(self):
-        return f"{self.__class__.__name__}({self.name}, id = {self.id})"
-
-
-class Stop(BaseModel, ModelSerializerMixin):
-    """Intermediate table employee-reservation"""
-
-    id = Column(Integer, primary_key=True, autoincrement=True)
-
-    name = Column(String, default="no_name")
-    pickup = Column(String)
-    time = Column(String)
-
-    timestamp = Column(DateTime, default=datetime.utcnow)
-
-    # employee, reservation
-    employee = relationship("Employee", back_populates="stops")
-    employee_id = Column(Integer, ForeignKey("employees.id"))
-
-    reservation = relationship("Reservation", back_populates="stops")
-    reservation_id = Column(Integer, ForeignKey("reservations.id"))
 
     def __repr__(self):
         return f"{self.__class__.__name__}({self.name}, id = {self.id})"
