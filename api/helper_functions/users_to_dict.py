@@ -33,7 +33,6 @@ def driver_to_dict(driver, exclude_type):
     reservation_list = []
     for reservation in driver.reservations.all():
         reservation_list.append(reservation.to_dict())
-    driver_dict = driver.to_dict()
     driver_dict["reservations"] = reservation_list
 
     return driver_dict
