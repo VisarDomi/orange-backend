@@ -12,6 +12,7 @@ def entity_to_dict(user):
     if user.secretary:
         entity_dict = user.secretary.to_dict()
     user_dict = user.to_dict(exclude=EXCLUDE_CREATE)
+    del user_dict["id"]
     entity_dict.update(user_dict)
     role = get_role(user)
     entity_dict["role"] = role
@@ -23,6 +24,7 @@ def admin_to_dict(admin, exclude_type):
     user = admin.user
     admin_dict = admin.to_dict()
     user_dict = user.to_dict(exclude=exclude_type)
+    del user_dict["id"]
     admin_dict.update(user_dict)
 
     return admin_dict
@@ -32,6 +34,7 @@ def driver_to_dict(driver, exclude_type):
     user = driver.user
     driver_dict = driver.to_dict()
     user_dict = user.to_dict(exclude=exclude_type)
+    del user_dict["id"]
     driver_dict.update(user_dict)
     reservation_list = []
     for reservation in driver.reservations.all():
@@ -45,6 +48,7 @@ def employee_to_dict(employee, exclude_type):
     user = employee.user
     employee_dict = employee.to_dict()
     user_dict = user.to_dict(exclude=exclude_type)
+    del user_dict["id"]
     employee_dict.update(user_dict)
 
     return employee_dict
@@ -54,6 +58,7 @@ def secretary_to_dict(secretary, exclude_type):
     user = secretary.user
     secretary_dict = secretary.to_dict()
     user_dict = user.to_dict(exclude=exclude_type)
+    del user_dict["id"]
     secretary_dict.update(user_dict)
 
     return secretary_dict
