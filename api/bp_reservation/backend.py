@@ -5,21 +5,18 @@ from ..common.exceptions import (
     CannotGetOthersData,
 )
 from ..models.items import Reservation, Stop
-from ..helper_functions.get_by_id import (
+from ..helper_functions.get_entity_by_id import (
     get_employee_by_id,
     get_reservation_by_id,
     get_company_by_id,
     get_secretary_by_id,
     get_stop_by_id,
 )
-from ..helper_functions.common_functions import (
-    can_it_update,
-    get_secretary_id_from_company,
-)
+from ..helper_functions.common_functions import can_it_update, get_secretary_id
 
 
 def create_reservation(reservation_data, company_id):
-    secretary_id = get_secretary_id_from_company(company_id)
+    secretary_id = get_secretary_id(company_id)
     can_update = can_it_update(secretary_id=secretary_id)
     if can_update:
         stops_data = reservation_data.pop("stops")
@@ -31,11 +28,7 @@ def create_reservation(reservation_data, company_id):
             secretary = get_secretary_by_id(secretary_id)
             reservation.secretary = secretary
         for stop_data in stops_data:
-            try:
-                employee_id = stop_data.pop("employee_id")
-            except KeyError:
-                msg = "There is no employee_id in stop."
-                raise CannotCreateData(message=msg)
+            employee_id = stop_data.pop("employee_id")
             employee = get_employee_by_id(employee_id)
             stop = Stop(**stop_data)
             company = get_company_by_id(company_id)
@@ -52,7 +45,7 @@ def create_reservation(reservation_data, company_id):
 
 
 def get_reservations(company_id):
-    secretary_id = get_secretary_id_from_company(company_id)
+    secretary_id = get_secretary_id(company_id)
     can_update = can_it_update(secretary_id=secretary_id)
     if can_update:
         company = get_company_by_id(company_id)
@@ -65,7 +58,7 @@ def get_reservations(company_id):
 
 
 def get_reservation(reservation_id, company_id):
-    secretary_id = get_secretary_id_from_company(company_id)
+    secretary_id = get_secretary_id(company_id)
     can_update = can_it_update(secretary_id=secretary_id)
     if can_update:
         reservation = get_reservation_by_id(reservation_id)
@@ -77,7 +70,7 @@ def get_reservation(reservation_id, company_id):
 
 
 def update_reservation(reservation_data, reservation_id, company_id):
-    secretary_id = get_secretary_id_from_company(company_id)
+    secretary_id = get_secretary_id(company_id)
     can_update = can_it_update(secretary_id=secretary_id)
     if can_update:
         stops_data = []
@@ -89,12 +82,8 @@ def update_reservation(reservation_data, reservation_id, company_id):
         reservation.update(**reservation_data)
         if stops_data:
             for stop_data in stops_data:
-                try:
-                    stop_id = stop_data["id"]
-                    employee_id = stop_data["employee_id"]
-                except KeyError:
-                    msg = "There is no id or employee_id in stop."
-                    raise CannotCreateData(message=msg)
+                stop_id = stop_data["id"]
+                employee_id = stop_data["employee_id"]
                 stop = get_stop_by_id(stop_id)
                 employee = get_employee_by_id(employee_id)
                 company = get_company_by_id(company_id)
@@ -112,7 +101,7 @@ def update_reservation(reservation_data, reservation_id, company_id):
 
 
 def delete_reservation(reservation_id, company_id):
-    secretary_id = get_secretary_id_from_company(company_id)
+    secretary_id = get_secretary_id(company_id)
     can_update = can_it_update(secretary_id=secretary_id)
     if can_update:
         reservation = get_reservation_by_id(reservation_id)

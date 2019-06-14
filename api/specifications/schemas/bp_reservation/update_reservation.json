@@ -2,37 +2,33 @@
   "title": "Update reservation",
   "description": "Update a reservation object",
   "type": "object",
-  "$schema": "http://json-schema.org/draft-04/schema",
+  "$schema": "https://json-schema.org/draft-04/schema",
   "properties": {
-    "name": {
-      "type": "string"
-    },
-    "destination": {
-      "type": "string"
-    },
-    "date": {
-      "type": "string"
-    },
-    "time": {
-      "type": "string"
-    },
-    "status": {
-      "type": "string"
-    },
-    "big_luggage": {
-      "type": "string"
-    },
-    "small_luggage": {
-      "type": "string"
-    },
-    "vehicle_type": {
-      "type": "string"
-    },
-    "payment_method": {
-      "type": "string"
-    },
+    "name": { "type": "string" },
+    "destination": { "type": "string" },
+    "date": { "type": "string" },
+    "time": { "type": "string" },
+    "status": { "type": "string" },
+    "big_luggage": { "type": "string" },
+    "small_luggage": { "type": "string" },
+    "vehicle_type": { "type": "string" },
+    "payment_method": { "type": "string" },
     "stops": {
-      "type": "array"
+      "type": "array",
+      "items": { "$ref": "#/definitions/stop" }
+    }
+  },
+  "definitions": {
+    "stop": {
+      "type": "object",
+      "required": ["employee_id", "id"],
+      "properties": {
+        "id": { "type": "string" },
+        "pickup": { "type": "string" },
+        "time": { "type": "string" },
+        "employee_id": { "type": "string" }
+      },
+      "additionalProperties": false
     }
   },
   "additionalProperties": false

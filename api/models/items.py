@@ -13,6 +13,8 @@ class Company(BaseModel, ModelSerializerMixin):
     payment_frequency = Column(String)
     code = Column(String)
     invoice_number = Column(String)
+    kst = Column(String)
+    address = Column(String)
 
     timestamp = Column(DateTime, default=datetime.utcnow)
 
@@ -51,10 +53,8 @@ class Reservation(BaseModel, ModelSerializerMixin):
     driver = relationship("Driver", back_populates="reservations")
     driver_id = Column(Integer, ForeignKey("drivers.id"))
 
-    # invoices
+    # invoices, stops
     invoices = relationship("Invoice", back_populates="reservation", lazy="dynamic")
-
-    # stops
     stops = relationship("Stop", back_populates="reservation", lazy="dynamic")
 
     def __repr__(self):
@@ -72,7 +72,6 @@ class Stop(BaseModel, ModelSerializerMixin):
 
     timestamp = Column(DateTime, default=datetime.utcnow)
 
-    # employee, reservation
     employee = relationship("Employee", back_populates="stops")
     employee_id = Column(Integer, ForeignKey("employees.id"))
 

@@ -5,7 +5,7 @@ from ..common.exceptions import (
     CannotGetOthersData,
 )
 from ..models.items import ItineraryMaster
-from ..helper_functions.get_by_id import get_itinerary_master_by_id
+from ..helper_functions.get_entity_by_id import get_itinerary_master_by_id
 from ..helper_functions.common_functions import can_it_update
 
 

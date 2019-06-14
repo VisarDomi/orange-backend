@@ -2,20 +2,12 @@
   "title": "Create itinerary",
   "description": "Create a itinerary object",
   "type": "object",
-  "$schema": "http://json-schema.org/draft-04/schema",
+  "$schema": "https://json-schema.org/draft-04/schema",
   "properties": {
-    "name": {
-      "type": "string"
-    },
-    "departure": {
-      "type": "string"
-    },
-    "destination": {
-      "type": "string"
-    },
-    "price": {
-      "type": "string"
-    }
+    "name": { "type": "string" },
+    "departure": { "type": "string" },
+    "destination": { "type": "string" },
+    "price": { "type": "string" }
   },
   "additionalProperties": false
 }

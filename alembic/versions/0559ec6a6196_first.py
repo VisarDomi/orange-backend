@@ -1,8 +1,8 @@
 """first
 
-Revision ID: b92aa20fb5b8
+Revision ID: 0559ec6a6196
 Revises: 
-Create Date: 2019-06-13 10:26:40.782332
+Create Date: 2019-06-14 15:37:28.811919
 
 """
 from alembic import op
@@ -10,7 +10,7 @@ import sqlalchemy as sa
 
 
 # revision identifiers, used by Alembic.
-revision = 'b92aa20fb5b8'
+revision = '0559ec6a6196'
 down_revision = None
 branch_labels = None
 depends_on = None
@@ -23,6 +23,8 @@ def upgrade():
     sa.Column('payment_frequency', sa.String(), nullable=True),
     sa.Column('code', sa.String(), nullable=True),
     sa.Column('invoice_number', sa.String(), nullable=True),
+    sa.Column('kst', sa.String(), nullable=True),
+    sa.Column('address', sa.String(), nullable=True),
     sa.Column('timestamp', sa.DateTime(), nullable=True),
     sa.PrimaryKeyConstraint('id')
     )
@@ -37,11 +39,9 @@ def upgrade():
     op.create_table('users',
     sa.Column('id', sa.Integer(), autoincrement=True, nullable=False),
     sa.Column('email', sa.String(), nullable=True),
-    sa.Column('timestamp', sa.DateTime(), nullable=True),
     sa.Column('password_hash', sa.String(), nullable=True),
     sa.Column('token', sa.String(), nullable=True),
     sa.Column('token_expiration', sa.DateTime(), nullable=True),
-    sa.Column('register_date', sa.DateTime(), nullable=True),
     sa.PrimaryKeyConstraint('id'),
     sa.UniqueConstraint('email'),
     sa.UniqueConstraint('token')
@@ -98,7 +98,7 @@ def upgrade():
     )
     op.create_table('reservations',
     sa.Column('id', sa.Integer(), autoincrement=True, nullable=False),
-    sa.Column('code', sa.String(), nullable=True),
+    sa.Column('name', sa.String(), nullable=True),
     sa.Column('destination', sa.String(), nullable=True),
     sa.Column('date', sa.Date(), nullable=True),
     sa.Column('time', sa.String(), nullable=True),

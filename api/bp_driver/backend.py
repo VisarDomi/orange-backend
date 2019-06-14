@@ -5,9 +5,9 @@ from ..common.exceptions import (
     CannotCreateData,
 )
 from ..models.users import Driver
-from ..helper_functions.create import create_entity
-from ..helper_functions.get_by_id import get_reservation_by_id, get_driver_by_id
+from ..helper_functions.get_entity_by_id import get_reservation_by_id, get_driver_by_id
 from ..helper_functions.common_functions import can_it_update
+from ..helper_functions.crud_entity import create_entity
 
 
 def create_driver(driver_data):
@@ -94,7 +94,11 @@ def update_reservation(reservation_data, driver_id, reservation_id):
     if can_update:
         reservation = get_reservation_by_id(reservation_id)
         reservation.update(**reservation_data)
+        driver = get_driver_by_id(driver_id)
+        driver.status = "busy"
         if reservation_data["status"] == "rejected":
+            driver.status = "free"
+            driver.save()
             reservation.driver = None
         reservation.save()
     else:

@@ -14,17 +14,12 @@ class User(BaseModel, ModelSerializerMixin):
 
     email = Column(String, unique=True)
 
-    timestamp = Column(DateTime, default=datetime.utcnow)
-
     # database only
     password_hash = Column(String)
 
     # on create or login
     token = Column(String, unique=True)
     token_expiration = Column(DateTime)
-
-    # activity
-    register_date = Column(DateTime, default=datetime.utcnow)
 
     # admin, driver, employee, secretary
     admin = relationship("Admin", uselist=False, back_populates="user")

@@ -1,5 +1,5 @@
 from . import backend
-from ..helper_functions.dict import invoice_to_dict
+from ..helper_functions.items_to_dict import invoice_to_dict
 
 
 def create_company(company_data):

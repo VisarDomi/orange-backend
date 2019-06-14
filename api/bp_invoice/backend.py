@@ -5,7 +5,7 @@ from ..common.exceptions import (
     CannotGetOthersData,
 )
 from ..models.items import Invoice, Item
-from ..helper_functions.get_by_id import (
+from ..helper_functions.get_entity_by_id import (
     get_invoice_by_id,
     get_reservation_by_id,
     get_item_by_id,
@@ -69,11 +69,7 @@ def update_invoice(invoice_data, invoice_id, reservation_id):
         invoice.ref = code + ref
         if items_data:
             for item_data in items_data:
-                try:
-                    item_id = item_data["id"]
-                except KeyError:
-                    msg = "There is no id in item."
-                    raise CannotCreateData(message=msg)
+                item_id = item_data["id"]
                 item = get_item_by_id(item_id)
                 item.invoice = invoice
                 item.update(**item_data)

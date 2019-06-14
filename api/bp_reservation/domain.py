@@ -1,5 +1,5 @@
 from . import backend
-from ..helper_functions.dict import reservation_to_dict
+from ..helper_functions.items_to_dict import reservation_to_dict
 
 
 def create_reservation(reservation_data, company_id):

@@ -4,8 +4,6 @@ from sqlalchemy.ext.declarative import declarative_base, declared_attr
 from sqlalchemy.orm import scoped_session, sessionmaker
 from config import Config
 
-# from sqlalchemy_utils import database_exists, create_database  # , drop_database
-
 engine = create_engine(Config.SQLALCHEMY_DATABASE_URI, convert_unicode=True)
 db_session = scoped_session(
     sessionmaker(autocommit=False, autoflush=False, bind=engine)
@@ -73,22 +71,3 @@ class CustomBase(object):
 
 BaseModel = declarative_base(cls=CustomBase, constructor=None)
 BaseModel.query = db_session.query_property()
-
-
-# def init_db():
-#     """
-#     Create all tables.
-#     """
-#     if not database_exists(engine.url):
-#         create_database(engine.url)
-#     # The tables are handled by alembic
-#     # BaseModel.metadata.create_all(bind=engine)
-
-
-# def drop_db():
-#     """
-#     Drop all tables.
-#     """
-#     BaseModel.metadata.drop_all(bind=engine)
-#     # The database is deleted manually
-#     # drop_database(engine.url)

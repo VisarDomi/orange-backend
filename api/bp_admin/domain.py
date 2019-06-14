@@ -1,10 +1,12 @@
 from . import backend
-from ..helper_functions.dict import reservation_to_dict, invoice_to_dict
+from ..helper_functions.items_to_dict import reservation_to_dict, invoice_to_dict
+from ..helper_functions.users_to_dict import admin_to_dict
+from ..helper_functions.constants import EXCLUDE_CREATE, EXCLUDE_GET
 
 
 def create_admin(admin_data):
     admin = backend.create_admin(admin_data)
-    admin_dict = admin.to_dict()
+    admin_dict = admin_to_dict(admin, EXCLUDE_CREATE)
 
     return admin_dict
 
@@ -13,7 +15,7 @@ def get_admins():
     admins = backend.get_admins()
     admins_list = []
     for admin in admins:
-        admin_dict = admin.to_dict()
+        admin_dict = admin_to_dict(admin, EXCLUDE_GET)
         admins_list.append(admin_dict)
 
     return admins_list
@@ -21,14 +23,14 @@ def get_admins():
 
 def get_admin(admin_id):
     admin = backend.get_admin(admin_id)
-    admin_dict = admin.to_dict()
+    admin_dict = admin_to_dict(admin, EXCLUDE_GET)
 
     return admin_dict
 
 
 def update_admin(admin_data, admin_id):
     admin = backend.update_admin(admin_data, admin_id)
-    admin_dict = admin.to_dict()
+    admin_dict = admin_to_dict(admin, EXCLUDE_GET)
 
     return admin_dict
 

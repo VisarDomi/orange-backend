@@ -2,18 +2,20 @@
   "title": "Create employee",
   "description": "Create a employee object",
   "type": "object",
-  "$schema": "http://json-schema.org/draft-04/schema",
-  "required": ["user_id"],
+  "$schema": "https://json-schema.org/draft-04/schema",
+  "required": ["user"],
   "properties": {
-    "full_name": {
-      "type": "string"
+    "full_name": { "type": "string" },
+    "user": {
+      "type": "object",
+      "required": ["email", "password"],
+      "properties": {
+        "email": { "type": "string" },
+        "password": { "type": "string" }
+      },
+      "additionalProperties": false
     },
-    "address": {
-      "type": "string"
-    },
-    "user_id": {
-      "type": "string"
-    }
+    "address": { "type": "string" }
   },
   "additionalProperties": false
 }

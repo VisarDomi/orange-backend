@@ -5,20 +5,17 @@ from ..common.exceptions import (
     CannotCreateData,
 )
 from ..models.users import Employee
-from ..helper_functions.create import create_entity
-from ..helper_functions.get_by_id import (
+from ..helper_functions.get_entity_by_id import (
     get_reservation_by_id,
     get_employee_by_id,
     get_company_by_id,
 )
-from ..helper_functions.common_functions import (
-    can_it_update,
-    get_secretary_id_from_company,
-)
+from ..helper_functions.common_functions import can_it_update, get_secretary_id
+from ..helper_functions.crud_entity import create_entity
 
 
 def create_employee(employee_data, company_id):
-    secretary_id = get_secretary_id_from_company(company_id)
+    secretary_id = get_secretary_id(company_id)
     can_update = can_it_update(secretary_id=secretary_id)
     if can_update:
         employee = create_entity(employee_data, Employee)
@@ -33,7 +30,7 @@ def create_employee(employee_data, company_id):
 
 
 def get_employees(company_id):
-    secretary_id = get_secretary_id_from_company(company_id)
+    secretary_id = get_secretary_id(company_id)
     can_update = can_it_update(secretary_id=secretary_id)
     if can_update:
         company = get_company_by_id(company_id)
@@ -46,7 +43,7 @@ def get_employees(company_id):
 
 
 def get_employee(employee_id, company_id):
-    secretary_id = get_secretary_id_from_company(company_id)
+    secretary_id = get_secretary_id(company_id)
     can_update = can_it_update(employee_id=employee_id, secretary_id=secretary_id)
     if can_update:
         employee = get_employee_by_id(employee_id)
@@ -58,7 +55,7 @@ def get_employee(employee_id, company_id):
 
 
 def update_employee(employee_data, employee_id, company_id):
-    secretary_id = get_secretary_id_from_company(company_id)
+    secretary_id = get_secretary_id(company_id)
     can_update = can_it_update(employee_id=employee_id, secretary_id=secretary_id)
     if can_update:
         employee = get_employee_by_id(employee_id)
@@ -72,7 +69,7 @@ def update_employee(employee_data, employee_id, company_id):
 
 
 def delete_employee(employee_id, company_id):
-    secretary_id = get_secretary_id_from_company(company_id)
+    secretary_id = get_secretary_id(company_id)
     can_update = can_it_update(employee_id=employee_id, secretary_id=secretary_id)
     if can_update:
         employee = get_employee_by_id(employee_id)
@@ -83,7 +80,7 @@ def delete_employee(employee_id, company_id):
 
 
 def get_reservations(employee_id, company_id):
-    secretary_id = get_secretary_id_from_company(company_id)
+    secretary_id = get_secretary_id(company_id)
     can_update = can_it_update(employee_id=employee_id, secretary_id=secretary_id)
     if can_update:
         employee = get_employee_by_id(employee_id)
@@ -98,7 +95,7 @@ def get_reservations(employee_id, company_id):
 
 
 def get_reservation(employee_id, company_id, reservation_id):
-    secretary_id = get_secretary_id_from_company(company_id)
+    secretary_id = get_secretary_id(company_id)
     can_update = can_it_update(employee_id=employee_id, secretary_id=secretary_id)
     if can_update:
         reservation = get_reservation_by_id(reservation_id)

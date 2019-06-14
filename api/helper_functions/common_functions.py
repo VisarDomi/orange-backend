@@ -1,14 +1,30 @@
-from .get_by_id import get_user_by_id, get_company_by_id, get_secretary_by_id
-from .constants import UNASSIGNED, HEAD_SECRETARY
 from flask import g
 from ..common.exceptions import NotCorrectRole
+from .get_entity_by_id import get_company_by_id, get_secretary_by_id
+from .constants import (
+    UNASSIGNED,
+    HEAD_SECRETARY,
+    ADMIN,
+    DRIVER,
+    EMPLOYEE,
+    SECRETARY,
+)
 
 
-def apply_role_check(login_data, user_dict):
+def apply_role_check(login_data, user):
+    role = None
+    if user.admin:
+        role = ADMIN
+    if user.driver:
+        role = DRIVER
+    if user.employee:
+        role = EMPLOYEE
+    if user.secretary:
+        role = SECRETARY
     if login_data["role"] == UNASSIGNED:
         msg = "The user does not have a role, cannot proceed login"
         raise NotCorrectRole(message=msg, status_code=403)
-    if login_data["role"] != user_dict["role"]:
+    if login_data["role"] != role:
         msg = "This is not the correct role of the user, cannot proceed login"
         raise NotCorrectRole(message=msg, status_code=403)
 
@@ -33,25 +49,7 @@ def can_it_update(employee_id=0, secretary_id=0, company_id=0, driver_id=0):
     return can_update
 
 
-def is_it_duplicate_role(user_id):
-    has_role = False
-    counter = 0
-    user = get_user_by_id(user_id)
-    if user.admin:
-        counter += 1
-    if user.employee:
-        counter += 1
-    if user.secretary:
-        counter += 1
-    if user.driver:
-        counter += 1
-    if counter > 0:
-        has_role = True
-
-    return has_role
-
-
-def get_secretary_id_from_company(company_id):
+def get_secretary_id(company_id):
     secretary_id = 0
     company = get_company_by_id(company_id)
     secretarys = company.secretarys.all()
@@ -62,9 +60,9 @@ def get_secretary_id_from_company(company_id):
     return secretary_id
 
 
-def are_you_head_secretary(company_id):
+def is_it_head_secretary(company_id):
     is_head_secretary = False
-    secretary_id = get_secretary_id_from_company(company_id)
+    secretary_id = get_secretary_id(company_id)
     if g.current_user.secretary:
         secretary = get_secretary_by_id(secretary_id)
         if secretary.role == HEAD_SECRETARY:

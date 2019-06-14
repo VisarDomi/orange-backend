@@ -6,24 +6,20 @@ from ..common.exceptions import (
 )
 from ..models.items import Company
 from ..models.users import Secretary
-from ..helper_functions.create import create_entity
-from ..helper_functions.get_by_id import (
-    get_company_by_id,
-    get_invoice_by_id,
-)
-from ..helper_functions.common_functions import (
-    can_it_update,
-    get_secretary_id_from_company,
-)
+from ..helper_functions.get_entity_by_id import get_company_by_id, get_invoice_by_id
+from ..helper_functions.common_functions import can_it_update, get_secretary_id
+from ..helper_functions.crud_entity import create_entity
+from ..helper_functions.constants import HEAD_SECRETARY
 
 
 def create_company(company_data):
     can_update = can_it_update()
     if can_update:
         secretary_data = company_data.pop("head_secretary")
+        secretary_data["role"] = HEAD_SECRETARY
         company = Company(**company_data)
-        company.save()
         secretary = create_entity(secretary_data, Secretary)
+        company.save()
         secretary.company = company
         secretary.save()
     else:
@@ -45,7 +41,7 @@ def get_companys():
 
 
 def get_company(company_id):
-    secretary_id = get_secretary_id_from_company(company_id)
+    secretary_id = get_secretary_id(company_id)
     can_update = can_it_update(secretary_id=secretary_id)
     if can_update:
         company = get_company_by_id(company_id)
@@ -80,7 +76,7 @@ def delete_company(company_id):
 
 
 def get_invoices(company_id):
-    secretary_id = get_secretary_id_from_company(company_id)
+    secretary_id = get_secretary_id(company_id)
     can_update = can_it_update(secretary_id=secretary_id)
     if can_update:
         company = get_company_by_id(company_id)
@@ -98,7 +94,7 @@ def get_invoices(company_id):
 
 
 def get_invoice(company_id, invoice_id):
-    secretary_id = get_secretary_id_from_company(company_id)
+    secretary_id = get_secretary_id(company_id)
     can_update = can_it_update(secretary_id=secretary_id)
     if can_update:
         invoice = get_invoice_by_id(invoice_id)

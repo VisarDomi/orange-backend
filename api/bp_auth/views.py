@@ -3,9 +3,9 @@ from flask_httpauth import HTTPBasicAuth
 from flask_httpauth import HTTPTokenAuth
 from ..common.exceptions import BadLogin
 from ..models.users import User
-from ..helper_functions.constants import EXPIRES_IN, EXCLUDE
-from ..helper_functions.dict import user_to_dict
+from ..helper_functions.constants import EXPIRES_IN
 from ..helper_functions.common_functions import apply_role_check
+from ..helper_functions.users_to_dict import entity_to_dict
 from . import bp
 
 
@@ -25,16 +25,8 @@ def verify_password(email, password):
 
 @basic_auth.error_handler
 def basic_auth_error():
-    msg = (
-        "You are not logged in or bad login "
-        "username/password combo. (@basic_auth.error_handler)"
-    )
+    msg = "Bad username/password combo."
     raise BadLogin(message=msg, status_code=401)
-
-    # return {
-    #     "error message": "You are not logged in or bad login "
-    #     "username/password combo. (@basic_auth.error_handler)"
-    # }
 
 
 @bp.route("/login", methods=["POST"])
@@ -42,11 +34,11 @@ def basic_auth_error():
 def login():
     g.current_user.get_token(expires_in=EXPIRES_IN)
     user = g.current_user
-    user_dict = user_to_dict(user, EXCLUDE)
     login_data = request.json
-    apply_role_check(login_data, user_dict)
+    apply_role_check(login_data, user)
+    entity_dict = entity_to_dict(user)
 
-    return user_dict
+    return entity_dict
 
 
 @token_auth.verify_token
@@ -59,7 +51,4 @@ def verify_token(token):
 @token_auth.error_handler
 def token_auth_error():
 
-    return {
-        "error message": "You sent the wrong token or no "
-        "token at all. (@token_auth.error_handler)"
-    }
+    return {"error message": "You sent the wrong token (or no " "token at all)."}

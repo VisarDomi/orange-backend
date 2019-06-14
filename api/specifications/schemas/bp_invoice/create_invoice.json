@@ -2,68 +2,47 @@
   "title": "Create invoice",
   "description": "Create a invoice object",
   "type": "object",
-  "$schema": "http://json-schema.org/draft-04/schema",
+  "$schema": "https://json-schema.org/draft-04/schema",
   "required": ["ref", "datum", "rechnung_datum", "items"],
   "properties": {
-    "ref": {
-      "type": "string"
-    },
-    "datum": {
-      "type": "string"
-    },
-    "rechnung_nr": {
-      "type": "string"
-    },
-    "uid_nr": {
-      "type": "string"
-    },
-    "bank_name": {
-      "type": "string"
-    },
-    "bic": {
-      "type": "string"
-    },
-    "iban": {
-      "type": "string"
-    },
-    "an_name": {
-      "type": "string"
-    },
-    "an_company": {
-      "type": "string"
-    },
-    "an_company_address": {
-      "type": "string"
-    },
-    "an_company_postcode": {
-      "type": "string"
-    },
-    "an_company_city": {
-      "type": "string"
-    },
-    "an_company_state": {
-      "type": "string"
-    },
-    "rechnungsersteller": {
-      "type": "string"
-    },
-    "zahlungsform": {
-      "type": "string"
-    },
-    "rechnung_datum": {
-      "type": "string"
-    },
-    "zahlungsziel": {
-      "type": "string"
-    },
-    "tax": {
-      "type": "string"
-    },
-    "total": {
-      "type": "string"
-    },
+    "ref": { "type": "string" },
+    "datum": { "type": "string" },
+    "rechnung_nr": { "type": "string" },
+    "uid_nr": { "type": "string" },
+    "bank_name": { "type": "string" },
+    "bic": { "type": "string" },
+    "iban": { "type": "string" },
+    "an_name": { "type": "string" },
+    "an_company": { "type": "string" },
+    "an_company_address": { "type": "string" },
+    "an_company_postcode": { "type": "string" },
+    "an_company_city": { "type": "string" },
+    "an_company_state": { "type": "string" },
+    "rechnungsersteller": { "type": "string" },
+    "zahlungsform": { "type": "string" },
+    "rechnung_datum": { "type": "string" },
+    "zahlungsziel": { "type": "string" },
+    "tax": { "type": "string" },
+    "total": { "type": "string" },
     "items": {
-      "type": "array"
+      "type": "array",
+      "items": { "$ref": "#/definitions/item" }
+    }
+  },
+  "definitions": {
+    "item": {
+      "type": "object",
+      "properties": {
+        "pickup_date": { "type": "string" },
+        "pickup_address": { "type": "string" },
+        "kst": { "type": "string" },
+        "orderer_name": { "type": "string" },
+        "message": { "type": "string" },
+        "n_stops": { "type": "string" },
+        "destination": { "type": "string" },
+        "price": { "type": "string" }
+      },
+      "additionalProperties": false
     }
   },
   "additionalProperties": false

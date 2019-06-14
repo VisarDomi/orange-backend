@@ -1,10 +1,12 @@
 from . import backend
-from ..helper_functions.dict import driver_to_dict, reservation_to_dict
+from ..helper_functions.items_to_dict import reservation_to_dict
+from ..helper_functions.users_to_dict import driver_to_dict
+from ..helper_functions.constants import EXCLUDE_CREATE, EXCLUDE_GET
 
 
 def create_driver(driver_data):
     driver = backend.create_driver(driver_data)
-    driver_dict = driver_to_dict(driver)
+    driver_dict = driver_to_dict(driver, EXCLUDE_CREATE)
 
     return driver_dict
 
@@ -13,7 +15,7 @@ def get_drivers():
     drivers = backend.get_drivers()
     drivers_list = []
     for driver in drivers:
-        driver_dict = driver_to_dict(driver)
+        driver_dict = driver_to_dict(driver, EXCLUDE_GET)
         drivers_list.append(driver_dict)
 
     return drivers_list
@@ -21,14 +23,14 @@ def get_drivers():
 
 def get_driver(driver_id):
     driver = backend.get_driver(driver_id)
-    driver_dict = driver_to_dict(driver)
+    driver_dict = driver_to_dict(driver, EXCLUDE_GET)
 
     return driver_dict
 
 
 def update_driver(driver_data, driver_id):
     driver = backend.update_driver(driver_data, driver_id)
-    driver_dict = driver_to_dict(driver)
+    driver_dict = driver_to_dict(driver, EXCLUDE_GET)
 
     return driver_dict
 

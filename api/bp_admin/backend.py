@@ -6,14 +6,14 @@ from ..common.exceptions import (
 )
 from ..models.users import Admin
 from ..models.items import Invoice, Reservation
-from ..helper_functions.create import create_entity
-from ..helper_functions.get_by_id import (
+from ..helper_functions.get_entity_by_id import (
     get_admin_by_id,
     get_invoice_by_id,
     get_reservation_by_id,
     get_driver_by_id,
 )
 from ..helper_functions.common_functions import can_it_update
+from ..helper_functions.crud_entity import create_entity
 
 
 def create_admin(admin_data):

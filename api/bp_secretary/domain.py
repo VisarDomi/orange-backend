@@ -1,10 +1,12 @@
 from . import backend
-from ..helper_functions.dict import reservation_to_dict
+from ..helper_functions.items_to_dict import reservation_to_dict
+from ..helper_functions.users_to_dict import secretary_to_dict
+from ..helper_functions.constants import EXCLUDE_CREATE, EXCLUDE_GET
 
 
 def create_secretary(secretary_data, company_id):
     secretary = backend.create_secretary(secretary_data, company_id)
-    secretary_dict = secretary.to_dict()
+    secretary_dict = secretary_to_dict(secretary, EXCLUDE_CREATE)
 
     return secretary_dict
 
@@ -13,7 +15,7 @@ def get_secretarys(company_id):
     secretarys = backend.get_secretarys(company_id)
     secretarys_list = []
     for secretary in secretarys:
-        secretary_dict = secretary.to_dict()
+        secretary_dict = secretary_to_dict(secretary, EXCLUDE_GET)
         secretarys_list.append(secretary_dict)
 
     return secretarys_list
@@ -21,14 +23,14 @@ def get_secretarys(company_id):
 
 def get_secretary(secretary_id, company_id):
     secretary = backend.get_secretary(secretary_id, company_id)
-    secretary_dict = secretary.to_dict()
+    secretary_dict = secretary_to_dict(secretary, EXCLUDE_GET)
 
     return secretary_dict
 
 
 def update_secretary(secretary_data, secretary_id, company_id):
     secretary = backend.update_secretary(secretary_data, secretary_id, company_id)
-    secretary_dict = secretary.to_dict()
+    secretary_dict = secretary_to_dict(secretary, EXCLUDE_GET)
 
     return secretary_dict
 

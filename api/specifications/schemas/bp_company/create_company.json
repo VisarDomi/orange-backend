@@ -2,23 +2,31 @@
   "title": "Create company",
   "description": "Create a company object",
   "type": "object",
-  "$schema": "http://json-schema.org/draft-04/schema",
+  "$schema": "https://json-schema.org/draft-04/schema",
   "required": ["head_secretary"],
   "properties": {
-    "name": {
-      "type": "string"
-    },
-    "payment_frequency": {
-      "type": "string"
-    },
-    "code": {
-      "type": "string"
-    },
-    "invoice_number": {
-      "type": "string"
-    },
+    "name": { "type": "string" },
+    "payment_frequency": { "type": "string" },
+    "code": { "type": "string" },
+    "invoice_number": { "type": "string" },
+    "kst": { "type": "string" },
+    "address": { "type": "string" },
     "head_secretary": {
-      "type": "object"
+      "type": "object",
+      "required": ["user"],
+      "properties": {
+        "full_name": { "type": "string" },
+        "user": {
+          "type": "object",
+          "required": ["email", "password"],
+          "properties": {
+            "email": { "type": "string" },
+            "password": { "type": "string" }
+          },
+          "additionalProperties": false
+        }
+      },
+      "additionalProperties": false
     }
   },
   "additionalProperties": false

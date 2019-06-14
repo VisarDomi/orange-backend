@@ -5,20 +5,20 @@ from ..common.exceptions import (
     CannotCreateData,
 )
 from ..models.users import Secretary
-from ..helper_functions.create import create_entity
-from ..helper_functions.get_by_id import (
+from ..helper_functions.get_entity_by_id import (
     get_reservation_by_id,
     get_secretary_by_id,
     get_company_by_id,
 )
 from ..helper_functions.common_functions import (
     can_it_update,
-    are_you_head_secretary,
+    is_it_head_secretary,
 )
+from ..helper_functions.crud_entity import create_entity
 
 
 def create_secretary(secretary_data, company_id):
-    is_head_secretary = are_you_head_secretary(company_id)
+    is_head_secretary = is_it_head_secretary(company_id)
     can_update = can_it_update()
     if can_update or is_head_secretary:
         secretary = create_entity(secretary_data, Secretary)
@@ -33,7 +33,7 @@ def create_secretary(secretary_data, company_id):
 
 
 def get_secretarys(company_id):
-    is_head_secretary = are_you_head_secretary(company_id)
+    is_head_secretary = is_it_head_secretary(company_id)
     can_update = can_it_update()
     if can_update or is_head_secretary:
         company = get_company_by_id(company_id)
@@ -46,7 +46,7 @@ def get_secretarys(company_id):
 
 
 def get_secretary(secretary_id, company_id):
-    is_head_secretary = are_you_head_secretary(company_id)
+    is_head_secretary = is_it_head_secretary(company_id)
     can_update = can_it_update(secretary_id=secretary_id)
     if can_update or is_head_secretary:
         secretary = get_secretary_by_id(secretary_id)
@@ -58,7 +58,7 @@ def get_secretary(secretary_id, company_id):
 
 
 def update_secretary(secretary_data, secretary_id, company_id):
-    is_head_secretary = are_you_head_secretary(company_id)
+    is_head_secretary = is_it_head_secretary(company_id)
     can_update = can_it_update(secretary_id=secretary_id)
     if can_update or is_head_secretary:
         secretary = get_secretary_by_id(secretary_id)
@@ -72,7 +72,7 @@ def update_secretary(secretary_data, secretary_id, company_id):
 
 
 def delete_secretary(secretary_id, company_id):
-    is_head_secretary = are_you_head_secretary(company_id)
+    is_head_secretary = is_it_head_secretary(company_id)
     can_update = can_it_update(secretary_id=secretary_id)
     if can_update or is_head_secretary:
         secretary = get_secretary_by_id(secretary_id)
@@ -83,7 +83,7 @@ def delete_secretary(secretary_id, company_id):
 
 
 def get_reservations(secretary_id, company_id):
-    is_head_secretary = are_you_head_secretary(company_id)
+    is_head_secretary = is_it_head_secretary(company_id)
     can_update = can_it_update(secretary_id=secretary_id)
     if can_update or is_head_secretary:
         secretary = get_secretary_by_id(secretary_id)
@@ -98,7 +98,7 @@ def get_reservations(secretary_id, company_id):
 
 
 def get_reservation(secretary_id, company_id, reservation_id):
-    is_head_secretary = are_you_head_secretary(company_id)
+    is_head_secretary = is_it_head_secretary(company_id)
     can_update = can_it_update(secretary_id=secretary_id)
     if can_update or is_head_secretary:
         reservation = get_reservation_by_id(reservation_id)

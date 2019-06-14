@@ -2,11 +2,9 @@
   "title": "Select role",
   "description": "Select a role before logging in",
   "type": "object",
-  "$schema": "http://json-schema.org/draft-04/schema",
+  "$schema": "https://json-schema.org/draft-04/schema",
   "properties": {
-    "role": {
-      "type": "string"
-    }
+    "role": { "type": "string" }
   },
   "additionalProperties": false
 }

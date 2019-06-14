@@ -2,20 +2,14 @@
   "title": "Update company",
   "description": "Update a company object",
   "type": "object",
-  "$schema": "http://json-schema.org/draft-04/schema",
+  "$schema": "https://json-schema.org/draft-04/schema",
   "properties": {
-    "name": {
-      "type": "string"
-    },
-    "payment_frequency": {
-      "type": "string"
-    },
-    "code": {
-      "type": "string"
-    },
-    "invoice_number": {
-      "type": "string"
-    }
+    "name": { "type": "string" },
+    "payment_frequency": { "type": "string" },
+    "code": { "type": "string" },
+    "invoice_number": { "type": "string" },
+    "kst": { "type": "string" },
+    "address": { "type": "string" }
   },
   "additionalProperties": false
 }
