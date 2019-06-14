@@ -1,4 +1,5 @@
 from .constants import EXCLUDE_CREATE
+from .common_functions import get_role
 
 
 def entity_to_dict(user):
@@ -12,6 +13,8 @@ def entity_to_dict(user):
         entity_dict = user.secretary.to_dict()
     user_dict = user.to_dict(exclude=EXCLUDE_CREATE)
     entity_dict.update(user_dict)
+    role = get_role(user)
+    entity_dict["role"] = role
 
     return entity_dict
 

@@ -1,17 +1,10 @@
 from flask import g
 from ..common.exceptions import NotCorrectRole
 from .get_entity_by_id import get_company_by_id, get_secretary_by_id
-from .constants import (
-    UNASSIGNED,
-    HEAD_SECRETARY,
-    ADMIN,
-    DRIVER,
-    EMPLOYEE,
-    SECRETARY,
-)
+from .constants import UNASSIGNED, HEAD_SECRETARY, ADMIN, DRIVER, EMPLOYEE, SECRETARY
 
 
-def apply_role_check(login_data, user):
+def get_role(user):
     role = None
     if user.admin:
         role = ADMIN
@@ -21,6 +14,12 @@ def apply_role_check(login_data, user):
         role = EMPLOYEE
     if user.secretary:
         role = SECRETARY
+
+    return role
+
+
+def apply_role_check(login_data, user):
+    role = get_role(user)
     if login_data["role"] == UNASSIGNED:
         msg = "The user does not have a role, cannot proceed login"
         raise NotCorrectRole(message=msg, status_code=403)

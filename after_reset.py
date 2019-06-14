@@ -1,8 +1,8 @@
 # cp in flask shell after 'alembic upgrade head' after 'drop database orange'
-import pprint
 from api.helper_functions.constants import EXPIRES_IN, EXCLUDE_CREATE
 from api.helper_functions.users_to_dict import admin_to_dict
 
+import pprint
 pp = pprint.PrettyPrinter(indent=4)
 
 

@@ -59,229 +59,6 @@
 			]
 		},
 		{
-			"name": "user",
-			"item": [
-				{
-					"name": "{{url}}/api/user",
-					"request": {
-						"auth": {
-							"type": "bearer",
-							"bearer": [
-								{
-									"key": "token",
-									"value": "{{admin_token}}",
-									"type": "string"
-								}
-							]
-						},
-						"method": "POST",
-						"header": [
-							{
-								"key": "Secure-Api-Key",
-								"value": "{{Secure-Api-Key}}"
-							},
-							{
-								"key": "Content-Type",
-								"value": "application/json"
-							}
-						],
-						"body": {
-							"mode": "raw",
-							"raw": "{\r\n    \"email\": \"secretary3@orange.com\",\r\n    \"password\": \"password\"\r\n}"
-						},
-						"url": {
-							"raw": "{{url}}/api/user",
-							"host": [
-								"{{url}}"
-							],
-							"path": [
-								"api",
-								"user"
-							]
-						},
-						"description": "user1"
-					},
-					"response": []
-				},
-				{
-					"name": "{{url}}/api/user/all",
-					"protocolProfileBehavior": {
-						"disableBodyPruning": true
-					},
-					"request": {
-						"auth": {
-							"type": "bearer",
-							"bearer": [
-								{
-									"key": "token",
-									"value": "{{admin_token}}",
-									"type": "string"
-								}
-							]
-						},
-						"method": "GET",
-						"header": [
-							{
-								"key": "Secure-Api-Key",
-								"value": "{{Secure-Api-Key}}"
-							},
-							{
-								"key": "Content-Type",
-								"value": "application/json"
-							}
-						],
-						"body": {
-							"mode": "raw",
-							"raw": ""
-						},
-						"url": {
-							"raw": "{{url}}/api/user/all",
-							"host": [
-								"{{url}}"
-							],
-							"path": [
-								"api",
-								"user",
-								"all"
-							]
-						},
-						"description": "get users with token"
-					},
-					"response": []
-				},
-				{
-					"name": "{{url}}/api/user/1",
-					"protocolProfileBehavior": {
-						"disableBodyPruning": true
-					},
-					"request": {
-						"auth": {
-							"type": "bearer",
-							"bearer": [
-								{
-									"key": "token",
-									"value": "{{admin_token}}",
-									"type": "string"
-								}
-							]
-						},
-						"method": "GET",
-						"header": [
-							{
-								"key": "Secure-Api-Key",
-								"value": "{{Secure-Api-Key}}"
-							},
-							{
-								"key": "Content-Type",
-								"value": "application/json"
-							}
-						],
-						"body": {
-							"mode": "raw",
-							"raw": ""
-						},
-						"url": {
-							"raw": "{{url}}/api/user/5",
-							"host": [
-								"{{url}}"
-							],
-							"path": [
-								"api",
-								"user",
-								"5"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "{{url}}/api/user/1",
-					"request": {
-						"auth": {
-							"type": "bearer",
-							"bearer": [
-								{
-									"key": "token",
-									"value": "{{admin_token}}",
-									"type": "string"
-								}
-							]
-						},
-						"method": "PUT",
-						"header": [
-							{
-								"key": "Secure-Api-Key",
-								"value": "{{Secure-Api-Key}}"
-							},
-							{
-								"key": "Content-Type",
-								"value": "application/json"
-							}
-						],
-						"body": {
-							"mode": "raw",
-							"raw": "{\n    \"email\": \"user2@orange.com\"\n}"
-						},
-						"url": {
-							"raw": "{{url}}/api/user/2",
-							"host": [
-								"{{url}}"
-							],
-							"path": [
-								"api",
-								"user",
-								"2"
-							]
-						},
-						"description": "Put"
-					},
-					"response": []
-				},
-				{
-					"name": "{{url}}/api/user/2",
-					"request": {
-						"auth": {
-							"type": "bearer",
-							"bearer": [
-								{
-									"key": "token",
-									"value": "{{admin_token}}",
-									"type": "string"
-								}
-							]
-						},
-						"method": "DELETE",
-						"header": [
-							{
-								"key": "Secure-Api-Key",
-								"value": "{{Secure-Api-Key}}"
-							},
-							{
-								"key": "Content-Type",
-								"value": "application/json"
-							}
-						],
-						"body": {
-							"mode": "raw",
-							"raw": ""
-						},
-						"url": {
-							"raw": "{{url}}/api/user/7",
-							"host": [
-								"{{url}}"
-							],
-							"path": [
-								"api",
-								"user",
-								"7"
-							]
-						}
-					},
-					"response": []
-				}
-			]
-		},
-		{
 			"name": "reservation",
 			"item": [
 				{
@@ -310,7 +87,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"name\": \"reservation1\",\r\n    \"destination\": \"there\",\r\n    \"date\": \"2019-12-31\",\r\n    \"time\": \"13:45:39\",\r\n    \"status\": \"unassigned\",\r\n    \"payment_method\": \"individual\",\r\n    \"big_luggage\": \"0\",\r\n    \"small_luggage\": \"1\",\r\n    \"vehicle_type\": \"limo\",\r\n    \"stops\": [\r\n    \t{\r\n\t    \t\"pickup\": \"here1\",\r\n\t    \t\"employee_id\": \"1\"\r\n\t    },\r\n\t    {\r\n\t    \t\"pickup\": \"here2\",\r\n\t    \t\"employee_id\": \"2\"\r\n\t    }\r\n    ]\r\n}"
+							"raw": "{\r\n    \"name\": \"reservation1\",\r\n    \"destination\": \"there\",\r\n    \"date\": \"2019-12-31\",\r\n    \"time\": \"13:45:39\",\r\n    \"status\": \"unassigned\",\r\n    \"payment_method\": \"cash\",\r\n    \"big_luggage\": \"2\",\r\n    \"small_luggage\": \"3\",\r\n    \"vehicle_type\": \"limo\",\r\n    \"stops\": [\r\n    \t{\r\n\t    \t\"pickup\": \"here1\",\r\n\t    \t\"time\": \"15:05\",\r\n\t    \t\"employee_id\": \"1\"\r\n\t    },\r\n\t    {\r\n\t    \t\"pickup\": \"here2\",\r\n\t    \t\"time\": \"15:05\",\r\n\t    \t\"employee_id\": \"2\"\r\n\t    }\r\n    ]\r\n}"
 						},
 						"url": {
 							"raw": "{{url}}/api/company/1/reservation",
@@ -733,7 +510,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"full_name\": \"admintest2\",\r\n    \"user_id\": \"4\"\r\n}"
+							"raw": "{\r\n    \"full_name\": \"admin7\",\r\n    \"user\": {\r\n    \t\"email\": \"admin7@orange.com\",\r\n    \t\"password\": \"password\"\r\n    }\r\n}"
 						},
 						"url": {
 							"raw": "{{url}}/api/admin",
@@ -1188,7 +965,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"full_name\": \"driver2\",\r\n    \"status\": \"occupied\",\r\n    \"user_id\": \"3\"\r\n}"
+							"raw": "{\r\n    \"full_name\": \"driver2\",\r\n    \"user\": {\r\n    \t\"email\": \"driver2@orange.com\",\r\n    \t\"password\": \"password\"\r\n    },\r\n    \"status\": \"free\"\r\n}"
 						},
 						"url": {
 							"raw": "{{url}}/api/driver",
@@ -1552,7 +1329,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"name\": \"company1\",\r\n    \"payment_frequency\": \"single\",\r\n    \"code\": \"CDK\",\r\n    \"invoice_number\": \"00543\",\r\n    \"head_secretary\": {\r\n\t    \"full_name\": \"head_secretary1\",\r\n\t    \"role\": \"head_secretary\",\r\n\t    \"user_id\": \"4\"\r\n    }\r\n}"
+							"raw": "{\r\n    \"name\": \"company1\",\r\n    \"payment_frequency\": \"monthly\",\r\n    \"code\": \"CDK\",\r\n    \"invoice_number\": \"00543\",\r\n    \"kst\": \"329fd\",\r\n    \"address\": \"here\",\r\n    \"head_secretary\": {\r\n\t    \"full_name\": \"secretary1\",\r\n\t    \"user\": {\r\n\t    \t\"email\": \"secretary1@orange.com\",\r\n\t    \t\"password\": \"password\"\r\n\t    }\r\n\t}\r\n}"
 						},
 						"url": {
 							"raw": "{{url}}/api/company",
@@ -1685,7 +1462,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"name\": \"company1\",\r\n    \"payment_frequency\": \"single\",\r\n    \"code\": \"CDE\",\r\n    \"invoice_number\": \"00143\"\r\n}"
+							"raw": "{\r\n    \"name\": \"company1\",\r\n    \"payment_frequency\": \"single\",\r\n    \"code\": \"CDE\",\r\n    \"invoice_number\": \"00143\",\r\n    \"kst\": \"329fd\",\r\n    \"address\": \"here\"\r\n}"
 						},
 						"url": {
 							"raw": "{{url}}/api/company/1",
@@ -1871,7 +1648,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"full_name\": \"secretary3\",\r\n    \"role\": \"normal_secretary\",\r\n    \"user_id\": \"8\"\r\n}"
+							"raw": "{\r\n    \"full_name\": \"secretary11\",\r\n    \"user\": {\r\n    \t\"email\": \"secretary11@orange.com\",\r\n    \t\"password\": \"password\"\r\n    },\r\n    \"role\": \"normal_secretary\"\r\n}"
 						},
 						"url": {
 							"raw": "{{url}}/api/company/1/secretary",
@@ -1900,7 +1677,7 @@
 							"bearer": [
 								{
 									"key": "token",
-									"value": "{{secretary1_token}}",
+									"value": "{{admin_token}}",
 									"type": "string"
 								}
 							]
@@ -1921,14 +1698,14 @@
 							"raw": ""
 						},
 						"url": {
-							"raw": "{{url}}/api/company/1/secretary/all",
+							"raw": "{{url}}/api/company/3/secretary/all",
 							"host": [
 								"{{url}}"
 							],
 							"path": [
 								"api",
 								"company",
-								"1",
+								"3",
 								"secretary",
 								"all"
 							]
@@ -2202,7 +1979,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"full_name\": \"employee2\",\r\n    \"address\": \"Rruga Budi\",\r\n    \"user_id\": \"7\"\r\n}"
+							"raw": "{\r\n    \"full_name\": \"employee1\",\r\n    \"user\": {\r\n    \t\"email\": \"employee1@orange.com\",\r\n    \t\"password\": \"password\"\r\n    },\r\n    \"address\": \"here\"\r\n}"
 						},
 						"url": {
 							"raw": "{{url}}/api/company/1/employee",
@@ -3028,57 +2805,57 @@
 	],
 	"variable": [
 		{
-			"id": "db92b52b-7e78-457c-a40e-08fcf63e237d",
+			"id": "1408f5ad-056f-4eef-b5de-8f2496d1d1a2",
 			"key": "url",
 			"value": "https://orange-backend.ml",
 			"type": "string"
 		},
 		{
-			"id": "eaeae64e-401f-43d5-b3f3-c5e87b26cc45",
+			"id": "907c33f3-2a98-44a9-8af0-838567c67695",
 			"key": "Secure-Api-Key",
 			"value": "asdfasdfetye1a2",
 			"type": "string"
 		},
 		{
-			"id": "111b6856-679e-49e8-a137-869bee457f2d",
+			"id": "98fdfa85-ced9-4ed5-99db-3c4a20fd98d9",
 			"key": "admin_token",
-			"value": "tKdEj30CCqIPdqIdNDDMWS7fUJ/79/Oa",
+			"value": "gSnphoOcU2AeSvDlMOv9ZBFnUvkV9aim",
 			"type": "string"
 		},
 		{
-			"id": "f97e966a-4ec6-4fd6-8a9b-04567541b678",
+			"id": "7863d7ae-350e-432c-8288-fad845a557ec",
 			"key": "secretary1_token",
-			"value": "usQ7NDGMOCIA0wL+kNNmrWHUVwqLzSXi",
+			"value": "kSKLsuTTL2xSQRtswnghIY9QYBhdsZ2L",
 			"type": "string"
 		},
 		{
-			"id": "71f1542f-7d97-4a7e-b1f6-18ad0581da27",
+			"id": "28fcb17a-c8ac-4ca9-98f2-2e91b63e1a9d",
 			"key": "secretary2_token",
-			"value": "HobP1Rwvsaa01a6EgThDacudr3KaTIzf",
+			"value": "6rb38KXmUtXS3dTuLngWhEVUrjC1fTf1",
 			"type": "string"
 		},
 		{
-			"id": "a5250b40-820b-4cfc-a4b2-9279488b5201",
+			"id": "4b72809b-7afd-4cdb-9ba7-4fddae0fafeb",
 			"key": "driver1_token",
-			"value": "YYq6nEAEyr1pMJnPqTgKPVvndL3USNX9",
+			"value": "ULvMy41ka/a0qjUVvG5t+bmTJpaJjmCt",
 			"type": "string"
 		},
 		{
-			"id": "01c54745-764e-4e47-bd88-63681687bd65",
+			"id": "066195b6-538b-4133-aefa-756d48880df6",
 			"key": "driver2_token",
-			"value": "F+TuIr8MZKQQT6mDsnk37ihUYfAPjEj9",
+			"value": "HMZSxyQ990N8uV8I7o9QoYnLHxPU9h6T",
 			"type": "string"
 		},
 		{
-			"id": "1fc557cf-6b20-4f33-9a08-bf50459a75b5",
+			"id": "dc95822d-759f-4dc5-a1f4-57bab3c829b4",
 			"key": "employee1_token",
-			"value": "p3U+d2xxyw7uctrccg6hEsDjkwd3QLLc",
+			"value": "EKF31s8D0Gs6ESsHBwcAt3dICjXV/T6F",
 			"type": "string"
 		},
 		{
-			"id": "fb244581-9558-40d0-ba13-7bb5861c5b6a",
+			"id": "8e601b13-ccf8-4357-8269-c7bba47794d1",
 			"key": "employee2_token",
-			"value": "ObZ7rQPKmSwZL+2pwK8Apz05SVsevdA1",
+			"value": "Yc2r5wwS8qA2665P+e859Y8vHUkESPhi",
 			"type": "string"
 		}
 	]
