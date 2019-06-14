@@ -8,11 +8,13 @@ from ..models.users import Driver
 from ..helper_functions.get_entity_by_id import get_reservation_by_id, get_driver_by_id
 from ..helper_functions.common_functions import can_it_update
 from ..helper_functions.crud_entity import create_entity
+from ..helper_functions.constants import FREE
 
 
 def create_driver(driver_data):
     can_update = can_it_update()
     if can_update:
+        driver_data["status"] = FREE
         driver = create_entity(driver_data, Driver)
     else:
         msg = "You can't create data."

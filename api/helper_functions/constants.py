@@ -2,6 +2,7 @@ EXCLUDE_CREATE = ["password_hash"]
 EXCLUDE_GET = ["password_hash", "token"]
 EXPIRES_IN = 3_600_000_000
 UNASSIGNED = "unassigned"
+FREE = "free"
 ADMIN = "admin"
 EMPLOYEE = "employee"
 SECRETARY = "secretary"

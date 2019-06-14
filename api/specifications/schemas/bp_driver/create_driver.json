@@ -14,8 +14,7 @@
         "password": { "type": "string" }
       },
       "additionalProperties": false
-    },
-    "status": { "type": "string" }
+    }
   },
   "additionalProperties": false
 }
