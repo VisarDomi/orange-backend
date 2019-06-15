@@ -122,7 +122,6 @@ def update_reservation(reservation_data, reservation_id):
         driver_id = reservation_data.pop("driver_id")
         driver = get_driver_by_id(driver_id)
         reservation = get_reservation_by_id(reservation_id)
-        reservation.status = "waiting"
         reservation.driver = driver
         reservation.save()
     else:

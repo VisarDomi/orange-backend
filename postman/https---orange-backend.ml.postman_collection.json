@@ -737,7 +737,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"name\": \"reservation1\",\r\n    \"destination\": \"there\",\r\n    \"date\": \"2019-12-31\",\r\n    \"time\": \"13:45:39\",\r\n    \"status\": \"unassigned\",\r\n    \"payment_method\": \"cash\",\r\n    \"big_luggage\": \"2\",\r\n    \"small_luggage\": \"3\",\r\n    \"vehicle_type\": \"limo\",\r\n    \"stops\": [\r\n    \t{\r\n\t    \t\"pickup\": \"here1\",\r\n\t    \t\"time\": \"15:05\",\r\n\t    \t\"employee_id\": \"1\"\r\n\t    },\r\n\t    {\r\n\t    \t\"pickup\": \"here2\",\r\n\t    \t\"time\": \"15:05\",\r\n\t    \t\"employee_id\": \"2\"\r\n\t    }\r\n    ]\r\n}"
+							"raw": "{\r\n    \"name\": \"reservation1\",\r\n    \"destination\": \"there\",\r\n    \"date\": \"2019-12-31\",\r\n    \"time\": \"13:45:39\",\r\n    \"payment_method\": \"cash\",\r\n    \"big_luggage\": \"2\",\r\n    \"small_luggage\": \"3\",\r\n    \"vehicle_type\": \"limo\",\r\n    \"stops\": [\r\n    \t{\r\n\t    \t\"pickup\": \"here1\",\r\n\t    \t\"time\": \"15:05\",\r\n\t    \t\"employee_id\": \"1\"\r\n\t    },\r\n\t    {\r\n\t    \t\"pickup\": \"here2\",\r\n\t    \t\"time\": \"15:05\",\r\n\t    \t\"employee_id\": \"2\"\r\n\t    }\r\n    ]\r\n}"
 						},
 						"url": {
 							"raw": "{{url}}/api/company/1/reservation",
@@ -1646,7 +1646,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n\t\"driver_id\": \"1\"\n}"
+							"raw": "{\n\t\"driver_id\": \"1\",\n\t\"status\": \"waiting\"\n}"
 						},
 						"url": {
 							"raw": "{{url}}/api/admin/reservation/1",
@@ -2805,55 +2805,55 @@
 	],
 	"variable": [
 		{
-			"id": "9440b1e7-00cf-446e-8c2a-3cab136dcb90",
+			"id": "60fe746b-6b45-4b52-8a87-a7f6ea4c3047",
 			"key": "url",
 			"value": "https://orange-backend.ml",
 			"type": "string"
 		},
 		{
-			"id": "4bd2647d-24b1-4b41-8426-75a15424bd80",
+			"id": "2785fff4-d2ca-462c-b8e5-ec51fa2c7f25",
 			"key": "Secure-Api-Key",
 			"value": "asdfasdfetye1a2",
 			"type": "string"
 		},
 		{
-			"id": "d2bef80a-352b-4401-a90d-6b410d2166af",
+			"id": "f95fab96-1f0f-438d-bccd-1fd069095128",
 			"key": "admin_token",
 			"value": "gSnphoOcU2AeSvDlMOv9ZBFnUvkV9aim",
 			"type": "string"
 		},
 		{
-			"id": "ada13556-3317-4d92-af0b-f2e0d0ed364b",
+			"id": "6a718f6f-8d7c-40f9-931a-d968f9c2540f",
 			"key": "secretary1_token",
 			"value": "kSKLsuTTL2xSQRtswnghIY9QYBhdsZ2L",
 			"type": "string"
 		},
 		{
-			"id": "ec9ac436-e7aa-4018-adf2-c7be641c3992",
+			"id": "8bef69c1-fc54-46e5-b1b0-e1b7357e676d",
 			"key": "secretary2_token",
 			"value": "6rb38KXmUtXS3dTuLngWhEVUrjC1fTf1",
 			"type": "string"
 		},
 		{
-			"id": "16b7deee-b26d-4a1d-a5d4-2d9b6a605621",
+			"id": "2ebe16ed-0f5b-4014-ba46-fef5a6729f8d",
 			"key": "driver1_token",
 			"value": "ULvMy41ka/a0qjUVvG5t+bmTJpaJjmCt",
 			"type": "string"
 		},
 		{
-			"id": "c2df3bf6-65bf-4dae-af81-53e9194e7b67",
+			"id": "7bc74d15-9c13-465c-888f-3b3e773e932d",
 			"key": "driver2_token",
 			"value": "HMZSxyQ990N8uV8I7o9QoYnLHxPU9h6T",
 			"type": "string"
 		},
 		{
-			"id": "7b3b6275-4848-4ba9-b109-ea000b7e1fad",
+			"id": "1fb39918-ca41-4070-b901-2f4576cd19b5",
 			"key": "employee1_token",
 			"value": "EKF31s8D0Gs6ESsHBwcAt3dICjXV/T6F",
 			"type": "string"
 		},
 		{
-			"id": "508f8394-2779-4f79-b05f-93908dbf8d32",
+			"id": "16e0909a-6d1c-4cc6-8d1b-b3da658b3edf",
 			"key": "employee2_token",
 			"value": "Yc2r5wwS8qA2665P+e859Y8vHUkESPhi",
 			"type": "string"
