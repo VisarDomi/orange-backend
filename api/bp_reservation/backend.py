@@ -13,6 +13,7 @@ from ..helper_functions.get_entity_by_id import (
     get_stop_by_id,
 )
 from ..helper_functions.common_functions import can_it_update, get_secretary_id
+from ..helper_functions.constants import UNASSIGNED
 
 
 def create_reservation(reservation_data, company_id):
@@ -20,6 +21,7 @@ def create_reservation(reservation_data, company_id):
     can_update = can_it_update(secretary_id=secretary_id)
     if can_update:
         stops_data = reservation_data.pop("stops")
+        reservation_data["status"] = UNASSIGNED
         reservation = Reservation(**reservation_data)
         reservation.save()
         company = get_company_by_id(company_id)

@@ -9,7 +9,6 @@
     "destination": { "type": "string" },
     "date": { "type": "string" },
     "time": { "type": "string" },
-    "status": { "type": "string" },
     "big_luggage": { "type": "string" },
     "small_luggage": { "type": "string" },
     "vehicle_type": { "type": "string" },
