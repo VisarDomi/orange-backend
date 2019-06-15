@@ -1,4 +1,4 @@
-from .constants import EXCLUDE_CREATE
+from .constants import EXCLUDE_CREATE, SECRETARY
 from .common_functions import get_role
 
 
@@ -11,11 +11,14 @@ def entity_to_dict(user):
         entity_dict = user.employee.to_dict()
     if user.secretary:
         entity_dict = user.secretary.to_dict()
+        secretary_role = user.secretary.role
     user_dict = user.to_dict(exclude=EXCLUDE_CREATE)
     del user_dict["id"]
     entity_dict.update(user_dict)
     role = get_role(user)
     entity_dict["role"] = role
+    if role == SECRETARY:
+        entity_dict["secretary_role"] = secretary_role
 
     return entity_dict
 

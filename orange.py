@@ -1,6 +1,8 @@
 import os
 from werkzeug.contrib.fixers import ProxyFix
 from api import create_app
+
+# autoimport
 from api.common.database import db_session
 from api.models.users import User, Admin, Driver, Employee, Secretary
 from api.models.items import (
@@ -33,6 +35,9 @@ def make_shell_context():
         "ItineraryMaster": ItineraryMaster,
         "Stop": Stop,
     }
+
+
+# end autoimport
 
 
 def run():
