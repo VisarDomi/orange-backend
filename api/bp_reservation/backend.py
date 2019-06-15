@@ -12,7 +12,11 @@ from ..helper_functions.get_entity_by_id import (
     get_secretary_by_id,
     get_stop_by_id,
 )
-from ..helper_functions.common_functions import can_it_update, get_secretary_id
+from ..helper_functions.common_functions import (
+    can_it_update,
+    is_it_head_secretary,
+    get_secretary_id,
+)
 from ..helper_functions.constants import UNASSIGNED
 
 
@@ -47,9 +51,9 @@ def create_reservation(reservation_data, company_id):
 
 
 def get_reservations(company_id):
-    secretary_id = get_secretary_id(company_id)
-    can_update = can_it_update(secretary_id=secretary_id)
-    if can_update:
+    is_head_secretary = is_it_head_secretary(company_id)
+    can_update = can_it_update()
+    if can_update or is_head_secretary:
         company = get_company_by_id(company_id)
         reservations = company.reservations.all()
     else:
@@ -60,9 +64,9 @@ def get_reservations(company_id):
 
 
 def get_reservation(reservation_id, company_id):
-    secretary_id = get_secretary_id(company_id)
-    can_update = can_it_update(secretary_id=secretary_id)
-    if can_update:
+    is_head_secretary = is_it_head_secretary(company_id)
+    can_update = can_it_update()
+    if can_update or is_head_secretary:
         reservation = get_reservation_by_id(reservation_id)
     else:
         msg = "You can't get reservation."
@@ -72,15 +76,20 @@ def get_reservation(reservation_id, company_id):
 
 
 def update_reservation(reservation_data, reservation_id, company_id):
+    is_head_secretary = is_it_head_secretary(company_id)
+    can_update = can_it_update()
+    is_reservation_secretary = False
     secretary_id = get_secretary_id(company_id)
-    can_update = can_it_update(secretary_id=secretary_id)
-    if can_update:
+    secretary = get_secretary_by_id(secretary_id)
+    reservation = get_reservation_by_id(reservation_id)
+    if reservation.secretary == secretary:
+        is_reservation_secretary = True
+    if can_update or is_head_secretary or is_reservation_secretary:
         stops_data = []
         try:
             stops_data = reservation_data.pop("stops")
         except KeyError:
             pass
-        reservation = get_reservation_by_id(reservation_id)
         reservation.update(**reservation_data)
         if stops_data:
             for stop_data in stops_data:
@@ -103,10 +112,15 @@ def update_reservation(reservation_data, reservation_id, company_id):
 
 
 def delete_reservation(reservation_id, company_id):
+    is_head_secretary = is_it_head_secretary(company_id)
+    can_update = can_it_update()
+    is_reservation_secretary = False
     secretary_id = get_secretary_id(company_id)
-    can_update = can_it_update(secretary_id=secretary_id)
-    if can_update:
-        reservation = get_reservation_by_id(reservation_id)
+    secretary = get_secretary_by_id(secretary_id)
+    reservation = get_reservation_by_id(reservation_id)
+    if reservation.secretary == secretary:
+        is_reservation_secretary = True
+    if can_update or is_head_secretary or is_reservation_secretary:
         reservation.delete()
     else:
         msg = "You can't delete other people's data."
