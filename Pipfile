@@ -12,11 +12,13 @@ sqlalchemy-utils = "*"
 flask-httpauth = "*"
 black = "*"
 flask = "==1.0.3"
+werkzeug = "==0.15.4"
 flake8 = "*"
 jsonschema = "*"
 flask-shell-ipython = "*"
 gunicorn = "*"
 psycopg2-binary = "*"
+gevent = "*"
 
 [requires]
 python_version = "3.7"
